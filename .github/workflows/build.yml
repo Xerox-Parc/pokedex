@@ -1,4 +1,4 @@
-name: Build with Gradle and SonarCloud scan
+name: build
 
 on:
   push:
