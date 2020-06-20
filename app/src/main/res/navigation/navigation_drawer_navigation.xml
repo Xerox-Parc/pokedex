@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@+id/nav_pokedex">
+
+    <fragment
+        android:id="@+id/nav_pokedex"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.PokedexFragment"
+        android:label="Pokedex"
+        tools:layout="@layout/fragment_pokedex"/>
+
+    <fragment
+        android:id="@+id/nav_moves"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.MovesFragment"
+        android:label="Moves"
+        tools:layout="@layout/fragment_moves"/>
+
+    <fragment
+        android:id="@+id/nav_abilities"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.AbilitiesFragment"
+        android:label="Abilities"
+        tools:layout="@layout/fragment_abilities"/>
+
+    <fragment
+        android:id="@+id/nav_items"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.ItemsFragment"
+        android:label="Items"
+        tools:layout="@layout/fragment_items"/>
+
+    <fragment
+        android:id="@+id/nav_locations"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.LocationsFragment"
+        android:label="Locations"
+        tools:layout="@layout/fragment_locations"/>
+
+    <fragment
+        android:id="@+id/nav_types_chart"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.TypesChartFragment"
+        android:label="Type Charts"
+        tools:layout="@layout/fragment_types_chart"/>
+
+    <fragment
+        android:id="@+id/nav_berry"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.BerryFragment"
+        android:label="Berry"
+        tools:layout="@layout/fragment_berry"/>
+
+    <fragment
+        android:id="@+id/nav_natures"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.NaturesFragment"
+        android:label="Natures"
+        tools:layout="@layout/fragment_natures"/>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings"/>
+
+    <fragment
+        android:id="@+id/nav_teams"
+        android:name="com.xeroxparc.pokedex.topleveldestinations.TeamsFragment"
+        android:label="Teams"
+        tools:layout="@layout/fragment_teams"/>
+
+</navigation>
