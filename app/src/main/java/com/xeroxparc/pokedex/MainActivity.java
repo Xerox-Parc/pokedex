@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        holder = new Holder(this);
+        holder = new Holder();
         setContentView(holder.getRoot());
     }
 
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         private ActivityMainBinding binding;
 
-        Holder(Activity activity){
+        Holder(){
 
             binding = ActivityMainBinding.inflate(getLayoutInflater());
 
