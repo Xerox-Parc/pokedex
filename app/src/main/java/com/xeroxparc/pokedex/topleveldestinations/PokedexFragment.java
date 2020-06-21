@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.databinding.FragmentPokedexBinding;
 
 public class PokedexFragment extends Fragment {
