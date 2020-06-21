@@ -1,8 +1,6 @@
 package com.xeroxparc.pokedex.data.entity.pokemon;
 
-import com.xeroxparc.pokedex.data.entity.utility.NamedAPIResource;
-
-import java.util.List;
+import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 
 public class PokemonHeldItemVersion {
 

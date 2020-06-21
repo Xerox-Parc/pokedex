@@ -1,12 +1,12 @@
 package com.xeroxparc.pokedex.data.entity.item;
 
-import com.xeroxparc.pokedex.data.entity.utility.APIResource;
-import com.xeroxparc.pokedex.data.entity.utility.GenerationGameIndex;
-import com.xeroxparc.pokedex.data.entity.utility.MachineVersionDetail;
-import com.xeroxparc.pokedex.data.entity.utility.Name;
-import com.xeroxparc.pokedex.data.entity.utility.NamedAPIResource;
-import com.xeroxparc.pokedex.data.entity.utility.VerboseEffect;
-import com.xeroxparc.pokedex.data.entity.utility.VersionGroupFlavorText;
+import com.xeroxparc.pokedex.data.entity.utility.common.APIResource;
+import com.xeroxparc.pokedex.data.entity.utility.common.GenerationGameIndex;
+import com.xeroxparc.pokedex.data.entity.utility.common.MachineVersionDetail;
+import com.xeroxparc.pokedex.data.entity.utility.common.Name;
+import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.entity.utility.common.VerboseEffect;
+import com.xeroxparc.pokedex.data.entity.utility.common.VersionGroupFlavorText;
 
 import java.util.List;
 

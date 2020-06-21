@@ -1,8 +1,7 @@
 package com.xeroxparc.pokedex.data.entity.pokemon;
 
-import com.xeroxparc.pokedex.data.entity.utility.Name;
-import com.xeroxparc.pokedex.data.entity.utility.NamedAPIResource;
-import com.xeroxparc.pokedex.data.entity.utility.VersionGameIndex;
+import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.entity.utility.common.VersionGameIndex;
 
 import java.util.List;
 

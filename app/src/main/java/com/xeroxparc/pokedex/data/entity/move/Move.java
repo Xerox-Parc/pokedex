@@ -1,13 +1,11 @@
 package com.xeroxparc.pokedex.data.entity.move;
 
-import com.xeroxparc.pokedex.data.entity.item.ItemHolderPokemon;
-import com.xeroxparc.pokedex.data.entity.item.ItemSprites;
-import com.xeroxparc.pokedex.data.entity.pokemon.AbilityEffectChange;
-import com.xeroxparc.pokedex.data.entity.utility.APIResource;
-import com.xeroxparc.pokedex.data.entity.utility.MachineVersionDetail;
-import com.xeroxparc.pokedex.data.entity.utility.Name;
-import com.xeroxparc.pokedex.data.entity.utility.NamedAPIResource;
-import com.xeroxparc.pokedex.data.entity.utility.VerboseEffect;
+import com.xeroxparc.pokedex.data.entity.pokemon.ability.AbilityEffectChange;
+import com.xeroxparc.pokedex.data.entity.utility.common.APIResource;
+import com.xeroxparc.pokedex.data.entity.utility.common.MachineVersionDetail;
+import com.xeroxparc.pokedex.data.entity.utility.common.Name;
+import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.entity.utility.common.VerboseEffect;
 
 import java.util.List;
 

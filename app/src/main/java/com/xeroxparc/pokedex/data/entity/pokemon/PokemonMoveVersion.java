@@ -1,6 +1,6 @@
 package com.xeroxparc.pokedex.data.entity.pokemon;
 
-import com.xeroxparc.pokedex.data.entity.utility.NamedAPIResource;
+import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 
 public class PokemonMoveVersion {
 

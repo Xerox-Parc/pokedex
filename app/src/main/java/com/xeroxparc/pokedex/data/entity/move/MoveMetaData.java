@@ -1,13 +1,6 @@
 package com.xeroxparc.pokedex.data.entity.move;
 
-import com.xeroxparc.pokedex.data.entity.pokemon.AbilityEffectChange;
-import com.xeroxparc.pokedex.data.entity.utility.APIResource;
-import com.xeroxparc.pokedex.data.entity.utility.MachineVersionDetail;
-import com.xeroxparc.pokedex.data.entity.utility.Name;
-import com.xeroxparc.pokedex.data.entity.utility.NamedAPIResource;
-import com.xeroxparc.pokedex.data.entity.utility.VerboseEffect;
-
-import java.util.List;
+import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 
 public class MoveMetaData {
 

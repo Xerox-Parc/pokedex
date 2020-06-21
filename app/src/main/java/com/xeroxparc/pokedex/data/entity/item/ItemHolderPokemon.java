@@ -1,6 +1,6 @@
 package com.xeroxparc.pokedex.data.entity.item;
 
-import com.xeroxparc.pokedex.data.entity.utility.NamedAPIResource;
+import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 
 import java.util.List;
 
