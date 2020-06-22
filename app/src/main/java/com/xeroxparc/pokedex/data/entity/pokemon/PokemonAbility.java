@@ -1,11 +1,19 @@
 package com.xeroxparc.pokedex.data.entity.pokemon;
 
+import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 
 public class PokemonAbility {
 
-	private Boolean is_hidden;          //Whether or not this is a hidden ability.
-	private Integer slot;               //The slot this ability occupies in this Pokémon species.
-	private NamedAPIResource ability;   //The ability the Pokémon may have. (Ability)
+	@SerializedName("is_hidden")
+	private Boolean isHidden;                       // Whether or not this is a hidden ability.
+
+	@SerializedName("slot")
+	private Integer slot;                           // The slot this ability occupies in this
+													// Pokémon species.
+
+	@SerializedName("ability")
+	private NamedAPIResource abilityResource;       // The ability the Pokémon may have.
+													// (Ability)
 
 }

@@ -1,9 +1,20 @@
 package com.xeroxparc.pokedex.data.entity.utility.common;
 
+import com.google.gson.annotations.SerializedName;
+
 public class VersionGroupFlavorText {
 
-	private String text;                //The localized name for an API resource in a specific language.
-	private NamedAPIResource language;          //The language this name is in. (Language)
-	private NamedAPIResource version_group; //The version group which uses this flavor text. (VersionGroup)
+	@SerializedName("text")
+	private String text;                                // The localized name for an API resource
+														// in a specific language.
+
+	@SerializedName("language")
+	private NamedAPIResource languageResource;          // The language this name is in.
+														// (Language)
+
+	@SerializedName("version_group")
+	private NamedAPIResource versionGroupResource;      // The version group which uses this
+														// flavor text.
+														// (VersionGroup)
 
 }

@@ -1,8 +1,15 @@
 package com.xeroxparc.pokedex.data.entity.utility.common;
 
+import com.google.gson.annotations.SerializedName;
+
 public class GenerationGameIndex {
 
-	private Integer game_index;             //The internal id of an API resource within game data.
-	private NamedAPIResource generation;    //The generation relevent to this game index. (Generation)
+	@SerializedName("game_index")
+	private Integer gameIndex;                      //The internal id of an API resource within
+													// game data.
+
+	@SerializedName("generation")
+	private NamedAPIResource generationResource;    //The generation relevent to this game index.
+													// (Generation)
 
 }

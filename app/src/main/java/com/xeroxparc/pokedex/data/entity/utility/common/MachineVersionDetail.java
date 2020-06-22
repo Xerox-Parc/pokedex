@@ -1,8 +1,15 @@
 package com.xeroxparc.pokedex.data.entity.utility.common;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MachineVersionDetail {
 
-	private APIResource machine;            //The machine that teaches a move from an item. (Machine)
-	private NamedAPIResource version_group; //The version group of this specific machine. (VersionGroup)
+	@SerializedName("machine")
+	private APIResource machineResource;            // The machine that teaches a move from an item.
+													// (Machine)
+
+	@SerializedName("version_group")
+	private NamedAPIResource versionGroupResource;  // The version group of this specific machine.
+													// (VersionGroup)
 
 }

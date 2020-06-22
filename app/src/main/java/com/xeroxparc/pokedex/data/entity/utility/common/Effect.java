@@ -1,8 +1,15 @@
 package com.xeroxparc.pokedex.data.entity.utility.common;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Effect {
 
-	private String effect;              //The localized effect text for an API resource in a specific language.
-	private NamedAPIResource language;  //The language this effect is in. (Language)
+	@SerializedName("effect")
+	private String effect;                          //The localized effect text for an API resource
+													// in a specific language.
+
+	@SerializedName("language")
+	private NamedAPIResource languageResource;      //The language this effect is in.
+													// (Language)
 
 }

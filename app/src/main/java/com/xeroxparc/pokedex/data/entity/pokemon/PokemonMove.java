@@ -1,12 +1,19 @@
 package com.xeroxparc.pokedex.data.entity.pokemon;
 
+import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 
 import java.util.List;
 
 public class PokemonMove {
 
-	private NamedAPIResource version;                           //The move the Pokémon can learn. (Move)
-	private List<PokemonMoveVersion> version_group_details;     //The details of the version in which the Pokémon can learn the move.
+	@SerializedName("version")
+	private NamedAPIResource versionResource;                   // The move the Pokémon can learn.
+																// (Move)
+
+	@SerializedName("version_group_details")
+	private List<PokemonMoveVersion> versionGroupDetailList;    // The details of the version in
+																// which the Pokémon can learn the
+																// move.
 
 }
