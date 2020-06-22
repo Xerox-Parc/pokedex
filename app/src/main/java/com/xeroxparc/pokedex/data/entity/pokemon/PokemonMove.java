@@ -7,8 +7,8 @@ import java.util.List;
 
 public class PokemonMove {
 
-	@SerializedName("version")
-	private NamedAPIResource versionResource;                   // The move the Pokémon can learn.
+	@SerializedName("move")
+	private NamedAPIResource moveResource;                      // The move the Pokémon can learn.
 																// (Move)
 
 	@SerializedName("version_group_details")

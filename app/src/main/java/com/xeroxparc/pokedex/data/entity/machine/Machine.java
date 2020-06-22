@@ -23,7 +23,7 @@ public class Machine {
 	private NamedAPIResource moveResource;              // The move that is taught by this machine.
 														// (Move)
 
-	@SerializedName("version_groups")
+	@SerializedName("version_group")
 	private NamedAPIResource versionGroupResource;      // The version group that this machine
 														// applies to.
 														// (VersionGroup)

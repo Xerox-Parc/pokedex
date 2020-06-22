@@ -6,10 +6,10 @@ import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 public class PokemonSpeciesVariety {
 
 	@SerializedName("is_default")
-	private Integer isDefault;                      //Whether this variety is the default variety.
+	private Boolean isDefault;                      // Whether this variety is the default variety.
 
 	@SerializedName("pokemon")
-	private NamedAPIResource pokemonResource;       //The Pokémon variety.
+	private NamedAPIResource pokemonResource;       // The Pokémon variety.
 													// (Pokemon)
 
 }

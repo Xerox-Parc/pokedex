@@ -20,15 +20,15 @@ public class ItemAttribute {
 	private String name;                                // The name for this resource.
 
 	@SerializedName("items")
-	private List<NamedAPIResource> itemListResource;    // The price of this item in stores.
+	private List<NamedAPIResource> itemListResource;    // A list of items that have this attribute.
 														// (Item)
 
 	@SerializedName("names")
-	private List<Name> nameList;                        // The power of the move Fling when used
-														// with this item.
+	private List<Name> nameList;                        // The name of this item attribute listed
+														// in different languages.
 
 	@SerializedName("descriptions")
-	private List<Description> descriptionList;          // The effect of the move Fling when used
-														// with this item.
+	private List<Description> descriptionList;          // The description of this item attribute
+														// listed in different languages.
 
 }

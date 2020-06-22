@@ -6,7 +6,7 @@ import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 public class AbilityFlavorText {
 
 	@SerializedName("flavor_text")
-	private NamedAPIResource flavorTextResource;        // The localized name for an API resource
+	private String flavorText;                          // The localized name for an API resource
 														// in a specific language.
 
 	@SerializedName("language")

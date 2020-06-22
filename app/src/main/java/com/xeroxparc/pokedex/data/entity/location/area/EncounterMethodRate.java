@@ -8,7 +8,8 @@ import java.util.List;
 public class EncounterMethodRate {
 
 	@SerializedName("encounter_method")
-	private NamedAPIResource encounterMethodResource;           // The identifier for this resource.
+	private NamedAPIResource encounterMethodResource;           // The method in which Pokémon may
+																// be encountered in an area.
 																// (EncounterMethod)
 
 	@SerializedName("version_details")

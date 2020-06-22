@@ -28,12 +28,12 @@ public class Stat {
 																// within a battle.
 
 	@SerializedName("affecting_moves")
-	private Boolean affectingMoves;                             // A detail of moves which affect
+	private MoveStatAffectSets affectingMoves;                  // A detail of moves which affect
 																// this stat positively or
 																// negatively.
 
 	@SerializedName("affecting_natures")
-	private Integer affectingNatures;                           // A detail of natures which affect
+	private NatureStatAffectSets affectingNatures;              // A detail of natures which affect
 																// this stat positively or
 																// negatively.
 

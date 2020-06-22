@@ -82,8 +82,4 @@ public class Pokemon {
 	private List<PokemonType> typeList;                 // A list of details showing types this
 														// Pokémon has.
 
-	public String getName() {
-		return name;
-	}
-
 }

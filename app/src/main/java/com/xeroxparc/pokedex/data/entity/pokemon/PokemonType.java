@@ -6,7 +6,7 @@ import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 public class PokemonType {
 
 	@SerializedName("slot")
-	private Integer slot;                       // The slot this ability occupies in this Pokémon
+	private Integer slot;                       // The order the Pokémon's types are listed in.
 												// species.
 
 	@SerializedName("type")
