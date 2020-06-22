@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName;
 public class Effect {
 
 	@SerializedName("effect")
-	private String effect;                          //The localized effect text for an API resource
+	private String text;                            // The localized effect text for an API resource
 													// in a specific language.
 
 	@SerializedName("language")
-	private NamedAPIResource languageResource;      //The language this effect is in.
+	private NamedAPIResource languageResource;      // The language this effect is in.
 													// (Language)
 
 }

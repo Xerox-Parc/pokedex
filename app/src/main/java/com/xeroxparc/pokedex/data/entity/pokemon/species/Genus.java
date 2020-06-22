@@ -6,7 +6,7 @@ import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 public class Genus {
 
 	@SerializedName("genus")
-	private String genus;                           // The localized genus for the referenced
+	private String name;                            // The localized genus for the referenced
 													// Pokémon species
 
 	@SerializedName("language")

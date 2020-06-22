@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class FlavorText {
 
 	@SerializedName("flavor_text")
-	private String flavorText;                          // The localized flavor text for an API
+	private String text;                                // The localized flavor text for an API
 														// resource in a specific language.
 
 	@SerializedName("language")

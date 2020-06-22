@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Description {
 
 	@SerializedName("description")
-	private String description;                     // The localized description for an API resource
+	private String text;                            // The localized description for an API resource
 													// in a specific language.
 
 	@SerializedName("language")

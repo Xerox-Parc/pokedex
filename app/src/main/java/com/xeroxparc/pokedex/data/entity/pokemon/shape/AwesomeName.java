@@ -6,7 +6,7 @@ import com.xeroxparc.pokedex.data.entity.utility.common.NamedAPIResource;
 public class AwesomeName {
 
 	@SerializedName("awesome_name")
-	private String awesomeName;                     // The localized "scientific" name for an API
+	private String name;                            // The localized "scientific" name for an API
 													// resource in a specific language.
 
 	@SerializedName("language")

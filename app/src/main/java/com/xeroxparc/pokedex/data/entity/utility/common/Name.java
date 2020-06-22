@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Name {
 
 	@SerializedName("name")
-	private String name;                                // The localized name for an API resource in
+	private String text;                                // The localized name for an API resource in
 														// a specific language.
 
 	@SerializedName("language")
