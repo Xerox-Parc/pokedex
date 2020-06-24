@@ -15,13 +15,36 @@ tools:openDrawer="start">
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="Fragment Title"
+                app:navigationIcon="@drawable/ic_baseline_menu"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/navigation_host_fragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/navigation_drawer_navigation" />
+                app:navGraph="@navigation/main_navigation" />
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -31,6 +54,7 @@ tools:openDrawer="start">
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
+            app:headerLayout="@layout/navigation_drawer_header"
             app:menu="@menu/navigation_drawer_items" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

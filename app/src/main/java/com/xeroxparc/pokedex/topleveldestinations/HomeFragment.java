@@ -8,16 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xeroxparc.pokedex.databinding.FragmentLocationsBinding;
+import com.xeroxparc.pokedex.databinding.FragmentHomeBinding;
 
-public class LocationsFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
-    private FragmentLocationsBinding binding;
+    private FragmentHomeBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentLocationsBinding.inflate(inflater, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

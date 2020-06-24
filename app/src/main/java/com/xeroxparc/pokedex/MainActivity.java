@@ -31,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
             binding = ActivityMainBinding.inflate(getLayoutInflater());
 
+            setSupportActionBar(binding.topAppBar);
+
+            binding.topAppBar.setNavigationOnClickListener(item ->{
+                binding.drawerLayout.openDrawer(GravityCompat.START);
+            });
+
             binding.navigationView.setNavigationItemSelectedListener(item -> {
                 ((NavHostFragment) (Objects.requireNonNull(getSupportFragmentManager()
                         .findFragmentById(binding.navigationHostFragment.getId()))))
