@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.pokemon.growthrate;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.data.model.utility.common.Description;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class GrowthRate extends NamedAPIResource {
+public class GrowthRate extends NamedApiResource {
 
 	// The formula used to calculate the rate at which the Pokémon species gains level.
 	@SerializedName("formula")

@@ -2,7 +2,7 @@ package com.xeroxparc.pokedex.data.model.contest.type;
 
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.berry.flavor.BerryFlavor;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class ContestType extends NamedAPIResource {
+public class ContestType extends NamedApiResource {
 
 	// The berry flavor that correlates with this contest type.
 	@SerializedName("berry_flavor")

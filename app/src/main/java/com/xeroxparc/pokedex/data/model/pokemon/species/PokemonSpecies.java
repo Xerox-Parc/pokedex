@@ -11,7 +11,7 @@ import com.xeroxparc.pokedex.data.model.pokemon.shape.PokemonShape;
 import com.xeroxparc.pokedex.data.model.utility.common.Description;
 import com.xeroxparc.pokedex.data.model.utility.common.FlavorText;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
-public class PokemonSpecies extends NamedAPIResource {
+public class PokemonSpecies extends NamedApiResource {
 	
 	// The order in which species should be sorted. Based on National Dex order, except families are grouped together and sorted by stage.
 	@SerializedName("order")

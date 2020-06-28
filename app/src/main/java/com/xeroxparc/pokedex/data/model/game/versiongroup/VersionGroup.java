@@ -6,7 +6,7 @@ import com.xeroxparc.pokedex.data.model.game.pokedex.Pokedex;
 import com.xeroxparc.pokedex.data.model.game.version.Version;
 import com.xeroxparc.pokedex.data.model.location.region.Region;
 import com.xeroxparc.pokedex.data.model.move.learnmethod.MoveLearnMethod;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
-public class VersionGroup extends NamedAPIResource {
+public class VersionGroup extends NamedApiResource {
 
 	// Order for sorting. Almost by date of release, except similar versions are grouped together.
 	@SerializedName("order")

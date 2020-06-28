@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.move.ailment;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class MoveAilment extends NamedAPIResource {
+public class MoveAilment extends NamedApiResource {
 
 	// A list of moves that cause this ailment.
 	@SerializedName("moves")

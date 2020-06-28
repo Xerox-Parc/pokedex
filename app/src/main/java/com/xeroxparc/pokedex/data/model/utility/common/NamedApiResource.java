@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 /**
  * @author Fabio Buracchi
  */
-public class APIResource {
+public class NamedApiResource extends ApiResource {
 
-	//The identifier for this resource
-	@SerializedName("id")
-	private Integer id;
+	// The name of the referenced resource.
+	@SerializedName("name")
+	private String name;
 
 }

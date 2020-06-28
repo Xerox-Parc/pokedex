@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.berry.firmness.BerryFirmness;
 import com.xeroxparc.pokedex.data.model.item.Item;
 import com.xeroxparc.pokedex.data.model.pokemon.type.Type;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Berry extends NamedAPIResource {
+public class Berry extends NamedApiResource {
 
 	// Time it takes the tree to grow one stage, in hours. Berry trees go through four of these growth stages before they can be picked.
 	@SerializedName("growth_time")

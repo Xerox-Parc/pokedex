@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.move.categoty;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.utility.common.Description;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class MoveCategory extends NamedAPIResource {
+public class MoveCategory extends NamedApiResource {
 
 	// A list of moves that fall into this category.
 	@SerializedName("moves")

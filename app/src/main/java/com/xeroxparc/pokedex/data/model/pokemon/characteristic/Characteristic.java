@@ -1,7 +1,7 @@
 package com.xeroxparc.pokedex.data.model.pokemon.characteristic;
 
 import com.google.gson.annotations.SerializedName;
-import com.xeroxparc.pokedex.data.model.utility.common.APIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.ApiResource;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Characteristic extends APIResource {
+public class Characteristic extends ApiResource {
 
 	// The remainder of the highest stat/IV divided by 5.
 	@SerializedName("gene_modulo")

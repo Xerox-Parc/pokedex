@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.item.effect;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.item.Item;
 import com.xeroxparc.pokedex.data.model.utility.common.Effect;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class ItemFlingEffect extends NamedAPIResource {
+public class ItemFlingEffect extends NamedApiResource {
 
 	// The result of this fling effect listed in different languages.
 	@SerializedName("effect_entries")

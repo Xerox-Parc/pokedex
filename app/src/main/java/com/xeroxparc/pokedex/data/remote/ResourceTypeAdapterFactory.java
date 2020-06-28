@@ -1,7 +1,6 @@
 package com.xeroxparc.pokedex.data.remote;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -15,8 +14,8 @@ import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import static com.xeroxparc.pokedex.utils.Utils.urlToId;
 
 public class ResourceTypeAdapterFactory implements TypeAdapterFactory {
 	@Override
@@ -34,8 +33,7 @@ public class ResourceTypeAdapterFactory implements TypeAdapterFactory {
 			@Override
 			public T read(JsonReader in) throws IOException {
 				JsonElement tree = elementAdapter.read(in);
-				tree = afterRead(tree);
-				return delegateAdapter.fromJsonTree(tree);
+				return delegateAdapter.fromJsonTree(afterRead(tree));
 			}
 
 			private JsonElement afterRead(@NonNull JsonElement jsonElement) {
@@ -43,32 +41,22 @@ public class ResourceTypeAdapterFactory implements TypeAdapterFactory {
 					JsonObject jsonObject = ((JsonObject) jsonElement);
 					for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
 						if (entry.getValue() instanceof JsonPrimitive) {
-							if (entry.getKey().equalsIgnoreCase("count")) {
-								return jsonObject.getAsJsonArray("results");
+							switch (entry.getKey()) {
+								case "count":
+									return jsonObject.getAsJsonArray("results");
+								case "url":
+									String url = jsonObject.get(entry.getKey()).toString()
+											.replace("\"", "");
+									jsonObject.addProperty("id", urlToId(url));
+									jsonObject.remove("url");
+									break;
+								default:
+									afterRead(entry.getValue());
 							}
-							else if (entry.getKey().equalsIgnoreCase("url")) {
-								jsonObject.addProperty(
-										"id",
-										urlToId(jsonObject.get(entry.getKey()).toString())
-								);
-								jsonObject.remove("url");
-							}
-						} else {
-							afterRead(entry.getValue());
 						}
 					}
 				}
 				return jsonElement;
-			}
-
-			@Nullable
-			private Integer urlToId(@NonNull String url) {
-				Matcher matcher = Pattern
-						.compile("/-?[0-9]+/$")
-						.matcher(url.replace("\"", ""));
-				return matcher.find() ?
-						Integer.valueOf(matcher.group().replace("/", "")) :
-						null;
 			}
 
 		}.nullSafe();

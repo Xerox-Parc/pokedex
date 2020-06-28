@@ -5,7 +5,7 @@ import com.xeroxparc.pokedex.data.model.game.versiongroup.VersionGroup;
 import com.xeroxparc.pokedex.data.model.location.region.Region;
 import com.xeroxparc.pokedex.data.model.utility.common.Description;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
-public class Pokedex extends NamedAPIResource {
+public class Pokedex extends NamedApiResource {
 
 	// Whether or not this Pokédex originated in the main series of the video games.
 	@SerializedName("is_main_series")

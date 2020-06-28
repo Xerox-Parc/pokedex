@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.versiongroup.VersionGroup;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class PokemonForm extends NamedAPIResource {
+public class PokemonForm extends NamedApiResource {
 
 	// The order in which forms should be sorted within all forms. Multiple forms may have equal order, in which case they should fall back on sorting by name.
 	@SerializedName("order")

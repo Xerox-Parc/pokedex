@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.pokemon.ability;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.generation.Generation;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 import com.xeroxparc.pokedex.data.model.utility.common.VerboseEffect;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
-public class Ability extends NamedAPIResource {
+public class Ability extends NamedApiResource {
 
 	// Whether or not this ability originated in the main series of the video games.
 	@SerializedName("is_main_series")

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.versiongroup.VersionGroup;
 import com.xeroxparc.pokedex.data.model.item.Item;
 import com.xeroxparc.pokedex.data.model.move.Move;
-import com.xeroxparc.pokedex.data.model.utility.common.APIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.ApiResource;
 
 /**
  * Machines are the representation of items that teach moves to Pokémon. They vary from version
@@ -12,7 +12,7 @@ import com.xeroxparc.pokedex.data.model.utility.common.APIResource;
  *
  * @author Fabio Buracchi
  */
-public class Machine extends APIResource {
+public class Machine extends ApiResource {
 
 	// The TM or HM item that corresponds to this machine.
 	@SerializedName("item")

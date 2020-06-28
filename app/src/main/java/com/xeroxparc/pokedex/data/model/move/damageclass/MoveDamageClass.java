@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.utility.common.Description;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class MoveDamageClass extends NamedAPIResource {
+public class MoveDamageClass extends NamedApiResource {
 
 	// The description of this resource listed in different languages.
 	@SerializedName("descriptions")

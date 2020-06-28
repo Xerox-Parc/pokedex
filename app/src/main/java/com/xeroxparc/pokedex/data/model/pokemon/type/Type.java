@@ -6,7 +6,7 @@ import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.move.damageclass.MoveDamageClass;
 import com.xeroxparc.pokedex.data.model.utility.common.GenerationGameIndex;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Type extends NamedAPIResource{
+public class Type extends NamedApiResource {
 
 	// A detail of how effective this type is toward others and vice versa.
 	@SerializedName("damage_relations")

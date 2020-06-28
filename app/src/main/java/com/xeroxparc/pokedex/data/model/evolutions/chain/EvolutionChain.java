@@ -2,7 +2,7 @@ package com.xeroxparc.pokedex.data.model.evolutions.chain;
 
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.item.Item;
-import com.xeroxparc.pokedex.data.model.utility.common.APIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.ApiResource;
 
 /**
  * Evolution chains are essentially family trees. They start with the lowest stage within a
@@ -11,7 +11,7 @@ import com.xeroxparc.pokedex.data.model.utility.common.APIResource;
  * 	
  * @author Fabio Buracchi
  */
-public class EvolutionChain extends APIResource {
+public class EvolutionChain extends ApiResource {
 
 	// The item that a Pokémon would be holding when mating that would trigger the egg hatching a baby Pokémon rather than a basic Pokémon.
 	@SerializedName("baby_trigger_item")

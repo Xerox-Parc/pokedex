@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.move.damageclass.MoveDamageClass;
 import com.xeroxparc.pokedex.data.model.pokemon.characteristic.Characteristic;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Stat extends NamedAPIResource {
+public class Stat extends NamedApiResource {
 
 	// ID the games use for this stat.
 	@SerializedName("game_index")

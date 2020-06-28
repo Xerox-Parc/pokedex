@@ -2,7 +2,7 @@ package com.xeroxparc.pokedex.data.model.pokemon.gender;
 
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Gender extends NamedAPIResource {
+public class Gender extends NamedApiResource {
 
 	// A list of Pokémon species that can be this gender and how likely it is that they will be.
 	@SerializedName("pokemon_species_details")

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.item.Item;
 import com.xeroxparc.pokedex.data.model.item.pocket.ItemPocket;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class ItemCategory extends NamedAPIResource {
+public class ItemCategory extends NamedApiResource {
 
 	// A list of items that are a part of this category
 	@SerializedName("items")

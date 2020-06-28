@@ -5,7 +5,7 @@ import com.xeroxparc.pokedex.data.model.location.area.LocationArea;
 import com.xeroxparc.pokedex.data.model.location.region.Region;
 import com.xeroxparc.pokedex.data.model.utility.common.GenerationGameIndex;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Location extends NamedAPIResource {
+public class Location extends NamedApiResource {
 
 	// The region this location can be found in.
 	@SerializedName("region")

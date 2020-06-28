@@ -1,7 +1,7 @@
 package com.xeroxparc.pokedex.data.model.contest.effect;
 
 import com.google.gson.annotations.SerializedName;
-import com.xeroxparc.pokedex.data.model.utility.common.APIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.ApiResource;
 import com.xeroxparc.pokedex.data.model.utility.common.Effect;
 import com.xeroxparc.pokedex.data.model.utility.common.FlavorText;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class ContestEffect extends APIResource {
+public class ContestEffect extends ApiResource {
 
 	// The base number of hearts the user of this move gets.
 	@SerializedName("appeal")

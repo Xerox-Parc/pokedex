@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.berry.flavor;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.contest.type.ContestType;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class BerryFlavor extends NamedAPIResource {
+public class BerryFlavor extends NamedApiResource {
 
 	// A list of the berries with this flavor.
 	@SerializedName("berries")

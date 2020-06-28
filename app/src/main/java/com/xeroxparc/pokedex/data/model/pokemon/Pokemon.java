@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.pokemon;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.pokemon.form.PokemonForm;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 import com.xeroxparc.pokedex.data.model.utility.common.VersionGameIndex;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
-public class Pokemon extends NamedAPIResource {
+public class Pokemon extends NamedApiResource {
 
 	// The base experience gained for defeating this Pokémon.
 	@SerializedName("base_experience")

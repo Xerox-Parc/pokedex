@@ -8,7 +8,7 @@ import com.xeroxparc.pokedex.data.model.pokemon.ability.Ability;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.data.model.pokemon.type.Type;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Generation extends NamedAPIResource {
+public class Generation extends NamedApiResource {
 
 	// A list of abilities that were introduced in this generation.
 	@SerializedName("abilities")

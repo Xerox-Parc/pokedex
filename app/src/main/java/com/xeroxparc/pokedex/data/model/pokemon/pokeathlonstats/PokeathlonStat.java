@@ -2,7 +2,7 @@ package com.xeroxparc.pokedex.data.model.pokemon.pokeathlonstats;
 
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class PokeathlonStat extends NamedAPIResource {
+public class PokeathlonStat extends NamedApiResource {
 
 	// The name of this resource listed in different languages.
 	@SerializedName("names")

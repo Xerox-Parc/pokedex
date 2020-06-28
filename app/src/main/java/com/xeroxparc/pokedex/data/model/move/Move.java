@@ -11,7 +11,7 @@ import com.xeroxparc.pokedex.data.model.pokemon.ability.AbilityEffectChange;
 import com.xeroxparc.pokedex.data.model.pokemon.type.Type;
 import com.xeroxparc.pokedex.data.model.utility.common.MachineVersionDetail;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 import com.xeroxparc.pokedex.data.model.utility.common.VerboseEffect;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class Move extends NamedAPIResource {
+public class Move extends NamedApiResource {
 
 	// The percent value of how likely this move is to be successful.
 	@SerializedName("accuracy")

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.berry.flavor.BerryFlavor;
 import com.xeroxparc.pokedex.data.model.pokemon.stats.Stat;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
-public class Nature extends NamedAPIResource{
+public class Nature extends NamedApiResource {
 
 	// The stat decreased by 10% in Pokémon with this nature.
 	@SerializedName("decreased_stat")

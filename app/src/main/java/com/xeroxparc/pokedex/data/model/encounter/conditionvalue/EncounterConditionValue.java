@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.encounter.conditionvalue;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.encounter.condition.EncounterCondition;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
-public class EncounterConditionValue extends NamedAPIResource {
+public class EncounterConditionValue extends NamedApiResource {
 
 	// The condition this encounter condition value pertains to.
 	@SerializedName("condition")

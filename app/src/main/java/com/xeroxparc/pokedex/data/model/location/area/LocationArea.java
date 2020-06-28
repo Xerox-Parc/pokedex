@@ -3,7 +3,7 @@ package com.xeroxparc.pokedex.data.model.location.area;
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.location.Location;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
-public class LocationArea extends NamedAPIResource {
+public class LocationArea extends NamedApiResource {
 
 	// The internal id of an API resource within game data.
 	@SerializedName("game_index")

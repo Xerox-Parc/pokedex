@@ -8,7 +8,7 @@ import com.xeroxparc.pokedex.data.model.item.effect.ItemFlingEffect;
 import com.xeroxparc.pokedex.data.model.utility.common.GenerationGameIndex;
 import com.xeroxparc.pokedex.data.model.utility.common.MachineVersionDetail;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.NamedAPIResource;
+import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
 import com.xeroxparc.pokedex.data.model.utility.common.VerboseEffect;
 import com.xeroxparc.pokedex.data.model.utility.common.VersionGroupFlavorText;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
-public class Item extends NamedAPIResource {
+public class Item extends NamedApiResource {
 
 	// The price of this item in stores.
 	@SerializedName("cost")
