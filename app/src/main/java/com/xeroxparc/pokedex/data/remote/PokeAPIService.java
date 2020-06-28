@@ -57,8 +57,6 @@ import com.xeroxparc.pokedex.data.model.pokemon.stats.Stat;
 import com.xeroxparc.pokedex.data.model.pokemon.type.Type;
 import com.xeroxparc.pokedex.data.model.utility.language.Language;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -113,7 +111,7 @@ public abstract class PokeApiService {
 		MutableLiveData<T> result = new MutableLiveData<>();
 		request.enqueue(new Callback<T>() {
 			@Override
-			public void onResponse(@NotNull Call<T> call, @NotNull Response<T> response) {
+			public void onResponse(Call<T> call, Response<T> response) {
 				if (response.isSuccessful()) {
 					result.setValue(response.body());
 				} else {
@@ -123,7 +121,7 @@ public abstract class PokeApiService {
 			}
 
 			@Override
-			public void onFailure(@NotNull Call<T> call, @NotNull Throwable t) {
+			public void onFailure(Call<T> call, Throwable t) {
 				Log.e("API", Objects.requireNonNull(t.getMessage()));
 				errorHandlerCallback();
 			}
