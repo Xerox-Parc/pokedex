@@ -47,9 +47,9 @@ import com.xeroxparc.pokedex.data.model.pokemon.shape.PokemonShape;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.data.model.pokemon.stats.Stat;
 import com.xeroxparc.pokedex.data.model.pokemon.type.Type;
-import com.xeroxparc.pokedex.data.model.utility.common.list.APIResourceList;
-import com.xeroxparc.pokedex.data.model.utility.common.list.NamedAPIResourceList;
 import com.xeroxparc.pokedex.data.model.utility.language.Language;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -59,8 +59,8 @@ import retrofit2.http.Query;
 public interface PokeApi {
 
 	@GET("berry/")
-	Call<NamedAPIResourceList> getBerryInfoList(@Query("limit") Integer limit,
-	                                            @Query("offset") Integer offset);
+	Call<List<Berry>> getBerryList(@Query("limit") Integer limit,
+	                               @Query("offset") Integer offset);
 
 	@GET("berry/{id}")
 	Call<Berry> getBerry(@Path("id") Integer id);
@@ -69,8 +69,8 @@ public interface PokeApi {
 	Call<Berry> getBerry(@Path("name") String name);
 
 	@GET("berry-firmness/")
-	Call<NamedAPIResourceList> getBerryFirmnessInfoList(@Query("limit") Integer limit,
-	                                                    @Query("offset") Integer offset);
+	Call<List<BerryFirmness>> getBerryFirmnessList(@Query("limit") Integer limit,
+	                                               @Query("offset") Integer offset);
 
 	@GET("berry-firmness/{id}")
 	Call<BerryFirmness> getBerryFirmness(@Path("id") Integer id);
@@ -79,8 +79,8 @@ public interface PokeApi {
 	Call<BerryFirmness> getBerryFirmness(@Path("name") String name);
 
 	@GET("berry-flavor/")
-	Call<NamedAPIResourceList> getBerryFlavorInfoList(@Query("limit") Integer limit,
-	                                                  @Query("offset") Integer offset);
+	Call<List<BerryFlavor>> getBerryFlavorList(@Query("limit") Integer limit,
+	                                           @Query("offset") Integer offset);
 
 	@GET("berry-flavor/{id}")
 	Call<BerryFlavor> getBerryFlavor(@Path("id") Integer id);
@@ -89,8 +89,8 @@ public interface PokeApi {
 	Call<BerryFlavor> getBerryFlavor(@Path("name") String name);
 
 	@GET("contest-type/")
-	Call<NamedAPIResourceList> getContestTypeInfoList(@Query("limit") Integer limit,
-	                                                  @Query("offset") Integer offset);
+	Call<List<ContestType>> getContestTypeList(@Query("limit") Integer limit,
+	                                           @Query("offset") Integer offset);
 
 	@GET("contest-type/{id}")
 	Call<ContestType> getContestType(@Path("id") Integer id);
@@ -99,22 +99,22 @@ public interface PokeApi {
 	Call<ContestType> getContestType(@Path("name") String name);
 
 	@GET("contest-effect/")
-	Call<APIResourceList> getContestEffectInfoList(@Query("limit") Integer limit,
+	Call<List<ContestEffect>> getContestEffectList(@Query("limit") Integer limit,
 	                                               @Query("offset") Integer offset);
 
 	@GET("contest-effect/{id}")
 	Call<ContestEffect> getContestEffect(@Path("id") Integer id);
 
 	@GET("super-contest-effect/")
-	Call<APIResourceList> getSuperContestEffectInfoList(@Query("limit") Integer limit,
-	                                                    @Query("offset") Integer offset);
+	Call<List<SuperContestEffect>> getSuperContestEffectList(@Query("limit") Integer limit,
+	                                                         @Query("offset") Integer offset);
 
 	@GET("super-contest-effect/{id}")
 	Call<SuperContestEffect> getSuperContestEffect(@Path("id") Integer id);
 
 	@GET("encounter-method/")
-	Call<NamedAPIResourceList> getEncounterMethodInfoList(@Query("limit") Integer limit,
-	                                                      @Query("offset") Integer offset);
+	Call<List<EncounterMethod>> getEncounterMethodList(@Query("limit") Integer limit,
+	                                                   @Query("offset") Integer offset);
 
 	@GET("encounter-method/{id}")
 	Call<EncounterMethod> getEncounterMethod(@Path("id") Integer id);
@@ -123,7 +123,7 @@ public interface PokeApi {
 	Call<EncounterMethod> getEncounterMethod(@Path("name") String name);
 
 	@GET("encounter-condition/")
-	Call<NamedAPIResourceList> getEncounterConditionInfoList(@Query("limit") Integer limit,
+	Call<List<EncounterCondition>> getEncounterConditionList(@Query("limit") Integer limit,
 	                                                         @Query("offset") Integer offset);
 
 	@GET("encounter-condition/{id}")
@@ -133,8 +133,8 @@ public interface PokeApi {
 	Call<EncounterCondition> getEncounterCondition(@Path("name") String name);
 
 	@GET("encounter-condition-value/")
-	Call<NamedAPIResourceList> getEncounterConditionValueInfoList(@Query("limit") Integer limit,
-	                                                              @Query("offset") Integer offset);
+	Call<List<EncounterConditionValue>> getEncounterConditionValueList(@Query("limit") Integer limit,
+	                                                                   @Query("offset") Integer offset);
 
 	@GET("encounter-condition-value/{id}")
 	Call<EncounterConditionValue> getEncounterConditionValue(@Path("id") Integer id);
@@ -143,15 +143,15 @@ public interface PokeApi {
 	Call<EncounterConditionValue> getEncounterConditionValue(@Path("name") String name);
 
 	@GET("evolution-chain/")
-	Call<APIResourceList> getEvolutionChainInfoList(@Query("limit") Integer limit,
-	                                                @Query("offset") Integer offset);
+	Call<List<EvolutionChain>> getEvolutionChainList(@Query("limit") Integer limit,
+	                                                 @Query("offset") Integer offset);
 
 	@GET("evolution-chain/{id}")
 	Call<EvolutionChain> getEvolutionChain(@Path("id") Integer id);
 
 	@GET("evolution-trigger/")
-	Call<NamedAPIResourceList> getEvolutionTriggerInfoList(@Query("limit") Integer limit,
-	                                                       @Query("offset") Integer offset);
+	Call<List<EvolutionTrigger>> getEvolutionTriggerList(@Query("limit") Integer limit,
+	                                                     @Query("offset") Integer offset);
 
 	@GET("evolution-trigger/{id}")
 	Call<EvolutionTrigger> getEvolutionTrigger(@Path("id") Integer id);
@@ -160,8 +160,8 @@ public interface PokeApi {
 	Call<EvolutionTrigger> getEvolutionTrigger(@Path("name") String name);
 
 	@GET("generation/")
-	Call<NamedAPIResourceList> getGenerationInfoList(@Query("limit") Integer limit,
-	                                                 @Query("offset") Integer offset);
+	Call<List<Generation>> getGenerationList(@Query("limit") Integer limit,
+	                                         @Query("offset") Integer offset);
 
 	@GET("generation/{id}")
 	Call<Generation> getGeneration(@Path("id") Integer id);
@@ -170,8 +170,8 @@ public interface PokeApi {
 	Call<Generation> getGeneration(@Path("name") String name);
 
 	@GET("pokedex/")
-	Call<NamedAPIResourceList> getPokedexInfoList(@Query("limit") Integer limit,
-	                                              @Query("offset") Integer offset);
+	Call<List<Pokedex>> getPokedexList(@Query("limit") Integer limit,
+	                                   @Query("offset") Integer offset);
 
 	@GET("pokedex/{id}")
 	Call<Pokedex> getPokedex(@Path("id") Integer id);
@@ -180,8 +180,8 @@ public interface PokeApi {
 	Call<Pokedex> getPokedex(@Path("name") String name);
 
 	@GET("version/")
-	Call<NamedAPIResourceList> getVersionInfoList(@Query("limit") Integer limit,
-	                                              @Query("offset") Integer offset);
+	Call<List<Version>> getVersionList(@Query("limit") Integer limit,
+	                                   @Query("offset") Integer offset);
 
 	@GET("version/{id}")
 	Call<Version> getVersion(@Path("id") Integer id);
@@ -190,8 +190,8 @@ public interface PokeApi {
 	Call<Version> getVersion(@Path("name") String name);
 
 	@GET("version-group/")
-	Call<NamedAPIResourceList> getVersionGroupInfoList(@Query("limit") Integer limit,
-	                                                   @Query("offset") Integer offset);
+	Call<List<VersionGroup>> getVersionGroupList(@Query("limit") Integer limit,
+	                                             @Query("offset") Integer offset);
 
 	@GET("version-group/{id}")
 	Call<VersionGroup> getVersionGroup(@Path("id") Integer id);
@@ -200,8 +200,8 @@ public interface PokeApi {
 	Call<VersionGroup> getVersionGroup(@Path("name") String name);
 
 	@GET("item/")
-	Call<NamedAPIResourceList> getItemInfoList(@Query("limit") Integer limit,
-	                                           @Query("offset") Integer offset);
+	Call<List<Item>> getItemList(@Query("limit") Integer limit,
+	                             @Query("offset") Integer offset);
 
 	@GET("item/{id}")
 	Call<Item> getItem(@Path("id") Integer id);
@@ -210,8 +210,8 @@ public interface PokeApi {
 	Call<Item> getItem(@Path("name") String name);
 
 	@GET("item-attribute/")
-	Call<NamedAPIResourceList> getItemAttributeInfoList(@Query("limit") Integer limit,
-	                                                    @Query("offset") Integer offset);
+	Call<List<ItemAttribute>> getItemAttributeList(@Query("limit") Integer limit,
+	                                               @Query("offset") Integer offset);
 
 	@GET("item-attribute/{id}")
 	Call<ItemAttribute> getItemAttribute(@Path("id") Integer id);
@@ -220,8 +220,8 @@ public interface PokeApi {
 	Call<ItemAttribute> getItemAttribute(@Path("name") String name);
 
 	@GET("item-category/")
-	Call<NamedAPIResourceList> getItemCategoryInfoList(@Query("limit") Integer limit,
-	                                                   @Query("offset") Integer offset);
+	Call<List<ItemCategory>> getItemCategoryList(@Query("limit") Integer limit,
+	                                             @Query("offset") Integer offset);
 
 	@GET("item-category/{id}")
 	Call<ItemCategory> getItemCategory(@Path("id") Integer id);
@@ -230,8 +230,8 @@ public interface PokeApi {
 	Call<ItemCategory> getItemCategory(@Path("name") String name);
 
 	@GET("item-fling-effect/")
-	Call<NamedAPIResourceList> getItemFlingEffectInfoList(@Query("limit") Integer limit,
-	                                                      @Query("offset") Integer offset);
+	Call<List<ItemFlingEffect>> getItemFlingEffectList(@Query("limit") Integer limit,
+	                                                   @Query("offset") Integer offset);
 
 	@GET("item-fling-effect/{id}")
 	Call<ItemFlingEffect> getItemFlingEffect(@Path("id") Integer id);
@@ -240,8 +240,8 @@ public interface PokeApi {
 	Call<ItemFlingEffect> getItemFlingEffect(@Path("name") String name);
 
 	@GET("item-pocket/")
-	Call<NamedAPIResourceList> getItemPocketInfoList(@Query("limit") Integer limit,
-	                                                 @Query("offset") Integer offset);
+	Call<List<ItemPocket>> getItemPocketList(@Query("limit") Integer limit,
+	                                         @Query("offset") Integer offset);
 
 	@GET("item-pocket/{id}")
 	Call<ItemPocket> getItemPocket(@Path("id") Integer id);
@@ -250,8 +250,8 @@ public interface PokeApi {
 	Call<ItemPocket> getItemPocket(@Path("name") String name);
 
 	@GET("location/")
-	Call<NamedAPIResourceList> getLocationInfoList(@Query("limit") Integer limit,
-	                                               @Query("offset") Integer offset);
+	Call<List<Location>> getLocationList(@Query("limit") Integer limit,
+	                                     @Query("offset") Integer offset);
 
 	@GET("location/{id}")
 	Call<Location> getLocation(@Path("id") Integer id);
@@ -260,8 +260,8 @@ public interface PokeApi {
 	Call<Location> getLocation(@Path("name") String name);
 
 	@GET("location-area/")
-	Call<NamedAPIResourceList> getLocationAreaInfoList(@Query("limit") Integer limit,
-	                                                   @Query("offset") Integer offset);
+	Call<List<LocationArea>> getLocationAreaList(@Query("limit") Integer limit,
+	                                             @Query("offset") Integer offset);
 
 	@GET("location-area/{id}")
 	Call<LocationArea> getLocationArea(@Path("id") Integer id);
@@ -270,8 +270,8 @@ public interface PokeApi {
 	Call<LocationArea> getLocationArea(@Path("name") String name);
 
 	@GET("pal-park-area/")
-	Call<NamedAPIResourceList> getPalParkAreaInfoList(@Query("limit") Integer limit,
-	                                                  @Query("offset") Integer offset);
+	Call<List<PalParkArea>> getPalParkAreaList(@Query("limit") Integer limit,
+	                                           @Query("offset") Integer offset);
 
 	@GET("pal-park-area/{id}")
 	Call<PalParkArea> getPalParkArea(@Path("id") Integer id);
@@ -280,8 +280,8 @@ public interface PokeApi {
 	Call<PalParkArea> getPalParkArea(@Path("name") String name);
 
 	@GET("region/")
-	Call<NamedAPIResourceList> getRegionInfoList(@Query("limit") Integer limit,
-	                                             @Query("offset") Integer offset);
+	Call<List<Region>> getRegionList(@Query("limit") Integer limit,
+	                                 @Query("offset") Integer offset);
 
 	@GET("region/{id}")
 	Call<Region> getRegion(@Path("id") Integer id);
@@ -290,15 +290,15 @@ public interface PokeApi {
 	Call<Region> getRegion(@Path("name") String name);
 
 	@GET("machine/")
-	Call<APIResourceList> getMachineInfoList(@Query("limit") Integer limit,
-	                                         @Query("offset") Integer offset);
+	Call<List<Machine>> getMachineList(@Query("limit") Integer limit,
+	                                   @Query("offset") Integer offset);
 
 	@GET("machine/{id}")
 	Call<Machine> getMachine(@Path("id") Integer id);
 
 	@GET("move/")
-	Call<NamedAPIResourceList> getMoveInfoList(@Query("limit") Integer limit,
-	                                           @Query("offset") Integer offset);
+	Call<List<Move>> getMoveList(@Query("limit") Integer limit,
+	                             @Query("offset") Integer offset);
 
 	@GET("move/{id}")
 	Call<Move> getMove(@Path("id") Integer id);
@@ -307,8 +307,8 @@ public interface PokeApi {
 	Call<Move> getMove(@Path("name") String name);
 
 	@GET("move-ailment/")
-	Call<NamedAPIResourceList> getMoveAilmentInfoList(@Query("limit") Integer limit,
-	                                                  @Query("offset") Integer offset);
+	Call<List<MoveAilment>> getMoveAilmentList(@Query("limit") Integer limit,
+	                                           @Query("offset") Integer offset);
 
 	@GET("move-ailment/{id}")
 	Call<MoveAilment> getMoveAilment(@Path("id") Integer id);
@@ -317,8 +317,8 @@ public interface PokeApi {
 	Call<MoveAilment> getMoveAilment(@Path("name") String name);
 
 	@GET("move-battle-style/")
-	Call<NamedAPIResourceList> getMoveBattleStyleInfoList(@Query("limit") Integer limit,
-	                                                      @Query("offset") Integer offset);
+	Call<List<MoveBattleStyle>> getMoveBattleStyleList(@Query("limit") Integer limit,
+	                                                   @Query("offset") Integer offset);
 
 	@GET("move-battle-style/{id}")
 	Call<MoveBattleStyle> getMoveBattleStyle(@Path("id") Integer id);
@@ -327,8 +327,8 @@ public interface PokeApi {
 	Call<MoveBattleStyle> getMoveBattleStyle(@Path("name") String name);
 
 	@GET("move-category/")
-	Call<NamedAPIResourceList> getModelNameInfoList(@Query("limit") Integer limit,
-	                                                @Query("offset") Integer offset);
+	Call<List<MoveCategory>> getModelNameList(@Query("limit") Integer limit,
+	                                          @Query("offset") Integer offset);
 
 	@GET("move-category/{id}")
 	Call<MoveCategory> getModelName(@Path("id") Integer id);
@@ -337,8 +337,8 @@ public interface PokeApi {
 	Call<MoveCategory> getModelName(@Path("name") String name);
 
 	@GET("move-damage-class/")
-	Call<NamedAPIResourceList> getMoveDamageClassInfoList(@Query("limit") Integer limit,
-	                                                      @Query("offset") Integer offset);
+	Call<List<MoveDamageClass>> getMoveDamageClassList(@Query("limit") Integer limit,
+	                                                   @Query("offset") Integer offset);
 
 	@GET("move-damage-class/{id}")
 	Call<MoveDamageClass> getMoveDamageClass(@Path("id") Integer id);
@@ -347,8 +347,8 @@ public interface PokeApi {
 	Call<MoveDamageClass> getMoveDamageClass(@Path("name") String name);
 
 	@GET("move-learn-method/")
-	Call<NamedAPIResourceList> getMoveLearnMethodInfoList(@Query("limit") Integer limit,
-	                                                      @Query("offset") Integer offset);
+	Call<List<MoveLearnMethod>> getMoveLearnMethodList(@Query("limit") Integer limit,
+	                                                   @Query("offset") Integer offset);
 
 	@GET("move-learn-method/{id}")
 	Call<MoveLearnMethod> getMoveLearnMethod(@Path("id") Integer id);
@@ -357,8 +357,8 @@ public interface PokeApi {
 	Call<MoveLearnMethod> getMoveLearnMethod(@Path("name") String name);
 
 	@GET("move-target/")
-	Call<NamedAPIResourceList> getMoveTargetInfoList(@Query("limit") Integer limit,
-	                                                 @Query("offset") Integer offset);
+	Call<List<MoveTarget>> getMoveTargetList(@Query("limit") Integer limit,
+	                                         @Query("offset") Integer offset);
 
 	@GET("move-target/{id}")
 	Call<MoveTarget> getMoveTarget(@Path("id") Integer id);
@@ -367,8 +367,8 @@ public interface PokeApi {
 	Call<MoveTarget> getMoveTarget(@Path("name") String name);
 
 	@GET("ability/")
-	Call<NamedAPIResourceList> getAbilityInfoList(@Query("limit") Integer limit,
-	                                              @Query("offset") Integer offset);
+	Call<List<Ability>> getAbilityList(@Query("limit") Integer limit,
+	                                   @Query("offset") Integer offset);
 
 	@GET("ability/{id}")
 	Call<Ability> getAbility(@Path("id") Integer id);
@@ -377,15 +377,15 @@ public interface PokeApi {
 	Call<Ability> getAbility(@Path("name") String name);
 
 	@GET("characteristic/")
-	Call<APIResourceList> getCharacteristicInfoList(@Query("limit") Integer limit,
-	                                                @Query("offset") Integer offset);
+	Call<List<Characteristic>> getCharacteristicList(@Query("limit") Integer limit,
+	                                                 @Query("offset") Integer offset);
 
 	@GET("characteristic/{id}")
 	Call<Characteristic> getCharacteristic(@Path("id") Integer id);
 
 	@GET("egg-group/")
-	Call<NamedAPIResourceList> getEggGroupInfoList(@Query("limit") Integer limit,
-	                                               @Query("offset") Integer offset);
+	Call<List<EggGroup>> getEggGroupList(@Query("limit") Integer limit,
+	                                     @Query("offset") Integer offset);
 
 	@GET("egg-group/{id}")
 	Call<EggGroup> getEggGroup(@Path("id") Integer id);
@@ -394,8 +394,8 @@ public interface PokeApi {
 	Call<EggGroup> getEggGroup(@Path("name") String name);
 
 	@GET("gender/")
-	Call<NamedAPIResourceList> getGenderInfoList(@Query("limit") Integer limit,
-	                                             @Query("offset") Integer offset);
+	Call<List<Gender>> getGenderList(@Query("limit") Integer limit,
+	                                 @Query("offset") Integer offset);
 
 	@GET("gender/{id}")
 	Call<Gender> getGender(@Path("id") Integer id);
@@ -404,8 +404,8 @@ public interface PokeApi {
 	Call<Gender> getGender(@Path("name") String name);
 
 	@GET("growth-rate/")
-	Call<NamedAPIResourceList> getGrowthRateInfoList(@Query("limit") Integer limit,
-	                                                 @Query("offset") Integer offset);
+	Call<List<GrowthRate>> getGrowthRateList(@Query("limit") Integer limit,
+	                                         @Query("offset") Integer offset);
 
 	@GET("growth-rate/{id}")
 	Call<GrowthRate> getGrowthRate(@Path("id") Integer id);
@@ -414,8 +414,8 @@ public interface PokeApi {
 	Call<GrowthRate> getGrowthRate(@Path("name") String name);
 
 	@GET("nature/")
-	Call<NamedAPIResourceList> getNatureInfoList(@Query("limit") Integer limit,
-	                                             @Query("offset") Integer offset);
+	Call<List<Nature>> getNatureList(@Query("limit") Integer limit,
+	                                 @Query("offset") Integer offset);
 
 	@GET("nature/{id}")
 	Call<Nature> getNature(@Path("id") Integer id);
@@ -424,8 +424,8 @@ public interface PokeApi {
 	Call<Nature> getNature(@Path("name") String name);
 
 	@GET("pokeathlon-stat/")
-	Call<NamedAPIResourceList> getPokeathlonStatInfoList(@Query("limit") Integer limit,
-	                                                     @Query("offset") Integer offset);
+	Call<List<PokeathlonStat>> getPokeathlonStatList(@Query("limit") Integer limit,
+	                                                 @Query("offset") Integer offset);
 
 	@GET("pokeathlon-stat/{id}")
 	Call<PokeathlonStat> getPokeathlonStat(@Path("id") Integer id);
@@ -434,8 +434,8 @@ public interface PokeApi {
 	Call<PokeathlonStat> getPokeathlonStat(@Path("name") String name);
 
 	@GET("pokemon/")
-	Call<NamedAPIResourceList> getPokemonInfoList(@Query("limit") Integer limit,
-	                                              @Query("offset") Integer offset);
+	Call<List<Pokemon>> getPokemonList(@Query("limit") Integer limit,
+	                                   @Query("offset") Integer offset);
 
 	@GET("pokemon/{id}")
 	Call<Pokemon> getPokemon(@Path("id") Integer id);
@@ -444,8 +444,8 @@ public interface PokeApi {
 	Call<Pokemon> getPokemon(@Path("name") String name);
 
 	@GET("pokemon-color/")
-	Call<NamedAPIResourceList> getPokemonColorInfoList(@Query("limit") Integer limit,
-	                                                   @Query("offset") Integer offset);
+	Call<List<PokemonColor>> getPokemonColorList(@Query("limit") Integer limit,
+	                                             @Query("offset") Integer offset);
 
 	@GET("pokemon-color/{id}")
 	Call<PokemonColor> getPokemonColor(@Path("id") Integer id);
@@ -454,8 +454,8 @@ public interface PokeApi {
 	Call<PokemonColor> getPokemonColor(@Path("name") String name);
 
 	@GET("pokemon-form/")
-	Call<NamedAPIResourceList> getPokemonFormInfoList(@Query("limit") Integer limit,
-	                                                  @Query("offset") Integer offset);
+	Call<List<PokemonForm>> getPokemonFormList(@Query("limit") Integer limit,
+	                                           @Query("offset") Integer offset);
 
 	@GET("pokemon-form/{id}")
 	Call<PokemonForm> getPokemonForm(@Path("id") Integer id);
@@ -464,8 +464,8 @@ public interface PokeApi {
 	Call<PokemonForm> getPokemonForm(@Path("name") String name);
 
 	@GET("pokemon-habitat/")
-	Call<NamedAPIResourceList> getPokemonHabitatInfoList(@Query("limit") Integer limit,
-	                                                     @Query("offset") Integer offset);
+	Call<List<PokemonHabitat>> getPokemonHabitatList(@Query("limit") Integer limit,
+	                                                 @Query("offset") Integer offset);
 
 	@GET("pokemon-habitat/{id}")
 	Call<PokemonHabitat> getPokemonHabitat(@Path("id") Integer id);
@@ -474,8 +474,8 @@ public interface PokeApi {
 	Call<PokemonHabitat> getPokemonHabitat(@Path("name") String name);
 
 	@GET("pokemon-shape/")
-	Call<NamedAPIResourceList> getPokemonShapeInfoList(@Query("limit") Integer limit,
-	                                                   @Query("offset") Integer offset);
+	Call<List<PokemonShape>> getPokemonShapeList(@Query("limit") Integer limit,
+	                                             @Query("offset") Integer offset);
 
 	@GET("pokemon-shape/{id}")
 	Call<PokemonShape> getPokemonShape(@Path("id") Integer id);
@@ -484,8 +484,8 @@ public interface PokeApi {
 	Call<PokemonShape> getPokemonShape(@Path("name") String name);
 
 	@GET("pokemon-species/")
-	Call<NamedAPIResourceList> getPokemonSpeciesInfoList(@Query("limit") Integer limit,
-	                                                     @Query("offset") Integer offset);
+	Call<List<PokemonSpecies>> getPokemonSpeciesList(@Query("limit") Integer limit,
+	                                                 @Query("offset") Integer offset);
 
 	@GET("pokemon-species/{id}")
 	Call<PokemonSpecies> getPokemonSpecies(@Path("id") Integer id);
@@ -494,8 +494,8 @@ public interface PokeApi {
 	Call<PokemonSpecies> getPokemonSpecies(@Path("name") String name);
 
 	@GET("stat/")
-	Call<NamedAPIResourceList> getStatInfoList(@Query("limit") Integer limit,
-	                                           @Query("offset") Integer offset);
+	Call<List<Stat>> getStatList(@Query("limit") Integer limit,
+	                             @Query("offset") Integer offset);
 
 	@GET("stat/{id}")
 	Call<Stat> getStat(@Path("id") Integer id);
@@ -504,8 +504,8 @@ public interface PokeApi {
 	Call<Stat> getStat(@Path("name") String name);
 
 	@GET("type/")
-	Call<NamedAPIResourceList> getTypeInfoList(@Query("limit") Integer limit,
-	                                           @Query("offset") Integer offset);
+	Call<List<Type>> getTypeList(@Query("limit") Integer limit,
+	                             @Query("offset") Integer offset);
 
 	@GET("type/{id}")
 	Call<Type> getType(@Path("id") Integer id);
@@ -514,8 +514,8 @@ public interface PokeApi {
 	Call<Type> getType(@Path("name") String name);
 
 	@GET("language/")
-	Call<NamedAPIResourceList> getLanguageInfoList(@Query("limit") Integer limit,
-	                                               @Query("offset") Integer offset);
+	Call<List<Language>> getLanguageList(@Query("limit") Integer limit,
+	                                     @Query("offset") Integer offset);
 
 	@GET("language/{id}")
 	Call<Language> getLanguage(@Path("id") Integer id);

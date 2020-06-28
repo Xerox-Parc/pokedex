@@ -46,7 +46,8 @@ public class PokeApiService {
 		}
 	}
 
-	private <T> LiveData<T> result(Call<T> request) throws ErrorResponse {
+	@NonNull
+	private <T> LiveData<T> result(@NonNull Call<T> request) throws ErrorResponse {
 		MutableLiveData<T> result = new MutableLiveData<>();
 		request.enqueue(new Callback<T>() {
 			@Override
