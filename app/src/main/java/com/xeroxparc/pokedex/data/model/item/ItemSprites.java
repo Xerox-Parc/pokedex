@@ -11,4 +11,8 @@ public class ItemSprites {
 	@SerializedName("default")
 	private String url;
 
+	public String getUrl() {
+		return url;
+	}
+
 }

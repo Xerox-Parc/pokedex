@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.pokemon;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.pokemon.form.PokemonForm;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
@@ -17,6 +19,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
+@Entity(tableName = "pokemon")
 public class Pokemon extends NamedApiResource {
 
 	// The base experience gained for defeating this Pokémon.
@@ -78,5 +81,125 @@ public class Pokemon extends NamedApiResource {
 	// A list of details showing types this Pokémon has.
 	@SerializedName("types")
 	private List<PokemonType> typeList;
+
+	public Integer getBaseExperience() {
+		return baseExperience;
+	}
+
+	public void setBaseExperience(Integer baseExperience) {
+		this.baseExperience = baseExperience;
+	}
+
+	public Integer getHeight() {
+		return height;
+	}
+
+	public void setHeight(Integer height) {
+		this.height = height;
+	}
+
+	public Boolean getDefault() {
+		return isDefault;
+	}
+
+	public void setDefault(Boolean aDefault) {
+		isDefault = aDefault;
+	}
+
+	public Integer getOrder() {
+		return order;
+	}
+
+	public void setOrder(Integer order) {
+		this.order = order;
+	}
+
+	public Integer getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Integer weight) {
+		this.weight = weight;
+	}
+
+	public List<PokemonAbility> getAbilityList() {
+		return abilityList;
+	}
+
+	public void setAbilityList(List<PokemonAbility> abilityList) {
+		this.abilityList = abilityList;
+	}
+
+	public List<PokemonForm> getFormList() {
+		return formList;
+	}
+
+	public void setFormList(List<PokemonForm> formList) {
+		this.formList = formList;
+	}
+
+	public List<VersionGameIndex> getGameIndexList() {
+		return gameIndexList;
+	}
+
+	public void setGameIndexList(List<VersionGameIndex> gameIndexList) {
+		this.gameIndexList = gameIndexList;
+	}
+
+	public List<PokemonHeldItem> getHeldItemList() {
+		return heldItemList;
+	}
+
+	public void setHeldItemList(List<PokemonHeldItem> heldItemList) {
+		this.heldItemList = heldItemList;
+	}
+
+	public String getLocationAreaEncounters() {
+		return locationAreaEncounters;
+	}
+
+	public void setLocationAreaEncounters(String locationAreaEncounters) {
+		this.locationAreaEncounters = locationAreaEncounters;
+	}
+
+	public List<PokemonMove> getMoveList() {
+		return moveList;
+	}
+
+	public void setMoveList(List<PokemonMove> moveList) {
+		this.moveList = moveList;
+	}
+
+	public PokemonSprites getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(PokemonSprites sprite) {
+		this.sprite = sprite;
+	}
+
+	public PokemonSpecies getSpecies() {
+		return species;
+	}
+
+	public void setSpecies(PokemonSpecies species) {
+		this.species = species;
+	}
+
+	public List<PokemonStat> getStatList() {
+		return statList;
+	}
+
+	public void setStatList(List<PokemonStat> statList) {
+		this.statList = statList;
+	}
+
+	public List<PokemonType> getTypeList() {
+		return typeList;
+	}
+
+	public void setTypeList(List<PokemonType> typeList) {
+		this.typeList = typeList;
+	}
 
 }

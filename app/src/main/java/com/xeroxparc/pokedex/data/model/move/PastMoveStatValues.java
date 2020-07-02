@@ -40,4 +40,32 @@ public class PastMoveStatValues {
 	@SerializedName("version_group")
 	private VersionGroup versionGroup;
 
+	public Integer getAccuracy() {
+		return accuracy;
+	}
+
+	public Integer getEffectChance() {
+		return effectChance;
+	}
+
+	public Integer getPower() {
+		return power;
+	}
+
+	public Integer getPp() {
+		return pp;
+	}
+
+	public List<VerboseEffect> getEffectEntryList() {
+		return effectEntryList;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public VersionGroup getVersionGroup() {
+		return versionGroup;
+	}
+
 }

@@ -19,4 +19,12 @@ public class LocationAreaEncounter {
 	@SerializedName("version_details")
 	private List<VersionEncounterDetail> versionEncounterDetailList;
 
+	public LocationArea getLocationArea() {
+		return locationArea;
+	}
+
+	public List<VersionEncounterDetail> getVersionEncounterDetailList() {
+		return versionEncounterDetailList;
+	}
+
 }

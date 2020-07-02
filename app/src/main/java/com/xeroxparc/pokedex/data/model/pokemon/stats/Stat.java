@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.pokemon.stats;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.move.damageclass.MoveDamageClass;
 import com.xeroxparc.pokedex.data.model.pokemon.characteristic.Characteristic;
@@ -14,6 +16,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "stat")
 public class Stat extends NamedApiResource {
 
 	// ID the games use for this stat.
@@ -43,5 +46,61 @@ public class Stat extends NamedApiResource {
 	// The name of this resource listed in different languages.
 	@SerializedName("names")
 	private List<Name> nameList;
+
+	public Integer getGameIndex() {
+		return gameIndex;
+	}
+
+	public void setGameIndex(Integer gameIndex) {
+		this.gameIndex = gameIndex;
+	}
+
+	public Boolean getBattleOnly() {
+		return isBattleOnly;
+	}
+
+	public void setBattleOnly(Boolean battleOnly) {
+		isBattleOnly = battleOnly;
+	}
+
+	public MoveStatAffectSets getAffectingMoves() {
+		return affectingMoves;
+	}
+
+	public void setAffectingMoves(MoveStatAffectSets affectingMoves) {
+		this.affectingMoves = affectingMoves;
+	}
+
+	public NatureStatAffectSets getAffectingNatures() {
+		return affectingNatures;
+	}
+
+	public void setAffectingNatures(NatureStatAffectSets affectingNatures) {
+		this.affectingNatures = affectingNatures;
+	}
+
+	public List<Characteristic> getCharacteristicList() {
+		return characteristicList;
+	}
+
+	public void setCharacteristicList(List<Characteristic> characteristicList) {
+		this.characteristicList = characteristicList;
+	}
+
+	public MoveDamageClass getMoveDamageClass() {
+		return moveDamageClass;
+	}
+
+	public void setMoveDamageClass(MoveDamageClass moveDamageClass) {
+		this.moveDamageClass = moveDamageClass;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
 
 }

@@ -33,4 +33,28 @@ public class TypeRelations {
 	@SerializedName("double_damage_from")
 	private List<Type> doubleDamageFromList;
 
+	public List<Type> getNoDamageToList() {
+		return noDamageToList;
+	}
+
+	public List<Type> getHalfDamageToList() {
+		return halfDamageToList;
+	}
+
+	public List<Type> getDoubleDamageToList() {
+		return doubleDamageToList;
+	}
+
+	public List<Type> getNoDamageFromList() {
+		return noDamageFromList;
+	}
+
+	public List<Type> getHalfDamageFromList() {
+		return halfDamageFromList;
+	}
+
+	public List<Type> getDoubleDamageFromList() {
+		return doubleDamageFromList;
+	}
+
 }

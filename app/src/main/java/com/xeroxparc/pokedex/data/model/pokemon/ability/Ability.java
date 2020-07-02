@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.pokemon.ability;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.generation.Generation;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
@@ -15,6 +17,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
+@Entity(tableName = "ability")
 public class Ability extends NamedApiResource {
 
 	// Whether or not this ability originated in the main series of the video games.
@@ -44,5 +47,61 @@ public class Ability extends NamedApiResource {
 	// A list of Pokémon that could potentially have this ability.
 	@SerializedName("pokemon")
 	private List<AbilityPokemon> pokemonList;
+
+	public Boolean getMainSeries() {
+		return isMainSeries;
+	}
+
+	public void setMainSeries(Boolean mainSeries) {
+		isMainSeries = mainSeries;
+	}
+
+	public Generation getGeneration() {
+		return generation;
+	}
+
+	public void setGeneration(Generation generation) {
+		this.generation = generation;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public List<VerboseEffect> getEffectEntryList() {
+		return effectEntryList;
+	}
+
+	public void setEffectEntryList(List<VerboseEffect> effectEntryList) {
+		this.effectEntryList = effectEntryList;
+	}
+
+	public List<AbilityEffectChange> getEffectChangeList() {
+		return effectChangeList;
+	}
+
+	public void setEffectChangeList(List<AbilityEffectChange> effectChangeList) {
+		this.effectChangeList = effectChangeList;
+	}
+
+	public List<AbilityFlavorText> getFlavorTextEntryList() {
+		return flavorTextEntryList;
+	}
+
+	public void setFlavorTextEntryList(List<AbilityFlavorText> flavorTextEntryList) {
+		this.flavorTextEntryList = flavorTextEntryList;
+	}
+
+	public List<AbilityPokemon> getPokemonList() {
+		return pokemonList;
+	}
+
+	public void setPokemonList(List<AbilityPokemon> pokemonList) {
+		this.pokemonList = pokemonList;
+	}
 
 }

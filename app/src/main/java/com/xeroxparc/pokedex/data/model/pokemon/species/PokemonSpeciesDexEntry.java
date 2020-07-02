@@ -16,4 +16,12 @@ public class PokemonSpeciesDexEntry {
 	@SerializedName("pokedex")
 	private Pokedex pokedex;
 
+	public Integer getEntryNumber() {
+		return entryNumber;
+	}
+
+	public Pokedex getPokedex() {
+		return pokedex;
+	}
+
 }

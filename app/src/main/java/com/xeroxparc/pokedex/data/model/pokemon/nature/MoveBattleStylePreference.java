@@ -20,4 +20,16 @@ public class MoveBattleStylePreference {
 	@SerializedName("move_battle_style")
 	private MoveBattleStyle moveBattleStyle;
 
+	public Integer getLowHpPreference() {
+		return lowHpPreference;
+	}
+
+	public Integer getHighHpPreference() {
+		return highHpPreference;
+	}
+
+	public MoveBattleStyle getMoveBattleStyle() {
+		return moveBattleStyle;
+	}
+
 }

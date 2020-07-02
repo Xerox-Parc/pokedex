@@ -1,7 +1,9 @@
 package com.xeroxparc.pokedex.data.model.item;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
-import com.xeroxparc.pokedex.data.model.evolutions.chain.EvolutionChain;
+import com.xeroxparc.pokedex.data.model.evolution.chain.EvolutionChain;
 import com.xeroxparc.pokedex.data.model.item.attribute.ItemAttribute;
 import com.xeroxparc.pokedex.data.model.item.category.ItemCategory;
 import com.xeroxparc.pokedex.data.model.item.effect.ItemFlingEffect;
@@ -21,6 +23,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
+@Entity(tableName = "item")
 public class Item extends NamedApiResource {
 
 	// The price of this item in stores.
@@ -74,5 +77,109 @@ public class Item extends NamedApiResource {
 	// A list of the machines related to  this item.
 	@SerializedName("machines")
 	private List<MachineVersionDetail> machineList;
+
+	public Integer getCost() {
+		return cost;
+	}
+
+	public void setCost(Integer cost) {
+		this.cost = cost;
+	}
+
+	public Integer getFlingPower() {
+		return flingPower;
+	}
+
+	public void setFlingPower(Integer flingPower) {
+		this.flingPower = flingPower;
+	}
+
+	public ItemFlingEffect getFlingEffect() {
+		return flingEffect;
+	}
+
+	public void setFlingEffect(ItemFlingEffect flingEffect) {
+		this.flingEffect = flingEffect;
+	}
+
+	public List<ItemAttribute> getAttributeList() {
+		return attributeList;
+	}
+
+	public void setAttributeList(List<ItemAttribute> attributeList) {
+		this.attributeList = attributeList;
+	}
+
+	public ItemCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(ItemCategory category) {
+		this.category = category;
+	}
+
+	public List<VerboseEffect> getEffectEntryList() {
+		return effectEntryList;
+	}
+
+	public void setEffectEntryList(List<VerboseEffect> effectEntryList) {
+		this.effectEntryList = effectEntryList;
+	}
+
+	public List<VersionGroupFlavorText> getFlavorTextEntryList() {
+		return flavorTextEntryList;
+	}
+
+	public void setFlavorTextEntryList(List<VersionGroupFlavorText> flavorTextEntryList) {
+		this.flavorTextEntryList = flavorTextEntryList;
+	}
+
+	public List<GenerationGameIndex> getGameIndexList() {
+		return gameIndexList;
+	}
+
+	public void setGameIndexList(List<GenerationGameIndex> gameIndexList) {
+		this.gameIndexList = gameIndexList;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public ItemSprites getSprites() {
+		return sprites;
+	}
+
+	public void setSprites(ItemSprites sprites) {
+		this.sprites = sprites;
+	}
+
+	public List<ItemHolderPokemon> getHeldByPokemonList() {
+		return heldByPokemonList;
+	}
+
+	public void setHeldByPokemonList(List<ItemHolderPokemon> heldByPokemonList) {
+		this.heldByPokemonList = heldByPokemonList;
+	}
+
+	public EvolutionChain getBabyTriggerFor() {
+		return babyTriggerFor;
+	}
+
+	public void setBabyTriggerFor(EvolutionChain babyTriggerFor) {
+		this.babyTriggerFor = babyTriggerFor;
+	}
+
+	public List<MachineVersionDetail> getMachineList() {
+		return machineList;
+	}
+
+	public void setMachineList(List<MachineVersionDetail> machineList) {
+		this.machineList = machineList;
+	}
 
 }

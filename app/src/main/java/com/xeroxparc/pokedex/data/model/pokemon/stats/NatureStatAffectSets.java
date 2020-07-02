@@ -18,4 +18,12 @@ public class NatureStatAffectSets {
 	@SerializedName("decrease")
 	private List<Nature> decreaseList;
 
+	public List<Nature> getIncreaseList() {
+		return increaseList;
+	}
+
+	public List<Nature> getDecreaseList() {
+		return decreaseList;
+	}
+
 }

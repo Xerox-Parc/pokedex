@@ -1,7 +1,7 @@
-package com.xeroxparc.pokedex.data.model.evolutions.chain;
+package com.xeroxparc.pokedex.data.model.evolution.chain;
 
 import com.google.gson.annotations.SerializedName;
-import com.xeroxparc.pokedex.data.model.evolutions.trigger.EvolutionTrigger;
+import com.xeroxparc.pokedex.data.model.evolution.trigger.EvolutionTrigger;
 import com.xeroxparc.pokedex.data.model.item.Item;
 import com.xeroxparc.pokedex.data.model.location.Location;
 import com.xeroxparc.pokedex.data.model.move.Move;
@@ -87,5 +87,77 @@ public class EvolutionDetail {
 	// Whether or not the 3DS needs to be turned  upside-down as this Pokémon levels up.
 	@SerializedName("turn_upside_down")
 	private Boolean turnUpsideDown;
+
+	public Item getItem() {
+		return item;
+	}
+
+	public EvolutionTrigger getTrigger() {
+		return trigger;
+	}
+
+	public Integer getGender() {
+		return gender;
+	}
+
+	public Item getHeldItem() {
+		return heldItem;
+	}
+
+	public Move getKnownMove() {
+		return knownMove;
+	}
+
+	public Type getKnownMoveType() {
+		return knownMoveType;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public Integer getMinLevel() {
+		return minLevel;
+	}
+
+	public Integer getMinHappiness() {
+		return minHappiness;
+	}
+
+	public Integer getMinBeauty() {
+		return minBeauty;
+	}
+
+	public Integer getMinAffection() {
+		return minAffection;
+	}
+
+	public Boolean getNeedsOverworldRain() {
+		return needsOverworldRain;
+	}
+
+	public PokemonSpecies getPartySpecies() {
+		return partySpecies;
+	}
+
+	public Type getPartType() {
+		return partType;
+	}
+
+	public Integer getRelativePhysicalStats() {
+		return relativePhysicalStats;
+	}
+
+	public String getTimeOfDay() {
+		return timeOfDay;
+	}
+
+	public PokemonSpecies getTradeSpecies() {
+		return tradeSpecies;
+	}
+
+	public Boolean getTurnUpsideDown() {
+		return turnUpsideDown;
+	}
 
 }

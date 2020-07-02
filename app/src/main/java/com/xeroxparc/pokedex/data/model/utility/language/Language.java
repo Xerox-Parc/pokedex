@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.utility.language;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
 import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
@@ -11,6 +13,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "language")
 public class Language extends NamedApiResource {
 
 	// Whether or not the games are published in this language.
@@ -28,5 +31,37 @@ public class Language extends NamedApiResource {
 	// The name of this resource listed in different languages.
 	@SerializedName("names")
 	private List<Name> nameList;
+
+	public Boolean getOfficial() {
+		return official;
+	}
+
+	public void setOfficial(Boolean official) {
+		this.official = official;
+	}
+
+	public String getIso639() {
+		return iso639;
+	}
+
+	public void setIso639(String iso639) {
+		this.iso639 = iso639;
+	}
+
+	public String getIso3166() {
+		return iso3166;
+	}
+
+	public void setIso3166(String iso3166) {
+		this.iso3166 = iso3166;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
 
 }

@@ -1,7 +1,9 @@
 package com.xeroxparc.pokedex.data.model.pokemon.species;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
-import com.xeroxparc.pokedex.data.model.evolutions.chain.EvolutionChain;
+import com.xeroxparc.pokedex.data.model.evolution.chain.EvolutionChain;
 import com.xeroxparc.pokedex.data.model.game.generation.Generation;
 import com.xeroxparc.pokedex.data.model.pokemon.color.PokemonColor;
 import com.xeroxparc.pokedex.data.model.pokemon.egggroup.EggGroup;
@@ -23,6 +25,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
+@Entity(tableName = "pokemon_species")
 public class PokemonSpecies extends NamedApiResource {
 	
 	// The order in which species should be sorted. Based on National Dex order, except families are grouped together and sorted by stage.
@@ -116,5 +119,189 @@ public class PokemonSpecies extends NamedApiResource {
 	// A list of the Pokémon that exist within this Pokémon species.
 	@SerializedName("varieties")
 	private List<PokemonSpeciesVariety> varietyList;
-	
+
+	public Integer getOrder() {
+		return order;
+	}
+
+	public void setOrder(Integer order) {
+		this.order = order;
+	}
+
+	public Integer getGenderRate() {
+		return genderRate;
+	}
+
+	public void setGenderRate(Integer genderRate) {
+		this.genderRate = genderRate;
+	}
+
+	public Integer getCaptureRate() {
+		return captureRate;
+	}
+
+	public void setCaptureRate(Integer captureRate) {
+		this.captureRate = captureRate;
+	}
+
+	public Integer getBaseHappiness() {
+		return baseHappiness;
+	}
+
+	public void setBaseHappiness(Integer baseHappiness) {
+		this.baseHappiness = baseHappiness;
+	}
+
+	public Boolean getBaby() {
+		return isBaby;
+	}
+
+	public void setBaby(Boolean baby) {
+		isBaby = baby;
+	}
+
+	public Integer getHatchCounter() {
+		return hatchCounter;
+	}
+
+	public void setHatchCounter(Integer hatchCounter) {
+		this.hatchCounter = hatchCounter;
+	}
+
+	public Boolean getHasGenderDifferences() {
+		return hasGenderDifferences;
+	}
+
+	public void setHasGenderDifferences(Boolean hasGenderDifferences) {
+		this.hasGenderDifferences = hasGenderDifferences;
+	}
+
+	public Boolean getFormsSwitchable() {
+		return formsSwitchable;
+	}
+
+	public void setFormsSwitchable(Boolean formsSwitchable) {
+		this.formsSwitchable = formsSwitchable;
+	}
+
+	public GrowthRate getGrowthRate() {
+		return growthRate;
+	}
+
+	public void setGrowthRate(GrowthRate growthRate) {
+		this.growthRate = growthRate;
+	}
+
+	public List<PokemonSpeciesDexEntry> getPokedexNumberList() {
+		return pokedexNumberList;
+	}
+
+	public void setPokedexNumberList(List<PokemonSpeciesDexEntry> pokedexNumberList) {
+		this.pokedexNumberList = pokedexNumberList;
+	}
+
+	public List<EggGroup> getEggGroupsList() {
+		return eggGroupsList;
+	}
+
+	public void setEggGroupsList(List<EggGroup> eggGroupsList) {
+		this.eggGroupsList = eggGroupsList;
+	}
+
+	public PokemonColor getColor() {
+		return color;
+	}
+
+	public void setColor(PokemonColor color) {
+		this.color = color;
+	}
+
+	public PokemonShape getShape() {
+		return shape;
+	}
+
+	public void setShape(PokemonShape shape) {
+		this.shape = shape;
+	}
+
+	public PokemonSpecies getEvolvesFromSpecies() {
+		return evolvesFromSpecies;
+	}
+
+	public void setEvolvesFromSpecies(PokemonSpecies evolvesFromSpecies) {
+		this.evolvesFromSpecies = evolvesFromSpecies;
+	}
+
+	public EvolutionChain getEvolutionChain() {
+		return evolutionChain;
+	}
+
+	public void setEvolutionChain(EvolutionChain evolutionChain) {
+		this.evolutionChain = evolutionChain;
+	}
+
+	public PokemonHabitat getHabitat() {
+		return habitat;
+	}
+
+	public void setHabitat(PokemonHabitat habitat) {
+		this.habitat = habitat;
+	}
+
+	public Generation getGeneration() {
+		return generation;
+	}
+
+	public void setGeneration(Generation generation) {
+		this.generation = generation;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public List<PalParkEncounterArea> getPalParkEncounterAreaList() {
+		return palParkEncounterAreaList;
+	}
+
+	public void setPalParkEncounterAreaList(List<PalParkEncounterArea> palParkEncounterAreaList) {
+		this.palParkEncounterAreaList = palParkEncounterAreaList;
+	}
+
+	public List<FlavorText> getFlavorTextEntryList() {
+		return flavorTextEntryList;
+	}
+
+	public void setFlavorTextEntryList(List<FlavorText> flavorTextEntryList) {
+		this.flavorTextEntryList = flavorTextEntryList;
+	}
+
+	public List<Description> getFormDescriptionList() {
+		return formDescriptionList;
+	}
+
+	public void setFormDescriptionList(List<Description> formDescriptionList) {
+		this.formDescriptionList = formDescriptionList;
+	}
+
+	public List<Genus> getGenusList() {
+		return genusList;
+	}
+
+	public void setGenusList(List<Genus> genusList) {
+		this.genusList = genusList;
+	}
+
+	public List<PokemonSpeciesVariety> getVarietyList() {
+		return varietyList;
+	}
+
+	public void setVarietyList(List<PokemonSpeciesVariety> varietyList) {
+		this.varietyList = varietyList;
+	}
+
 }

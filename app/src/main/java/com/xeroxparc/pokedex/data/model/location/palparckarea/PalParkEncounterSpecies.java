@@ -20,4 +20,16 @@ public class PalParkEncounterSpecies {
 	@SerializedName("pokemon_species")
 	private PokemonSpecies pokemonSpecies;
 
+	public Integer getBaseScore() {
+		return baseScore;
+	}
+
+	public Integer getRate() {
+		return rate;
+	}
+
+	public PokemonSpecies getPokemonSpecies() {
+		return pokemonSpecies;
+	}
+
 }

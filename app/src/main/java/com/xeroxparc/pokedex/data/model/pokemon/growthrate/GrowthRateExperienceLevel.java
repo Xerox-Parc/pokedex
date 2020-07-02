@@ -15,4 +15,12 @@ public class GrowthRateExperienceLevel {
 	@SerializedName("experience")
 	private Integer experience;
 
+	public Integer getLevel() {
+		return level;
+	}
+
+	public Integer getExperience() {
+		return experience;
+	}
+
 }

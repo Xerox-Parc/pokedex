@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.location;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.location.area.LocationArea;
 import com.xeroxparc.pokedex.data.model.location.region.Region;
@@ -15,6 +17,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "location")
 public class Location extends NamedApiResource {
 
 	// The region this location can be found in.
@@ -32,5 +35,37 @@ public class Location extends NamedApiResource {
 	// Areas that can be found within this location.
 	@SerializedName("areas")
 	private List<LocationArea> areaList;
+
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public List<GenerationGameIndex> getGameIndexList() {
+		return gameIndexList;
+	}
+
+	public void setGameIndexList(List<GenerationGameIndex> gameIndexList) {
+		this.gameIndexList = gameIndexList;
+	}
+
+	public List<LocationArea> getAreaList() {
+		return areaList;
+	}
+
+	public void setAreaList(List<LocationArea> areaList) {
+		this.areaList = areaList;
+	}
 
 }

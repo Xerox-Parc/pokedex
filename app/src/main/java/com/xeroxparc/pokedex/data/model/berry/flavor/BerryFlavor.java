@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.berry.flavor;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.contest.type.ContestType;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
@@ -13,6 +15,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "berry_flavor")
 public class BerryFlavor extends NamedApiResource {
 
 	// A list of the berries with this flavor.
@@ -26,5 +29,29 @@ public class BerryFlavor extends NamedApiResource {
 	// The name of this resource listed in different languages.
 	@SerializedName("names")
 	private List<Name> nameList;
+
+	public List<FlavorBerryMap> getFlavorBerryMapList() {
+		return flavorBerryMapList;
+	}
+
+	public void setFlavorBerryMapList(List<FlavorBerryMap> flavorBerryMapList) {
+		this.flavorBerryMapList = flavorBerryMapList;
+	}
+
+	public ContestType getContestType() {
+		return contestType;
+	}
+
+	public void setContestType(ContestType contestType) {
+		this.contestType = contestType;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
 
 }

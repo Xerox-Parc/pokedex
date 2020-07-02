@@ -23,4 +23,20 @@ public class PokemonFormSprites {
 	@SerializedName("back_shiny")
 	private String backShiny;
 
+	public String getFrontDefault() {
+		return frontDefault;
+	}
+
+	public String getFrontShiny() {
+		return frontShiny;
+	}
+
+	public String getBackDefault() {
+		return backDefault;
+	}
+
+	public String getBackShiny() {
+		return backShiny;
+	}
+
 }

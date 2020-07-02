@@ -57,4 +57,52 @@ public class MoveMetaData {
 	@SerializedName("stat_chance")
 	private Integer statChance;
 
+	public MoveAilment getAilment() {
+		return ailment;
+	}
+
+	public MoveCategory getCategory() {
+		return category;
+	}
+
+	public Integer getMinHits() {
+		return minHits;
+	}
+
+	public Integer getMaxHits() {
+		return maxHits;
+	}
+
+	public Integer getMinTurns() {
+		return minTurns;
+	}
+
+	public Integer getMaxTurns() {
+		return maxTurns;
+	}
+
+	public Integer getDrain() {
+		return drain;
+	}
+
+	public Integer getHealing() {
+		return healing;
+	}
+
+	public Integer getCritRate() {
+		return critRate;
+	}
+
+	public Integer getAilmentChance() {
+		return ailmentChance;
+	}
+
+	public Integer getFlinchChance() {
+		return flinchChance;
+	}
+
+	public Integer getStatChance() {
+		return statChance;
+	}
+
 }

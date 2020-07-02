@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.pokemon.nature;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.berry.flavor.BerryFlavor;
 import com.xeroxparc.pokedex.data.model.pokemon.stats.Stat;
@@ -13,6 +15,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
+@Entity(tableName = "nature")
 public class Nature extends NamedApiResource {
 
 	// The stat decreased by 10% in Pokémon with this nature.
@@ -42,5 +45,61 @@ public class Nature extends NamedApiResource {
 	// The name of this resource listed in different languages.
 	@SerializedName("names")
 	private List<Name> nameList;
+
+	public Stat getDecreasedStat() {
+		return decreasedStat;
+	}
+
+	public void setDecreasedStat(Stat decreasedStat) {
+		this.decreasedStat = decreasedStat;
+	}
+
+	public Stat getIncreasedStat() {
+		return increasedStat;
+	}
+
+	public void setIncreasedStat(Stat increasedStat) {
+		this.increasedStat = increasedStat;
+	}
+
+	public BerryFlavor getHatesFlavor() {
+		return hatesFlavor;
+	}
+
+	public void setHatesFlavor(BerryFlavor hatesFlavor) {
+		this.hatesFlavor = hatesFlavor;
+	}
+
+	public BerryFlavor getLikesFlavor() {
+		return likesFlavor;
+	}
+
+	public void setLikesFlavor(BerryFlavor likesFlavor) {
+		this.likesFlavor = likesFlavor;
+	}
+
+	public List<NatureStatChange> getPokeathlonStatChangeList() {
+		return pokeathlonStatChangeList;
+	}
+
+	public void setPokeathlonStatChangeList(List<NatureStatChange> pokeathlonStatChangeList) {
+		this.pokeathlonStatChangeList = pokeathlonStatChangeList;
+	}
+
+	public List<MoveBattleStylePreference> getMoveBattleStylePreferenceList() {
+		return moveBattleStylePreferenceList;
+	}
+
+	public void setMoveBattleStylePreferenceList(List<MoveBattleStylePreference> moveBattleStylePreferenceList) {
+		this.moveBattleStylePreferenceList = moveBattleStylePreferenceList;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
 
 }

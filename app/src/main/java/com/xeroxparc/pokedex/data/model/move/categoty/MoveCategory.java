@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.move.categoty;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.utility.common.Description;
@@ -12,6 +14,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "move_category")
 public class MoveCategory extends NamedApiResource {
 
 	// A list of moves that fall into this category.
@@ -21,5 +24,21 @@ public class MoveCategory extends NamedApiResource {
 	// The description of this resource listed in different languages.
 	@SerializedName("descriptions")
 	private List<Description> descriptionList;
+
+	public List<Move> getMoveList() {
+		return moveList;
+	}
+
+	public void setMoveList(List<Move> moveList) {
+		this.moveList = moveList;
+	}
+
+	public List<Description> getDescriptionList() {
+		return descriptionList;
+	}
+
+	public void setDescriptionList(List<Description> descriptionList) {
+		this.descriptionList = descriptionList;
+	}
 
 }

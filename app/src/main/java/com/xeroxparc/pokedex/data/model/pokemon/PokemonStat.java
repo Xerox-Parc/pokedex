@@ -20,4 +20,16 @@ public class PokemonStat {
 	@SerializedName("base_stat")
 	private Integer baseStat;
 
+	public Stat getStat() {
+		return stat;
+	}
+
+	public Integer getEffort() {
+		return effort;
+	}
+
+	public Integer getBaseStat() {
+		return baseStat;
+	}
+
 }

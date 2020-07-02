@@ -19,4 +19,12 @@ public class PokemonEncounter {
 	@SerializedName("version_details")
 	private List<VersionEncounterDetail> versionDetailList;
 
+	public Pokemon getPokemon() {
+		return pokemon;
+	}
+
+	public List<VersionEncounterDetail> getVersionDetailList() {
+		return versionDetailList;
+	}
+
 }

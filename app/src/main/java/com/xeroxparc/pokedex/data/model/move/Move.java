@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.move;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.contest.effect.ContestEffect;
 import com.xeroxparc.pokedex.data.model.contest.supereffect.SuperContestEffect;
@@ -23,6 +25,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "move")
 public class Move extends NamedApiResource {
 
 	// The percent value of how likely this move is to be successful.
@@ -109,5 +112,173 @@ public class Move extends NamedApiResource {
 	// The elemental type of this move.
 	@SerializedName("type")
 	private Type type;
+
+	public Integer getAccuracy() {
+		return accuracy;
+	}
+
+	public void setAccuracy(Integer accuracy) {
+		this.accuracy = accuracy;
+	}
+
+	public Integer getEffectChance() {
+		return effectChance;
+	}
+
+	public void setEffectChance(Integer effectChance) {
+		this.effectChance = effectChance;
+	}
+
+	public Integer getPp() {
+		return pp;
+	}
+
+	public void setPp(Integer pp) {
+		this.pp = pp;
+	}
+
+	public Integer getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
+
+	public Integer getPower() {
+		return power;
+	}
+
+	public void setPower(Integer power) {
+		this.power = power;
+	}
+
+	public ContestComboSet getContestComboSet() {
+		return contestComboSet;
+	}
+
+	public void setContestComboSet(ContestComboSet contestComboSet) {
+		this.contestComboSet = contestComboSet;
+	}
+
+	public ContestType getContestType() {
+		return contestType;
+	}
+
+	public void setContestType(ContestType contestType) {
+		this.contestType = contestType;
+	}
+
+	public ContestEffect getContestEffect() {
+		return contestEffect;
+	}
+
+	public void setContestEffect(ContestEffect contestEffect) {
+		this.contestEffect = contestEffect;
+	}
+
+	public MoveDamageClass getDamageClass() {
+		return damageClass;
+	}
+
+	public void setDamageClass(MoveDamageClass damageClass) {
+		this.damageClass = damageClass;
+	}
+
+	public List<VerboseEffect> getEffectEntryList() {
+		return effectEntryList;
+	}
+
+	public void setEffectEntryList(List<VerboseEffect> effectEntryList) {
+		this.effectEntryList = effectEntryList;
+	}
+
+	public List<AbilityEffectChange> getEffectChangeList() {
+		return effectChangeList;
+	}
+
+	public void setEffectChangeList(List<AbilityEffectChange> effectChangeList) {
+		this.effectChangeList = effectChangeList;
+	}
+
+	public List<MoveFlavorText> getFlavorTextEntryList() {
+		return flavorTextEntryList;
+	}
+
+	public void setFlavorTextEntryList(List<MoveFlavorText> flavorTextEntryList) {
+		this.flavorTextEntryList = flavorTextEntryList;
+	}
+
+	public Generation getGeneration() {
+		return generation;
+	}
+
+	public void setGeneration(Generation generation) {
+		this.generation = generation;
+	}
+
+	public List<MachineVersionDetail> getMachineList() {
+		return machineList;
+	}
+
+	public void setMachineList(List<MachineVersionDetail> machineList) {
+		this.machineList = machineList;
+	}
+
+	public MoveMetaData getMeta() {
+		return meta;
+	}
+
+	public void setMeta(MoveMetaData meta) {
+		this.meta = meta;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public List<PastMoveStatValues> getPastValueList() {
+		return pastValueList;
+	}
+
+	public void setPastValueList(List<PastMoveStatValues> pastValueList) {
+		this.pastValueList = pastValueList;
+	}
+
+	public List<MoveStatChange> getStatChangeList() {
+		return statChangeList;
+	}
+
+	public void setStatChangeList(List<MoveStatChange> statChangeList) {
+		this.statChangeList = statChangeList;
+	}
+
+	public SuperContestEffect getSuperContestEffect() {
+		return superContestEffect;
+	}
+
+	public void setSuperContestEffect(SuperContestEffect superContestEffect) {
+		this.superContestEffect = superContestEffect;
+	}
+
+	public MoveTarget getTarget() {
+		return target;
+	}
+
+	public void setTarget(MoveTarget target) {
+		this.target = target;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
 
 }

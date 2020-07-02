@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.game.versiongroup;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.generation.Generation;
 import com.xeroxparc.pokedex.data.model.game.pokedex.Pokedex;
@@ -15,6 +17,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
+@Entity(tableName = "version_group")
 public class VersionGroup extends NamedApiResource {
 
 	// Order for sorting. Almost by date of release, except similar versions are grouped together.
@@ -40,5 +43,53 @@ public class VersionGroup extends NamedApiResource {
 	// The versions this version group owns.
 	@SerializedName("versions")
 	private List<Version> versionList;
+
+	public Integer getOrder() {
+		return order;
+	}
+
+	public void setOrder(Integer order) {
+		this.order = order;
+	}
+
+	public Generation getGeneration() {
+		return generation;
+	}
+
+	public void setGeneration(Generation generation) {
+		this.generation = generation;
+	}
+
+	public List<MoveLearnMethod> getMoveLearnMethodList() {
+		return moveLearnMethodList;
+	}
+
+	public void setMoveLearnMethodList(List<MoveLearnMethod> moveLearnMethodList) {
+		this.moveLearnMethodList = moveLearnMethodList;
+	}
+
+	public List<Pokedex> getPokedexList() {
+		return pokedexList;
+	}
+
+	public void setPokedexList(List<Pokedex> pokedexList) {
+		this.pokedexList = pokedexList;
+	}
+
+	public List<Region> getRegionList() {
+		return regionList;
+	}
+
+	public void setRegionList(List<Region> regionList) {
+		this.regionList = regionList;
+	}
+
+	public List<Version> getVersionList() {
+		return versionList;
+	}
+
+	public void setVersionList(List<Version> versionList) {
+		this.versionList = versionList;
+	}
 
 }

@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.berry;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.berry.firmness.BerryFirmness;
 import com.xeroxparc.pokedex.data.model.item.Item;
@@ -15,6 +17,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "berry")
 public class Berry extends NamedApiResource {
 
 	// Time it takes the tree to grow one stage, in hours. Berry trees go through four of these growth stages before they can be picked.
@@ -56,5 +59,85 @@ public class Berry extends NamedApiResource {
 	// The type inherited by "Natural Gift" when used with this Berry.
 	@SerializedName("natural_gift_type")
 	private Type naturalGiftType;
+
+	public Integer getGrowthTime() {
+		return growthTime;
+	}
+
+	public void setGrowthTime(Integer growthTime) {
+		this.growthTime = growthTime;
+	}
+
+	public Integer getMaxHarvest() {
+		return maxHarvest;
+	}
+
+	public void setMaxHarvest(Integer maxHarvest) {
+		this.maxHarvest = maxHarvest;
+	}
+
+	public Integer getNaturalGiftPower() {
+		return naturalGiftPower;
+	}
+
+	public void setNaturalGiftPower(Integer naturalGiftPower) {
+		this.naturalGiftPower = naturalGiftPower;
+	}
+
+	public Integer getSize() {
+		return size;
+	}
+
+	public void setSize(Integer size) {
+		this.size = size;
+	}
+
+	public Integer getSmoothness() {
+		return smoothness;
+	}
+
+	public void setSmoothness(Integer smoothness) {
+		this.smoothness = smoothness;
+	}
+
+	public Integer getSoilDryness() {
+		return soilDryness;
+	}
+
+	public void setSoilDryness(Integer soilDryness) {
+		this.soilDryness = soilDryness;
+	}
+
+	public BerryFirmness getFirmness() {
+		return firmness;
+	}
+
+	public void setFirmness(BerryFirmness firmness) {
+		this.firmness = firmness;
+	}
+
+	public List<BerryFlavorMap> getFlavorMapList() {
+		return flavorMapList;
+	}
+
+	public void setFlavorMapList(List<BerryFlavorMap> flavorMapList) {
+		this.flavorMapList = flavorMapList;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public Type getNaturalGiftType() {
+		return naturalGiftType;
+	}
+
+	public void setNaturalGiftType(Type naturalGiftType) {
+		this.naturalGiftType = naturalGiftType;
+	}
 
 }

@@ -20,4 +20,16 @@ public class ContestName {
 	@SerializedName("language")
 	private Language language;
 
+	public String getName() {
+		return name;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
 }

@@ -19,4 +19,12 @@ public class BerryFlavorMap {
 	@SerializedName("flavor")
 	private BerryFlavor flavor;
 
+	public Integer getPotency() {
+		return potency;
+	}
+
+	public BerryFlavor getFlavor() {
+		return flavor;
+	}
+
 }

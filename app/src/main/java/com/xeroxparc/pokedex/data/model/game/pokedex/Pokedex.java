@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.game.pokedex;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.versiongroup.VersionGroup;
 import com.xeroxparc.pokedex.data.model.location.region.Region;
@@ -17,6 +19,7 @@ import java.util.List;
  * 	
  * @author Fabio Buracchi
  */
+@Entity(tableName = "pokedex")
 public class Pokedex extends NamedApiResource {
 
 	// Whether or not this Pokédex originated in the main series of the video games.
@@ -42,5 +45,53 @@ public class Pokedex extends NamedApiResource {
 	// A list of version groups this Pokédex is relevant to.
 	@SerializedName("version_groups")
 	private List<VersionGroup> versionGroupList;
+
+	public Boolean getMainSeries() {
+		return isMainSeries;
+	}
+
+	public void setMainSeries(Boolean mainSeries) {
+		isMainSeries = mainSeries;
+	}
+
+	public List<Description> getDescriptionList() {
+		return descriptionList;
+	}
+
+	public void setDescriptionList(List<Description> descriptionList) {
+		this.descriptionList = descriptionList;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public List<PokemonEntry> getPokemonEntryList() {
+		return pokemonEntryList;
+	}
+
+	public void setPokemonEntryList(List<PokemonEntry> pokemonEntryList) {
+		this.pokemonEntryList = pokemonEntryList;
+	}
+
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
+	public List<VersionGroup> getVersionGroupList() {
+		return versionGroupList;
+	}
+
+	public void setVersionGroupList(List<VersionGroup> versionGroupList) {
+		this.versionGroupList = versionGroupList;
+	}
 
 }

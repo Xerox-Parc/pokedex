@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.location.region;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.generation.Generation;
 import com.xeroxparc.pokedex.data.model.game.pokedex.Pokedex;
@@ -16,6 +18,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
+@Entity(tableName = "region")
 public class Region extends NamedApiResource {
 	
 	// A list of locations that can be found in this region.
@@ -37,5 +40,45 @@ public class Region extends NamedApiResource {
 	// A list of version groups where this region can be visited.
 	@SerializedName("version_groups")
 	private List<VersionGroup> versionGroupList;
+
+	public List<Location> getLocationList() {
+		return locationList;
+	}
+
+	public void setLocationList(List<Location> locationList) {
+		this.locationList = locationList;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public Generation getMainGeneration() {
+		return mainGeneration;
+	}
+
+	public void setMainGeneration(Generation mainGeneration) {
+		this.mainGeneration = mainGeneration;
+	}
+
+	public List<Pokedex> getPokedexList() {
+		return pokedexList;
+	}
+
+	public void setPokedexList(List<Pokedex> pokedexList) {
+		this.pokedexList = pokedexList;
+	}
+
+	public List<VersionGroup> getVersionGroupList() {
+		return versionGroupList;
+	}
+
+	public void setVersionGroupList(List<VersionGroup> versionGroupList) {
+		this.versionGroupList = versionGroupList;
+	}
 
 }

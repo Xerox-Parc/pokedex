@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.encounter.method;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
 import com.xeroxparc.pokedex.data.model.utility.common.NamedApiResource;
@@ -12,6 +14,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "encounter_method")
 public class EncounterMethod extends NamedApiResource {
 
 	// A good value for sorting.
@@ -21,5 +24,21 @@ public class EncounterMethod extends NamedApiResource {
 	// The name of this resource listed in different languages.
 	@SerializedName("names")
 	private List<Name> nameList;
+
+	public Integer getOrder() {
+		return order;
+	}
+
+	public void setOrder(Integer order) {
+		this.order = order;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
 
 }

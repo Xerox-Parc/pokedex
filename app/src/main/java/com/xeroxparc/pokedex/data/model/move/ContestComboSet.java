@@ -15,4 +15,12 @@ public class ContestComboSet {
 	@SerializedName("super")
 	private ContestComboDetail contestSuper;
 
+	public ContestComboDetail getContestNormal() {
+		return contestNormal;
+	}
+
+	public ContestComboDetail getContestSuper() {
+		return contestSuper;
+	}
+
 }

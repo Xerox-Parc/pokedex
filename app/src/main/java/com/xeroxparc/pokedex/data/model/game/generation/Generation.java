@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.game.generation;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.game.versiongroup.VersionGroup;
 import com.xeroxparc.pokedex.data.model.location.region.Region;
@@ -19,6 +21,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "generation")
 public class Generation extends NamedApiResource {
 
 	// A list of abilities that were introduced in this generation.
@@ -48,5 +51,61 @@ public class Generation extends NamedApiResource {
 	// A list of version groups that were introduced in this generation.
 	@SerializedName("version_groups")
 	private List<VersionGroup> versionGroupList;
+
+	public List<Ability> getAbilityList() {
+		return abilityList;
+	}
+
+	public void setAbilityList(List<Ability> abilityList) {
+		this.abilityList = abilityList;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public Region getMainRegion() {
+		return mainRegion;
+	}
+
+	public void setMainRegion(Region mainRegion) {
+		this.mainRegion = mainRegion;
+	}
+
+	public List<Move> getMoveList() {
+		return moveList;
+	}
+
+	public void setMoveList(List<Move> moveList) {
+		this.moveList = moveList;
+	}
+
+	public List<PokemonSpecies> getPokemonSpeciesList() {
+		return pokemonSpeciesList;
+	}
+
+	public void setPokemonSpeciesList(List<PokemonSpecies> pokemonSpeciesList) {
+		this.pokemonSpeciesList = pokemonSpeciesList;
+	}
+
+	public List<Type> getTypeList() {
+		return typeList;
+	}
+
+	public void setTypeList(List<Type> typeList) {
+		this.typeList = typeList;
+	}
+
+	public List<VersionGroup> getVersionGroupList() {
+		return versionGroupList;
+	}
+
+	public void setVersionGroupList(List<VersionGroup> versionGroupList) {
+		this.versionGroupList = versionGroupList;
+	}
 
 }

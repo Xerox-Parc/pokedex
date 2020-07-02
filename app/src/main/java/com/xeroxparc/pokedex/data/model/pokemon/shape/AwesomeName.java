@@ -16,4 +16,11 @@ public class AwesomeName {
 	@SerializedName("language")
 	private Language language;
 
+	public String getName() {
+		return name;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
 }

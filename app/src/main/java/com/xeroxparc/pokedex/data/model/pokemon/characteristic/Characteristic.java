@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.pokemon.characteristic;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.utility.common.ApiResource;
 
@@ -12,6 +14,7 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "characteristic")
 public class Characteristic extends ApiResource {
 
 	// The remainder of the highest stat/IV divided by 5.
@@ -21,5 +24,21 @@ public class Characteristic extends ApiResource {
 	// The possible values of the highest stat that would result in a Pokémon receiving this characteristic when divided by 5.
 	@SerializedName("possible_values")
 	private List<Integer> possibleValueList;
+
+	public Integer getGeneModulo() {
+		return geneModulo;
+	}
+
+	public void setGeneModulo(Integer geneModulo) {
+		this.geneModulo = geneModulo;
+	}
+
+	public List<Integer> getPossibleValueList() {
+		return possibleValueList;
+	}
+
+	public void setPossibleValueList(List<Integer> possibleValueList) {
+		this.possibleValueList = possibleValueList;
+	}
 
 }

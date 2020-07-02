@@ -21,4 +21,16 @@ public class PokemonMoveVersion {
 	@SerializedName("level_learned_at")
 	private Integer levelLearnedAt;
 
+	public MoveLearnMethod getMoveLearnMethod() {
+		return moveLearnMethod;
+	}
+
+	public VersionGroup getVersionGroup() {
+		return versionGroup;
+	}
+
+	public Integer getLevelLearnedAt() {
+		return levelLearnedAt;
+	}
+
 }

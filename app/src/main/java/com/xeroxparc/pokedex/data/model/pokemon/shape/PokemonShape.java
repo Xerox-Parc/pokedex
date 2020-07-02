@@ -1,5 +1,7 @@
 package com.xeroxparc.pokedex.data.model.pokemon.shape;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
@@ -12,6 +14,7 @@ import java.util.List;
  * 
  * @author Fabio Buracchi
  */
+@Entity(tableName = "pokemon_shape")
 public class PokemonShape extends NamedApiResource {
 
 	// The "scientific" name of this Pokémon shape listed in different languages.
@@ -25,5 +28,29 @@ public class PokemonShape extends NamedApiResource {
 	// A list of the Pokémon species that have this shape.
 	@SerializedName("pokemon_species")
 	private List<PokemonSpecies> pokemonSpeciesList;
+
+	public List<AwesomeName> getAwesomeNameList() {
+		return awesomeNameList;
+	}
+
+	public void setAwesomeNameList(List<AwesomeName> awesomeNameList) {
+		this.awesomeNameList = awesomeNameList;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
+
+	public List<PokemonSpecies> getPokemonSpeciesList() {
+		return pokemonSpeciesList;
+	}
+
+	public void setPokemonSpeciesList(List<PokemonSpecies> pokemonSpeciesList) {
+		this.pokemonSpeciesList = pokemonSpeciesList;
+	}
 
 }

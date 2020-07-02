@@ -16,4 +16,12 @@ public class TypePokemon {
 	@SerializedName("pokemon")
 	private Pokemon pokemon;
 
+	public Integer getSlot() {
+		return slot;
+	}
+
+	public Pokemon getPokemon() {
+		return pokemon;
+	}
+
 }

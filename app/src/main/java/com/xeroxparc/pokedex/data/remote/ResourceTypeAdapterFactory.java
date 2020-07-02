@@ -17,6 +17,11 @@ import java.util.Map;
 
 import static com.xeroxparc.pokedex.utils.Utils.urlToId;
 
+/**
+ * Custom TypeAdapterFactory to correctly handle JSON results
+ *
+ * @author Fabio Buracchi
+ */
 public class ResourceTypeAdapterFactory implements TypeAdapterFactory {
 	@Override
 	public <T> TypeAdapter<T> create(@NonNull Gson gson, @NonNull TypeToken<T> type) {
