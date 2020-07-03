@@ -17,4 +17,12 @@ public class NaturePokeathlonStatAffect {
 	@SerializedName("nature")
 	private Nature nature;
 
+	public Integer getMaxChange() {
+		return maxChange;
+	}
+
+	public Nature getNature() {
+		return nature;
+	}
+
 }

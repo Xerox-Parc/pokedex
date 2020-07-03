@@ -16,4 +16,12 @@ public class EncounterVersionDetails {
 	@SerializedName("version")
 	private Version version;
 
+	public Integer getRate() {
+		return rate;
+	}
+
+	public Version getVersion() {
+		return version;
+	}
+
 }

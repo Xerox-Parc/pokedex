@@ -16,4 +16,12 @@ public class NatureStatChange {
 	@SerializedName("pokeathlon_stat")
 	private PokeathlonStat pokeathlonStat;
 
+	public Integer getMaxChange() {
+		return maxChange;
+	}
+
+	public PokeathlonStat getPokeathlonStat() {
+		return pokeathlonStat;
+	}
+
 }

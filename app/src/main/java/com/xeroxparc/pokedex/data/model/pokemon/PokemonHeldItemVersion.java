@@ -16,4 +16,12 @@ public class PokemonHeldItemVersion {
 	@SerializedName("rarity")
 	private Integer rarity;
 
+	public Version getVersion() {
+		return version;
+	}
+
+	public Integer getRarity() {
+		return rarity;
+	}
+
 }

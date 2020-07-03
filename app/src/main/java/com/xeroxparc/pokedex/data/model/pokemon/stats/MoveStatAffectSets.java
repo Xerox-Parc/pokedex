@@ -17,4 +17,12 @@ public class MoveStatAffectSets {
 	@SerializedName("decrease")
 	private List<MoveStatAffect> decreaseList;
 
+	public List<MoveStatAffect> getIncreaseList() {
+		return increaseList;
+	}
+
+	public List<MoveStatAffect> getDecreaseList() {
+		return decreaseList;
+	}
+
 }

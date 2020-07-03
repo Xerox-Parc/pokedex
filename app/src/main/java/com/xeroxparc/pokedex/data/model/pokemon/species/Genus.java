@@ -16,4 +16,12 @@ public class Genus {
 	@SerializedName("language")
 	private Language language;
 
+	public String getName() {
+		return name;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
 }

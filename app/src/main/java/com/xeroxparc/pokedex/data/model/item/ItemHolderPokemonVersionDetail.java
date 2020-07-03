@@ -16,4 +16,12 @@ public class ItemHolderPokemonVersionDetail {
 	@SerializedName("version")
 	private Version version;
 
+	public Integer getRarity() {
+		return rarity;
+	}
+
+	public Version getVersion() {
+		return version;
+	}
+
 }

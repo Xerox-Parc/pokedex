@@ -16,4 +16,12 @@ public class MoveStatChange {
 	@SerializedName("stat")
 	private Stat stat;
 
+	public Integer getChange() {
+		return change;
+	}
+
+	public Stat getStat() {
+		return stat;
+	}
+
 }

@@ -20,4 +20,16 @@ public class PalParkEncounterArea {
 	@SerializedName("area")
 	private PalParkArea area;
 
+	public Integer getBaseScore() {
+		return baseScore;
+	}
+
+	public Integer getRate() {
+		return rate;
+	}
+
+	public PalParkArea getArea() {
+		return area;
+	}
+
 }

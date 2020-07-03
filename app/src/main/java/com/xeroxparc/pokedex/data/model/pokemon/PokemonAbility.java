@@ -20,4 +20,16 @@ public class PokemonAbility {
 	@SerializedName("ability")
 	private Ability ability;
 
+	public Boolean getHidden() {
+		return isHidden;
+	}
+
+	public Integer getSlot() {
+		return slot;
+	}
+
+	public Ability getAbility() {
+		return ability;
+	}
+
 }

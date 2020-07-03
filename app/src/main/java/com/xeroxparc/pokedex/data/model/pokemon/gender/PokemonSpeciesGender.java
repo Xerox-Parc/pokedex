@@ -16,4 +16,12 @@ public class PokemonSpeciesGender {
 	@SerializedName("pokemon_species")
 	private PokemonSpecies pokemonSpecies;
 
+	public Integer getRate() {
+		return rate;
+	}
+
+	public PokemonSpecies getPokemonSpecies() {
+		return pokemonSpecies;
+	}
+
 }

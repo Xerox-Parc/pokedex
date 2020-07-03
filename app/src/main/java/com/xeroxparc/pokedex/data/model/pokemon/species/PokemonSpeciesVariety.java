@@ -16,4 +16,12 @@ public class PokemonSpeciesVariety {
 	@SerializedName("pokemon")
 	private Pokemon pokemon;
 
+	public Boolean getDefault() {
+		return isDefault;
+	}
+
+	public Pokemon getPokemon() {
+		return pokemon;
+	}
+
 }

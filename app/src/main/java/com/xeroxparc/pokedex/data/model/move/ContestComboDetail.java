@@ -17,4 +17,12 @@ public class ContestComboDetail {
 	@SerializedName("use_after")
 	private List<Move> useAfterList;
 
+	public List<Move> getUseBeforeList() {
+		return useBeforeList;
+	}
+
+	public List<Move> getUseAfterList() {
+		return useAfterList;
+	}
+
 }

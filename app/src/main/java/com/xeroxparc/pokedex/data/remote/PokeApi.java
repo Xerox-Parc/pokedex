@@ -11,8 +11,8 @@ import com.xeroxparc.pokedex.data.model.contest.type.ContestType;
 import com.xeroxparc.pokedex.data.model.encounter.condition.EncounterCondition;
 import com.xeroxparc.pokedex.data.model.encounter.conditionvalue.EncounterConditionValue;
 import com.xeroxparc.pokedex.data.model.encounter.method.EncounterMethod;
-import com.xeroxparc.pokedex.data.model.evolutions.chain.EvolutionChain;
-import com.xeroxparc.pokedex.data.model.evolutions.trigger.EvolutionTrigger;
+import com.xeroxparc.pokedex.data.model.evolution.chain.EvolutionChain;
+import com.xeroxparc.pokedex.data.model.evolution.trigger.EvolutionTrigger;
 import com.xeroxparc.pokedex.data.model.game.generation.Generation;
 import com.xeroxparc.pokedex.data.model.game.pokedex.Pokedex;
 import com.xeroxparc.pokedex.data.model.game.version.Version;
@@ -58,6 +58,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+/**
+ * @author Fabio Buracchi
+ */
 public interface PokeApi {
 
 	@GET("berry/")

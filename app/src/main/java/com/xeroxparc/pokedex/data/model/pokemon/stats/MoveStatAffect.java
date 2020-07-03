@@ -16,4 +16,12 @@ public class MoveStatAffect {
 	@SerializedName("move")
 	private Move move;
 
+	public Integer getChange() {
+		return change;
+	}
+
+	public Move getMove() {
+		return move;
+	}
+
 }

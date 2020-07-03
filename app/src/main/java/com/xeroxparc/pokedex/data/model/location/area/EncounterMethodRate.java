@@ -18,4 +18,12 @@ public class EncounterMethodRate {
 	@SerializedName("version_details")
 	private List<EncounterVersionDetails> versionDetailsList;
 
+	public EncounterMethod getEncounterMethod() {
+		return encounterMethod;
+	}
+
+	public List<EncounterVersionDetails> getVersionDetailsList() {
+		return versionDetailsList;
+	}
+
 }

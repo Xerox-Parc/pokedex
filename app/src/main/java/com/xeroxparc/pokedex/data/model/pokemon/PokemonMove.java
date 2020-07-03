@@ -18,4 +18,12 @@ public class PokemonMove {
 	@SerializedName("version_group_details")
 	private List<PokemonMoveVersion> versionGroupDetailList;
 
+	public Move getMove() {
+		return move;
+	}
+
+	public List<PokemonMoveVersion> getVersionGroupDetailList() {
+		return versionGroupDetailList;
+	}
+
 }

@@ -39,5 +39,36 @@ public class PokemonSprites {
 	@SerializedName("back_shiny_female")
 	private String backShinyFemale;
 
+	public String getFrontDefault() {
+		return frontDefault;
+	}
+
+	public String getFrontShiny() {
+		return frontShiny;
+	}
+
+	public String getFrontFemale() {
+		return frontFemale;
+	}
+
+	public String getFrontShinyFemale() {
+		return frontShinyFemale;
+	}
+
+	public String getBackDefault() {
+		return backDefault;
+	}
+
+	public String getBackShiny() {
+		return backShiny;
+	}
+
+	public String getBackFemale() {
+		return backFemale;
+	}
+
+	public String getBackShinyFemale() {
+		return backShinyFemale;
+	}
 
 }

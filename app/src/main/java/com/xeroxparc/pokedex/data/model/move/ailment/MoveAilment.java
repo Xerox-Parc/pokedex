@@ -1,5 +1,8 @@
 package com.xeroxparc.pokedex.data.model.move.ailment;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
@@ -13,14 +16,33 @@ import java.util.List;
  *
  * @author Fabio Buracchi
  */
+@Entity(tableName = "move_ailment")
 public class MoveAilment extends NamedApiResource {
 
 	// A list of moves that cause this ailment.
+	@ColumnInfo(name = "moves_data")
 	@SerializedName("moves")
 	private List<Move> moveList;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
+
+	public List<Move> getMoveList() {
+		return moveList;
+	}
+
+	public void setMoveList(List<Move> moveList) {
+		this.moveList = moveList;
+	}
+
+	public List<Name> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(List<Name> nameList) {
+		this.nameList = nameList;
+	}
 
 }

@@ -17,4 +17,12 @@ public class NaturePokeathlonStatAffectSets {
 	@SerializedName("decrease")
 	private List<NaturePokeathlonStatAffect> decreaseStatList;
 
+	public List<NaturePokeathlonStatAffect> getIncreaseStatList() {
+		return increaseStatList;
+	}
+
+	public List<NaturePokeathlonStatAffect> getDecreaseStatList() {
+		return decreaseStatList;
+	}
+
 }

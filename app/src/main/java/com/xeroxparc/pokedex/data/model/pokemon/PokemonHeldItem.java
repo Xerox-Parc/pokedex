@@ -18,4 +18,12 @@ public class PokemonHeldItem {
 	@SerializedName("version_details")
 	private List<PokemonHeldItemVersion> versionDetailList;
 
+	public Item getItem() {
+		return item;
+	}
+
+	public List<PokemonHeldItemVersion> getVersionDetailList() {
+		return versionDetailList;
+	}
+
 }

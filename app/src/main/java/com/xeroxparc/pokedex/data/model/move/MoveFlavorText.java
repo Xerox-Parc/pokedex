@@ -21,4 +21,16 @@ public class MoveFlavorText {
 	@SerializedName("version_group")
 	private VersionGroup versionGroup;
 
+	public String getFlavorText() {
+		return flavorText;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public VersionGroup getVersionGroup() {
+		return versionGroup;
+	}
+
 }

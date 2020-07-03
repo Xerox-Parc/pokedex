@@ -19,4 +19,12 @@ public class AbilityEffectChange {
 	@SerializedName("version_group")
 	private VersionGroup versionGroup;
 
+	public List<Effect> getEffectEntryList() {
+		return effectEntryList;
+	}
+
+	public VersionGroup getVersionGroup() {
+		return versionGroup;
+	}
+
 }
