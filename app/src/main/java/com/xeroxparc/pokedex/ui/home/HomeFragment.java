@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui;
+package com.xeroxparc.pokedex.ui.home;
 
 import android.os.Bundle;
 
@@ -10,22 +10,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.xeroxparc.pokedex.databinding.FragmentHomeBinding;
-
+/**
+ * View class.
+ * Handle lifecycle event, receives the user's interaction and it forwards the handling of these
+ * to the view model via the data binding.
+ *
+ * @author Fabio Buracchi
+ */
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private HomeBinder binder;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        binder = new HomeBinder(this);
+        binder.bind();
+        return binder.getRoot();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+        binder.clean();
+        binder = null;
     }
 }
