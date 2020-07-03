@@ -6,6 +6,12 @@ import androidx.annotation.Nullable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Utility class.
+ * Provides a set of useful method to other classes.
+ *
+ * @author Fabio Buracchi
+ */
 public class Utils {
 
 	private Utils() {}
