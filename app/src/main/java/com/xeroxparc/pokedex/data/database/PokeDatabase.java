@@ -88,7 +88,6 @@ import com.xeroxparc.pokedex.data.model.move.damageclass.MoveDamageClass;
 import com.xeroxparc.pokedex.data.model.move.learnmethod.MoveLearnMethod;
 import com.xeroxparc.pokedex.data.model.move.target.MoveTarget;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
-import com.xeroxparc.pokedex.data.model.pokemon.PokemonHeldItem;
 import com.xeroxparc.pokedex.data.model.pokemon.ability.Ability;
 import com.xeroxparc.pokedex.data.model.pokemon.characteristic.Characteristic;
 import com.xeroxparc.pokedex.data.model.pokemon.color.PokemonColor;
