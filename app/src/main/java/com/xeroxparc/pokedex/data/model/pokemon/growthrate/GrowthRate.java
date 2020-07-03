@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.growthrate;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -19,18 +20,22 @@ import java.util.List;
 public class GrowthRate extends NamedApiResource {
 
 	// The formula used to calculate the rate at which the Pokémon species gains level.
+	@ColumnInfo(name = "formula")
 	@SerializedName("formula")
 	private String formula;
 
 	// The descriptions of this characteristic listed in different languages.
+	@ColumnInfo(name = "descriptions_data")
 	@SerializedName("descriptions")
 	private List<Description> descriptionList;
 
 	// A list of levels and the amount of experienced needed to atain them based on this growth rate.
+	@ColumnInfo(name = "levels_data")
 	@SerializedName("levels")
 	private List<GrowthRateExperienceLevel> levelList;
 
 	// A list of Pokémon species that gain levels at this growth rate.
+	@ColumnInfo(name = "pokemon_species_data")
 	@SerializedName("pokemon_species")
 	private List<PokemonSpecies> pokemonSpeciesList;
 

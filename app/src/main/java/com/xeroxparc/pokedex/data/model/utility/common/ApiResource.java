@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.utility.common;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,6 +14,7 @@ public class ApiResource {
 
 	//The identifier for this resource
 	@PrimaryKey
+	@ColumnInfo(name = "id")
 	@SerializedName("id")
 	private Integer id;
 

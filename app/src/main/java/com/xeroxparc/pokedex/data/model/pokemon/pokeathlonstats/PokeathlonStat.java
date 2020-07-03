@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.pokeathlonstats;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -20,10 +21,12 @@ import java.util.List;
 public class PokeathlonStat extends NamedApiResource {
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// A detail of natures which affect this Pokéathlon stat positively or negatively.
+	@ColumnInfo(name = "affecting_natures_data")
 	@SerializedName("affecting_natures")
 	private NaturePokeathlonStatAffectSets affectingNatureSet;
 

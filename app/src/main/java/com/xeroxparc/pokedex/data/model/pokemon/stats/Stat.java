@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.stats;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -20,30 +21,37 @@ import java.util.List;
 public class Stat extends NamedApiResource {
 
 	// ID the games use for this stat.
+	@ColumnInfo(name = "game_index")
 	@SerializedName("game_index")
 	private Integer gameIndex;
 
 	// Whether this stat only exists within a battle.
+	@ColumnInfo(name = "is_battle_only")
 	@SerializedName("is_battle_only")
 	private Boolean isBattleOnly;
 
 	// A detail of moves which affect this stat positively or negatively.
+	@ColumnInfo(name = "affecting_moves_data")
 	@SerializedName("affecting_moves")
 	private MoveStatAffectSets affectingMoves;
 
 	// A detail of natures which affect this stat positively or negatively.
+	@ColumnInfo(name = "affecting_natures_data")
 	@SerializedName("affecting_natures")
 	private NatureStatAffectSets affectingNatures;
 
 	// A list of characteristics that are set on a Pokémon when its highest base stat is this stat.
+	@ColumnInfo(name = "characteristics_data")
 	@SerializedName("characteristics")
 	private List<Characteristic> characteristicList;
 
 	// The class of damage this stat is directly related to.
+	@ColumnInfo(name = "move_damage_class_data")
 	@SerializedName("move_damage_class")
 	private MoveDamageClass moveDamageClass;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 

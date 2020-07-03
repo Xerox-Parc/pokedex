@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.color;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -20,10 +21,12 @@ import java.util.List;
 public class PokemonColor extends NamedApiResource {
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// A list of the Pokémon species that have this color.
+	@ColumnInfo(name = "pokemon_species_data")
 	@SerializedName("pokemon_species")
 	private List<PokemonSpecies> pokemonSpeciesList;
 

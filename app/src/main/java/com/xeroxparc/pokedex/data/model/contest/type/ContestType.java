@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.contest.type;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,10 +19,12 @@ import java.util.List;
 public class ContestType extends NamedApiResource {
 
 	// The berry flavor that correlates with this contest type.
+	@ColumnInfo(name = "berry_flavor_data")
 	@SerializedName("berry_flavor")
 	private BerryFlavor berryFlavor;
 
 	// The name of this contest type listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<ContestName> contestNameList;
 

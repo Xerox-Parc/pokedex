@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.item.pocket;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,10 +19,12 @@ import java.util.List;
 public class ItemPocket extends NamedApiResource {
 
 	// A list of item categories that are relevant to this item pocket.
+	@ColumnInfo(name = "categories_data")
 	@SerializedName("categories")
 	private List<ItemCategory> categoryList;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 

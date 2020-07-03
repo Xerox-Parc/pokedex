@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -23,62 +24,77 @@ import java.util.List;
 public class Pokemon extends NamedApiResource {
 
 	// The base experience gained for defeating this Pokémon.
+	@ColumnInfo(name = "base_experience")
 	@SerializedName("base_experience")
 	private Integer baseExperience;
 
 	// The height of this Pokémon in decimetres.
+	@ColumnInfo(name = "height")
 	@SerializedName("height")
 	private Integer height;
 
 	// Set for exactly one Pokémon used as the default for each species.
+	@ColumnInfo(name = "is_default")
 	@SerializedName("is_default")
 	private Boolean isDefault;
 
 	// Order for sorting. Almost national order, except families are grouped together.
+	@ColumnInfo(name = "order")
 	@SerializedName("order")
 	private Integer order;
 
 	// The weight of this Pokémon in hectograms.
+	@ColumnInfo(name = "weight")
 	@SerializedName("weight")
 	private Integer weight;
 
 	// A list of abilities this Pokémon could potentially have.
+	@ColumnInfo(name = "abilities_data")
 	@SerializedName("abilities")
 	private List<PokemonAbility> abilityList;
 
 	// A list of forms this Pokémon can take on.
+	@ColumnInfo(name = "forms_data")
 	@SerializedName("forms")
 	private List<PokemonForm> formList;
 
 	// A list of game indices relevent to Pokémon item by generation.
+	@ColumnInfo(name = "game_indices_data")
 	@SerializedName("game_indices")
 	private List<VersionGameIndex> gameIndexList;
 
 	// A list of items this Pokémon may be holding when encountered.
+	@ColumnInfo(name = "held_items_data")
 	@SerializedName("held_items")
 	private List<PokemonHeldItem> heldItemList;
 
 	// A link to a list of location areas, as well as encounter details pertaining to specific versions.
+	@ColumnInfo(name = "location_area_encounters_data")
 	@SerializedName("location_area_encounters")
 	private String locationAreaEncounters;
 
 	// A list of moves along with learn methods and level details pertaining to specific version groups.
+	@ColumnInfo(name = "moves_data")
 	@SerializedName("moves")
 	private List<PokemonMove> moveList;
 
 	// A set of sprites used to depict this Pokémon in the game.
+	@ColumnInfo(name = "sprites_data")
 	@SerializedName("sprites")
 	private PokemonSprites sprite;
 
 	// The species this Pokémon belongs to.
+	@ColumnInfo(name = "species_data")
 	@SerializedName("species")
 	private PokemonSpecies species;
 
 	// A list of base stat values for this Pokémon.
+	@ColumnInfo(name = "stats_data")
 	@SerializedName("stats")
 	private List<PokemonStat> statList;
 
 	// A list of details showing types this Pokémon has.
+	@ColumnInfo(name = "types_data")
 	@SerializedName("types")
 	private List<PokemonType> typeList;
 

@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.machine;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,14 +19,17 @@ import com.xeroxparc.pokedex.data.model.utility.common.ApiResource;
 public class Machine extends ApiResource {
 
 	// The TM or HM item that corresponds to this machine.
+	@ColumnInfo(name = "item_data")
 	@SerializedName("item")
 	private Item item;
 
 	// The move that is taught by this machine.
+	@ColumnInfo(name = "move_data")
 	@SerializedName("move")
 	private Move move;
 
 	// The version group that this machine applies to.
+	@ColumnInfo(name = "version_group_data")
 	@SerializedName("version_group")
 	private VersionGroup versionGroup;
 

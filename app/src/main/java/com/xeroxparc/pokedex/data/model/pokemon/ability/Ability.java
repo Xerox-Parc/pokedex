@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.ability;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -21,30 +22,37 @@ import java.util.List;
 public class Ability extends NamedApiResource {
 
 	// Whether or not this ability originated in the main series of the video games.
+	@ColumnInfo(name = "is_main_series")
 	@SerializedName("is_main_series")
 	private Boolean isMainSeries;
 
 	// The generation this ability originated in.
+	@ColumnInfo(name = "generation_data")
 	@SerializedName("generation")
 	private Generation generation;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// The effect of this ability listed in different languages.
+	@ColumnInfo(name = "effect_entries_data")
 	@SerializedName("effect_entries")
 	private List<VerboseEffect> effectEntryList;
 
 	// The list of previous effects this ability has had across version groups.
+	@ColumnInfo(name = "effect_changes_data")
 	@SerializedName("effect_changes")
 	private List<AbilityEffectChange> effectChangeList;
 
 	// The flavor text of this ability listed in different languages.
+	@ColumnInfo(name = "flavor_text_entries_data")
 	@SerializedName("flavor_text_entries")
 	private List<AbilityFlavorText> flavorTextEntryList;
 
 	// A list of Pokémon that could potentially have this ability.
+	@ColumnInfo(name = "pokemon_data")
 	@SerializedName("pokemon")
 	private List<AbilityPokemon> pokemonList;
 

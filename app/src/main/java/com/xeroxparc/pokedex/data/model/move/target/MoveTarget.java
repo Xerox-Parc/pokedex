@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.move.target;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -20,14 +21,17 @@ import java.util.List;
 public class MoveTarget extends NamedApiResource {
 
 	// The description of this resource listed in different languages.
+	@ColumnInfo(name = "descriptions_data")
 	@SerializedName("descriptions")
 	private List<Description> descriptionList;
 
 	// A list of moves that that are directed at this target.
+	@ColumnInfo(name = "moves_data")
 	@SerializedName("moves")
 	private List<Move> moveList;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 

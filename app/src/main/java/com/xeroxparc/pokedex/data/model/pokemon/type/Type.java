@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.type;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -24,30 +25,37 @@ import java.util.List;
 public class Type extends NamedApiResource {
 
 	// A detail of how effective this type is toward others and vice versa.
+	@ColumnInfo(name = "damage_relations_data")
 	@SerializedName("damage_relations")
 	private TypeRelations damageRelations;
 
 	// A list of game indices relevant to this item by generation.
+	@ColumnInfo(name = "game_indices_data")
 	@SerializedName("game_indices")
 	private List<GenerationGameIndex> gameIndexList;
 
 	// The generation this type was introduced in.
+	@ColumnInfo(name = "generation_data")
 	@SerializedName("generation")
 	private Generation generation;
 
 	// The class of damage inflicted by this type.
+	@ColumnInfo(name = "move_damage_class_data")
 	@SerializedName("move_damage_class")
 	private MoveDamageClass moveDamageClass;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// A list of details of Pokémon that have this type.
+	@ColumnInfo(name = "pokemon_data")
 	@SerializedName("pokemon")
 	private List<TypePokemon> pokemonList;
 
 	// A list of moves that have this type.
+	@ColumnInfo(name = "moves_data")
 	@SerializedName("moves")
 	private List<Move> moveList;
 

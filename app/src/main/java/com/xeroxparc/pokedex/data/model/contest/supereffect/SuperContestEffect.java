@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.contest.supereffect;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,14 +19,17 @@ import java.util.List;
 public class SuperContestEffect extends ApiResource {
 
 	// The level of appeal this super contest effect has.
+	@ColumnInfo(name = "appeal")
 	@SerializedName("appeal")
 	private Integer appeal;
 
 	// The flavor text of this super contest effect listed in different languages.
+	@ColumnInfo(name = "flavor_text_entries_data")
 	@SerializedName("flavor_text_entries")
 	private List<FlavorText> flavorTextList;
 
 	// A list of moves that have the effect when used in super contests.
+	@ColumnInfo(name = "moves_data")
 	@SerializedName("moves")
 	private List<Move> moveList;
 

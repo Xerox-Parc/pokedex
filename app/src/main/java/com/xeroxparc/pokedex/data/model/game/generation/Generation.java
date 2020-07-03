@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.game.generation;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -25,30 +26,37 @@ import java.util.List;
 public class Generation extends NamedApiResource {
 
 	// A list of abilities that were introduced in this generation.
+	@ColumnInfo(name = "abilities_data")
 	@SerializedName("abilities")
 	private List<Ability> abilityList;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// The main region travelled in this generation.
+	@ColumnInfo(name = "main_region_data")
 	@SerializedName("main_region")
 	private Region mainRegion;
 
 	// A list of moves that were introduced in this generation.
+	@ColumnInfo(name = "moves_data")
 	@SerializedName("moves")
 	private List<Move> moveList;
 
 	// A list of Pokémon species that were introduced in this generation.
+	@ColumnInfo(name = "pokemon_species_data")
 	@SerializedName("pokemon_species")
 	private List<PokemonSpecies> pokemonSpeciesList;
 
 	// A list of types that were introduced in this generation.
+	@ColumnInfo(name = "types_data")
 	@SerializedName("types")
 	private List<Type> typeList;
 
 	// A list of version groups that were introduced in this generation.
+	@ColumnInfo(name = "version_groups_data")
 	@SerializedName("version_groups")
 	private List<VersionGroup> versionGroupList;
 

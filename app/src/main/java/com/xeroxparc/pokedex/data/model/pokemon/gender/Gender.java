@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.gender;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -19,10 +20,12 @@ import java.util.List;
 public class Gender extends NamedApiResource {
 
 	// A list of Pokémon species that can be this gender and how likely it is that they will be.
+	@ColumnInfo(name = "pokemon_species_details_data")
 	@SerializedName("pokemon_species_details")
 	private List<PokemonSpeciesGender> pokemonSpeciesDetailList;
 
 	// A list of Pokémon species that required this gender in order for a Pokémon to evolve into them.
+	@ColumnInfo(name = "required_for_evolution_data")
 	@SerializedName("required_for_evolution")
 	private List<PokemonSpecies> requiredForEvolutionList;
 

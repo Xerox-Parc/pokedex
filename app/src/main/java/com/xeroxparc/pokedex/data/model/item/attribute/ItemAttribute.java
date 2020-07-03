@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.item.attribute;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -19,14 +20,17 @@ import java.util.List;
 public class ItemAttribute extends NamedApiResource {
 
 	// A list of items that have this attribute.
+	@ColumnInfo(name = "items_data")
 	@SerializedName("items")
 	private List<Item> itemList;
 
 	// The name of this item attribute listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// The description of this item attribute listed in different languages.
+	@ColumnInfo(name = "descriptions_data")
 	@SerializedName("descriptions")
 	private List<Description> descriptionList;
 

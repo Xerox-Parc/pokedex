@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.contest.effect;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,18 +19,22 @@ import java.util.List;
 public class ContestEffect extends ApiResource {
 
 	// The base number of hearts the user of this move gets.
+	@ColumnInfo(name = "appeal")
 	@SerializedName("appeal")
 	private Integer appeal;
 
 	// The base number of hearts the user's opponent loses.
+	@ColumnInfo(name = "jam")
 	@SerializedName("jam")
 	private Integer jam;
 
 	// The result of this contest effect listed in different languages.
+	@ColumnInfo(name = "effect_entries_data")
 	@SerializedName("effect_entries")
 	private List<Effect> effectList;
 
 	// The flavor text of this contest effect listed in different languages.
+	@ColumnInfo(name = "flavor_text_entries_data")
 	@SerializedName("flavor_text_entries")
 	private List<FlavorText> flavorTextList;
 

@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.move;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -29,87 +30,108 @@ import java.util.List;
 public class Move extends NamedApiResource {
 
 	// The percent value of how likely this move is to be successful.
+	@ColumnInfo(name = "accuracy")
 	@SerializedName("accuracy")
 	private Integer accuracy;
 
 	// The percent value of how likely it is this moves effect will happen.
+	@ColumnInfo(name = "effect_chance")
 	@SerializedName("effect_chance")
 	private Integer effectChance;
 
 	// Power points. The number of times this move can be used.
+	@ColumnInfo(name = "pp")
 	@SerializedName("pp")
 	private Integer pp;
 
 	// A value between -8 and 8. Sets the order in which moves are executed during battle.
 	// See Bulbapedia for greater detail
+	@ColumnInfo(name = "priority")
 	@SerializedName("priority")
 	private Integer priority;
 
 	// The base power of this move with a value of 0 if it does not have a base power.
+	@ColumnInfo(name = "power")
 	@SerializedName("power")
 	private Integer power;
 
 	// A detail of normal and super contest combos that require this move.
+	@ColumnInfo(name = "contest_combos_data")
 	@SerializedName("contest_combos")
 	private ContestComboSet contestComboSet;
 
 	// The type of appeal this move gives a Pokémon when used in a contest.
+	@ColumnInfo(name = "contest_type_data")
 	@SerializedName("contest_type")
 	private ContestType contestType;
 
 	// The effect the move has when used in a contest.
+	@ColumnInfo(name = "contest_effect_data")
 	@SerializedName("contest_effect")
 	private ContestEffect contestEffect;
 
 	// The type of damage the move inflicts on the target, e.g. physical.
+	@ColumnInfo(name = "damage_class_data")
 	@SerializedName("damage_class")
 	private MoveDamageClass damageClass;
 
 	// The effect of this move listed in different languages.
+	@ColumnInfo(name = "effect_entries_data")
 	@SerializedName("effect_entries")
 	private List<VerboseEffect> effectEntryList;
 
 	// The list of previous effects this move has had across version groups of the games.
+	@ColumnInfo(name = "effect_changes_data")
 	@SerializedName("effect_changes")
 	private List<AbilityEffectChange> effectChangeList;
 
 	// The flavor text of this move listed in different languages.
+	@ColumnInfo(name = "flavor_text_entries_data")
 	@SerializedName("flavor_text_entries")
 	private List<MoveFlavorText> flavorTextEntryList;
 
 	// The generation in which this move was introduced.
+	@ColumnInfo(name = "generation_data")
 	@SerializedName("generation")
 	private Generation generation;
 
 	// A list of the machines that teach this move.
+	@ColumnInfo(name = "machines_data")
 	@SerializedName("machines")
 	private List<MachineVersionDetail> machineList;
 
 	// Metadata about this move
+	@ColumnInfo(name = "meta_data")
 	@SerializedName("meta")
 	private MoveMetaData meta;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// A list of move resource value changes across version groups of the game.
+	@ColumnInfo(name = "past_values_data")
 	@SerializedName("past_values")
 	private List<PastMoveStatValues> pastValueList;
 
 	// A list of stats this moves effects and how much it effects them.
+	@ColumnInfo(name = "stat_changes_data")
 	@SerializedName("stat_changes")
 	private List<MoveStatChange> statChangeList;
 
 	// The effect the move has when used in a super contest.
+	@ColumnInfo(name = "super_contest_effect_data")
 	@SerializedName("super_contest_effect")
 	private SuperContestEffect superContestEffect;
 
 	// The type of target that will receive the effects of the attack.
+	@ColumnInfo(name = "target_data")
 	@SerializedName("target")
 	private MoveTarget target;
 
 	// The elemental type of this move.
+	@ColumnInfo(name = "type_data")
 	@SerializedName("type")
 	private Type type;
 

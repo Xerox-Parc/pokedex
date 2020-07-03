@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.pokemon.form;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -21,46 +22,57 @@ import java.util.List;
 public class PokemonForm extends NamedApiResource {
 
 	// The order in which forms should be sorted within all forms. Multiple forms may have equal order, in which case they should fall back on sorting by name.
+	@ColumnInfo(name = "order")
 	@SerializedName("order")
 	private Integer order;
 
 	// The order in which forms should be sorted within a species' forms.
+	@ColumnInfo(name = "form_order")
 	@SerializedName("form_order")
 	private Integer formOrder;
 
 	// Set for exactly one Pokémon used as the default for each species.
+	@ColumnInfo(name = "is_default")
 	@SerializedName("is_default")
 	private Boolean isDefault;
 
 	// Whether or not this form can only happen during battle.
+	@ColumnInfo(name = "is_battle_only")
 	@SerializedName("is_battle_only")
 	private Boolean isBattleOnly;
 
 	// Whether or not this form requires mega evolution.
+	@ColumnInfo(name = "is_mega")
 	@SerializedName("is_mega")
 	private Boolean isMega;
 
 	// The name of this form.
+	@ColumnInfo(name = "form_name")
 	@SerializedName("form_name")
 	private String formName;
 
 	// The Pokémon that can take on this form.
+	@ColumnInfo(name = "pokemon_data")
 	@SerializedName("pokemon")
 	private Pokemon pokemon;
 
 	// A set of sprites used to depict this Pokémon form in the game.
+	@ColumnInfo(name = "sprites_data")
 	@SerializedName("sprites")
 	private PokemonFormSprites sprites;
 
 	// The version group this Pokémon form was introduced in.
+	@ColumnInfo(name = "version_group_data")
 	@SerializedName("version_group")
 	private VersionGroup versionGroup;
 
 	// The form specific full name of this Pokémon form, or empty if the form does not have a specific name.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// The form specific form name of this Pokémon form, or empty if the form does not have a specific name.
+	@ColumnInfo(name = "form_names_data")
 	@SerializedName("form_names")
 	private List<Name> formNameList;
 

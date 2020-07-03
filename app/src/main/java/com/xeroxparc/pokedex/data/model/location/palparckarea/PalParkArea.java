@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.location.palparckarea;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -17,10 +18,12 @@ import java.util.List;
 public class PalParkArea extends NamedApiResource {
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 
 	// A list of Pokémon encountered in the pal park area along with details.
+	@ColumnInfo(name = "pokemon_encounters_data")
 	@SerializedName("pokemon_encounters")
 	private List<PalParkEncounterSpecies> pokemonEncounterList;
 

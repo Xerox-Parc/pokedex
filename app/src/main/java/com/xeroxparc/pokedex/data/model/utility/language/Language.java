@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.utility.language;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -17,18 +18,22 @@ import java.util.List;
 public class Language extends NamedApiResource {
 
 	// Whether or not the games are published in this language.
+	@ColumnInfo(name = "official")
 	@SerializedName("official")
 	private Boolean official;
 
 	// The two-letter code of the country where this language is spoken. Note that it is not unique.
+	@ColumnInfo(name = "iso639")
 	@SerializedName("iso639")
 	private String iso639;
 
 	// The two-letter code of the language. Note that it is not unique.
+	@ColumnInfo(name = "iso3166")
 	@SerializedName("iso3166")
 	private String iso3166;
 
 	// The name of this resource listed in different languages.
+	@ColumnInfo(name = "names_data")
 	@SerializedName("names")
 	private List<Name> nameList;
 

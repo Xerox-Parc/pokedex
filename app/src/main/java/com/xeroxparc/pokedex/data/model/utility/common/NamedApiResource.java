@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.data.model.utility.common;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
 import com.google.gson.annotations.SerializedName;
@@ -11,6 +12,7 @@ import com.google.gson.annotations.SerializedName;
 public class NamedApiResource extends ApiResource {
 
 	// The name of the referenced resource.
+	@ColumnInfo(name = "name")
 	@SerializedName("name")
 	private String name;
 
