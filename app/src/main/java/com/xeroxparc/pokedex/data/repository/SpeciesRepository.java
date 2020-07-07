@@ -44,35 +44,4 @@ public class SpeciesRepository extends BaseRepository {
         });
         return specie;
     }
-
-    public LiveData<List<Optional<PokemonSpecies>>> getSpeciesByEggGroup(Optional<EggGroup> eggGroup) {
-        MutableLiveData<List<Optional<PokemonSpecies>>> species = new MutableLiveData<>(Collections.emptyList());
-        if (eggGroup.isPresent()) {
-            List<Integer> idList = eggGroup.get()
-                    .getPokemonSpeciesList()
-                    .stream()
-                    .map(PokemonSpecies::getId)
-                    .collect(Collectors.toList());
-
-            idList.forEach(id -> {
-                AsyncTask.execute(() -> {
-                    if (speciesDao.getPokemonSpecies(id) == null) {
-                        try {
-                            speciesDao.insert(apiService.getPokemonSpecies(id));
-                        } catch (IOException | ApiError e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    List<Optional<PokemonSpecies>> currentSpecies = species.getValue();
-                    if (currentSpecies != null) {
-                        currentSpecies.add(Optional.ofNullable(speciesDao.getPokemonSpecies(id)));
-                    }
-                    species.postValue(currentSpecies);
-                });
-            });
-        }
-        return species;
-    }
-
-
 }

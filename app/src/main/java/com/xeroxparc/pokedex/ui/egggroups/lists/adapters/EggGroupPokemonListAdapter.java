@@ -6,12 +6,15 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import com.bumptech.glide.Glide;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.databinding.ItemRowEggGroupPokemonBinding;
 import com.xeroxparc.pokedex.ui.egggroups.lists.viewholders.EggGroupPokemonViewHolder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPokemonViewHolder> implements Filterable, PostFilteringCallBack<List<PokemonSpecies>> {
     private static final String TAG = "EggGroupPokemonListAdap";
     private List<PokemonSpecies> speciesList;
+    private Map<String, String> imagesMap;
     private List<PokemonSpecies> filteredList = new ArrayList<>();
     private Context ctx;
 
@@ -26,6 +30,7 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
         ctx = context;
         speciesList = species;
         filteredList.addAll(species);
+        imagesMap = new HashMap<>();
     }
 
     @NonNull
@@ -41,8 +46,9 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
         PokemonSpecies specie = filteredList.get(position);
         String specieName = specie.getName();
         holder.setPokemonName(specieName);
-//            Glide.with(ctx).load(images.get(specieName)).into(holder.getImage());
-//        Glide.with(ctx).load(Utils.imgFromSpecie(specie)).into(holder.getImage());
+        if (imagesMap.get(specieName) != null) {
+            Glide.with(ctx).load(imagesMap.get(specieName)).into(holder.getImage());
+        }
     }
 
     @Override
@@ -67,5 +73,28 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
         filteredList.clear();
         filteredList.addAll(species);
         notifyDataSetChanged();
+    }
+
+    public void addImage(String specieName, String imageUrl) {
+        imagesMap.put(specieName, imageUrl);
+        speciesList.
+                parallelStream().
+                filter(current -> current.getName().equalsIgnoreCase(specieName)).
+                findFirst().
+                ifPresent(specie -> {
+                    notifyItemChanged(speciesList.indexOf(specie));
+                });
+    }
+
+    public void addSpecie(PokemonSpecies newSpecie){
+        speciesList.
+                parallelStream().
+                filter(current -> current.getName().equalsIgnoreCase(newSpecie.getName())).
+                findFirst().
+                ifPresent(specie -> {
+                    int index = speciesList.indexOf(specie);
+                    speciesList.set(index,newSpecie);
+                    notifyItemChanged(index);
+                });
     }
 }

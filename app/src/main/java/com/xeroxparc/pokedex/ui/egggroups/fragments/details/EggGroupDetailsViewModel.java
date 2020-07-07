@@ -21,16 +21,17 @@ import androidx.lifecycle.Transformations;
 
 public class EggGroupDetailsViewModel extends AndroidViewModel {
     private static final String TAG = "EggGroupDetailsViewMode";
+    private final SpeciesRepository speciesRepository;
+    private final PokemonRepository pokemonRepository;
     private final LiveData<Optional<EggGroup>> eggGroup;
     private final MutableLiveData<Integer> eggGroupId;
-    private final LiveData<List<Optional<PokemonSpecies>>> speciesList;
     private final LiveData<List<LiveData<Optional<Pokemon>>>> pokemonList;
 
     public EggGroupDetailsViewModel(@NonNull Application application) {
         super(application);
         final EggGroupsRepository eggGroupsRepository = new EggGroupsRepository(application);
-        final SpeciesRepository speciesRepository = new SpeciesRepository(application);
-        final PokemonRepository pokemonRepository = new PokemonRepository(application);
+        speciesRepository = new SpeciesRepository(application);
+        pokemonRepository = new PokemonRepository(application);
         eggGroupId = new MutableLiveData<>();
         MutableLiveData<List<Integer>> pokemonIdList = new MutableLiveData<>();
         eggGroup = Transformations.switchMap(eggGroupId, eggGroupsRepository::getEggGroup);
@@ -41,38 +42,6 @@ public class EggGroupDetailsViewModel extends AndroidViewModel {
             return new MutableLiveData<>(pokemon);
         });
 
-        speciesList = Transformations.switchMap(eggGroup, eggGroup -> {
-//            List<LiveData<Optional<PokemonSpecies>>> species = new ArrayList<>();
-            return speciesRepository.getSpeciesByEggGroup(eggGroup);
-//            eggGroup.
-//                    map(EggGroup::getPokemonSpeciesList).
-//                    get().
-//                    parallelStream().forEach(
-//                    currentSpecie -> {
-//                        LiveData<Optional<PokemonSpecies>> newSpecies = speciesRepository.getSpecie(currentSpecie.getId());
-////                        newSpecies.getValue().ifPresent(species1 ->
-////                                Log.e(TAG, "EggGroupDetailsViewModel: " + species1));
-////                        species.add(speciesRepository.getSpecie(currentSpecie.getId()));
-//
-                    }
-            );
-
-//            return new MutableLiveData<>(species);
-//            eggGroup.
-//                    map(EggGroup::getPokemonSpeciesList).
-//                    get().
-//                    parallelStream().
-//                    map(PokemonSpecies::getId).
-//                    map(speciesRepository::getSpecie).
-//                    map(LiveData::getValue).
-//                    filter(Objects::nonNull).
-//                    forEach(specieOptional ->
-//                    {
-//                        Log.e(TAG, "EggGroupDetailsViewModel: ");
-//                        Objects.requireNonNull(specieOptional).ifPresent(species::add);
-//                    });
-//            Objects.requireNonNull(this.eggGroup.getValue()).get().setPokemonSpeciesList(species);
-//        });
     }
 
     public void setEggGroupId(int id) {
@@ -83,11 +52,11 @@ public class EggGroupDetailsViewModel extends AndroidViewModel {
         return eggGroup;
     }
 
-    public LiveData<List<Optional<PokemonSpecies>>> getSpeciesList() {
-        return speciesList;
+    public LiveData<Optional<PokemonSpecies>> getSpecie(int id) {
+        return speciesRepository.getSpecie(id);
     }
 
-    public LiveData<List<LiveData<Optional<Pokemon>>>> getPokemonList() {
-        return pokemonList;
+    public LiveData<Optional<Pokemon>> getPokemon(int id) {
+        return pokemonRepository.getPokemon(id);
     }
 }

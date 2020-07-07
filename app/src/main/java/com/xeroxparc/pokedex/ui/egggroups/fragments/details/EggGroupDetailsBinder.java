@@ -53,12 +53,31 @@ public class EggGroupDetailsBinder implements OnQueryTextListener {
             if (!eggGroup.isPresent()) {
                 Utils.noInternetConnectionWarning(fragment.getContext());
             }
-            eggGroup.ifPresent(group -> speciesListAdapter.setSpeciesList(group.getPokemonSpeciesList()));
+            eggGroup.ifPresent(group -> {
+                speciesListAdapter.setSpeciesList(group.getPokemonSpeciesList());
+                group.getPokemonSpeciesList().forEach(specie -> {
+                    viewModel.
+                            getSpecie(specie.getId()).
+                            observe(fragment, retrievedSpecie -> retrievedSpecie.
+                                    ifPresent(current -> {
+                                        speciesListAdapter.addSpecie(current);
+                                        current.getVarietyList().forEach(variety -> {
+                                            if (variety.getDefault()) {
+                                                viewModel.
+                                                        getPokemon(variety.getPokemon().getId()).
+                                                        observe(fragment, pokemon -> {
+                                                            pokemon.ifPresent(retrievedPokemon ->
+                                                                    speciesListAdapter.
+                                                                            addImage(retrievedSpecie.get().getName(),
+                                                                                    retrievedPokemon.getSprite().getFrontDefault())
+                                                            );
+                                                        });
+                                            }
+                                        });
+                                    }));
+                });
+            });
         });
-//
-//        viewModel.getSpeciesList().observe(fragment, speciesList -> {
-//            Log.e(TAG, "bind: " + speciesList.size());
-//        });
     }
 
     public View getRoot() {
