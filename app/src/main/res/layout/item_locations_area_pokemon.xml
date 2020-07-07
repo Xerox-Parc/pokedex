@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_LocationAreaPokemon"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:background="@drawable/card_layout"
+        android:elevation="2dp"
+        android:layout_marginVertical="5dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5" >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:orientation="vertical"
+                        android:tint="#f06767"
+                        app:srcCompat="@drawable/ic_pokeball" />
+
+                    <TextView
+                        android:id="@+id/TextView_PokemonName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/yantramanav"
+                        android:orientation="vertical"
+                        android:text="Pokemon Name"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/TextView_MethodName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/yantramanav"
+                    android:orientation="vertical"
+                    android:text="Method: old-rod"
+                    android:textColor="#000"
+                    android:textSize="15dp" />
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/TextView_Level"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/yantramanav"
+                    android:orientation="vertical"
+                    android:text="Level: 34-34"
+                    android:textColor="#000"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:id="@+id/TextView_Chance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/yantramanav"
+                    android:orientation="vertical"
+                    android:text="Chance: 45%"
+                    android:textColor="#000"
+                    android:textSize="15dp" />
+
+            </TableRow>
+
+            <TableRow android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/TextView_Game"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/yantramanav"
+                    android:orientation="vertical"
+                    android:text="Game: Diamond"
+                    android:textColor="#000"
+                    android:textSize="15dp" />
+
+            </TableRow>
+        </TableLayout>
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

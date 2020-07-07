@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1297b1"
+    tools:context=".ui.locations.LocationsListFragment">
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/ImageSlider_Map"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        app:auto_cycle="false"
+        app:delay="0"
+        app:error_image="@drawable/image_sliderbg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.174"
+        app:period="1000"
+        app:placeholder="@drawable/image_sliderbg" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="3dp"
+        android:paddingHorizontal="15dp"
+        android:paddingBottom="15dp"
+        android:layout_marginTop="280dp"
+        android:background="@drawable/location_layout"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/yantramanav_medium"
+            android:text="Kanto Region"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"/>
+
+
+    </LinearLayout>
+
+</FrameLayout>

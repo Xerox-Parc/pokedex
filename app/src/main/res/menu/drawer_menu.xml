@@ -28,6 +28,21 @@
             android:enabled="true"
             android:title="@string/pokedex" />
 
+        <item
+            android:id="@+id/nav_locations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:title="Locations" />
+
+
+        <item
+            android:id="@+id/nav_locations_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:title="Locations filter" />
+
     </group>
 
 </menu>
