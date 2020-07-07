@@ -17,5 +17,7 @@
     <!-- search strings -->
     <string name="search">Search</string>
     <string name="search_hint">search</string>
+    <string name="pokedex">Pokedex</string>
 
 </resources>
+

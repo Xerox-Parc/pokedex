@@ -35,5 +35,24 @@
             android:defaultValue="move name"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_pokedex"
+        android:name="com.xeroxparc.pokedex.ui.pokedex.PokedexFragment"
+        android:label="Pokedex"
+        tools:layout="@layout/fragment_pokedex">
+        <action
+            android:id="@+id/action_nav_pokedex_to_nav_pokemon_detail"
+            app:destination="@id/nav_pokemon_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_pokemon_detail"
+        android:name="com.xeroxparc.pokedex.ui.pokedex.detail.PokemonDetailFragment"
+        android:label="Pokemon Detail"
+        tools:layout="@layout/fragment_pokemon_details">
+        <argument
+            android:name="details_pokemon"
+            android:defaultValue="pokemon name"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
