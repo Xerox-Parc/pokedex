@@ -6,4 +6,16 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
+    <!-- Move strings -->
+    <string name="menu_move">Move</string>
+    <string name="menu_move_detail">Move Detail</string>
+    <string name="move_power">Power: &#160;</string>
+    <string name="move_accuracy">Accuracy: &#160;</string>
+    <string name="move_pp">PP: &#160;</string>
+    <string name="move_priority">Priority: &#160;</string>
+
+    <!-- search strings -->
+    <string name="search">Search</string>
+    <string name="search_hint">search</string>
+
 </resources>

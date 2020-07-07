@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
@@ -10,6 +9,31 @@
         android:id="@+id/nav_home"
         android:name="com.xeroxparc.pokedex.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_move"
+        android:name="com.xeroxparc.pokedex.ui.move.MoveFragment"
+        android:label="@string/menu_move"
+        tools:layout="@layout/fragment_move">
+        <action
+            android:id="@+id/action_nav_move_to_nav_move_detail"
+            app:destination="@id/nav_move_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_move_detail"
+        android:name="com.xeroxparc.pokedex.ui.move.MoveDetailFragment"
+        android:label="@string/menu_move_detail"
+        tools:layout="@layout/fragment_move_detail">
+        <argument
+            android:name="move_title"
+            android:defaultValue="move name"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
