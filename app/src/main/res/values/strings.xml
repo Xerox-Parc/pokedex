@@ -6,6 +6,11 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
+    <string name="menu_egg_groups">Egg Groups</string>
+    <string name="menu_item_search">Search</string>
+
+    <string name="message_no_internet_connection">Please check your internet connection, as no corresponding local data was found!</string>
+
     <!-- Move strings -->
     <string name="menu_move">Move</string>
     <string name="menu_move_detail">Move Detail</string>
@@ -19,5 +24,28 @@
     <string name="search_hint">search</string>
     <string name="pokedex">Pokedex</string>
 
-</resources>
+    <!--                  Egg Groups (General)                  -->
+    <string name="header_egg_groups">Egg Groups</string>
+    <string name="egg_group_monster">Monster</string>
+    <string name="egg_group_humanlike">Human-like</string>
+    <string name="egg_group_bug">Bug</string>
+    <string name="egg_group_mineral">Mineral</string>
+    <string name="egg_group_flying">Flying</string>
+    <string name="egg_group_amorphous">Amorphous</string>
+    <string name="egg_group_field">Field</string>
+    <string name="egg_group_fairy">Fairy</string>
+    <string name="egg_group_ditto">Ditto</string>
+    <string name="egg_group_grass">Grass</string>
+    <string name="egg_group_dragon">Dragon</string>
+    <string name="egg_group_water1">Water 1</string>
+    <string name="egg_group_water2">Water 2</string>
+    <string name="egg_group_water3">Water 3</string>
+    <string name="egg_group_no_eggs">No Eggs</string>
 
+    <!--                  Egg Groups (Fragment)                 -->
+    <string name="activity_egg_group_pokemon_list_header">Pokemon</string>
+    <string name="activity_egg_group_filter_show_all">Show All</string>
+    <string name="activity_egg_group_filter_only_in_this_group">Only in this group</string>
+    <string name="activity_egg_group_filter_not_only_in_this_group">In others</string>
+
+</resources>

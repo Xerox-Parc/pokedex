@@ -43,6 +43,12 @@
             android:enabled="true"
             android:title="Locations filter" />
 
+        <item
+            android:id="@+id/nav_egg_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:title="@string/menu_egg_groups" />
     </group>
 
 </menu>

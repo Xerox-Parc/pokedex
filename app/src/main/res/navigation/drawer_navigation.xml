@@ -87,4 +87,24 @@
 
     </fragment>
 
+
+    <fragment
+        android:id="@+id/nav_egg_group"
+        android:name="com.xeroxparc.pokedex.ui.egggroups.fragments.menu.EggGroupsMenuFragment"
+        android:label="Egg Groups"
+        tools:layout="@layout/fragment_egg_groups_menu">
+        <action
+            android:id="@+id/action_nav_egg_to_nav_egg_group_details"
+            app:destination="@id/nav_egg_group_details"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_egg_group_details"
+        android:name="com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragment"
+        tools:layout="@layout/fragment_egg_group_details"/>
 </navigation>

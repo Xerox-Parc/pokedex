@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bitmap_pokeball_clipped_bg"
+        tools:context=".ui.egggroups.fragments.details.EggGroupDetailsFragment">
+
+        <TextView
+            android:id="@+id/egg_group_name"
+            style="@style/HeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_egg_group_button_container_external_horizontal_margin"
+            android:layout_marginTop="@dimen/layout_egg_group_button_container_external_horizontal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/egg_group_pokemon_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filters_list" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filters_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="@dimen/layout_egg_group_button_container_external_horizontal_margin"
+            app:checkedChip="@id/show_all_pokemon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/egg_group_name"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/show_all_pokemon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_egg_group_filter_show_all" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/show_pokemon_only_in_this_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_egg_group_filter_only_in_this_group"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/show_pokemon_in_this_group_and_others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_egg_group_filter_not_only_in_this_group" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/list_loading_img"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_loading_placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filters_list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
