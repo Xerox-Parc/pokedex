@@ -6,7 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xeroxparc.pokedex.databinding.ItemPokemonEvolutionBinding;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonEvolutionListItemBinder {
 
     private final ItemPokemonEvolutionBinding binding;
@@ -23,9 +27,6 @@ public class PokemonEvolutionListItemBinder {
 
     void bind() {
 
-        binding.textView31.setText("Level");
-        /*binding.imageView2.setImageResource(R.drawable.pngguru);
-        binding.imageView4.setImageResource(R.drawable.pngguru);*/
 
     }
 }

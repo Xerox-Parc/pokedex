@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.xeroxparc.pokedex.R;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonBaseStatsFragment extends Fragment {
 
     public PokemonBaseStatsFragment(){

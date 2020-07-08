@@ -12,7 +12,11 @@ import com.xeroxparc.pokedex.data.Pokemon;
 import com.xeroxparc.pokedex.data.PokemonRepository;
 
 import java.util.List;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonMovesViewModel extends AndroidViewModel {
 
     private final PokemonRepository repository;

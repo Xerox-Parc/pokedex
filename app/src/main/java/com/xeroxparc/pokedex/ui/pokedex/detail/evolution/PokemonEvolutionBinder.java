@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.xeroxparc.pokedex.data.Pokemon;
 import com.xeroxparc.pokedex.databinding.FragmentPokemonEvolutionBinding;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonEvolutionBinder {
 
     private final FragmentPokemonEvolutionBinding binding;

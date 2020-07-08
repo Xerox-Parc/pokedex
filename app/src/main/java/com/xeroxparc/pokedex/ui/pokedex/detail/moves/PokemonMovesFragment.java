@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonMovesFragment extends Fragment {
     private PokemonMovesBinder binder;
     @Nullable

@@ -11,7 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.xeroxparc.pokedex.R;
 
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonAboutFragment extends Fragment {
 
     public static final String ARG_OBJECT = "object";

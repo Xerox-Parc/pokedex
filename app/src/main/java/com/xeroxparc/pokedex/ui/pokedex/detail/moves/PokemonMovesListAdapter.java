@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.xeroxparc.pokedex.data.Pokemon;
 
 import java.util.List;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public abstract class PokemonMovesListAdapter  extends RecyclerView.Adapter<PokemonMovesListAdapter.PokemonMovesViewHolder> {
 
     private List<Pokemon> pokemonList;

@@ -6,7 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xeroxparc.pokedex.databinding.ItemPokemonMovesBinding;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonMovesListItemBinder {
     private final ItemPokemonMovesBinding binding;
 
@@ -21,11 +25,6 @@ public class PokemonMovesListItemBinder {
     }
 
     void bind() {
-
-/*
-        binding.textView33.setText("ciao");
-        binding.imageView2.setImageResource(R.drawable.pngguru);
-        binding.imageView4.setImageResource(R.drawable.pngguru);*/
 
     }
 }

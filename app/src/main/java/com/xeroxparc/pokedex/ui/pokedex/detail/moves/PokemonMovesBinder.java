@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.xeroxparc.pokedex.data.Pokemon;
 import com.xeroxparc.pokedex.databinding.FragmentPokemonMovesBinding;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public class PokemonMovesBinder {
 
     private final FragmentPokemonMovesBinding binding;

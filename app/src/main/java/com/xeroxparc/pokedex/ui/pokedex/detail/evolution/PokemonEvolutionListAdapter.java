@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.xeroxparc.pokedex.data.Pokemon;
 
 import java.util.List;
-
+/**
+ *
+ *
+ * @author Palmieri Ivan
+ */
 public abstract class PokemonEvolutionListAdapter  extends RecyclerView.Adapter<PokemonEvolutionListAdapter.PokemonEvolutionViewHolder> {
 
     private List<Pokemon> pokemonList;

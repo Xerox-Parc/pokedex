@@ -65,7 +65,7 @@
             @dimen/layout_egg_group_button_container_vertical_spacing
         </item>
     </style>
-    
+
     <style name="EggGroupButtonContainerSpaced" parent="EggGroupButtonContainerUnSpaced">
         <item name="android:layout_marginStart">
             @dimen/layout_egg_group_button_container_horizontal_spacing
