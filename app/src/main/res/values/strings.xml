@@ -74,4 +74,5 @@
     <string name="activity_egg_group_filter_show_all">Show All</string>
     <string name="activity_egg_group_filter_only_in_this_group">Only in this group</string>
     <string name="activity_egg_group_filter_not_only_in_this_group">In others</string>
+    <string name="splash_screen_picture">Splash Screen</string>
 </resources>
