@@ -30,6 +30,7 @@
                     android:layout_weight=".5" >
 
                     <ImageView
+                        android:id="@+id/pokemonImage"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:orientation="vertical"

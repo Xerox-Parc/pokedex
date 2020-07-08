@@ -19,6 +19,7 @@ import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.databinding.FragmentLocationsAreaDetailsBinding;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class LocationsAreaDetailsFragment extends Fragment {
     private FragmentLocationsAreaDetailsBinding binding;
@@ -37,8 +38,8 @@ public class LocationsAreaDetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         TextView textViewAreaName = requireView().findViewById(R.id.TextView_AreaName);
-        String areaName = LocationsAreaDetailsFragmentArgs.fromBundle(requireArguments()).getLocationTitle();
-        textViewAreaName.setText(areaName + ": Pokemon Ecounter");
+        int areaId = LocationsAreaDetailsFragmentArgs.fromBundle(requireArguments()).getLocationAreaId();
+        textViewAreaName.setText(areaId + ": Pokemon Ecounter");
     }
 
     class Holder {
