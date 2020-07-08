@@ -34,4 +34,8 @@ public class EggGroupPokemonViewHolder extends RecyclerView.ViewHolder {
         binding.pokemonImage.setImageResource(R.drawable.img_loading_placeholder);
     }
 
+    public void resetEggGroups(){
+        binding.eggGroups.removeAllViews();
+    }
+
 }

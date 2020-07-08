@@ -3,6 +3,8 @@ package com.xeroxparc.pokedex.ui.egggroups.lists.adapters;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -10,8 +12,11 @@ import android.widget.Filterable;
 import com.bumptech.glide.Glide;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.databinding.ItemRowEggGroupPokemonBinding;
+import com.xeroxparc.pokedex.ui.egggroups.components.EggGroupChip;
+import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsLoader;
 import com.xeroxparc.pokedex.ui.egggroups.lists.viewholders.EggGroupPokemonViewHolder;
+import com.xeroxparc.pokedex.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +26,8 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPokemonViewHolder> implements Filterable, PostFilteringCallBack<List<PokemonSpecies>> {
+public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPokemonViewHolder>
+        implements Filterable, PostFilteringCallBack<List<PokemonSpecies>>, OnClickListener {
     private static final String TAG = "EggGroupPokemonListAdap";
     private List<PokemonSpecies> speciesList;
     private Map<String, String> imagesMap;
@@ -50,16 +56,20 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
     public void onBindViewHolder(@NonNull EggGroupPokemonViewHolder holder, int position) {
         final int BATCH_SIZE = 5;
         loadBatchIfNeeded(position, BATCH_SIZE);
+        holder.resetImage();
+        holder.resetEggGroups();
         PokemonSpecies specie = filteredList.get(position);
         String specieName = specie.getName();
-        holder.resetImage();
         holder.setPokemonName(specieName);
         if (imagesMap.get(specieName) != null) {
             Glide.with(ctx).
                     load(imagesMap.get(specieName)).
                     into(holder.getImage());
+            speciesList.get(position).getEggGroupsList().forEach(eggGroup -> {
+                EggGroupType type = EggGroupType.getEggGroupTypeById(eggGroup.getId());
+                holder.addEggGroupChip(new EggGroupChip(ctx, type,this));
+            });
         }
-
     }
 
     @Override
@@ -107,27 +117,14 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
     public void addImage(String specieName, String imageUrl, int position) {
         imagesMap.put(specieName, imageUrl);
         notifyItemChanged(position);
-//        speciesList.
-//                parallelStream().
-//                filter(current -> current.getName().equalsIgnoreCase(specieName)).
-//                findFirst().
-//                ifPresent(specie -> {
-//                    notifyItemChanged(speciesList.indexOf(specie));
-//                });
     }
 
     public void addSpecie(PokemonSpecies newSpecie, int position) {
         speciesList.set(position, newSpecie);
-//        notifyItemChanged(position);
+    }
 
-//        speciesList.
-//                parallelStream().
-//                filter(current -> current.getName().equalsIgnoreCase(newSpecie.getName())).
-//                findFirst().
-//                ifPresent(specie -> {
-//                    int index = speciesList.indexOf(specie);
-//                    speciesList.set(index, newSpecie);
-//                    notifyItemChanged(index);
-//                });
+    @Override
+    public void onClick(View view) {
+
     }
 }

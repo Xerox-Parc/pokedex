@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 
 import com.google.android.material.chip.Chip;
+import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 
 public class EggGroupChip extends Chip {
@@ -13,6 +14,7 @@ public class EggGroupChip extends Chip {
         super(context);
         setChipBackgroundColorResource(eggGroupType.getEggGroupColorId());
         setText(eggGroupType.getEggGroupTextId());
+        setTextColor(context.getColor(R.color.eggGroupButtonTextColor));
         this.eggGroupType = eggGroupType;
         setOnClickListener(clickListener);
     }
