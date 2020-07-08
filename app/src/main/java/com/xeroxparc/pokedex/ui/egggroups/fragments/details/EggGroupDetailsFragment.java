@@ -75,4 +75,10 @@ public class EggGroupDetailsFragment extends CustomActionBarFragment {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binder.onClean();
+        binder = null;
+    }
 }

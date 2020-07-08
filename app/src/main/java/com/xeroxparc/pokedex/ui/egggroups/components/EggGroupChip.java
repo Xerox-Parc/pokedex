@@ -9,6 +9,7 @@ import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 
 public class EggGroupChip extends Chip {
     private EggGroupType eggGroupType;
+    public static final String TAG = "EGG_GROUP_CHIP_TAG";
 
     public EggGroupChip(Context context, EggGroupType eggGroupType, OnClickListener clickListener) {
         super(context);
@@ -16,6 +17,7 @@ public class EggGroupChip extends Chip {
         setText(eggGroupType.getEggGroupTextId());
         setTextColor(context.getColor(R.color.eggGroupButtonTextColor));
         this.eggGroupType = eggGroupType;
+        setTag(TAG);
         setOnClickListener(clickListener);
     }
 
@@ -23,4 +25,8 @@ public class EggGroupChip extends Chip {
         super(context, attrs);
     }
 
+
+    public EggGroupType getEggGroupType(){
+        return eggGroupType;
+    }
 }

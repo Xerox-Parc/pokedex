@@ -1,5 +1,8 @@
 package com.xeroxparc.pokedex.ui.egggroups.lists.viewholders;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.databinding.ItemRowEggGroupPokemonBinding;
 import com.xeroxparc.pokedex.ui.egggroups.components.EggGroupChip;
@@ -12,9 +15,10 @@ public class EggGroupPokemonViewHolder extends RecyclerView.ViewHolder {
 
     private ItemRowEggGroupPokemonBinding binding;
 
-    public EggGroupPokemonViewHolder(@NonNull ItemRowEggGroupPokemonBinding binding) {
+    public EggGroupPokemonViewHolder(@NonNull ItemRowEggGroupPokemonBinding binding, OnClickListener onClickListener) {
         super(binding.getRoot());
         this.binding = binding;
+        this.binding.pokemonCardFrame.setOnClickListener(onClickListener);
     }
 
     public void setPokemonName(String pokemonName) {

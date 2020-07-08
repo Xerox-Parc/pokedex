@@ -1,7 +1,10 @@
 package com.xeroxparc.pokedex.ui.egggroups.fragments.details;
 
+import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 
+import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.databinding.FragmentEggGroupDetailsBinding;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
@@ -13,21 +16,30 @@ import java.util.List;
 
 import androidx.appcompat.widget.SearchView.OnQueryTextListener;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class EggGroupDetailsBinder implements OnQueryTextListener, EggGroupDetailsLoader {
+import static com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupSpeciesListFilter.FilterMode;
+
+public class EggGroupDetailsBinder implements OnQueryTextListener,
+        EggGroupDetailsLoader, EggGroupDetailsNavigationRequester, OnClickListener {
     private static final String TAG = "EggGroupDetailsBinder";
     private EggGroupDetailsFragment fragment;
     private FragmentEggGroupDetailsBinding binding;
     private EggGroupDetailsViewModel viewModel;
     private EggGroupPokemonListAdapter speciesListAdapter;
+    private int eggGroupId = 0;
 
     public EggGroupDetailsBinder(EggGroupDetailsFragment detailsFragment, EggGroupType eggGroupType) {
         fragment = detailsFragment;
         binding = FragmentEggGroupDetailsBinding.inflate(detailsFragment.getLayoutInflater());
         viewModel = new ViewModelProvider(fragment).get(EggGroupDetailsViewModel.class);
         viewModel.setEggGroupId(eggGroupType.getEggGroupApiId());
+        eggGroupId = eggGroupType.getEggGroupApiId();
+        binding.showAllPokemon.setOnClickListener(this);
+        binding.showPokemonOnlyInThisGroup.setOnClickListener(this);
+        binding.showPokemonInThisGroupAndOthers.setOnClickListener(this);
         initStyling(eggGroupType);
         initList();
     }
@@ -42,7 +54,7 @@ public class EggGroupDetailsBinder implements OnQueryTextListener, EggGroupDetai
         RecyclerView speciesList = binding.eggGroupPokemonList;
         List<PokemonSpecies> species = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(fragment.getContext());
-        speciesListAdapter = new EggGroupPokemonListAdapter(fragment.getContext(), this, species);
+        speciesListAdapter = new EggGroupPokemonListAdapter(fragment.getContext(), this, species, this);
         speciesList.setLayoutManager(layoutManager);
         speciesList.setAdapter(speciesListAdapter);
     }
@@ -54,32 +66,8 @@ public class EggGroupDetailsBinder implements OnQueryTextListener, EggGroupDetai
                 Utils.noInternetConnectionWarning(fragment.getContext());
             }
             eggGroup.ifPresent(group -> {
-                speciesListAdapter.setSpeciesList(group.getPokemonSpeciesList());
+                speciesListAdapter.setSimpleSpeciesList(group.getPokemonSpeciesList());
             });
-//            eggGroup.ifPresent(group -> {
-//                speciesListAdapter.setSpeciesList(group.getPokemonSpeciesList());
-//                group.getPokemonSpeciesList().forEach(specie -> {
-//                    viewModel.
-//                            getSpecie(specie.getId()).
-//                            observe(fragment, retrievedSpecie -> retrievedSpecie.
-//                                    ifPresent(current -> {
-//                                        speciesListAdapter.addSpecie(current);
-//                                        current.getVarietyList().forEach(variety -> {
-//                                            if (variety.getDefault()) {
-//                                                viewModel.
-//                                                        getPokemon(variety.getPokemon().getId()).
-//                                                        observe(fragment, pokemon -> {
-//                                                            pokemon.ifPresent(retrievedPokemon ->
-//                                                                    speciesListAdapter.
-//                                                                            addImage(retrievedSpecie.get().getName(),
-//                                                                                    retrievedPokemon.getSprite().getFrontDefault())
-//                                                            );
-//                                                        });
-//                                            }
-//                                        });
-//                                    }));
-//                });
-//            });
         });
     }
 
@@ -96,7 +84,7 @@ public class EggGroupDetailsBinder implements OnQueryTextListener, EggGroupDetai
     public void loadDetailedSpecieInAdapter(int id, int position) {
         viewModel.getSpecie(id).observe(fragment,
                 retrievedSpecie -> retrievedSpecie.ifPresent(current -> {
-                    speciesListAdapter.addSpecie(current,position);
+                    speciesListAdapter.addSpecie(current, position);
                     loadPokemonImageInAdapter(current, position);
                 }));
     }
@@ -124,6 +112,37 @@ public class EggGroupDetailsBinder implements OnQueryTextListener, EggGroupDetai
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        return false;
+        speciesListAdapter.getFilter(null).filter(newText);
+        return true;
+    }
+
+    @Override
+    public void navigateToEggGroup(EggGroupType type) {
+        if (eggGroupId != type.getEggGroupApiId()) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(EggGroupDetailsFragment.KEY_EGG_GROUP, type);
+            Navigation.findNavController(fragment.requireActivity(),
+                    R.id.navigation_host_fragment).navigate(R.id.nav_egg_group_details, bundle);
+        }
+    }
+
+    @Override
+    public void navigateToPokemon(int pokemonId) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.show_all_pokemon:
+                speciesListAdapter.getFilter(FilterMode.MODE_ALL).filter("");
+                break;
+            case R.id.show_pokemon_only_in_this_group:
+                speciesListAdapter.getFilter(FilterMode.MODE_ONLY_UNIQUE_EGG_GROUP).filter("");
+                break;
+            case R.id.show_pokemon_in_this_group_and_others:
+                speciesListAdapter.getFilter(FilterMode.MODE_UNIQUE_AND_OTHER_EGG_GROUPS).filter("");
+                break;
+        }
     }
 }

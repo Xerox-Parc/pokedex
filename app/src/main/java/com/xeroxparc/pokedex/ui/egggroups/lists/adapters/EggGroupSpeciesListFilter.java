@@ -7,6 +7,7 @@ import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class EggGroupSpeciesListFilter extends Filter {
@@ -14,18 +15,14 @@ public class EggGroupSpeciesListFilter extends Filter {
     private List<PokemonSpecies> fullList;
     private FilterMode filterMode;
     private PostFilteringCallBack<List<PokemonSpecies>> callBack;
+    private Map<String, PokemonSpecies> detailedSpeciesMap;
 
-    public EggGroupSpeciesListFilter(List<PokemonSpecies> originalList,
-                                     PostFilteringCallBack<List<PokemonSpecies>> postFilteringCallBack) {
-        callBack = postFilteringCallBack;
-        fullList = originalList;
-    }
-
-    public EggGroupSpeciesListFilter(List<PokemonSpecies> originalList, FilterMode mode,
-                                     PostFilteringCallBack<List<PokemonSpecies>> postFilteringCallBack) {
+    public EggGroupSpeciesListFilter(List<PokemonSpecies> originalList, Map<String, PokemonSpecies> detailedSpeciesMap,
+                                     FilterMode mode, PostFilteringCallBack<List<PokemonSpecies>> postFilteringCallBack) {
         fullList = originalList;
         filterMode = mode;
         callBack = postFilteringCallBack;
+        this.detailedSpeciesMap = detailedSpeciesMap;
     }
 
     @Override
@@ -38,20 +35,29 @@ public class EggGroupSpeciesListFilter extends Filter {
                         filter(specie -> specie
                                 .getName()
                                 .trim()
-                                .equalsIgnoreCase(formattedKeyword))
+                                .contains(formattedKeyword))
                         .collect(Collectors.toList()));
+            } else {
+                filteredList.addAll(fullList);
             }
         } else {
             switch (filterMode) {
                 case MODE_ONLY_UNIQUE_EGG_GROUP:
+                    Log.e(TAG, "performFiltering: ONLY UNIQUE");
                     filteredList.addAll(fullList.stream().
-                            filter(specie -> specie.getEggGroupsList().size() < 2).collect(Collectors.toList()));
+                            filter(specie -> detailedSpeciesMap.get(specie.getName()) != null &&
+                                    detailedSpeciesMap.get(specie.getName()).getEggGroupsList().size() == 1).
+                            collect(Collectors.toList()));
                     break;
                 case MODE_UNIQUE_AND_OTHER_EGG_GROUPS:
+                    Log.e(TAG, "performFiltering: COMMON");
                     filteredList.addAll(fullList.stream().
-                            filter(specie -> specie.getEggGroupsList().size() > 1).collect(Collectors.toList()));
+                            filter(specie -> detailedSpeciesMap.get(specie.getName()) != null &&
+                                    detailedSpeciesMap.get(specie.getName()).getEggGroupsList().size() > 1).
+                            collect(Collectors.toList()));
                     break;
                 case MODE_ALL:
+                    Log.e(TAG, "performFiltering: ALL");
                     filteredList.addAll(fullList);
                     break;
             }
@@ -72,7 +78,7 @@ public class EggGroupSpeciesListFilter extends Filter {
         }
     }
 
-    enum FilterMode {
+    public enum FilterMode {
         MODE_ONLY_UNIQUE_EGG_GROUP, MODE_UNIQUE_AND_OTHER_EGG_GROUPS, MODE_ALL
     }
 }
