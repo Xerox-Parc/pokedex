@@ -4,8 +4,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="ToolBarStyle">@style/ThemeOverlay.MaterialComponents.Light</item>
-        <item name="ToolBarContainerStyle">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar
+        <item name="ToolBarStyle">@style/TransparentToolBar</item>
+        <item name="ToolBarContainerStyle">@style/TransparentToolBarLayout
         </item>
     </style>
 
@@ -19,11 +19,14 @@
         <item name="ToolBarContainerStyle">@style/TransparentToolBarLayout</item>
     </style>
 
-    <style name="TransparentToolBar" parent="ThemeOverlay.MaterialComponents.Light">
+    <style name="TransparentToolBar" parent="Widget.AppCompat.Toolbar">
         <item name="colorControlNormal">?attr/colorPrimary</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColorPrimary">?attr/colorPrimaryDark</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+        <item name="android:background">@null</item>
         <item name="searchViewStyle">@style/TransparentToolbar.SearchView</item>
-        <item name="titleEnabled">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="TransparentToolBarLayout" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
@@ -36,6 +39,8 @@
 
     <style name="TransparentToolbar.SearchView" parent="Widget.AppCompat.SearchView">
         <item name="searchHintIcon">@null</item>
+        <item name="background">@null</item>
+        <item name="android:background">@null</item>
     </style>
 
     <style name="HeaderTextView" parent="Widget.AppCompat.TextView">
@@ -66,6 +71,7 @@
         </item>
     </style>
 
+
     <style name="EggGroupButtonContainerSpaced" parent="EggGroupButtonContainerUnSpaced">
         <item name="android:layout_marginStart">
             @dimen/layout_egg_group_button_container_horizontal_spacing
@@ -93,5 +99,4 @@
         <item name="android:gravity">center</item>
         <item name="android:textAlignment">center</item>
     </style>
-
 </resources>
