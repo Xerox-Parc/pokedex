@@ -18,6 +18,33 @@
     <string name="move_accuracy">Accuracy: &#160;</string>
     <string name="move_pp">PP: &#160;</string>
     <string name="move_priority">Priority: &#160;</string>
+    <string name="generation">Generation</string>
+    <string name="flavor_text">Flavor Text</string>
+    <string name="language">en</string>
+    <string name="power_short">\"Att: \"</string>
+    <string name="pp_short">\" PP: \"</string>
+    <string name="accuracy_short">\" Acc: \"</string>
+
+
+    <!-- Game Versions (Move Flavor Text) -->
+    <string name="red_and_blue">Red and Blue:\n</string>
+    <string name="yellow">Yellow:\n</string>
+    <string name="gold_and_silver">Gold and Silver:\n</string>
+    <string name="crystal">Crystal:\n</string>
+    <string name="ruby_and_sapphire">Ruby and Sapphire:\n</string>
+    <string name="emerald">Emerald:\n</string>
+    <string name="firered_and_leafgreen">Fire Red and Leaf Green:\n</string>
+    <string name="diamond_and_pearl">Diamond and Pearl:\n</string>
+    <string name="platinum">Platinum:\n</string>
+    <string name="heartgold_and_soulsilver">Heart Gold and Soul Silver:\n</string>
+    <string name="black_and_white">Black and White:\n</string>
+    <string name="colosseum">Colosseum:\n</string>
+    <string name="xd">Xd:\n</string>
+    <string name="black2_and_white2">Black 2 and White 2:\n</string>
+    <string name="x_and_y">X and Y:\n</string>
+    <string name="omegaruby_and_alphasapphire">Omega Ruby and Alpha Sapphire:\n</string>
+    <string name="sun_and_moon">Sun and Moon:\n</string>
+    <string name="ultrasun_and_ultramoon">Ultra Sun and Ultra Moon:\n</string>
 
     <!-- search strings -->
     <string name="search">Search</string>
@@ -47,5 +74,4 @@
     <string name="activity_egg_group_filter_show_all">Show All</string>
     <string name="activity_egg_group_filter_only_in_this_group">Only in this group</string>
     <string name="activity_egg_group_filter_not_only_in_this_group">In others</string>
-
 </resources>

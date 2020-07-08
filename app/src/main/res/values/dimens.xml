@@ -15,6 +15,8 @@
     <dimen name="margin_small">4dp</dimen>
     <dimen name="Move_name_size">24sp</dimen>
     <dimen name="move_card_corner_radius">16dp</dimen>
+    <dimen name="separator_height">3dp</dimen>
+    <dimen name="Flavor_title_size">16sp</dimen>
 
 
     <!--                        Egg Group Dimensions                        -->

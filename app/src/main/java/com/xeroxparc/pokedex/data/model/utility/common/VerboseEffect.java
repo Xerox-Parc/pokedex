@@ -20,4 +20,15 @@ public class VerboseEffect {
 	@SerializedName("language")
 	private Language language;
 
+	public String getEffect() {
+		return effect;
+	}
+
+	public String getShortEffect() {
+		return shortEffect;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
 }
