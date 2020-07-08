@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class EggGroupDetailsBinder implements OnQueryTextListener {
+public class EggGroupDetailsBinder implements OnQueryTextListener, EggGroupDetailsLoader {
     private static final String TAG = "EggGroupDetailsBinder";
     private EggGroupDetailsFragment fragment;
     private FragmentEggGroupDetailsBinding binding;
@@ -42,7 +42,7 @@ public class EggGroupDetailsBinder implements OnQueryTextListener {
         RecyclerView speciesList = binding.eggGroupPokemonList;
         List<PokemonSpecies> species = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(fragment.getContext());
-        speciesListAdapter = new EggGroupPokemonListAdapter(fragment.getContext(), species);
+        speciesListAdapter = new EggGroupPokemonListAdapter(fragment.getContext(), this, species);
         speciesList.setLayoutManager(layoutManager);
         speciesList.setAdapter(speciesListAdapter);
     }
@@ -55,28 +55,31 @@ public class EggGroupDetailsBinder implements OnQueryTextListener {
             }
             eggGroup.ifPresent(group -> {
                 speciesListAdapter.setSpeciesList(group.getPokemonSpeciesList());
-                group.getPokemonSpeciesList().forEach(specie -> {
-                    viewModel.
-                            getSpecie(specie.getId()).
-                            observe(fragment, retrievedSpecie -> retrievedSpecie.
-                                    ifPresent(current -> {
-                                        speciesListAdapter.addSpecie(current);
-                                        current.getVarietyList().forEach(variety -> {
-                                            if (variety.getDefault()) {
-                                                viewModel.
-                                                        getPokemon(variety.getPokemon().getId()).
-                                                        observe(fragment, pokemon -> {
-                                                            pokemon.ifPresent(retrievedPokemon ->
-                                                                    speciesListAdapter.
-                                                                            addImage(retrievedSpecie.get().getName(),
-                                                                                    retrievedPokemon.getSprite().getFrontDefault())
-                                                            );
-                                                        });
-                                            }
-                                        });
-                                    }));
-                });
             });
+//            eggGroup.ifPresent(group -> {
+//                speciesListAdapter.setSpeciesList(group.getPokemonSpeciesList());
+//                group.getPokemonSpeciesList().forEach(specie -> {
+//                    viewModel.
+//                            getSpecie(specie.getId()).
+//                            observe(fragment, retrievedSpecie -> retrievedSpecie.
+//                                    ifPresent(current -> {
+//                                        speciesListAdapter.addSpecie(current);
+//                                        current.getVarietyList().forEach(variety -> {
+//                                            if (variety.getDefault()) {
+//                                                viewModel.
+//                                                        getPokemon(variety.getPokemon().getId()).
+//                                                        observe(fragment, pokemon -> {
+//                                                            pokemon.ifPresent(retrievedPokemon ->
+//                                                                    speciesListAdapter.
+//                                                                            addImage(retrievedSpecie.get().getName(),
+//                                                                                    retrievedPokemon.getSprite().getFrontDefault())
+//                                                            );
+//                                                        });
+//                                            }
+//                                        });
+//                                    }));
+//                });
+//            });
         });
     }
 
@@ -88,6 +91,30 @@ public class EggGroupDetailsBinder implements OnQueryTextListener {
         fragment = null;
         binding = null;
         viewModel = null;
+    }
+
+    public void loadDetailedSpecieInAdapter(int id, int position) {
+        viewModel.getSpecie(id).observe(fragment,
+                retrievedSpecie -> retrievedSpecie.ifPresent(current -> {
+                    speciesListAdapter.addSpecie(current,position);
+                    loadPokemonImageInAdapter(current, position);
+                }));
+    }
+
+    public void loadPokemonImageInAdapter(PokemonSpecies specie, int position) {
+        specie.getVarietyList().forEach(variety -> {
+            if (variety.getDefault()) {
+                viewModel.
+                        getPokemon(variety.getPokemon().getId()).
+                        observe(fragment, pokemon -> {
+                            pokemon.ifPresent(retrievedPokemon ->
+                                    speciesListAdapter.
+                                            addImage(specie.getName(),
+                                                    retrievedPokemon.getSprite().getFrontDefault(), position)
+                            );
+                        });
+            }
+        });
     }
 
     @Override

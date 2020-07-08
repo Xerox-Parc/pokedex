@@ -1,5 +1,6 @@
 package com.xeroxparc.pokedex.ui.egggroups.lists.viewholders;
 
+import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.databinding.ItemRowEggGroupPokemonBinding;
 import com.xeroxparc.pokedex.ui.egggroups.components.EggGroupChip;
 
@@ -29,5 +30,8 @@ public class EggGroupPokemonViewHolder extends RecyclerView.ViewHolder {
         return binding.pokemonImage;
     }
 
+    public void resetImage(){
+        binding.pokemonImage.setImageResource(R.drawable.img_loading_placeholder);
+    }
 
 }

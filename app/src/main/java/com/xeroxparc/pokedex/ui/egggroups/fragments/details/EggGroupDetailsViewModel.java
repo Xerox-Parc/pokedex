@@ -9,7 +9,6 @@ import com.xeroxparc.pokedex.data.repository.EggGroupsRepository;
 import com.xeroxparc.pokedex.data.repository.PokemonRepository;
 import com.xeroxparc.pokedex.data.repository.SpeciesRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +24,6 @@ public class EggGroupDetailsViewModel extends AndroidViewModel {
     private final PokemonRepository pokemonRepository;
     private final LiveData<Optional<EggGroup>> eggGroup;
     private final MutableLiveData<Integer> eggGroupId;
-    private final LiveData<List<LiveData<Optional<Pokemon>>>> pokemonList;
 
     public EggGroupDetailsViewModel(@NonNull Application application) {
         super(application);
@@ -33,15 +31,7 @@ public class EggGroupDetailsViewModel extends AndroidViewModel {
         speciesRepository = new SpeciesRepository(application);
         pokemonRepository = new PokemonRepository(application);
         eggGroupId = new MutableLiveData<>();
-        MutableLiveData<List<Integer>> pokemonIdList = new MutableLiveData<>();
         eggGroup = Transformations.switchMap(eggGroupId, eggGroupsRepository::getEggGroup);
-        pokemonList = Transformations.switchMap(pokemonIdList, list -> {
-            List<LiveData<Optional<Pokemon>>> pokemon = new ArrayList<>();
-            list.parallelStream()
-                    .forEach(id -> pokemon.add(pokemonRepository.getPokemon(id)));
-            return new MutableLiveData<>(pokemon);
-        });
-
     }
 
     public void setEggGroupId(int id) {
@@ -55,7 +45,6 @@ public class EggGroupDetailsViewModel extends AndroidViewModel {
     public LiveData<Optional<PokemonSpecies>> getSpecie(int id) {
         return speciesRepository.getSpecie(id);
     }
-
     public LiveData<Optional<Pokemon>> getPokemon(int id) {
         return pokemonRepository.getPokemon(id);
     }
