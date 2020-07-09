@@ -147,12 +147,12 @@ public class LocationsAreaListFragment extends DialogFragment {
         @Override
         public void onBindViewHolder(@NonNull LocationsAreaListFragment.LocationAreaListListAdapter.ViewHolder holder, int position) {
 
+            LocationsAreaListFragmentDirections.ActionNavLocationsAreaListToNavLocationsAreaDetails action = LocationsAreaListFragmentDirections.actionNavLocationsAreaListToNavLocationsAreaDetails();
+
             LocationArea currentElement = locationAreaList.get(position);
             holder.locationItemView.setText(capitalize(currentElement.getName()).replace("-", " "));
 
-
-
-            LocationsAreaListFragmentDirections.ActionNavLocationsAreaListToNavLocationsAreaDetails action = LocationsAreaListFragmentDirections.actionNavLocationsAreaListToNavLocationsAreaDetails();
+            action.setLocationAreaIdTitle(capitalize(currentElement.getName()).replace("-", " "));
             action.setLocationAreaId(currentElement.getId());
 
             holder.itemView.setOnClickListener(item -> {

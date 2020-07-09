@@ -46,8 +46,8 @@
 
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/list_loading_img"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/img_loading_placeholder"
                 android:layout_centerInParent="true"/>

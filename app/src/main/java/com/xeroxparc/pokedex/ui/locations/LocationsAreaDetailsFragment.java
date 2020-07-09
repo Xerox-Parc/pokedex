@@ -57,6 +57,7 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
         TextView textViewAreaName = requireView().findViewById(R.id.TextView_AreaName);
         int areaId = LocationsAreaDetailsFragmentArgs.fromBundle(requireArguments()).getLocationAreaId();
+        String areaIdTitle = LocationsAreaDetailsFragmentArgs.fromBundle(requireArguments()).getLocationAreaIdTitle();
 
         final LocationAreaRepository locationAreaRepository = new LocationAreaRepository(requireContext());
         final PokemonRepository pokemonRepository = new PokemonRepository(requireContext());
@@ -91,6 +92,7 @@ public class LocationsAreaDetailsFragment extends Fragment {
             });
         });
 
+        textViewAreaName.setText(areaIdTitle + " Pokemon Ecounter");
     }
 
     class Holder {
@@ -183,6 +185,7 @@ public class LocationsAreaDetailsFragment extends Fragment {
             //holder.itemView.setOnClickListener(item-> {
             //      Navigation.findNavController(requireView()).navigate(action);
             //});
+            binding.listLoadingImg.setVisibility(View.GONE);
 
         }
 

@@ -141,6 +141,10 @@
             android:name="location_area_id"
             app:argType="integer"
             android:defaultValue="0"/>
+        <argument
+            android:name="location_area_idTitle"
+            app:argType="string"
+            android:defaultValue=""/>
 
     </fragment>
 
