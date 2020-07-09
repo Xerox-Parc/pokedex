@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Pokédex</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Pokédex</string>
+    <string name="nav_header_subtitle">By Parc. not a Xerox company</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
