@@ -75,4 +75,15 @@
     <string name="activity_egg_group_filter_only_in_this_group">Only in this group</string>
     <string name="activity_egg_group_filter_not_only_in_this_group">In others</string>
     <string name="splash_screen_picture">Splash Screen</string>
+
+    <!-- Ability string -->
+    <string name="ability_effect">Effect</string>
+    <string name="ability_flavor_text">Flavor Text</string>
+    <string name="ability_generation">Generation</string>
+    <string name="ability_pokeball_background_description">Pokeball Background</string>
+    <string name="ability_tab_ability">Ability</string>
+    <string name="ability_tab_pokemon">Pokemon With This Ability</string>
+    <string name="ability_pokemon_filter">Ability Pokemon</string>
+
+
 </resources>

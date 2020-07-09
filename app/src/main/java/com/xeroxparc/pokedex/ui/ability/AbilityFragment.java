@@ -111,7 +111,7 @@ public class AbilityFragment extends Fragment  {
             AbilityViewHolder(@NonNull AbilityListItemBinder binder) {
                 super(binder.getRoot());
                 this.binder = binder;
-                cardView=itemView.findViewById(R.id.cardViewAbility);
+                cardView=itemView.findViewById(R.id.card_view_ability);
             }
         }
     }

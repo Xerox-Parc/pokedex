@@ -32,6 +32,6 @@ public class AbilityFilterListItemBinder {
     }
 
     ImageView getImageView(){
-        return binding.imageView4;
+        return binding.imageViewAbilityPokemon;
     }
 }

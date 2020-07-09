@@ -6,15 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#00FFFFFF">
 
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout_detail"
+            android:id="@+id/tab_layout_ability_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            android:background="#FFFFFF"
+            android:background="#00FFFFFF"
             android:orientation="horizontal"
             tools:ignore="MissingConstraints">
 
@@ -24,7 +24,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
-                android:text="Ability" />
+                android:text="@string/ability_tab_ability" />
 
 
             <com.google.android.material.tabs.TabItem
@@ -33,22 +33,22 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
-                android:text="Pokemon With This Ability" />
+                android:text="@string/ability_tab_pokemon" />
 
         </com.google.android.material.tabs.TabLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E6E1E1">
+        android:background="#00FFFFFF">
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
+            android:id="@+id/view_pager_ability"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginEnd="1dp"
-            android:background="#FFFFFF"
+            android:background="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.49"

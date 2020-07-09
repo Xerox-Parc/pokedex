@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFFFFF"
+    android:background="#00FFFFFF"
     android:paddingTop="16dp"
     tools:context=".ui.ability.detail.AbilityDetailedFragment"
     >
@@ -13,12 +13,14 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#00FFFFFF"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:background="#00FFFFFF"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp">
 
@@ -33,7 +35,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/ic_pokeball"
                 tools:layout_editor_absoluteY="-5dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:contentDescription="@string/ability_pokeball_background_description" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/text_view_ability"
@@ -41,12 +44,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:textColor="#000000"
-                android:textSize="24sp"
+                android:textSize="27sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_type"
@@ -64,13 +66,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="92dp"
-                android:text="Generation"
+                android:text="@string/ability_generation"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_view_type"
-                tools:ignore="HardcodedText" />
+                app:layout_constraintTop_toBottomOf="@id/card_view_type" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_view_technical_ability"
@@ -114,10 +115,9 @@
                     android:gravity="center"
                     android:hapticFeedbackEnabled="false"
                     android:paddingBottom="8dp"
-                    android:text="Flavor Text"
+                    android:text="@string/ability_flavor_text"
                     android:textColor="#000000"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="18sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/text_view_flavor_text_ability"
@@ -129,7 +129,6 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="8dp"
                         android:textSize="13sp"
-                        tools:ignore="HardcodedText"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="40dp"
                         android:layout_marginRight="8dp"
@@ -140,9 +139,10 @@
                     android:layout_height="90dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="right|center_vertical"
+                    android:layout_gravity="end|center_vertical"
                     android:alpha=".20"
-                    app:srcCompat="@drawable/ic_pokeball" />
+                    app:srcCompat="@drawable/ic_pokeball"
+                    android:contentDescription="@string/ability_pokeball_background_description" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -169,10 +169,9 @@
                     android:gravity="center"
                     android:hapticFeedbackEnabled="false"
                     android:paddingBottom="8dp"
-                    android:text="Effect"
+                    android:text="@string/ability_effect"
                     android:textColor="#000000"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="18sp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/text_view_effect_ability"
@@ -184,7 +183,6 @@
                         android:paddingRight="8dp"
                         android:paddingBottom="8dp"
                         android:textSize="13sp"
-                        tools:ignore="HardcodedText"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="40dp"
                         android:layout_marginRight="8dp"
@@ -196,11 +194,12 @@
                     android:layout_height="120dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_gravity="right|bottom"
-                    android:layout_marginRight="-40dp"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginEnd="-40dp"
                     android:layout_marginBottom="-35dp"
                     android:alpha=".20"
-                    app:srcCompat="@drawable/ic_pokeball" />
+                    app:srcCompat="@drawable/ic_pokeball"
+                    android:contentDescription="@string/ability_pokeball_background_description" />
 
 
 

@@ -30,9 +30,9 @@ public class AbilityDetailFragment extends Fragment {
     public void onViewCreated( View view, Bundle savedInstanceState) {
         int abilityId = AbilityDetailFragmentArgs.fromBundle(requireArguments()).getAbilityId();
         viewPagerAdapter = new AbilityPagerAdapter(this, abilityId);
-        viewPager = view.findViewById(R.id.viewPager);
+        viewPager = view.findViewById(R.id.view_pager_ability);
         viewPager.setAdapter(viewPagerAdapter);
-        TabLayout tabLayoutDetail = view.findViewById(R.id.tab_layout_detail);
+        TabLayout tabLayoutDetail = view.findViewById(R.id.tab_layout_ability_detail);
         new TabLayoutMediator(tabLayoutDetail, viewPager,(tab, position) -> tab.setText(string[position])).attach();
     }
 
