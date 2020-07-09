@@ -141,4 +141,23 @@
         android:id="@+id/nav_egg_group_details"
         android:name="com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragment"
         tools:layout="@layout/fragment_egg_group_details"/>
+    <fragment
+        android:id="@+id/nav_ability"
+        android:name="com.xeroxparc.pokedex.ui.ability.AbilityFragment"
+        android:label="Abilities"
+        tools:layout="@layout/fragment_ability">
+        <action
+            android:id="@+id/action_nav_abilities_to_nav_abilities_detail"
+            app:destination="@id/nav_ability_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_ability_detail"
+        android:name="com.xeroxparc.pokedex.ui.ability.detail.AbilityDetailFragment"
+        android:label="Abilities Detail"
+        tools:layout="@layout/fragment_ability_detail">
+        <argument
+            android:name="ability_id"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 </navigation>

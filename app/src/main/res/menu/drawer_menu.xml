@@ -34,6 +34,13 @@
             android:layout_height="wrap_content"
             android:enabled="true"
             android:title="@string/menu_egg_groups" />
+        <item
+            android:id="@+id/nav_ability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:title="Ability" />
+
     </group>
 
 </menu>

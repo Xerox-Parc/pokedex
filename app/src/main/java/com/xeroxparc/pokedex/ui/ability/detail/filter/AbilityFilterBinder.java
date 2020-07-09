@@ -1,0 +1,61 @@
+package com.xeroxparc.pokedex.ui.ability.detail.filter;
+
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
+import com.xeroxparc.pokedex.databinding.FragmentAbilityFilterBinding;
+
+public class AbilityFilterBinder {
+    private final FragmentAbilityFilterBinding binding;
+    private final AbilityFilterFragment fragment;
+    private final AbilityFilterViewModel viewModel;
+    private int abilityId;
+
+    AbilityFilterBinder(@NonNull AbilityFilterFragment fragment,int abilityId) {
+        this(fragment);
+        this.abilityId = abilityId;
+    }
+
+    AbilityFilterBinder(@NonNull AbilityFilterFragment fragment) {
+        this.fragment = fragment;
+        binding = FragmentAbilityFilterBinding.inflate(fragment.getLayoutInflater());
+        viewModel = new ViewModelProvider(fragment).get(AbilityFilterViewModel.class);
+    }
+
+    View getRoot() {
+        return binding.getRoot();
+    }
+
+    void bind() {
+
+        final AbilityFilterListAdapter componentListAdapter = new AbilityFilterListAdapter(fragment.getContext()) {
+            @Override
+            void onClickCallback(Pokemon pokemon) {
+                showDetail(pokemon);
+            }
+        };
+        binding.recyclerViewFilter.setAdapter(componentListAdapter);
+        binding.recyclerViewFilter.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
+        binding.recyclerViewFilter.setLayoutManager(new GridLayoutManager(fragment.getContext(),2));
+        viewModel.getAbility(abilityId).observe(fragment.getViewLifecycleOwner(), ability -> {
+            ability.ifPresent(retrievedAbility -> {
+                retrievedAbility.getPokemonList().forEach(rawPokemon -> {
+                    viewModel.getPokemon(rawPokemon.getPokemon().getId()).observe(fragment.getViewLifecycleOwner(), detailedPokemon -> {
+                                detailedPokemon.ifPresent(componentListAdapter::addPokemon);
+                            });
+                });
+            });
+        });
+    }
+
+    private void showDetail(@NonNull Pokemon pokemon) {
+
+    }
+
+
+}
