@@ -36,21 +36,6 @@ public class Utils {
 		Toast.makeText(context, R.string.message_no_internet_connection,Toast.LENGTH_LONG).show();
 	}
 
-	public static String imgFromSpecie(PokemonSpecies specie) {
-		if(specie != null){
-			Optional<PokemonSpeciesVariety> speciesVariety = specie.getVarietyList().
-					stream().filter(PokemonSpeciesVariety::getDefault).findFirst();
-			if (speciesVariety.isPresent()) {
-				return speciesVariety.get().getPokemon().getSprite().getFrontDefault();
-			}
-		}
-		return "";
-	}
-
-	public static int defaultPokemonIdFromSpecie(){
-		return 0;
-	}
-
 	public static EggGroupType eggGroupTypeFromTypeId(int typeId){
 		switch(typeId){
 			case 1:
