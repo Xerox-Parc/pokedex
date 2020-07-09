@@ -4,13 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@+id/nav_home">
-
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.xeroxparc.pokedex.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home"/>
+    app:startDestination="@+id/nav_pokedex">
 
     <fragment
         android:id="@+id/nav_move"
@@ -35,6 +29,126 @@
             android:name="move_title"
             app:argType="string"
             android:defaultValue="move name"/>
+        <argument
+            android:name="move_type"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="move_type_id"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="move_generation"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="move_machine"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="move_damage_class"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="move_power"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="move_accuracy"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="move_pp"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="move_priority"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="move_flavor_text"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="move_effect_chance"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="move_effect_text"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="flavor_red_blue"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_yellow"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_gold_silver"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_crystal"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_ruby_sapphire"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_emerald"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_firered_leafgreen"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_diamond_pearl"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_platinum"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_heartgold_soulsilver"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_black_white"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_colosseum"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_xd"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_black2_white2"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_x_y"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_omegaruby_alphasapphire"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_sun_moon"
+            app:argType="string"
+            android:defaultValue="none"/>
+        <argument
+            android:name="flavor_ultrasun_ultramoon"
+            app:argType="string"
+            android:defaultValue="none"/>
 
     </fragment>
     <fragment
@@ -44,6 +158,9 @@
         tools:layout="@layout/fragment_pokedex">
         <action
             android:id="@+id/action_nav_pokedex_to_nav_pokemon_detail"
+            app:destination="@id/nav_pokemon_detail" />
+        <action
+            android:id="@+id/action_nav_pokedex_to_nav_pokemon_id2"
             app:destination="@id/nav_pokemon_detail" />
     </fragment>
     <fragment
@@ -55,6 +172,10 @@
             android:name="details_pokemon"
             android:defaultValue="pokemon name"
             app:argType="string" />
+        <argument
+            android:name="pokemonId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 
 

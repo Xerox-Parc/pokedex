@@ -2,6 +2,7 @@ package com.xeroxparc.pokedex.data.repository;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.database.dao.pokemon.PokemonDao;
@@ -19,6 +20,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 public class PokemonRepository extends BaseRepository {
+    private static final String TAG = "PokemonRepository";
     private PokemonDao pokemonDao;
     private final List<String> pokemonNameList;
 
@@ -27,6 +29,7 @@ public class PokemonRepository extends BaseRepository {
         pokemonDao = database.pokemonDao();
         pokemonNameList = Arrays.asList(context.getResources().getStringArray(R.array.pokemon));
     }
+
 
     public LiveData<Optional<Pokemon>> getPokemon(int id) {
         MutableLiveData<Optional<Pokemon>> pokemon = new MutableLiveData<>();
