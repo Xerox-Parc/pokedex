@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.data.remote;
+package com.xeroxparc.pokedex.data.remote.type;
 
 import androidx.annotation.NonNull;
 
@@ -16,13 +16,14 @@ import java.io.IOException;
 import java.util.Map;
 
 import static com.xeroxparc.pokedex.utils.Utils.urlToId;
+import static com.xeroxparc.pokedex.utils.Utils.urlToPageNumber;
 
 /**
  * Custom TypeAdapterFactory to correctly handle JSON results
  *
  * @author Fabio Buracchi
  */
-public class ResourceTypeAdapterFactory implements TypeAdapterFactory {
+public class PokeTypeAdapterFactory implements TypeAdapterFactory {
 	@Override
 	public <T> TypeAdapter<T> create(@NonNull Gson gson, @NonNull TypeToken<T> type) {
 		final TypeAdapter<T> delegateAdapter = gson.getDelegateAdapter(this, type);
@@ -46,11 +47,22 @@ public class ResourceTypeAdapterFactory implements TypeAdapterFactory {
 					JsonObject jsonObject = ((JsonObject) jsonElement);
 					for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
 						if (entry.getValue() instanceof JsonPrimitive) {
+							String url;
 							switch (entry.getKey()) {
-								case "count":
-									return jsonObject.getAsJsonArray("results");
+								case "next":
+									url = jsonObject.get(entry.getKey()).toString()
+											.replace("\"", "");
+									jsonObject.addProperty("next", urlToPageNumber(url));
+									afterRead(entry.getValue());
+									break;
+								case "previous":
+									url = jsonObject.get(entry.getKey()).toString()
+											.replace("\"", "");
+									jsonObject.addProperty("previous", urlToPageNumber(url));
+									afterRead(entry.getValue());
+									break;
 								case "url":
-									String url = jsonObject.get(entry.getKey()).toString()
+									url = jsonObject.get(entry.getKey()).toString()
 											.replace("\"", "");
 									jsonObject.addProperty("id", urlToId(url));
 									jsonObject.remove("url");

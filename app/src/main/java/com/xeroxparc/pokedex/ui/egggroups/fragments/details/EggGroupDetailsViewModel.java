@@ -9,7 +9,6 @@ import com.xeroxparc.pokedex.data.repository.EggGroupsRepository;
 import com.xeroxparc.pokedex.data.repository.PokemonRepository;
 import com.xeroxparc.pokedex.data.repository.SpeciesRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 import androidx.annotation.NonNull;

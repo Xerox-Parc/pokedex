@@ -31,4 +31,5 @@ public class VerboseEffect {
 	public Language getLanguage() {
 		return language;
 	}
+
 }

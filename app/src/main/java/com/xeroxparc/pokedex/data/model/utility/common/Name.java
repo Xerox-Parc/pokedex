@@ -16,7 +16,7 @@ public class Name {
 	@SerializedName("language")
 	private Language language;
 
-	public String getName() {
+	public String getText() {
 		return text;
 	}
 

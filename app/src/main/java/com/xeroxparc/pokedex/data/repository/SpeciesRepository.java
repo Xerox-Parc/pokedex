@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import com.xeroxparc.pokedex.data.database.dao.pokemon.PokemonSpeciesDao;
 import com.xeroxparc.pokedex.data.model.pokemon.egggroup.EggGroup;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
-import com.xeroxparc.pokedex.data.remote.ApiError;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -16,6 +15,8 @@ import java.util.stream.Collectors;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import retrofit2.HttpException;
 
 /*
  *
@@ -35,8 +36,8 @@ public class SpeciesRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (speciesDao.getPokemonSpecies(id) == null) {
                 try {
-                    speciesDao.insert(apiService.getPokemonSpecies(id));
-                } catch (IOException | ApiError e) {
+                    speciesDao.insert(apiService.getPokemonSpecies(id).result());
+                } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }
             }

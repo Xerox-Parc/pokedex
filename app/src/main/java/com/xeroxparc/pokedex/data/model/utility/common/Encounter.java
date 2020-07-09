@@ -31,4 +31,24 @@ public class Encounter {
 	@SerializedName("method")
 	private EncounterMethod encounterMethod;
 
+	public Integer getMinLevel() {
+		return minLevel;
+	}
+
+	public Integer getMaxLevel() {
+		return maxLevel;
+	}
+
+	public List<EncounterConditionValue> getEncounterConditionValueList() {
+		return encounterConditionValueList;
+	}
+
+	public Integer getChance() {
+		return chance;
+	}
+
+	public EncounterMethod getEncounterMethod() {
+		return encounterMethod;
+	}
+
 }

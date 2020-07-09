@@ -27,11 +27,4 @@ public class PokemonEncounter {
 		return versionDetailList;
 	}
 
-	public void setPokemon(Pokemon pokemon) {
-		this.pokemon = pokemon;
-	}
-
-	public void setVersionDetailList(List<VersionEncounterDetail> versionDetailList) {
-		this.versionDetailList = versionDetailList;
-	}
 }

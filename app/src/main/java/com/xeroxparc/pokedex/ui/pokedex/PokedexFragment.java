@@ -133,7 +133,7 @@ public class PokedexFragment extends CustomActionBarFragment {
 
         void addPokemon(Pokemon pokemon) {
             pokemonList.add(pokemon);
-            if(preferredFiltering&&pokemon.getPrefer()){
+            if(preferredFiltering&&pokemon.isFavourite()){
                 filteredList.add(pokemon);
             }else{
                 filteredList.add(pokemon);
@@ -142,12 +142,12 @@ public class PokedexFragment extends CustomActionBarFragment {
             //notifyDataSetChanged();
         }
 
-        void setPreferredFiltering(boolean filtering){
+        void setFavouriteredFiltering(boolean filtering){
             if(!filtering && preferredFiltering){
                 filteredList.clear();
                 filteredList.addAll(pokemonList);
             }else if(filtering && !preferredFiltering){
-                filteredList = pokemonList.stream().filter(Pokemon::getPrefer).collect(Collectors.toList());
+                filteredList = pokemonList.stream().filter(Pokemon::isFavourite).collect(Collectors.toList());
             }
             notifyDataSetChanged();
             preferredFiltering = filtering;
@@ -202,11 +202,11 @@ public class PokedexFragment extends CustomActionBarFragment {
             binding.switch1.setOnClickListener((v) -> {
                 if (binding.switch1.isChecked()) {
                     Log.d("Veridica", "Riuscita");
-                    this.viewModel.setPreferMode(1);
+                    this.viewModel.setFavouriteMode(1);
                     binding.switch1.setChecked(true);
                 } else {
                     Log.d("Veridica", "Riuscita");
-                    this.viewModel.setPreferMode(0);
+                    this.viewModel.setFavouriteMode(0);
                     binding.switch1.setChecked(false);
                 }
 
@@ -225,7 +225,7 @@ public class PokedexFragment extends CustomActionBarFragment {
                 @Override
                 public void requestPokemonUpdate(Pokemon updated,int position) {
                     if(isPreferredFiltering()){
-                        if(!updated.getPrefer()){
+                        if(!updated.isFavourite()){
                         getPokemonList().remove(position);
                         }
                     }
@@ -260,9 +260,9 @@ public class PokedexFragment extends CustomActionBarFragment {
         private MutableLiveData<String> filterPokemonName;
         private LiveData<List<Pokemon>> listPokemon;
 
-        public void setPreferMode(int preferMode) {
+        public void setFavouriteMode(int preferMode) {
             this.preferMode = preferMode;
-            componentListAdapter.setPreferredFiltering(preferMode == 1 );
+            componentListAdapter.setFavouriteredFiltering(preferMode == 1 );
             Log.d("Valore di prefer", String.valueOf(preferMode));
         }
 
@@ -309,7 +309,7 @@ public class PokedexFragment extends CustomActionBarFragment {
             }
             EggGroupType eggGroupTypeStyling = Utils.eggGroupTypeFromTypeId(typeList.get(0).getType().getId());
             binding.cardView2.setCardBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
-            if(pokemon.getPrefer()){
+            if(pokemon.isFavourite()){
                 binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
             }else{
                 binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
@@ -318,8 +318,8 @@ public class PokedexFragment extends CustomActionBarFragment {
             binding.textViewPokemonName.setText(pokemon.getName());
             binding.imageViewStar.setOnClickListener((v) -> {
                 Log.d("PREFER", "Pokemon " + (position + 1) + " aggiunto ai preferiti");
-                pokemon.setPrefer(!pokemon.getPrefer());
-                if(!pokemon.getPrefer()){
+                pokemon.setFavourite(!pokemon.isFavourite());
+                if(!pokemon.isFavourite()){
                     binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
                 }else{
                     binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);

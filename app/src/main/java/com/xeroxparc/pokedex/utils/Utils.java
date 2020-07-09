@@ -32,6 +32,15 @@ public class Utils {
 				null;
 	}
 
+	@Nullable
+	public static Integer urlToPageNumber(@NonNull String url) {
+		Matcher matcher = Pattern.compile("(?<=offset=)[0-9]+").matcher(url);
+		return matcher.find() ?
+				Integer.valueOf(matcher.group()) :
+				null;
+	}
+
+
 	public static void noInternetConnectionWarning(Context context){
 		Toast.makeText(context, R.string.message_no_internet_connection,Toast.LENGTH_LONG).show();
 	}

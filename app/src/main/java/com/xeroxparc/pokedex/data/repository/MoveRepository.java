@@ -8,10 +8,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.xeroxparc.pokedex.data.database.dao.move.MoveDao;
 import com.xeroxparc.pokedex.data.model.move.Move;
-import com.xeroxparc.pokedex.data.remote.ApiError;
 
 import java.io.IOException;
 import java.util.Optional;
+
+import retrofit2.HttpException;
 
 public class MoveRepository extends BaseRepository {
 
@@ -27,8 +28,8 @@ public class MoveRepository extends BaseRepository {
         AsyncTask.execute(() ->{
             if(moveDao.getMove(id) == null){
                 try{
-                    moveDao.insert(apiService.getMove(id));
-                } catch (IOException | ApiError e){
+                    moveDao.insert(apiService.getMove(id).result());
+                } catch (IOException | HttpException e){
                     e.printStackTrace();
                 }
             }

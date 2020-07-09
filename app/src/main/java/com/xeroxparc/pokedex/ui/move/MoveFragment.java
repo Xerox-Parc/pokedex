@@ -126,7 +126,7 @@ public class MoveFragment extends Fragment {
             for (int i = 0; i < nameList.size(); i++) {
                 String languageName = nameList.get(i).getLanguage().getName();
                 if(languageName != null && languageName.equalsIgnoreCase(getString(R.string.language))){
-                    holder.textViewName.setText(nameList.get(i).getName());
+                    holder.textViewName.setText(nameList.get(i).getText());
                     break;
                 }
             }

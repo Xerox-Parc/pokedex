@@ -3,6 +3,7 @@ package com.xeroxparc.pokedex.data.repository;
 import android.content.Context;
 
 import com.xeroxparc.pokedex.data.database.PokeDatabase;
+import com.xeroxparc.pokedex.data.remote.PokeApi;
 import com.xeroxparc.pokedex.data.remote.PokeApiService;
 
 /*
@@ -16,7 +17,7 @@ public abstract class BaseRepository {
     protected PokeDatabase database;
 
     public BaseRepository(Context context) {
-        apiService = new PokeApiService();
+        apiService = PokeApi.getService();
         database = PokeDatabase.getDatabase(context);
     }
 }

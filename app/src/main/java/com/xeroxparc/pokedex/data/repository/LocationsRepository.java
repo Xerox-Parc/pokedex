@@ -6,13 +6,14 @@ import android.os.AsyncTask;
 import com.xeroxparc.pokedex.data.database.dao.location.LocationDao;
 import com.xeroxparc.pokedex.data.model.location.Location;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
-import com.xeroxparc.pokedex.data.remote.ApiError;
 
 import java.io.IOException;
 import java.util.Optional;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import retrofit2.HttpException;
 
 public class LocationsRepository extends BaseRepository {
     private LocationDao locationDao;
@@ -26,8 +27,8 @@ public class LocationsRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (locationDao.getLocation(id) == null) {
                 try {
-                    locationDao.insert(apiService.getLocation(id));
-                } catch (IOException | ApiError e) {
+                    locationDao.insert(apiService.getLocation(id).result());
+                } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }
             }

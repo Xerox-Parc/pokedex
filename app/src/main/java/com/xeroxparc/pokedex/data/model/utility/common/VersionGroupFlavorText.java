@@ -21,4 +21,16 @@ public class VersionGroupFlavorText {
 	@SerializedName("version_group")
 	private VersionGroup versionGroup;
 
+	public String getText() {
+		return text;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public VersionGroup getVersionGroup() {
+		return versionGroup;
+	}
+
 }

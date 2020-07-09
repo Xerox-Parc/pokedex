@@ -5,13 +5,14 @@ import android.os.AsyncTask;
 
 import com.xeroxparc.pokedex.data.database.dao.pokemon.EggGroupDao;
 import com.xeroxparc.pokedex.data.model.pokemon.egggroup.EggGroup;
-import com.xeroxparc.pokedex.data.remote.ApiError;
 
 import java.io.IOException;
 import java.util.Optional;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import retrofit2.HttpException;
 
 /*
  *
@@ -31,8 +32,8 @@ public class EggGroupsRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (eggGroupDao.getEggGroup(id) == null) {
                 try {
-                    eggGroupDao.insert(apiService.getEggGroup(id));
-                } catch (IOException | ApiError e) {
+                    eggGroupDao.insert(apiService.getEggGroup(id).result());
+                } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }
             }

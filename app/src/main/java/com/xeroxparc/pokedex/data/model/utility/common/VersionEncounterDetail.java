@@ -33,4 +33,5 @@ public class VersionEncounterDetail {
 	public List<Encounter> getEncounterDetailList() {
 		return encounterDetailList;
 	}
+
 }

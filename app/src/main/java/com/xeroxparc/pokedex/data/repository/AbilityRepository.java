@@ -9,10 +9,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.xeroxparc.pokedex.data.database.dao.pokemon.AbilityDao;
 import com.xeroxparc.pokedex.data.model.pokemon.ability.Ability;
-import com.xeroxparc.pokedex.data.remote.ApiError;
 
 import java.io.IOException;
 import java.util.Optional;
+
+import retrofit2.HttpException;
 
 public class AbilityRepository extends BaseRepository {
     private AbilityDao abilityDao;
@@ -26,8 +27,8 @@ public class AbilityRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (abilityDao.getAbility(id) == null) {
                 try {
-                    abilityDao.insert(apiService.getAbility(id));
-                } catch (IOException | ApiError e) {
+                    abilityDao.insert(apiService.getAbility(id).result());
+                } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }
             }

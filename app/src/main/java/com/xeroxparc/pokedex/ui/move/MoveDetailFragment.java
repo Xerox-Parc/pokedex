@@ -79,7 +79,7 @@ public class MoveDetailFragment extends Fragment {
             for (int i = 0; i < nameList.size(); i++) {
                 String languageName = nameList.get(i).getLanguage().getName();
                 if(languageName != null && languageName.equalsIgnoreCase(getString(R.string.language))){
-                    textViewMoveName.setText(nameList.get(i).getName());
+                    textViewMoveName.setText(nameList.get(i).getText());
                     break;
                 }
             }

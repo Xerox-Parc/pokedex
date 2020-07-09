@@ -8,10 +8,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.xeroxparc.pokedex.data.database.dao.location.RegionDao;
 import com.xeroxparc.pokedex.data.model.location.region.Region;
-import com.xeroxparc.pokedex.data.remote.ApiError;
 
 import java.io.IOException;
 import java.util.Optional;
+
+import retrofit2.HttpException;
 
 public class RegionRepository extends BaseRepository {
     private RegionDao regionDao;
@@ -26,8 +27,8 @@ public class RegionRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (regionDao.getRegion(id) == null) {
                 try {
-                    regionDao.insert(apiService.getRegion(id));
-                } catch (IOException | ApiError e) {
+                    regionDao.insert(apiService.getRegion(id).result());
+                } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }
             }

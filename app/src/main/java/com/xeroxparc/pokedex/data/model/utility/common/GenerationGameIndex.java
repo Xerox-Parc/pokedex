@@ -16,4 +16,12 @@ public class GenerationGameIndex {
 	@SerializedName("generation")
 	private Generation generation;
 
+	public Integer getGameIndex() {
+		return gameIndex;
+	}
+
+	public Generation getGeneration() {
+		return generation;
+	}
+
 }

@@ -7,7 +7,6 @@ import android.util.Log;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.database.dao.pokemon.PokemonDao;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
-import com.xeroxparc.pokedex.data.remote.ApiError;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +17,8 @@ import java.util.Optional;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import retrofit2.HttpException;
 
 public class PokemonRepository extends BaseRepository {
     private static final String TAG = "PokemonRepository";
@@ -36,8 +37,8 @@ public class PokemonRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (pokemonDao.getPokemon(id) == null) {
                 try {
-                    pokemonDao.insert(apiService.getPokemon(id));
-                } catch (IOException | ApiError e) {
+                    pokemonDao.insert(apiService.getPokemon(id).result());
+                } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }
             }
@@ -47,9 +48,7 @@ public class PokemonRepository extends BaseRepository {
     }
 
     public void updatePokemon(Pokemon pokemon) {
-        AsyncTask.execute(() -> {
-            pokemonDao.insert(pokemon);
-        });
+        AsyncTask.execute(() -> pokemonDao.insert(pokemon));
     }
 
 
@@ -85,7 +84,7 @@ public class PokemonRepository extends BaseRepository {
         Pokemon pokemon;
         for (String pokemonName : pokemonNameList) {
             pokemon = new Pokemon();
-            if (pokemon.getPrefer()) {
+            if (pokemon.isFavourite()) {
                 pokemon.setName(pokemonName);
                 listPokemon.add(pokemon);
             } else {

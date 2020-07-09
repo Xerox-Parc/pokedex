@@ -12,19 +12,12 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.textview.MaterialTextView;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
-import com.xeroxparc.pokedex.data.model.pokemon.PokemonType;
 import com.xeroxparc.pokedex.data.repository.PokemonRepository;
-import com.xeroxparc.pokedex.databinding.FragmentPokemonDetailsBinding;
-import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
-import com.xeroxparc.pokedex.utils.Utils;
-
-import java.util.List;
 
 /**
  * @author Palmieri Ivan
