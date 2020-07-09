@@ -55,6 +55,18 @@
             android:name="pokemonId"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_nav_pokemon_detail_to_nav_base_state_fragment"
+            app:destination="@id/nav_base_state_fragment" />
+        <action
+            android:id="@+id/action_nav_pokemon_detail_to_nav_evolution_fragment"
+            app:destination="@id/nav_evolution_fragment" />
+        <action
+            android:id="@+id/action_nav_pokemon_detail_to_nav_about_fragment"
+            app:destination="@id/nav_about_fragment" />
+        <action
+            android:id="@+id/action_nav_pokemon_detail_to_nav_pokemon_moves_fragment"
+            app:destination="@id/nav_pokemon_moves_fragment" />
     </fragment>
 
 
@@ -89,13 +101,6 @@
             app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"/>
-        <action
-            android:id="@+id/action_nav_locations_list_to_nav_locations_area_details"
-            app:destination="@id/nav_locations_area_details"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
 
     <fragment
@@ -105,10 +110,6 @@
         tools:layout="@layout/fragment_locations_area_list">
         <argument
             android:name="location_ids"
-            app:argType="string"
-            android:defaultValue="name ids"/>
-        <argument
-            android:name="location_id_name"
             app:argType="string"
             android:defaultValue="name ids"/>
         <action
@@ -152,22 +153,43 @@
         android:id="@+id/nav_egg_group_details"
         android:name="com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragment"
         tools:layout="@layout/fragment_egg_group_details"/>
+
     <fragment
-        android:id="@+id/nav_ability"
-        android:name="com.xeroxparc.pokedex.ui.ability.AbilityFragment"
-        android:label="Abilities"
-        tools:layout="@layout/fragment_ability">
-        <action
-            android:id="@+id/action_nav_abilities_to_nav_abilities_detail"
-            app:destination="@id/nav_ability_detail" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_ability_detail"
-        android:name="com.xeroxparc.pokedex.ui.ability.detail.AbilityDetailFragment"
-        android:label="Abilities Detail"
-        tools:layout="@layout/fragment_ability_detail">
+        android:id="@+id/nav_base_state_fragment"
+        android:name="com.xeroxparc.pokedex.ui.pokedex.detail.PokemonBaseStatsFragment"
+        tools:layout="@layout/fragment_pokemon_base_stats">
         <argument
-            android:name="ability_id"
+            android:name="pokemon_id"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_about_fragment"
+        android:name="com.xeroxparc.pokedex.ui.pokedex.detail.PokemonAboutFragment"
+        tools:layout="@layout/fragment_pokemon_about">
+        <argument
+            android:name="pokemon_id"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_evolution_fragment"
+        android:name="com.xeroxparc.pokedex.ui.pokedex.detail.evolution.PokemonEvolutionFragment"
+        tools:layout="@layout/fragment_pokemon_evolution">
+        <argument
+            android:name="pokemon_id"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_pokemon_moves_fragment"
+        android:name="com.xeroxparc.pokedex.ui.pokedex.detail.moves.PokemonMovesFragment"
+        tools:layout="@layout/fragment_pokemon_moves">
+        <argument
+            android:name="pokemon_id"
             app:argType="integer"
             android:defaultValue="0"/>
     </fragment>

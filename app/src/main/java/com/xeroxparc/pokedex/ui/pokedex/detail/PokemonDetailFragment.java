@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
@@ -23,6 +25,7 @@ import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.data.model.pokemon.PokemonType;
 import com.xeroxparc.pokedex.data.repository.PokemonRepository;
+import com.xeroxparc.pokedex.databinding.FragmentPokemonDetailsBinding;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 import com.xeroxparc.pokedex.utils.Utils;
 
@@ -39,6 +42,7 @@ public class PokemonDetailFragment extends Fragment {
     String[] listString = {"About", "Base State", "Evolution", "Moves"};
     Pokemon currentPokemon;
     int visiblePage = 0;
+    FragmentPokemonDetailsBinding binding;
 
 
     @Nullable
@@ -50,24 +54,32 @@ public class PokemonDetailFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager = view.findViewById(R.id.viewPager2);
-        viewPager.setAdapter(viewPagerAdapter);
-        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
-        new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> {
-                    tab.setText(listString[position]);
-                }
-        ).attach();
 
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+
+
+      //  viewPagerAdapter = new ViewPagerAdapter(this);
+       // viewPager = view.findViewById(R.id.viewPager2);
+       // viewPager.setAdapter(viewPagerAdapter);
+       // TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        //new TabLayoutMediator(tabLayout, viewPager,
+      //          (tab, position) -> {
+     //               tab.setText(listString[position]);
+        //       }
+       // ).attach();
+
+        /*viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 visiblePage = position;
-                loadData();
+                //loadData();
             }
-        });
+        });*/
+        CardView cardView = view.findViewById(R.id.cardView);
+        CardView cardView1 = view.findViewById(R.id.cardView5);
+        CardView cardView2 = view.findViewById(R.id.cardView4);
+        CardView cardView3 = view.findViewById(R.id.cardView3);
+
 
         /*Qui reperisco i dati dal fragment sorgente*/
         MaterialTextView textViewName = view.findViewById(R.id.textView2);//Nome
@@ -79,6 +91,34 @@ public class PokemonDetailFragment extends Fragment {
         /*Qui inizia l'assegnazione dei dati */
         Integer pokId = PokemonDetailFragmentArgs.fromBundle(requireArguments()).getPokemonId();//Id
 
+        cardView.setOnClickListener(item->{
+            PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavAboutFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavAboutFragment();
+            action.setPokemonId(pokId);
+            Navigation.findNavController(requireView()).navigate(action);
+            //Apro fragment Pokemon About
+        });
+        cardView1.setOnClickListener(item->{
+            PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavBaseStateFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavBaseStateFragment();
+            action.setPokemonId(pokId);
+            Navigation.findNavController(requireView()).navigate(action);
+            //Apro fragment Pokemon Base state
+        });
+        cardView2.setOnClickListener(item->{
+            PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavEvolutionFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavEvolutionFragment();
+            action.setPokemonId(pokId);
+            Navigation.findNavController(requireView()).navigate(action);
+            //Apro fragment Pokemon Evolution
+        });
+        cardView3.setOnClickListener(item->{
+            PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavPokemonMovesFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavPokemonMovesFragment();
+            action.setPokemonId(pokId);
+            Navigation.findNavController(requireView()).navigate(action);
+            //Apro fragment Pokemon Moves
+        });
+
+
+
+        /*Modifiche sulla pokemon_detail statica*/
         PokemonRepository pokemonRepository = new PokemonRepository(requireContext());
         pokemonRepository.getPokemon(pokId).observe(getViewLifecycleOwner(), pokemon -> {
             pokemon.ifPresent(retrievedPokemon -> {
@@ -89,69 +129,20 @@ public class PokemonDetailFragment extends Fragment {
                 Glide.with(requireContext()).load(retrievedPokemon.getSprite().getFrontDefault()).into(pokemonImage);
                 /*Imposto id*/
                 textViewIdPokemon.setText(pokId.toString());
-                loadData();
+               // loadData();
                 /*Imposto sfondo*/
                 List<PokemonType> typeList = currentPokemon.getTypeList();
                 EggGroupType eggGroupTypeStyling = Utils.eggGroupTypeFromTypeId(typeList.get(0).getType().getId());
                 constraintLayout.setBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
+                cardView.setBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
+                cardView1.setBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
+                cardView2.setBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
+                cardView3.setBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
+
+
 
 
             });
         });
     }
-
-
-    void loadData() {
-        if (currentPokemon != null) {
-//            Fragment fragment = viewPagerAdapter.getFragment();
-//            View view1 = fragment.getView();
-            switch (visiblePage) {
-                case 0:
-                    ProgressBar pokemonHp = viewPager.getRootView().findViewById(R.id.progressBar);//Hp
-                    ProgressBar pokemonAttack = viewPager.getRootView().findViewById(R.id.progressBar2);//Attack
-                    ProgressBar pokemonDefense = viewPager.getRootView().findViewById(R.id.progressBar3);//Defense
-                    ProgressBar pokemonSpAtk = viewPager.getRootView().findViewById(R.id.progressBar4);//SpAtk
-                    ProgressBar pokemonSpDef = viewPager.getRootView().findViewById(R.id.progressBar5);//SpDef
-                    ProgressBar pokemonSpeed = viewPager.getRootView().findViewById(R.id.progressBar6);//Speed
-                    TextView pokemonHpP = viewPager.getRootView().findViewById(R.id.textView23);//Hp
-                    TextView pokemonAttackP = viewPager.getRootView().findViewById(R.id.textView24);//Attack
-                    TextView pokemonDefenseP = viewPager.getRootView().findViewById(R.id.textView25);//Defense
-                    TextView pokemonSpDefP = viewPager.getRootView().findViewById(R.id.textView26);//SpDef
-                    TextView pokemonSpAtkP = viewPager.getRootView().findViewById(R.id.textView27);//SpAtk
-                    TextView pokemonSpeedP = viewPager.getRootView().findViewById(R.id.textView28);//Speed
-
-                    pokemonHp.setProgress(currentPokemon.getStatList().get(0).getBaseStat());
-                    pokemonAttack.setProgress(currentPokemon.getStatList().get(1).getBaseStat());
-                    pokemonDefense.setProgress(currentPokemon.getStatList().get(2).getBaseStat());
-                    pokemonSpAtk.setProgress(currentPokemon.getStatList().get(3).getBaseStat());
-                    pokemonSpDef.setProgress(currentPokemon.getStatList().get(4).getBaseStat());
-                    pokemonSpeed.setProgress(currentPokemon.getStatList().get(5).getBaseStat());
-
-                    pokemonHpP.setText(currentPokemon.getStatList().get(0).getBaseStat().toString());
-                    pokemonAttackP.setText(currentPokemon.getStatList().get(1).getBaseStat().toString());
-                    pokemonDefenseP.setText(currentPokemon.getStatList().get(2).getBaseStat().toString());
-                    pokemonSpAtkP.setText(currentPokemon.getStatList().get(3).getBaseStat().toString());
-                    pokemonSpDefP.setText(currentPokemon.getStatList().get(4).getBaseStat().toString());
-                    pokemonSpeedP.setText(currentPokemon.getStatList().get(5).getBaseStat().toString());
-                    break;
-                case 1:
-//                    TextView pokemonHeight = viewPager.findViewById(R.id.textView15);//Height
-                    TextView pokemonWeight = viewPager.getRootView().findViewById(R.id.textView16);//Weight
-                    TextView pokemonDescription = viewPager.getRootView().findViewById(R.id.textView5);//Descriptor
-//                    pokemonHeight.setText("Height");
-//                    pokemonHeight.setText(currentPokemon.getHeight());
-//                    pokemonWeight.setText(currentPokemon.getWeight());
-//                    pokemonGender.setText(currentPokemon.getWeight());
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-            }
-//            Log.e(TAG, "Page Tag: " + fragment);
-//            Log.e(TAG, "Page Tag: " + view1.getTag());
-        }
-    }
-
-
 }

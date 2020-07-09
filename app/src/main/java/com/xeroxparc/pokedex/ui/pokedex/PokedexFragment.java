@@ -242,9 +242,9 @@ public class PokedexFragment extends CustomActionBarFragment {
             binding.recyclerView.setAdapter(componentListAdapter);
             binding.recyclerView.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
             binding.recyclerView.setLayoutManager(new GridLayoutManager(fragment.getContext(), 2));
-//            viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
-            //final int POKEMON_ID_MAX = 807;
-            final int POKEMON_ID_MAX = 3;
+          //  viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
+            final int POKEMON_ID_MAX = 807;
+            //final int POKEMON_ID_MAX = 3;
             for(int i=0; i<POKEMON_ID_MAX; i++) {
                 viewModel.getPokemonLiveData(i).observe(fragment, pokemon -> {
                     pokemon.ifPresent(componentListAdapter::addPokemon);
