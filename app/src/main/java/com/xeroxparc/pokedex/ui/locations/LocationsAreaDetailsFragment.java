@@ -107,8 +107,8 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
             locationAreaDetailsListAdapter = new LocationAreaDetailsListAdapter(activity, locationsAreaList);
 
-            binding.recyclerView.setAdapter(locationAreaDetailsListAdapter);
-            binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+            binding.recycleViewPokemonEncounter.setAdapter(locationAreaDetailsListAdapter);
+            binding.recycleViewPokemonEncounter.setLayoutManager(new LinearLayoutManager(activity));
 
         }
 

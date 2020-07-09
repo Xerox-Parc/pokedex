@@ -93,8 +93,8 @@ public class LocationsAreaListFragment extends DialogFragment {
 
             locationAreaListListAdapter = new LocationsAreaListFragment.LocationAreaListListAdapter(activity);
 
-            binding.recyclerView.setAdapter(locationAreaListListAdapter);
-            binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+            binding.recycleViewPokemonList.setAdapter(locationAreaListListAdapter);
+            binding.recycleViewPokemonList.setLayoutManager(new LinearLayoutManager(activity));
 
         }
 

@@ -64,7 +64,7 @@
                 android:layout_centerInParent="true"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycle_view_pokemon_evolution"
+                android:id="@+id/recycle_view_pokemon_encounter"
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
 

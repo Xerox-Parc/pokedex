@@ -39,8 +39,8 @@ public class PokemonEvolutionBinder {
               //
             }
         };
-        binding.recyclerView.setAdapter(componentListAdapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
+        binding.recycleViewPokemonEvolution.setAdapter(componentListAdapter);
+        binding.recycleViewPokemonEvolution.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
         viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
     }
 

@@ -38,8 +38,8 @@ public class PokemonMovesBinder {
                 //
             }
         };
-        binding.recyclerView.setAdapter(componentListAdapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
+        binding.recycleViewPokemonMoves.setAdapter(componentListAdapter);
+        binding.recycleViewPokemonMoves.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
         viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
     }
 }

@@ -90,8 +90,8 @@ public class LocationsListFragment extends Fragment {
 
             locationListAdapter = new LocationListListAdapter(activity, locationsList, getViewLifecycleOwner());
 
-            binding.recyclerView.setAdapter(locationListAdapter);
-            binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+            binding.recycleViewPokemonLocation.setAdapter(locationListAdapter);
+            binding.recycleViewPokemonLocation.setLayoutManager(new LinearLayoutManager(activity));
 
         }
 

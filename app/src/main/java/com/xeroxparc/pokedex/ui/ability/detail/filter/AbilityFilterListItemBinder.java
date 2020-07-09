@@ -24,7 +24,7 @@ public class AbilityFilterListItemBinder {
     }
 
     void bind() {
-        name = binding.textViewName;
+        name = binding.textViewPokemonName;
     }
 
     TextView getNameView(){
@@ -32,6 +32,6 @@ public class AbilityFilterListItemBinder {
     }
 
     ImageView getImageView(){
-        return binding.imageViewAbilityPokemon;
+        return binding.imageViewPokemonEvolutionFirst;
     }
 }
