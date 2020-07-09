@@ -22,4 +22,15 @@ public class VersionEncounterDetail {
 	@SerializedName("encounter_details")
 	private List<Encounter> encounterDetailList;
 
+	public Version getVersion() {
+		return version;
+	}
+
+	public Integer getMaxChance() {
+		return maxChance;
+	}
+
+	public List<Encounter> getEncounterDetailList() {
+		return encounterDetailList;
+	}
 }

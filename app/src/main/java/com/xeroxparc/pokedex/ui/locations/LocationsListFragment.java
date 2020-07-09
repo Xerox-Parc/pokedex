@@ -89,28 +89,26 @@ public class LocationsListFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         final RegionRepository regionRepository = new RegionRepository(getContext());
-        //String regionName = "";
+        String regionName = "alola";
 
         TextView textViewRegionName = requireView().findViewById(R.id.TextView_RegionName);
+        ImageSlider imageSlider = view.findViewById(R.id.ImageSlider_Map);
+        List<SlideModel> slideModels = new ArrayList<>();
+
         int regionId = LocationsListFragmentArgs.fromBundle(requireArguments()).getRegionId();
 
         regionRepository.getRegion(regionId).observe(getViewLifecycleOwner(), region -> {
             region.
                     ifPresent(retreivedRegion -> {
                         locationListAdapter.setLocationNamesList(retreivedRegion.getLocationList());
-                        textViewRegionName.setText(String.format("%s %s", "Region of", Character.toUpperCase(retreivedRegion.getName().charAt(0)) + retreivedRegion.getName().substring(1)));
-                        //regionName = String.format("%s", retreivedRegion.getName());
+                        String formattedRegionName = String.format("%s %s", "Region of", Character.toUpperCase(retreivedRegion.getName().charAt(0)) + retreivedRegion.getName().substring(1));
+                        textViewRegionName.setText(formattedRegionName);
+                        setImageSlider(retreivedRegion.getName(), slideModels);
+                        imageSlider.setImageList(slideModels, true);
+//                        regionName = String.format("%s", retreivedRegion.getName());
                     });
         });
-
-        String regionName = getRegionName(regionId);
-
-
-        ImageSlider imageSlider = view.findViewById(R.id.ImageSlider_Map);
-        List<SlideModel> slideModels = new ArrayList<>();
-        setImageSlider(regionName, slideModels);
-        imageSlider.setImageList(slideModels, true);
-
+//        String regionName = getRegionName(regionId);
     }
 
     class Holder {

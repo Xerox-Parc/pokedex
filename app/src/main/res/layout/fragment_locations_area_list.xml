@@ -51,7 +51,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!--
+
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/list_loading_img"
                 android:layout_width="300dp"
@@ -59,7 +59,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/img_loading_placeholder"
                 android:layout_centerInParent="true"/>
-                -->
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"

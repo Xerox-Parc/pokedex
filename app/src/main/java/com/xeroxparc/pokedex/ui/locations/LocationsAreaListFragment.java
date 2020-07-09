@@ -77,6 +77,7 @@ public class LocationsAreaListFragment extends DialogFragment {
                         observe(getViewLifecycleOwner(),
                                 locationArea -> locationArea.ifPresent(retrievedArea -> {
                                     holder.getListAdapter().addLocationArea(retrievedArea);
+                                    binding.listLoadingImg.setVisibility(View.GONE);
                                 }));
             });
         }
@@ -123,6 +124,7 @@ public class LocationsAreaListFragment extends DialogFragment {
                 super(itemView);
                 locationItemView = itemView.findViewById(R.id.TextView_LocationName);
                 itemLayout = itemView.findViewById(R.id.LinearLayout_location);
+
                 this.mAdapter = adapter;
             }
 
@@ -145,7 +147,7 @@ public class LocationsAreaListFragment extends DialogFragment {
 
 
             LocationsAreaListFragmentDirections.ActionNavLocationsAreaListToNavLocationsAreaDetails action = LocationsAreaListFragmentDirections.actionNavLocationsAreaListToNavLocationsAreaDetails();
-            action.setLocationAreaId(21);
+            action.setLocationAreaId(currentElement.getId());
 
             holder.itemView.setOnClickListener(item -> {
                // locationArea
