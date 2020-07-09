@@ -13,7 +13,6 @@ import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.databinding.ItemRowEggGroupPokemonBinding;
 import com.xeroxparc.pokedex.ui.egggroups.components.EggGroupChip;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
-import com.xeroxparc.pokedex.ui.egggroups.fragments.TypeAndTextFilterable;
 import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsLoader;
 import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsNavigationRequester;
 import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupSpeciesListFilter.FilterMode;
@@ -30,6 +29,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPokemonViewHolder>
         implements TypeAndTextFilterable, PostFilteringCallBack<List<PokemonSpecies>>, OnClickListener {
     private static final String TAG = "EggGroupPokemonListAdap";
+    private final int BIG_BATCH_SIZE = 5;
+    private final int SMALL_BATCH_SIZE = 2;
     private Context ctx;
     private EggGroupDetailsLoader detailsLoader;
     private EggGroupDetailsNavigationRequester navigationRequester;
@@ -38,6 +39,8 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
     private Map<String, String> imagesMap;
     private Map<String, Boolean> loadingMap;
     private Map<String, PokemonSpecies> detailedSpecies;
+    private int lastLoadedItem = 5;
+
 
     public EggGroupPokemonListAdapter(Context context, EggGroupDetailsLoader loader,
                                       List<PokemonSpecies> species, EggGroupDetailsNavigationRequester navigationRequester) {
@@ -62,8 +65,7 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
 
     @Override
     public void onBindViewHolder(@NonNull EggGroupPokemonViewHolder holder, int position) {
-        final int BATCH_SIZE = 5;
-        loadBatchIfNeeded(position, BATCH_SIZE);
+        loadBatchIfNeeded(position, BIG_BATCH_SIZE);
         holder.resetImage();
         holder.resetEggGroups();
         PokemonSpecies specie = filteredList.get(position);
@@ -113,12 +115,21 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
             PokemonSpecies specie = filteredList.get(currentPosition);
             detailsLoader.loadDetailedSpecieInAdapter(specie.getId(), currentPosition);
             loadingMap.put(specie.getName(), false);
+            Log.e(TAG, "loadSingleIfNeeded[LAST:" + lastLoadedItem + "]: " + currentPosition);
+            if (lastLoadedItem < currentPosition) {
+                Log.e(TAG, "loadSingleIfNeeded:LOADED LAST:"+ currentPosition);
+                lastLoadedItem = currentPosition;
+            } else if (imagesMap.get(filteredList.get(lastLoadedItem - BIG_BATCH_SIZE).getName()) != null) {
+                Log.e(TAG, "loadSingleIfNeeded:UPDATE LAST LOADED ITEM:"+ currentPosition);
+                loadBatchIfNeeded(lastLoadedItem, SMALL_BATCH_SIZE);
+            }
             //False means that it started loading and should be set to true when loaded
         }
     }
 
     public void addImage(String specieName, String imageUrl, int position) {
         imagesMap.put(specieName, imageUrl);
+        loadingMap.put(specieName, true);
         notifyItemChanged(position);
     }
 

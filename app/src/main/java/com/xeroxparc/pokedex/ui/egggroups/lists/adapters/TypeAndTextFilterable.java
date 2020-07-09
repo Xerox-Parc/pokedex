@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui.egggroups.fragments;
+package com.xeroxparc.pokedex.ui.egggroups.lists.adapters;
 
 import android.widget.Filter;
 
