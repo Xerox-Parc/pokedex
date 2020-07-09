@@ -6,23 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ui.locations.LocationsAreaDetailsFragment">
 
-
+    <!--
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="-50dp"
+        android:layout_marginTop="-30dp"
+        android:alpha=".10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_pokeball" />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/text_view_area_name"
+            android:id="@+id/TextView_AreaName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/yantramanav_medium"
-            android:text="@string/locations_pokemon_encounter"
+            android:text="Pokemon Encounter"
             android:textColor="#000"
-            android:textSize="20sp"
-            android:layout_marginStart="10dp"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/relative_layout_locations_area_list"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.119"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +40,7 @@
             app:layout_constraintVertical_bias="0.773" />
 
         <RelativeLayout
-            android:id="@+id/relative_layout_locations_area_list"
+            android:id="@+id/linearLayout"
             android:layout_width="370dp"
             android:layout_height="450dp"
             android:layout_gravity="center_horizontal"
@@ -54,7 +64,7 @@
                 android:layout_centerInParent="true"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycle_view_locations_area_details"
+                android:id="@+id/recycle_view_pokemon_encounter"
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
 

@@ -84,6 +84,7 @@ public class MoveFragment extends Fragment {
 
             public ViewHolder(View itemView, MoveListAdapter adapter) {
                 super(itemView);
+
                 textViewName = itemView.findViewById(R.id.text_view_name);
                 textViewType = itemView.findViewById(R.id.text_view_type);
                 textViewDamageClass = itemView.findViewById(R.id.text_view_damage_class);

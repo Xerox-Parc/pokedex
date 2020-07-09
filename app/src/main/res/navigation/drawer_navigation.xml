@@ -74,7 +74,7 @@
     <fragment
         android:id="@+id/nav_locations_filter"
         android:name="com.xeroxparc.pokedex.ui.locations.LocationsFilterFragment"
-        android:label="@string/locations_filter_generation_title"
+        android:label="Locations"
         tools:layout="@layout/fragment_locations_filter">
         <action
             android:id="@+id/action_nav_locations_filter_to_nav_locations_list"
@@ -88,7 +88,7 @@
     <fragment
         android:id="@+id/nav_locations_list"
         android:name="com.xeroxparc.pokedex.ui.locations.LocationsListFragment"
-        android:label="@string/locations_list_title"
+        android:label="Locations List"
         tools:layout="@layout/fragment_locations_list">
         <argument
             android:name="region_id"
@@ -113,7 +113,7 @@
     <fragment
         android:id="@+id/nav_locations_area_list"
         android:name="com.xeroxparc.pokedex.ui.locations.LocationsAreaListFragment"
-        android:label="@string/locations_area_list_title"
+        android:label="Location Area List"
         tools:layout="@layout/fragment_locations_area_list">
         <argument
             android:name="location_ids"
@@ -135,7 +135,7 @@
     <fragment
         android:id="@+id/nav_locations_area_details"
         android:name="com.xeroxparc.pokedex.ui.locations.LocationsAreaDetailsFragment"
-        android:label="@string/locations_area_details_title"
+        android:label="Loacations Area Details"
         tools:layout="@layout/fragment_locations_area_details">
         <argument
             android:name="location_area_id"

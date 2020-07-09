@@ -49,8 +49,7 @@ public class LocationsAreaDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Get Area ID and Name from "Locations Area List" and "Location List" fragments
-        TextView textViewAreaName = requireView().findViewById(R.id.text_view_area_name);
+        TextView textViewAreaName = requireView().findViewById(R.id.TextView_AreaName);
         int areaId = LocationsAreaDetailsFragmentArgs.fromBundle(requireArguments()).getLocationAreaId();
         String areaIdTitle = LocationsAreaDetailsFragmentArgs.fromBundle(requireArguments()).getLocationAreaIdTitle();
 
@@ -59,7 +58,19 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
         locationAreaRepository.getLocationArea(areaId).observe(getViewLifecycleOwner(), locationArea -> {
             locationArea.ifPresent(area -> {
-
+//                List<PokemonEncounter> encounters = new ArrayList<>();
+//                area.getPokemonEncounterList().forEach(pokemonEncounter -> {
+//                    List<VersionEncounterDetail> encounterDetails = pokemonEncounter.getVersionDetailList();
+//                    for(int i = 0; i<encounterDetails.size();i++){
+//                        PokemonEncounter encounter = new PokemonEncounter();
+//                        encounter.setPokemon(pokemonEncounter.getPokemon());
+//                        List<VersionEncounterDetail> details = new ArrayList<>();
+//                        details.add(encounterDetails.get(i));
+//                        encounter.setVersionDetailList(details);
+//                        encounters.add(encounter);
+//                    }
+//                });
+//                encounterList.addAll(encounters);
                 encounterList.addAll(area.getPokemonEncounterList());
                 locationAreaDetailsListAdapter.notifyDataSetChanged();
                 encounterList.forEach(pokemonEncounter -> {
@@ -83,10 +94,15 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
         public Holder(FragmentActivity activity) {
 
+            // placeholder mechanism
+//            for (int i = 0; i < 20; i++) {
+//                locationsAreaList.addLast("Pokemon " + i);
+//            }
+
             locationAreaDetailsListAdapter = new LocationAreaDetailsListAdapter(activity, locationsAreaList);
 
-            binding.recycleViewLocationsAreaDetails.setAdapter(locationAreaDetailsListAdapter);
-            binding.recycleViewLocationsAreaDetails.setLayoutManager(new LinearLayoutManager(activity));
+            binding.recycleViewPokemonEncounter.setAdapter(locationAreaDetailsListAdapter);
+            binding.recycleViewPokemonEncounter.setLayoutManager(new LinearLayoutManager(activity));
 
         }
 
@@ -114,11 +130,12 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
             public ViewHolder(View itemView, LocationsAreaDetailsFragment.LocationAreaDetailsListAdapter adapter) {
                 super(itemView);
-                locationItemView = itemView.findViewById(R.id.text_view_location_name);
-                itemLayout = itemView.findViewById(R.id.linear_layout_location_area_pokemon);
+                locationItemView = itemView.findViewById(R.id.TextView_LocationName);
+                itemLayout = itemView.findViewById(R.id.LinearLayout_LocationAreaPokemon);
 
-                image = itemView.findViewById(R.id.image_view_pokemon_sprite);
-                pokemonName = itemView.findViewById(R.id.text_view_pokemon_name);
+                image = itemView.findViewById(R.id.pokemonImage);
+                pokemonName = itemView.findViewById(R.id.TextView_PokemonName);
+               // game = itemView.findViewById(R.id.TextView_Game);
                 this.mAdapter = adapter;
             }
 
@@ -129,6 +146,10 @@ public class LocationsAreaDetailsFragment extends Fragment {
             public void setName(String name){
                 pokemonName.setText(name);
             }
+
+            //public void setGame(String game) {
+//                this.game.setText(game);
+//            }
         }
 
         @NonNull
@@ -142,15 +163,22 @@ public class LocationsAreaDetailsFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull LocationsAreaDetailsFragment.LocationAreaDetailsListAdapter.ViewHolder holder, int position) {
             PokemonEncounter encounter = encounterList.get(position);
-
+            //VersionEncounterDetail encounterDetail = encounter.getVersionDetailList().get(0);
             String pokemonName = encounter.getPokemon().getName();
             holder.setName(pokemonName);
-
+            //holder.setGame(encounterDetail.getVersion().getName());
             if(pokemonImages.get(pokemonName) != null){
-                // Get Pokemon's image
                 Glide.with(getContext()).load(pokemonImages.get(pokemonName)).into(holder.getImage());
             }
+            //String currentElement = locationAreaList.get(position);
+            //holder.locationItemView.setText(currentElement);
 
+            // LocationsListFragmentDirections.ActionNavMoveToNavMoveDetail action = LocationsListFragmentDirections.actionNavMoveToNavMoveDetail();
+            //action.setLocationTitle(currentElement);
+
+            //holder.itemView.setOnClickListener(item-> {
+            //      Navigation.findNavController(requireView()).navigate(action);
+            //});
             binding.listLoadingImg.setVisibility(View.GONE);
 
         }
