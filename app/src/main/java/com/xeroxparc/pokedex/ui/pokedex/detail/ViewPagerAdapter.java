@@ -8,13 +8,17 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.xeroxparc.pokedex.ui.pokedex.detail.evolution.PokemonEvolutionFragment;
 import com.xeroxparc.pokedex.ui.pokedex.detail.moves.PokemonMovesFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  *
  * @author Palmieri Ivan
  */
 public class ViewPagerAdapter extends FragmentStateAdapter {
-    Fragment fragment;
+    List<Fragment> fragments = new ArrayList<>();
 
     public ViewPagerAdapter(Fragment fragment) {
         super(fragment);
@@ -24,6 +28,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         // Return a NEW fragment instance in createFragment(int)
+        Fragment fragment;
         Bundle args = new Bundle();
         switch (position){
             case 1:
@@ -42,8 +47,10 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
         // Our object is just an integer :-P
         args.putInt(PokemonAboutFragment.ARG_OBJECT, position + 1);
         fragment.setArguments(args);
+        fragments.add(fragment);
         return fragment;
     }
+
 
     @Override
     public int getItemCount() {
@@ -52,7 +59,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
 
 
-    public Fragment getFragment() {
-        return fragment;
+    public Fragment getFragment(int position) {
+        return fragments.get(position);
     }
 }

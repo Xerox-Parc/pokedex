@@ -21,6 +21,7 @@ import androidx.lifecycle.MutableLiveData;
 public class PokemonRepository extends BaseRepository {
     private PokemonDao pokemonDao;
     private final List<String> pokemonNameList;
+
     public PokemonRepository(Context context) {
         super(context);
         pokemonDao = database.pokemonDao();
@@ -40,6 +41,12 @@ public class PokemonRepository extends BaseRepository {
             pokemon.postValue(Optional.ofNullable(pokemonDao.getPokemon(id)));
         });
         return pokemon;
+    }
+
+    public void updatePokemon(Pokemon pokemon) {
+        AsyncTask.execute(() -> {
+            pokemonDao.insert(pokemon);
+        });
     }
 
 
@@ -68,17 +75,17 @@ public class PokemonRepository extends BaseRepository {
         }
         return new MutableLiveData<>(listPokemon);
     }
+
     @NonNull
     public LiveData<List<com.xeroxparc.pokedex.data.Pokemon>> getComponentListByPrefer() {
         List<com.xeroxparc.pokedex.data.Pokemon> listPokemon = new ArrayList<>();
         com.xeroxparc.pokedex.data.Pokemon pokemon;
         for (String pokemonName : pokemonNameList) {
             pokemon = new com.xeroxparc.pokedex.data.Pokemon();
-            if(pokemon.getPrefer()) {
+            if (pokemon.getPrefer()) {
                 pokemon.setName(pokemonName);
                 listPokemon.add(pokemon);
-            }
-            else{
+            } else {
                 listPokemon.remove(pokemon);
             }
         }

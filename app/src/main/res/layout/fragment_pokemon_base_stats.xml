@@ -28,7 +28,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="HP"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +41,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="Attack"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -48,7 +54,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="Defense"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -58,7 +67,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="Sp. Atk"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -68,7 +80,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="Sp. Def"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -78,7 +93,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="Speed"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
@@ -88,7 +106,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="64dp"
                     android:layout_marginTop="32dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="NN"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toEndOf="@+id/textView17"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,7 +118,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="NN"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/textView23"
                     app:layout_constraintStart_toStartOf="@+id/textView23"
                     app:layout_constraintTop_toBottomOf="@+id/textView23" />
@@ -107,7 +131,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="NN"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/textView24"
                     app:layout_constraintStart_toStartOf="@+id/textView24"
                     app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -117,7 +144,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="NN"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/textView25"
                     app:layout_constraintStart_toStartOf="@+id/textView25"
                     app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -127,7 +157,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="NN"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/textView26"
                     app:layout_constraintStart_toStartOf="@+id/textView26"
                     app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -136,7 +169,10 @@
                     android:id="@+id/textView28"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:foregroundTint="#FFFFFF"
                     android:text="NN"
+                    android:textColor="#000000"
                     app:layout_constraintBottom_toBottomOf="@+id/progressBar6"
                     app:layout_constraintEnd_toEndOf="@+id/textView27"
                     app:layout_constraintStart_toStartOf="@+id/textView27" />

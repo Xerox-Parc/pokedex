@@ -1,6 +1,5 @@
 package com.xeroxparc.pokedex.ui.pokedex.detail;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
@@ -24,7 +21,12 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.android.material.textview.MaterialTextView;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
+import com.xeroxparc.pokedex.data.model.pokemon.PokemonType;
 import com.xeroxparc.pokedex.data.repository.PokemonRepository;
+import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
+import com.xeroxparc.pokedex.utils.Utils;
+
+import java.util.List;
 
 /**
  * @author Palmieri Ivan
@@ -72,10 +74,7 @@ public class PokemonDetailFragment extends Fragment {
         MaterialTextView textViewIdPokemon = view.findViewById(R.id.textView3);//Id
         ImageView pokemonImage = view.findViewById(R.id.imageView);//Immagine
 
-
         ConstraintLayout constraintLayout = view.findViewById(R.id.ConstraintLayout1);//Sfondo
-
-
 
         /*Qui inizia l'assegnazione dei dati */
         Integer pokId = PokemonDetailFragmentArgs.fromBundle(requireArguments()).getPokemonId();//Id
@@ -88,24 +87,24 @@ public class PokemonDetailFragment extends Fragment {
                 textViewName.setText(retrievedPokemon.getName());
                 /*Imposto l'immagine*/
                 Glide.with(requireContext()).load(retrievedPokemon.getSprite().getFrontDefault()).into(pokemonImage);
-
-                /*Imposto gli attributi di combattimento*/
+                /*Imposto id*/
                 textViewIdPokemon.setText(pokId.toString());
                 loadData();
+                /*Imposto sfondo*/
+                List<PokemonType> typeList = currentPokemon.getTypeList();
+                EggGroupType eggGroupTypeStyling = Utils.eggGroupTypeFromTypeId(typeList.get(0).getType().getId());
+                constraintLayout.setBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
 
-                /*Imposto gli attributi fisici*/
-
-
-                /*Imposto lo sfondo*/
 
             });
         });
     }
 
+
     void loadData() {
         if (currentPokemon != null) {
-            Fragment fragment = viewPagerAdapter.getFragment();
-            View view1 = fragment.getView();
+//            Fragment fragment = viewPagerAdapter.getFragment();
+//            View view1 = fragment.getView();
             switch (visiblePage) {
                 case 0:
                     ProgressBar pokemonHp = viewPager.getRootView().findViewById(R.id.progressBar);//Hp
@@ -114,6 +113,12 @@ public class PokemonDetailFragment extends Fragment {
                     ProgressBar pokemonSpAtk = viewPager.getRootView().findViewById(R.id.progressBar4);//SpAtk
                     ProgressBar pokemonSpDef = viewPager.getRootView().findViewById(R.id.progressBar5);//SpDef
                     ProgressBar pokemonSpeed = viewPager.getRootView().findViewById(R.id.progressBar6);//Speed
+                    TextView pokemonHpP = viewPager.getRootView().findViewById(R.id.textView23);//Hp
+                    TextView pokemonAttackP = viewPager.getRootView().findViewById(R.id.textView24);//Attack
+                    TextView pokemonDefenseP = viewPager.getRootView().findViewById(R.id.textView25);//Defense
+                    TextView pokemonSpDefP = viewPager.getRootView().findViewById(R.id.textView26);//SpDef
+                    TextView pokemonSpAtkP = viewPager.getRootView().findViewById(R.id.textView27);//SpAtk
+                    TextView pokemonSpeedP = viewPager.getRootView().findViewById(R.id.textView28);//Speed
 
                     pokemonHp.setProgress(currentPokemon.getStatList().get(0).getBaseStat());
                     pokemonAttack.setProgress(currentPokemon.getStatList().get(1).getBaseStat());
@@ -121,14 +126,18 @@ public class PokemonDetailFragment extends Fragment {
                     pokemonSpAtk.setProgress(currentPokemon.getStatList().get(3).getBaseStat());
                     pokemonSpDef.setProgress(currentPokemon.getStatList().get(4).getBaseStat());
                     pokemonSpeed.setProgress(currentPokemon.getStatList().get(5).getBaseStat());
+
+                    pokemonHpP.setText(currentPokemon.getStatList().get(0).getBaseStat().toString());
+                    pokemonAttackP.setText(currentPokemon.getStatList().get(1).getBaseStat().toString());
+                    pokemonDefenseP.setText(currentPokemon.getStatList().get(2).getBaseStat().toString());
+                    pokemonSpAtkP.setText(currentPokemon.getStatList().get(3).getBaseStat().toString());
+                    pokemonSpDefP.setText(currentPokemon.getStatList().get(4).getBaseStat().toString());
+                    pokemonSpeedP.setText(currentPokemon.getStatList().get(5).getBaseStat().toString());
                     break;
                 case 1:
 //                    TextView pokemonHeight = viewPager.findViewById(R.id.textView15);//Height
                     TextView pokemonWeight = viewPager.getRootView().findViewById(R.id.textView16);//Weight
                     TextView pokemonDescription = viewPager.getRootView().findViewById(R.id.textView5);//Descriptor
-                    TextView pokemonGender = viewPager.getRootView().findViewById(R.id.textView14);//Gender
-                    TextView pokemonEggGroups = viewPager.getRootView().findViewById(R.id.textView13);//EggGroup
-                    TextView pokemonEggCycle = viewPager.getRootView().findViewById(R.id.textView12);//EggCycle
 //                    pokemonHeight.setText("Height");
 //                    pokemonHeight.setText(currentPokemon.getHeight());
 //                    pokemonWeight.setText(currentPokemon.getWeight());
@@ -139,8 +148,8 @@ public class PokemonDetailFragment extends Fragment {
                 case 3:
                     break;
             }
-            Log.e(TAG, "Page Tag: " + fragment);
-            Log.e(TAG, "Page Tag: " + view1.getTag());
+//            Log.e(TAG, "Page Tag: " + fragment);
+//            Log.e(TAG, "Page Tag: " + view1.getTag());
         }
     }
 
