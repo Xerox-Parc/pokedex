@@ -13,11 +13,11 @@ import com.xeroxparc.pokedex.data.remote.PokeApiService;
 * @author Abdelrahman Abdelrahman (CptPackage)
 * */
 public abstract class BaseRepository {
-    protected PokeApiService apiService;
+    protected PokeApiService service;
     protected PokeDatabase database;
 
     public BaseRepository(Context context) {
-        apiService = PokeApi.getService();
+        service = PokeApi.getService();
         database = PokeDatabase.getDatabase(context);
     }
 }

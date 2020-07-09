@@ -32,7 +32,7 @@ public class EggGroupsRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (eggGroupDao.getEggGroup(id) == null) {
                 try {
-                    eggGroupDao.insert(apiService.getEggGroup(id).result());
+                    eggGroupDao.insert(service.getEggGroup(id).result());
                 } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }

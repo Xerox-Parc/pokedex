@@ -27,7 +27,7 @@ public class AbilityRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (abilityDao.getAbility(id) == null) {
                 try {
-                    abilityDao.insert(apiService.getAbility(id).result());
+                    abilityDao.insert(service.getAbility(id).result());
                 } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }

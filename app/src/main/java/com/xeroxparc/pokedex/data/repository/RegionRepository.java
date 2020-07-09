@@ -27,7 +27,7 @@ public class RegionRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (regionDao.getRegion(id) == null) {
                 try {
-                    regionDao.insert(apiService.getRegion(id).result());
+                    regionDao.insert(service.getRegion(id).result());
                 } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }

@@ -27,7 +27,7 @@ public class LocationsRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (locationDao.getLocation(id) == null) {
                 try {
-                    locationDao.insert(apiService.getLocation(id).result());
+                    locationDao.insert(service.getLocation(id).result());
                 } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }

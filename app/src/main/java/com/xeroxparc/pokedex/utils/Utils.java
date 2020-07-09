@@ -40,7 +40,6 @@ public class Utils {
 				null;
 	}
 
-
 	public static void noInternetConnectionWarning(Context context){
 		Toast.makeText(context, R.string.message_no_internet_connection,Toast.LENGTH_LONG).show();
 	}

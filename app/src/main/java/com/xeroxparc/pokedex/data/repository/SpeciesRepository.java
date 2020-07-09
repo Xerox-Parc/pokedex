@@ -36,7 +36,7 @@ public class SpeciesRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (speciesDao.getPokemonSpecies(id) == null) {
                 try {
-                    speciesDao.insert(apiService.getPokemonSpecies(id).result());
+                    speciesDao.insert(service.getPokemonSpecies(id).result());
                 } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }

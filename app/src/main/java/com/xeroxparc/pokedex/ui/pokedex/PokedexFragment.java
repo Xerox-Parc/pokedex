@@ -252,7 +252,7 @@ public class PokedexFragment extends CustomActionBarFragment {
         }
     }
 
-    public static class PokedexViewModel extends AndroidViewModel implements PokemonUpdateController {
+    public static class PokedexViewModel extends AndroidViewModel {
 
         static int preferMode;
         private PokedexFragment fragment;
@@ -278,10 +278,10 @@ public class PokedexFragment extends CustomActionBarFragment {
         void searchPokemon(String name) {
             filterPokemonName.setValue(name);
         }
-        LiveData<Optional<Pokemon>> getPokemonLiveData(int id){
+        LiveData<Optional<Pokemon>> getPokemonLiveData(int id) {
             return repository.getPokemon(id);
         }
-        @Override
+
         public void updatePokemon(Pokemon updated) {
             repository.updatePokemon(updated);
         }
@@ -329,9 +329,6 @@ public class PokedexFragment extends CustomActionBarFragment {
         }
     }
 
-    interface PokemonUpdateController{
-        void updatePokemon(Pokemon updated);
-    }
     interface PokemonUpdateRequester{
         void requestPokemonUpdate(Pokemon updated, int position);
     }

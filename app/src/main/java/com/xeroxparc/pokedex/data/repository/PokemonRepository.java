@@ -17,6 +17,8 @@ import java.util.Optional;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 
 import retrofit2.HttpException;
 
@@ -37,7 +39,7 @@ public class PokemonRepository extends BaseRepository {
         AsyncTask.execute(() -> {
             if (pokemonDao.getPokemon(id) == null) {
                 try {
-                    pokemonDao.insert(apiService.getPokemon(id).result());
+                    pokemonDao.insert(service.getPokemon(id).result());
                 } catch (IOException | HttpException e) {
                     e.printStackTrace();
                 }
@@ -92,6 +94,41 @@ public class PokemonRepository extends BaseRepository {
             }
         }
         return new MutableLiveData<>(listPokemon);
+    }
+
+    public LiveData<PagedList<Pokemon>> getPokemonList() {
+        AsyncTask.execute(() -> {
+            if (database.pokemonDao().getPagedList() == null) {
+                try {
+                    database.pokemonDao().insert(
+                            service.getPokemonList(-1, 0).result().getResults()
+                    );
+                } catch (IOException | HttpException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        return new LivePagedListBuilder<>(
+                database.pokemonDao().getPagedList(),
+                new PagedList.Config.Builder()
+                        .setPageSize(15)
+                        .setPrefetchDistance(100)
+                        .setEnablePlaceholders(true)
+                        .build()
+        ).build();
+    }
+
+    public void fetchPokemonList() {
+        AsyncTask.execute(() -> {
+            List<Pokemon> list;
+            try {
+                database.pokemonDao().insert(
+                        service.getPokemonList(-1, 0).result().getResults()
+                );
+            } catch (IOException | HttpException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 

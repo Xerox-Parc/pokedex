@@ -28,7 +28,7 @@ public class MoveRepository extends BaseRepository {
         AsyncTask.execute(() ->{
             if(moveDao.getMove(id) == null){
                 try{
-                    moveDao.insert(apiService.getMove(id).result());
+                    moveDao.insert(service.getMove(id).result());
                 } catch (IOException | HttpException e){
                     e.printStackTrace();
                 }
