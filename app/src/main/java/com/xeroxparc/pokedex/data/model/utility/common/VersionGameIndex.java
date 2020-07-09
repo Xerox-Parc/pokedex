@@ -16,4 +16,12 @@ public class VersionGameIndex {
 	@SerializedName("version")
 	private Version version;
 
+	public Integer getGameIndex() {
+		return gameIndex;
+	}
+
+	public Version getVersion() {
+		return version;
+	}
+
 }

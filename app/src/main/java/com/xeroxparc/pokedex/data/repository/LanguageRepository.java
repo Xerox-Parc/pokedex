@@ -9,10 +9,12 @@ import androidx.lifecycle.MutableLiveData;
 import com.xeroxparc.pokedex.data.database.PokeDatabase;
 import com.xeroxparc.pokedex.data.database.dao.utility.LanguageDao;
 import com.xeroxparc.pokedex.data.model.utility.language.Language;
-import com.xeroxparc.pokedex.data.remote.ApiError;
+import com.xeroxparc.pokedex.data.remote.PokeApiFactory;
 import com.xeroxparc.pokedex.data.remote.PokeApiService;
 
 import java.io.IOException;
+
+import retrofit2.HttpException;
 
 /**
  * Repository class.
@@ -22,12 +24,13 @@ import java.io.IOException;
  */
 public class LanguageRepository {
 
-	PokeApiService service;
-	private LanguageDao languageDao;
+	private final PokeApiService service;
+	private final PokeDatabase database;
+	private final LanguageDao languageDao;
 
 	public LanguageRepository(Application application) {
-		service = new PokeApiService();
-		PokeDatabase database = PokeDatabase.getDatabase(application);
+		service = PokeApiFactory.getService();
+		database = PokeDatabase.getDatabase(application);
 		languageDao = database.languageDao();
 	}
 
@@ -36,8 +39,8 @@ public class LanguageRepository {
 		AsyncTask.execute(() -> {
 			if (forceRefresh || languageDao.getLanguage(id) == null) {
 				try {
-					languageDao.insert(service.getLanguage(id));
-				} catch (IOException | ApiError e) {
+					languageDao.insert(service.getLanguage(id).result());
+				} catch (IOException | HttpException e) {
 					e.printStackTrace();
 				}
 			}
@@ -45,4 +48,5 @@ public class LanguageRepository {
 		});
 		return language;
 	}
+
 }

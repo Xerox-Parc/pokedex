@@ -1,11 +1,7 @@
 package com.xeroxparc.pokedex.data.remote;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.GsonBuilder;
 import com.xeroxparc.pokedex.data.model.berry.Berry;
 import com.xeroxparc.pokedex.data.model.berry.firmness.BerryFirmness;
 import com.xeroxparc.pokedex.data.model.berry.flavor.BerryFlavor;
@@ -53,593 +49,761 @@ import com.xeroxparc.pokedex.data.model.pokemon.shape.PokemonShape;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.data.model.pokemon.stats.Stat;
 import com.xeroxparc.pokedex.data.model.pokemon.type.Type;
+import com.xeroxparc.pokedex.data.model.utility.common.ResourceList;
 import com.xeroxparc.pokedex.data.model.utility.language.Language;
+import com.xeroxparc.pokedex.data.remote.call.PokeCall;
 
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
- * Access point to the PokeAPI services
- *
  * @author Fabio Buracchi
  */
-public class PokeApiService {
-
-	private static PokeApi service;
-
-	public PokeApiService() {
-		getService();
-	}
-
-	private synchronized void getService() {
-		if (service == null) {
-			service = new Retrofit.Builder()
-					.baseUrl("https://pokeapi.co/api/v2/")
-					.client(
-							new OkHttpClient.Builder()
-									.addInterceptor(new HttpLoggingInterceptor(
-											s -> Log.d("API", s))
-											.setLevel(HttpLoggingInterceptor.Level.BASIC)
-									)
-									.build()
-					)
-					.addConverterFactory(GsonConverterFactory.create(
-							new GsonBuilder()
-									.setFieldNamingPolicy(
-											FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES
-									)
-									.registerTypeAdapterFactory(
-											new ResourceTypeAdapterFactory()
-									)
-									.create()
-							)
-					)
-					.build()
-					.create(PokeApi.class);
-		}
-	}
-
-	private <T> T result(@NonNull Call<T> request) throws IOException, ApiError {
-		Response<T> response = request.execute();
-		if (response.isSuccessful()) {
-			return response.body();
-		} else {
-			throw new ApiError(response.code(), response.message());
-		}
-	}
-
-	public List<Berry> getBerryList(@NonNull Integer limit, @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getBerryList(limit, offset));
-	}
-
-	public Berry getBerry(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getBerry(id));
-	}
-
-	public List<BerryFirmness> getBerryFirmnessList(@NonNull Integer limit,
-	                                                @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getBerryFirmnessList(limit, offset));
-	}
-
-	public BerryFirmness getBerryFirmness(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getBerryFirmness(id));
-	}
-
-	public List<BerryFlavor> getBerryFlavorList(@NonNull Integer limit,
-	                                            @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getBerryFlavorList(limit, offset));
-	}
-
-	public BerryFlavor getBerryFlavor(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getBerryFlavor(id));
-	}
-
-	public List<ContestType> getContestTypeList(@NonNull Integer limit,
-	                                            @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getContestTypeList(limit, offset));
-	}
-
-	public ContestType getContestType(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getContestType(id));
-	}
-
-	public List<ContestEffect> getContestEffectList(@NonNull Integer limit,
-	                                                @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getContestEffectList(limit, offset));
-	}
-
-	public ContestEffect getContestEffect(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getContestEffect(id));
-	}
-
-	public List<SuperContestEffect> getSuperContestEffectList(@NonNull Integer limit,
-	                                                          @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getSuperContestEffectList(limit, offset));
-	}
-
-	public SuperContestEffect getSuperContestEffect(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getSuperContestEffect(id));
-	}
-
-	public List<EncounterMethod> getEncounterMethodList(@NonNull Integer limit,
-	                                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getEncounterMethodList(limit, offset));
-	}
-
-	public EncounterMethod getEncounterMethod(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getEncounterMethod(id));
-	}
-
-	public List<EncounterCondition> getEncounterConditionList(@NonNull Integer limit,
-	                                                          @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getEncounterConditionList(limit, offset));
-	}
-
-	public EncounterCondition getEncounterCondition(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getEncounterCondition(id));
-	}
-
-	public List<EncounterConditionValue> getEncounterConditionValueList(@NonNull Integer limit,
-	                                                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getEncounterConditionValueList(limit, offset));
-	}
-
-	public EncounterConditionValue getEncounterConditionValue(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getEncounterConditionValue(id));
-	}
-
-	public List<EvolutionChain> getEvolutionChainList(@NonNull Integer limit,
-	                                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getEvolutionChainList(limit, offset));
-	}
-
-	public EvolutionChain getEvolutionChain(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getEvolutionChain(id));
-	}
-
-	public List<EvolutionTrigger> getEvolutionTriggerList(@NonNull Integer limit,
-	                                                      @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getEvolutionTriggerList(limit, offset));
-	}
-
-	public EvolutionTrigger getEvolutionTrigger(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getEvolutionTrigger(id));
-	}
-
-	public List<Generation> getGenerationList(@NonNull Integer limit,
-	                                          @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getGenerationList(limit, offset));
-	}
-
-	public Generation getGeneration(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getGeneration(id));
-	}
-
-	public List<Pokedex> getPokedexList(@NonNull Integer limit,
-	                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokedexList(limit, offset));
-	}
-
-	public Pokedex getPokedex(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokedex(id));
-	}
-
-	public List<Version> getVersionList(@NonNull Integer limit,
-	                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getVersionList(limit, offset));
-	}
-
-	public Version getVersion(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getVersion(id));
-	}
-
-	public List<VersionGroup> getVersionGroupList(@NonNull Integer limit,
-	                                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getVersionGroupList(limit, offset));
-	}
-
-	public VersionGroup getVersionGroup(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getVersionGroup(id));
-	}
-
-	public List<Item> getItemList(@NonNull Integer limit,
-	                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getItemList(limit, offset));
-	}
-
-	public Item getItem(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getItem(id));
-	}
-
-	public List<ItemAttribute> getItemAttributeList(@NonNull Integer limit,
-	                                                @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getItemAttributeList(limit, offset));
-	}
-
-	public ItemAttribute getItemAttribute(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getItemAttribute(id));
-	}
-
-	public List<ItemCategory> getItemCategoryList(@NonNull Integer limit,
-	                                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getItemCategoryList(limit, offset));
-	}
-
-	public ItemCategory getItemCategory(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getItemCategory(id));
-	}
-
-	public List<ItemFlingEffect> getItemFlingEffectList(@NonNull Integer limit,
-	                                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getItemFlingEffectList(limit, offset));
-	}
-
-	public ItemFlingEffect getItemFlingEffect(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getItemFlingEffect(id));
-	}
-
-	public List<ItemPocket> getItemPocketList(@NonNull Integer limit,
-	                                          @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getItemPocketList(limit, offset));
-	}
-
-	public ItemPocket getItemPocket(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getItemPocket(id));
-	}
-
-	public List<Location> getLocationList(@NonNull Integer limit,
-	                                      @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getLocationList(limit, offset));
-	}
-
-	public Location getLocation(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getLocation(id));
-	}
-
-	public List<LocationArea> getLocationAreaList(@NonNull Integer limit,
-	                                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getLocationAreaList(limit, offset));
-	}
-
-	public LocationArea getLocationArea(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getLocationArea(id));
-	}
-
-	public List<PalParkArea> getPalParkAreaList(@NonNull Integer limit,
-	                                            @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPalParkAreaList(limit, offset));
-	}
-
-	public PalParkArea getPalParkArea(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPalParkArea(id));
-	}
-
-	public List<Region> getRegionList(@NonNull Integer limit,
-	                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getRegionList(limit, offset));
-	}
-
-	public Region getRegion(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getRegion(id));
-	}
-
-	public List<Machine> getMachineList(@NonNull Integer limit,
-	                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getMachineList(limit, offset));
-	}
-
-	public Machine getMachine(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getMachine(id));
-	}
-
-	public List<Move> getMoveList(@NonNull Integer limit,
-	                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getMoveList(limit, offset));
-	}
-
-	public Move getMove(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getMove(id));
-	}
-
-	public List<MoveAilment> getMoveAilmentList(@NonNull Integer limit,
-	                                            @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getMoveAilmentList(limit, offset));
-	}
-
-	public MoveAilment getMoveAilment(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getMoveAilment(id));
-	}
-
-	public List<MoveBattleStyle> getMoveBattleStyleList(@NonNull Integer limit,
-	                                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getMoveBattleStyleList(limit, offset));
-	}
-
-	public MoveBattleStyle getMoveBattleStyle(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getMoveBattleStyle(id));
-	}
-
-	public List<MoveCategory> getModelNameList(@NonNull Integer limit,
-	                                           @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getModelNameList(limit, offset));
-	}
-
-	public MoveCategory getModelName(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getModelName(id));
-	}
-
-	public List<MoveDamageClass> getMoveDamageClassList(@NonNull Integer limit,
-	                                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getMoveDamageClassList(limit, offset));
-	}
-
-	public MoveDamageClass getMoveDamageClass(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getMoveDamageClass(id));
-	}
-
-	public List<MoveLearnMethod> getMoveLearnMethodList(@NonNull Integer limit,
-	                                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getMoveLearnMethodList(limit, offset));
-	}
-
-	public MoveLearnMethod getMoveLearnMethod(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getMoveLearnMethod(id));
-	}
-
-	public List<MoveTarget> getMoveTargetList(@NonNull Integer limit,
-	                                          @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getMoveTargetList(limit, offset));
-	}
-
-	public MoveTarget getMoveTarget(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getMoveTarget(id));
-	}
-
-	public List<Ability> getAbilityList(@NonNull Integer limit,
-	                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getAbilityList(limit, offset));
-	}
-
-	public Ability getAbility(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getAbility(id));
-	}
-
-	public List<Characteristic> getCharacteristicList(@NonNull Integer limit,
-	                                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getCharacteristicList(limit, offset));
-	}
-
-	public Characteristic getCharacteristic(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getCharacteristic(id));
-	}
-
-	public List<EggGroup> getEggGroupList(@NonNull Integer limit,
-	                                      @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getEggGroupList(limit, offset));
-	}
-
-	public EggGroup getEggGroup(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getEggGroup(id));
-	}
-
-	public List<Gender> getGenderList(@NonNull Integer limit,
-	                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getGenderList(limit, offset));
-	}
-
-	public Gender getGender(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getGender(id));
-	}
-
-	public List<GrowthRate> getGrowthRateList(@NonNull Integer limit,
-	                                          @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getGrowthRateList(limit, offset));
-	}
-
-	public GrowthRate getGrowthRate(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getGrowthRate(id));
-	}
-
-	public List<Nature> getNatureList(@NonNull Integer limit,
-	                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getNatureList(limit, offset));
-	}
-
-	public Nature getNature(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getNature(id));
-	}
-
-	public List<PokeathlonStat> getPokeathlonStatList(@NonNull Integer limit,
-	                                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokeathlonStatList(limit, offset));
-	}
-
-	public PokeathlonStat getPokeathlonStat(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokeathlonStat(id));
-	}
-
-	public List<Pokemon> getPokemonList(@NonNull Integer limit,
-	                                    @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokemonList(limit, offset));
-	}
-
-	public Pokemon getPokemon(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokemon(id));
-	}
-
-	public List<PokemonColor> getPokemonColorList(@NonNull Integer limit,
-	                                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokemonColorList(limit, offset));
-	}
-
-	public PokemonColor getPokemonColor(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokemonColor(id));
-	}
-
-	public List<PokemonForm> getPokemonFormList(@NonNull Integer limit,
-	                                            @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokemonFormList(limit, offset));
-	}
-
-	public PokemonForm getPokemonForm(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokemonForm(id));
-	}
-
-	public List<PokemonHabitat> getPokemonHabitatList(@NonNull Integer limit,
-	                                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokemonHabitatList(limit, offset));
-	}
-
-	public PokemonHabitat getPokemonHabitat(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokemonHabitat(id));
-	}
-
-	public List<PokemonShape> getPokemonShapeList(@NonNull Integer limit,
-	                                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokemonShapeList(limit, offset));
-	}
-
-	public PokemonShape getPokemonShape(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokemonShape(id));
-	}
-
-	public List<PokemonSpecies> getPokemonSpeciesList(@NonNull Integer limit,
-	                                                  @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getPokemonSpeciesList(limit, offset));
-	}
-
-	public PokemonSpecies getPokemonSpecies(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getPokemonSpecies(id));
-	}
-
-	public List<Stat> getStatList(@NonNull Integer limit,
-	                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getStatList(limit, offset));
-	}
-
-	public Stat getStat(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getStat(id));
-	}
-
-	public List<Type> getTypeList(@NonNull Integer limit,
-	                              @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getTypeList(limit, offset));
-	}
-
-	public Type getType(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getType(id));
-	}
-
-	public List<Language> getLanguageList(@NonNull Integer limit,
-	                                      @NonNull Integer offset)
-			throws IOException, ApiError {
-		return result(service.getLanguageList(limit, offset));
-	}
-
-	public Language getLanguage(@NonNull Integer id)
-			throws IOException, ApiError {
-		return result(service.getLanguage(id));
-	}
+public interface PokeApiService {
+
+
+	@GET("berry/")
+	PokeCall<ResourceList<Berry>> getBerryList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("berry/{id}")
+	PokeCall<Berry> getBerry(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("berry/{name}")
+	PokeCall<Berry> getBerry(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("berry-firmness/")
+	PokeCall<ResourceList<BerryFirmness>> getBerryFirmnessList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("berry-firmness/{id}")
+	PokeCall<BerryFirmness> getBerryFirmness(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("berry-firmness/{name}")
+	PokeCall<BerryFirmness> getBerryFirmness(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("berry-flavor/")
+	PokeCall<ResourceList<BerryFlavor>> getBerryFlavorList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("berry-flavor/{id}")
+	PokeCall<BerryFlavor> getBerryFlavor(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("berry-flavor/{name}")
+	PokeCall<BerryFlavor> getBerryFlavor(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("contest-type/")
+	PokeCall<ResourceList<ContestType>> getContestTypeList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("contest-type/{id}")
+	PokeCall<ContestType> getContestType(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("contest-type/{name}")
+	PokeCall<ContestType> getContestType(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("contest-effect/")
+	PokeCall<ResourceList<ContestEffect>> getContestEffectList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("contest-effect/{id}")
+	PokeCall<ContestEffect> getContestEffect(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("super-contest-effect/")
+	PokeCall<ResourceList<SuperContestEffect>> getSuperContestEffectList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("super-contest-effect/{id}")
+	PokeCall<SuperContestEffect> getSuperContestEffect(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("encounter-method/")
+	PokeCall<ResourceList<EncounterMethod>> getEncounterMethodList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("encounter-method/{id}")
+	PokeCall<EncounterMethod> getEncounterMethod(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("encounter-method/{name}")
+	PokeCall<EncounterMethod> getEncounterMethod(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("encounter-condition/")
+	PokeCall<ResourceList<EncounterCondition>> getEncounterConditionList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("encounter-condition/{id}")
+	PokeCall<EncounterCondition> getEncounterCondition(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("encounter-condition/{name}")
+	PokeCall<EncounterCondition> getEncounterCondition(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("encounter-condition-value/")
+	PokeCall<ResourceList<EncounterConditionValue>> getEncounterConditionValueList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("encounter-condition-value/{id}")
+	PokeCall<EncounterConditionValue> getEncounterConditionValue(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("encounter-condition-value/{name}")
+	PokeCall<EncounterConditionValue> getEncounterConditionValue(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("evolution-chain/")
+	PokeCall<ResourceList<EvolutionChain>> getEvolutionChainList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("evolution-chain/{id}")
+	PokeCall<EvolutionChain> getEvolutionChain(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("evolution-trigger/")
+	PokeCall<ResourceList<EvolutionTrigger>> getEvolutionTriggerList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("evolution-trigger/{id}")
+	PokeCall<EvolutionTrigger> getEvolutionTrigger(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("evolution-trigger/{name}")
+	PokeCall<EvolutionTrigger> getEvolutionTrigger(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("generation/")
+	PokeCall<ResourceList<Generation>> getGenerationList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("generation/{id}")
+	PokeCall<Generation> getGeneration(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("generation/{name}")
+	PokeCall<Generation> getGeneration(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokedex/")
+	PokeCall<ResourceList<Pokedex>> getPokedexList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokedex/{id}")
+	PokeCall<Pokedex> getPokedex(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokedex/{name}")
+	PokeCall<Pokedex> getPokedex(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("version/")
+	PokeCall<ResourceList<Version>> getVersionList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("version/{id}")
+	PokeCall<Version> getVersion(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("version/{name}")
+	PokeCall<Version> getVersion(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("version-group/")
+	PokeCall<ResourceList<VersionGroup>> getVersionGroupList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("version-group/{id}")
+	PokeCall<VersionGroup> getVersionGroup(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("version-group/{name}")
+	PokeCall<VersionGroup> getVersionGroup(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("item/")
+	PokeCall<ResourceList<Item>> getItemList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("item/{id}")
+	PokeCall<Item> getItem(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("item/{name}")
+	PokeCall<Item> getItem(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("item-attribute/")
+	PokeCall<ResourceList<ItemAttribute>> getItemAttributeList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("item-attribute/{id}")
+	PokeCall<ItemAttribute> getItemAttribute(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("item-attribute/{name}")
+	PokeCall<ItemAttribute> getItemAttribute(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("item-category/")
+	PokeCall<ResourceList<ItemCategory>> getItemCategoryList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("item-category/{id}")
+	PokeCall<ItemCategory> getItemCategory(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("item-category/{name}")
+	PokeCall<ItemCategory> getItemCategory(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("item-fling-effect/")
+	PokeCall<ResourceList<ItemFlingEffect>> getItemFlingEffectList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("item-fling-effect/{id}")
+	PokeCall<ItemFlingEffect> getItemFlingEffect(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("item-fling-effect/{name}")
+	PokeCall<ItemFlingEffect> getItemFlingEffect(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("item-pocket/")
+	PokeCall<ResourceList<ItemPocket>> getItemPocketList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("item-pocket/{id}")
+	PokeCall<ItemPocket> getItemPocket(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("item-pocket/{name}")
+	PokeCall<ItemPocket> getItemPocket(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("location/")
+	PokeCall<ResourceList<Location>> getLocationList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("location/{id}")
+	PokeCall<Location> getLocation(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("location/{name}")
+	PokeCall<Location> getLocation(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("location-area/")
+	PokeCall<ResourceList<LocationArea>> getLocationAreaList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("location-area/{id}")
+	PokeCall<LocationArea> getLocationArea(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("location-area/{name}")
+	PokeCall<LocationArea> getLocationArea(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pal-park-area/")
+	PokeCall<ResourceList<PalParkArea>> getPalParkAreaList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pal-park-area/{id}")
+	PokeCall<PalParkArea> getPalParkArea(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pal-park-area/{name}")
+	PokeCall<PalParkArea> getPalParkArea(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("region/")
+	PokeCall<ResourceList<Region>> getRegionList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("region/{id}")
+	PokeCall<Region> getRegion(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("region/{name}")
+	PokeCall<Region> getRegion(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("machine/")
+	PokeCall<ResourceList<Machine>> getMachineList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("machine/{id}")
+	PokeCall<Machine> getMachine(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move/")
+	PokeCall<ResourceList<Move>> getMoveList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("move/{id}")
+	PokeCall<Move> getMove(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move/{name}")
+	PokeCall<Move> getMove(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("move-ailment/")
+	PokeCall<ResourceList<MoveAilment>> getMoveAilmentList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("move-ailment/{id}")
+	PokeCall<MoveAilment> getMoveAilment(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move-ailment/{name}")
+	PokeCall<MoveAilment> getMoveAilment(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("move-battle-style/")
+	PokeCall<ResourceList<MoveBattleStyle>> getMoveBattleStyleList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("move-battle-style/{id}")
+	PokeCall<MoveBattleStyle> getMoveBattleStyle(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move-battle-style/{name}")
+	PokeCall<MoveBattleStyle> getMoveBattleStyle(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("move-category/")
+	PokeCall<ResourceList<MoveCategory>> getModelNameList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("move-category/{id}")
+	PokeCall<MoveCategory> getModelName(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move-category/{name}")
+	PokeCall<MoveCategory> getModelName(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("move-damage-class/")
+	PokeCall<ResourceList<MoveDamageClass>> getMoveDamageClassList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("move-damage-class/{id}")
+	PokeCall<MoveDamageClass> getMoveDamageClass(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move-damage-class/{name}")
+	PokeCall<MoveDamageClass> getMoveDamageClass(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("move-learn-method/")
+	PokeCall<ResourceList<MoveLearnMethod>> getMoveLearnMethodList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("move-learn-method/{id}")
+	PokeCall<MoveLearnMethod> getMoveLearnMethod(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move-learn-method/{name}")
+	PokeCall<MoveLearnMethod> getMoveLearnMethod(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("move-target/")
+	PokeCall<ResourceList<MoveTarget>> getMoveTargetList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("move-target/{id}")
+	PokeCall<MoveTarget> getMoveTarget(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("move-target/{name}")
+	PokeCall<MoveTarget> getMoveTarget(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("ability/")
+	PokeCall<ResourceList<Ability>> getAbilityList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("ability/{id}")
+	PokeCall<Ability> getAbility(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("ability/{name}")
+	PokeCall<Ability> getAbility(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("characteristic/")
+	PokeCall<ResourceList<Characteristic>> getCharacteristicList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("characteristic/{id}")
+	PokeCall<Characteristic> getCharacteristic(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("egg-group/")
+	PokeCall<ResourceList<EggGroup>> getEggGroupList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("egg-group/{id}")
+	PokeCall<EggGroup> getEggGroup(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("egg-group/{name}")
+	PokeCall<EggGroup> getEggGroup(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("gender/")
+	PokeCall<ResourceList<Gender>> getGenderList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("gender/{id}")
+	PokeCall<Gender> getGender(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("gender/{name}")
+	PokeCall<Gender> getGender(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("growth-rate/")
+	PokeCall<ResourceList<GrowthRate>> getGrowthRateList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("growth-rate/{id}")
+	PokeCall<GrowthRate> getGrowthRate(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("growth-rate/{name}")
+	PokeCall<GrowthRate> getGrowthRate(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("nature/")
+	PokeCall<ResourceList<Nature>> getNatureList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("nature/{id}")
+	PokeCall<Nature> getNature(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("nature/{name}")
+	PokeCall<Nature> getNature(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokeathlon-stat/")
+	PokeCall<ResourceList<PokeathlonStat>> getPokeathlonStatList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokeathlon-stat/{id}")
+	PokeCall<PokeathlonStat> getPokeathlonStat(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokeathlon-stat/{name}")
+	PokeCall<PokeathlonStat> getPokeathlonStat(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokemon/")
+	PokeCall<ResourceList<Pokemon>> getPokemonList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokemon/{id}")
+	PokeCall<Pokemon> getPokemon(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokemon/{name}")
+	PokeCall<Pokemon> getPokemon(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokemon-color/")
+	PokeCall<ResourceList<PokemonColor>> getPokemonColorList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokemon-color/{id}")
+	PokeCall<PokemonColor> getPokemonColor(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokemon-color/{name}")
+	PokeCall<PokemonColor> getPokemonColor(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokemon-form/")
+	PokeCall<ResourceList<PokemonForm>> getPokemonFormList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokemon-form/{id}")
+	PokeCall<PokemonForm> getPokemonForm(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokemon-form/{name}")
+	PokeCall<PokemonForm> getPokemonForm(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokemon-habitat/")
+	PokeCall<ResourceList<PokemonHabitat>> getPokemonHabitatList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokemon-habitat/{id}")
+	PokeCall<PokemonHabitat> getPokemonHabitat(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokemon-habitat/{name}")
+	PokeCall<PokemonHabitat> getPokemonHabitat(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokemon-shape/")
+	PokeCall<ResourceList<PokemonShape>> getPokemonShapeList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokemon-shape/{id}")
+	PokeCall<PokemonShape> getPokemonShape(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokemon-shape/{name}")
+	PokeCall<PokemonShape> getPokemonShape(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("pokemon-species/")
+	PokeCall<ResourceList<PokemonSpecies>> getPokemonSpeciesList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("pokemon-species/{id}")
+	PokeCall<PokemonSpecies> getPokemonSpecies(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("pokemon-species/{name}")
+	PokeCall<PokemonSpecies> getPokemonSpecies(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("stat/")
+	PokeCall<ResourceList<Stat>> getStatList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("stat/{id}")
+	PokeCall<Stat> getStat(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("stat/{name}")
+	PokeCall<Stat> getStat(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("type/")
+	PokeCall<ResourceList<Type>> getTypeList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("type/{id}")
+	PokeCall<Type> getType(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("type/{name}")
+	PokeCall<Type> getType(
+			@Path("name") @NonNull String name
+	);
+
+	@GET("language/")
+	PokeCall<ResourceList<Language>> getLanguageList(
+			@Query("limit") @NonNull Integer limit,
+			@Query("offset") @NonNull Integer offset
+	);
+
+	@GET("language/{id}")
+	PokeCall<Language> getLanguage(
+			@Path("id") @NonNull Integer id
+	);
+
+	@GET("language/{name}")
+	PokeCall<Language> getLanguage(
+			@Path("name") @NonNull String name
+	);
 
 }
