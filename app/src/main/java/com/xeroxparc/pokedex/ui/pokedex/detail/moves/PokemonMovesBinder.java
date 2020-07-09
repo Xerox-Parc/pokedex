@@ -4,12 +4,16 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.data.model.pokemon.PokemonMove;
 import com.xeroxparc.pokedex.databinding.FragmentPokemonMovesBinding;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragmentDirections;
+import com.xeroxparc.pokedex.ui.move.MoveFragmentDirections;
+import com.xeroxparc.pokedex.ui.pokedex.detail.PokemonDetailFragmentDirections;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,15 +45,18 @@ public class PokemonMovesBinder {
         final PokemonMovesListAdapter componentListAdapter = new PokemonMovesListAdapter() {
             @Override
             void onClickCallback(Move move) {
+                MoveFragmentDirections.ActionNavMoveToNavMoveDetail action = MoveFragmentDirections.actionNavMoveToNavMoveDetail();
+                action.setMoveId(move.getId());
+                Navigation.findNavController(fragment.requireView()).
+                        navigate(action);
             }
         };
+
         binding.recycleViewPokemonMoves.setAdapter(componentListAdapter);
         binding.recycleViewPokemonMoves.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
-        viewModel.getPokemon(pokeId).observe(fragment.getViewLifecycleOwner(), pokemon -> {
-            pokemon.ifPresent(retrieved -> {
-                List<Move> moves = retrieved.getMoveList().stream().map(PokemonMove::getMove).collect(Collectors.toList());
-                componentListAdapter.setMoves(moves);
-            });
-        });
+        viewModel.getPokemon(pokeId).observe(fragment.getViewLifecycleOwner(), pokemon -> pokemon.ifPresent(retrieved -> {
+            List<Move> moves = retrieved.getMoveList().stream().map(PokemonMove::getMove).collect(Collectors.toList());
+            componentListAdapter.setMoves(moves);
+        }));
     }
 }

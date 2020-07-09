@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
@@ -14,10 +13,10 @@
         <action
             android:id="@+id/action_nav_move_to_nav_move_detail"
             app:destination="@id/nav_move_detail"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -27,8 +26,8 @@
         tools:layout="@layout/fragment_move_detail">
         <argument
             android:name="move_id"
-            app:argType="integer"
-            android:defaultValue="0"/>
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/nav_pokedex"
@@ -47,14 +46,6 @@
         android:name="com.xeroxparc.pokedex.ui.pokedex.detail.PokemonDetailFragment"
         android:label="Pokemon Detail"
         tools:layout="@layout/fragment_pokemon_details">
-        <argument
-            android:name="details_pokemon"
-            android:defaultValue="pokemon name"
-            app:argType="string" />
-        <argument
-            android:name="pokemonId"
-            app:argType="integer"
-            android:defaultValue="0" />
         <action
             android:id="@+id/action_nav_pokemon_detail_to_nav_base_state_fragment"
             app:destination="@id/nav_base_state_fragment" />
@@ -67,8 +58,15 @@
         <action
             android:id="@+id/action_nav_pokemon_detail_to_nav_pokemon_moves_fragment"
             app:destination="@id/nav_pokemon_moves_fragment" />
+        <argument
+            android:name="details_pokemon"
+            android:defaultValue="pokemon name"
+            app:argType="string" />
+        <argument
+            android:name="pokemonId"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
-
 
 
     <fragment
@@ -79,10 +77,10 @@
         <action
             android:id="@+id/action_nav_locations_filter_to_nav_locations_list"
             app:destination="@id/nav_locations_list"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -90,24 +88,24 @@
         android:name="com.xeroxparc.pokedex.ui.locations.LocationsListFragment"
         android:label="Locations List"
         tools:layout="@layout/fragment_locations_list">
-        <argument
-            android:name="region_id"
-            app:argType="integer"
-            android:defaultValue="0"/>
         <action
             android:id="@+id/action_nav_locations_list_to_nav_locations_area_list"
             app:destination="@id/nav_locations_area_list"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_nav_locations_list_to_nav_locations_area_details"
             app:destination="@id/nav_locations_area_details"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="region_id"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -115,21 +113,21 @@
         android:name="com.xeroxparc.pokedex.ui.locations.LocationsAreaListFragment"
         android:label="Location Area List"
         tools:layout="@layout/fragment_locations_area_list">
-        <argument
-            android:name="location_ids"
-            app:argType="string"
-            android:defaultValue="name ids"/>
-        <argument
-            android:name="location_id_name"
-            app:argType="string"
-            android:defaultValue="name ids"/>
         <action
             android:id="@+id/action_nav_locations_area_list_to_nav_locations_area_details"
             app:destination="@id/nav_locations_area_details"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="location_id_name"
+            android:defaultValue="name ids"
+            app:argType="string" />
+        <argument
+            android:name="location_ids"
+            android:defaultValue="name ids"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -137,21 +135,21 @@
         android:name="com.xeroxparc.pokedex.ui.locations.LocationsAreaDetailsFragment"
         android:label="Loacations Area Details"
         tools:layout="@layout/fragment_locations_area_details">
-        <argument
-            android:name="location_area_id"
-            app:argType="integer"
-            android:defaultValue="0"/>
-        <argument
-            android:name="location_area_idTitle"
-            app:argType="string"
-            android:defaultValue=""/>
         <action
             android:id="@+id/action_nav_locations_area_details_to_nav_pokemon_detail"
             app:destination="@id/nav_pokemon_detail"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="location_area_idTitle"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="location_area_id"
+            android:defaultValue="0"
+            app:argType="integer" />
 
     </fragment>
 
@@ -169,7 +167,6 @@
     <fragment
         android:id="@+id/nav_egg_group_details"
         android:name="com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragment"
-
         tools:layout="@layout/fragment_egg_group_details">
         <action
             android:id="@+id/action_nav_egg_details_to_nav_pokemon_detail"
@@ -210,23 +207,31 @@
     </fragment>
 
     <fragment
-    android:id="@+id/nav_evolution_fragment"
-    android:name="com.xeroxparc.pokedex.ui.pokedex.detail.evolution.PokemonEvolutionFragment"
-    tools:layout="@layout/fragment_pokemon_evolution">
-    <argument
-        android:name="pokemon_id"
-        app:argType="integer"
-        android:defaultValue="0"/>
-</fragment>
+        android:id="@+id/nav_evolution_fragment"
+        android:name="com.xeroxparc.pokedex.ui.pokedex.detail.evolution.PokemonEvolutionFragment"
+        tools:layout="@layout/fragment_pokemon_evolution">
+        <argument
+            android:name="pokemon_id"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_pokemon_moves_fragment"
         android:name="com.xeroxparc.pokedex.ui.pokedex.detail.moves.PokemonMovesFragment"
         tools:layout="@layout/fragment_pokemon_moves">
+        <action
+            android:id="@+id/action_nav_move_to_nav_move_detail"
+            app:destination="@id/nav_move_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
         <argument
             android:name="pokemon_id"
-            app:argType="integer"
-            android:defaultValue="0"/>
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -245,7 +250,7 @@
         tools:layout="@layout/fragment_ability_detail">
         <argument
             android:name="ability_id"
-            app:argType="integer"
-            android:defaultValue="0"/>
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 </navigation>
