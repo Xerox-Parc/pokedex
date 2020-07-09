@@ -31,19 +31,19 @@ public class PokemonBaseStatsFragment extends Fragment {
                 currentPokemon = retrievedPokemon;
 
                 /*Dichiaro le variabili*/
-                ProgressBar pokemonHp = getView().findViewById(R.id.progressBar);//Hp
-                ProgressBar pokemonAttack = getView().findViewById(R.id.progressBar2);//Attack
-                ProgressBar pokemonDefense = getView().findViewById(R.id.progressBar3);//Defense
-                ProgressBar pokemonSpAtk = getView().findViewById(R.id.progressBar4);//SpAtk
-                ProgressBar pokemonSpDef = getView().findViewById(R.id.progressBar5);//SpDef
-                ProgressBar pokemonSpeed = getView().findViewById(R.id.progressBar6);//Speed
+                ProgressBar pokemonHp = getView().findViewById(R.id.progress_bar_pokemon_hp);//Hp
+                ProgressBar pokemonAttack = getView().findViewById(R.id.progress_bar_pokemon_attack);//Attack
+                ProgressBar pokemonDefense = getView().findViewById(R.id.progress_bar_pokemon_defense);//Defense
+                ProgressBar pokemonSpAtk = getView().findViewById(R.id.progress_bar_pokemon_sp_atk);//SpAtk
+                ProgressBar pokemonSpDef = getView().findViewById(R.id.progress_bar_pokemon_sp_def);//SpDef
+                ProgressBar pokemonSpeed = getView().findViewById(R.id.progress_bar_pokemon_speed);//Speed
 
-                TextView pokemonHpP = getView().findViewById(R.id.textView23);//Hp
-                TextView pokemonAttackP = getView().findViewById(R.id.textView24);//Attack
-                TextView pokemonDefenseP = getView().findViewById(R.id.textView25);//Defense
-                TextView pokemonSpDefP = getView().findViewById(R.id.textView26);//SpDef
-                TextView pokemonSpAtkP = getView().findViewById(R.id.textView27);//SpAtk
-                TextView pokemonSpeedP =getView().findViewById(R.id.textView28);//Speed
+                TextView pokemonHpP = getView().findViewById(R.id.text_view_pokemon_hp_int);//Hp
+                TextView pokemonAttackP = getView().findViewById(R.id.text_view_pokemon_attack_int);//Attack
+                TextView pokemonDefenseP = getView().findViewById(R.id.text_view_pokemon_defense_int);//Defense
+                TextView pokemonSpDefP = getView().findViewById(R.id.text_view_pokemon_sp_atk_int);//SpDef
+                TextView pokemonSpAtkP = getView().findViewById(R.id.text_view_pokemon_sp_def_int);//SpAtk
+                TextView pokemonSpeedP =getView().findViewById(R.id.text_view_pokemon_speed_int);//Speed
 
                 /*Setto i valori*/
                 pokemonHp.setProgress(currentPokemon.getStatList().get(0).getBaseStat());

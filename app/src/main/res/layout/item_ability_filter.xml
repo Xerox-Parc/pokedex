@@ -30,7 +30,7 @@
         android:layout_height="182dp">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/image_view_pokemon"
             android:layout_width="136dp"
             android:layout_height="108dp"
             android:layout_alignParentStart="true"
@@ -46,7 +46,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/image_view_pokemon_evolution_first"
             android:layout_width="136dp"
             android:layout_height="134dp"
             android:layout_alignParentStart="true"
@@ -70,10 +70,10 @@
             app:srcCompat="@drawable/ic_pokeball" />
 
         <TextView
-            android:id="@+id/text_view_name"
+            android:id="@+id/text_view_pokemon_name"
             android:layout_width="159dp"
             android:layout_height="63dp"
-            android:layout_below="@+id/imageView4"
+            android:layout_below="@+id/image_view_pokemon_evolution_first"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"

@@ -29,7 +29,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/image_view_star"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_alignParentTop="true"
@@ -39,12 +39,12 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="209dp"
-                android:layout_toEndOf="@+id/imageView5"
+                android:layout_toEndOf="@+id/image_view_pokemon"
                 android:clickable="true"
                 app:srcCompat="@drawable/ic_baseline_star_border_24" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/image_view_pokemon"
                 android:layout_width="345dp"
                 android:layout_height="245dp"
                 android:layout_alignParentStart="true"
@@ -58,10 +58,10 @@
                 app:srcCompat="@drawable/pokemondefault" />
 
             <TextView
-                android:id="@+id/text_view_name"
+                android:id="@+id/text_view_pokemon_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/textView29"
+                android:layout_above="@+id/text_view_pokemon_type"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="22dp"
@@ -73,10 +73,10 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/textView29"
+                android:id="@+id/text_view_pokemon_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/textView39"
+                android:layout_above="@+id/text_view_pokemon_type1"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="22dp"
@@ -87,7 +87,7 @@
                 android:text="" />
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/text_view_pokemon_type1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"

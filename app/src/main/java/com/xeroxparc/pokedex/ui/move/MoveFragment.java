@@ -82,7 +82,7 @@ public class MoveFragment extends Fragment {
 
             public ViewHolder(View itemView, MoveListAdapter adapter) {
                 super(itemView);
-                moveItemView = itemView.findViewById(R.id.text_view_name);
+                moveItemView = itemView.findViewById(R.id.text_view_pokemon_name);
                 moveItemType = itemView.findViewById(R.id.text_view_type);
                 moveItemViewDamageClass = itemView.findViewById(R.id.text_view_damage_class);
                 moveItemViewPowerPpAccuracy = itemView.findViewById(R.id.text_view_power_pp_accuracy);

@@ -17,7 +17,7 @@
             android:orientation="vertical" >
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/recycle_view_pokemon_moves"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

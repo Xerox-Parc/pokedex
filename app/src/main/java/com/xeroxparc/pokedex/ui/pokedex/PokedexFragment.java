@@ -178,9 +178,9 @@ public class PokedexFragment extends CustomActionBarFragment {
             PokemonViewHolder(@NonNull PokemonListItemBinder binder) {
                 super(binder.getRoot());
                 this.binder = binder;
-                imageView9 = itemView.findViewById(R.id.imageView9);
+                imageView9 = itemView.findViewById(R.id.image_view_star);
                 cardView = itemView.findViewById(R.id.cardView2);
-                pokemonImage = itemView.findViewById(R.id.imageView5);
+                pokemonImage = itemView.findViewById(R.id.image_view_pokemon);
             }
 
             ImageView getImageView(){
@@ -235,16 +235,14 @@ public class PokedexFragment extends CustomActionBarFragment {
 
                 @Override
                 void onClickCallback(Pokemon pokemon) {
-                    showDetail(pokemon);
+
                 }
             };
 
             binding.recyclerView.setAdapter(componentListAdapter);
             binding.recyclerView.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
             binding.recyclerView.setLayoutManager(new GridLayoutManager(fragment.getContext(), 2));
-          //  viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
             final int POKEMON_ID_MAX = 807;
-            //final int POKEMON_ID_MAX = 3;
             for(int i=0; i<POKEMON_ID_MAX; i++) {
                 viewModel.getPokemonLiveData(i).observe(fragment, pokemon -> {
                     pokemon.ifPresent(componentListAdapter::addPokemon);
@@ -252,14 +250,7 @@ public class PokedexFragment extends CustomActionBarFragment {
                 });
             }
         }
-
-        private void showDetail(@NonNull Pokemon pokemon) {
-
-        }
-
-
     }
-
 
     public static class PokedexViewModel extends AndroidViewModel implements PokemonUpdateController {
 
@@ -267,8 +258,6 @@ public class PokedexFragment extends CustomActionBarFragment {
         private PokedexFragment fragment;
         private PokemonRepository repository;
         private MutableLiveData<String> filterPokemonName;
-
-
         private LiveData<List<Pokemon>> listPokemon;
 
         public void setPreferMode(int preferMode) {
@@ -281,37 +270,17 @@ public class PokedexFragment extends CustomActionBarFragment {
             super(application);
             repository = new PokemonRepository(application);
             filterPokemonName = new MutableLiveData<>("");
-
-//            if(prefer==0){
-//
-////                listPokemon = Transformations.switchMap(filterPokemonName, name -> name.isEmpty()?
-////                        repository.getPokemon(3) :
-////                        repository.getPokemon(3));
-//
-//
-//            }
-//            else {
-//                /*Quando scelgo i pokemon preferiti*/
-////                listPokemon = Transformations.switchMap(filterPokemonName, name -> name.isEmpty()?
-////                        repository.getComponentListByPrefer() :
-////                        repository.getComponentListByPrefer());
-//
-//            }
         }
 
         LiveData<List<Pokemon>> getListComponent() {
             return listPokemon;
         }
-
         void searchPokemon(String name) {
-
             filterPokemonName.setValue(name);
         }
-
         LiveData<Optional<Pokemon>> getPokemonLiveData(int id){
             return repository.getPokemon(id);
         }
-
         @Override
         public void updatePokemon(Pokemon updated) {
             repository.updatePokemon(updated);
@@ -334,26 +303,26 @@ public class PokedexFragment extends CustomActionBarFragment {
 
         void bind(@NonNull Pokemon pokemon, int position) {
             List<PokemonType> typeList = pokemon.getTypeList();
-            binding.textView29.setText(typeList.get(0).getType().getName());
+            binding.textViewPokemonType.setText(typeList.get(0).getType().getName());
             if(typeList.size() > 1){
-                binding.textView39.setText(typeList.get(1).getType().getName());
+                binding.textViewPokemonType1.setText(typeList.get(1).getType().getName());
             }
             EggGroupType eggGroupTypeStyling = Utils.eggGroupTypeFromTypeId(typeList.get(0).getType().getId());
             binding.cardView2.setCardBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
             if(pokemon.getPrefer()){
-                binding.imageView9.setImageResource(R.drawable.ic_baseline_star_24);
+                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
             }else{
-                binding.imageView9.setImageResource(R.drawable.ic_baseline_star_border_24);
+                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
             }
 
-            binding.textViewName.setText(pokemon.getName());
-            binding.imageView9.setOnClickListener((v) -> {
+            binding.textViewPokemonName.setText(pokemon.getName());
+            binding.imageViewStar.setOnClickListener((v) -> {
                 Log.d("PREFER", "Pokemon " + (position + 1) + " aggiunto ai preferiti");
                 pokemon.setPrefer(!pokemon.getPrefer());
                 if(!pokemon.getPrefer()){
-                    binding.imageView9.setImageResource(R.drawable.ic_baseline_star_border_24);
+                    binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
                 }else{
-                    binding.imageView9.setImageResource(R.drawable.ic_baseline_star_24);
+                    binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
                 }
                 updateRequester.requestPokemonUpdate(pokemon,position);
             });

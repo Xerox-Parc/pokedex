@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.xeroxparc.pokedex.ui.pokedex.detail.PokemonBaseStatsFragmentArgs;
 
 /**
  *
@@ -25,6 +24,9 @@ public class PokemonMovesFragment extends Fragment {
         binder.bind();
         int pokeId = PokemonMovesFragmentArgs.fromBundle(requireArguments()).getPokemonId();
         Log.d("Moves InfoPokemon", String.valueOf(pokeId));
+
+
+
         return binder.getRoot();
 
     }

@@ -30,7 +30,7 @@
         android:layout_marginBottom="0dp">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/image_view_pokemon_evolution_first"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
@@ -41,13 +41,13 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView31"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_evolution_level"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/pngguru" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/image_view_pokemon_evolution_pokeball"
             android:layout_width="216dp"
             android:layout_height="237dp"
             android:tint="#C8FFFFFF"
@@ -57,19 +57,19 @@
             app:srcCompat="@drawable/img_pokeball_clipped" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/image_view_arrow"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_pokemon_evolution_first"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView31"
+            app:layout_constraintStart_toEndOf="@+id/image_view_pokemon_evolution_first"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_evolution_level"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
 
         <TextView
-            android:id="@+id/textView31"
+            android:id="@+id/text_view_evolution_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -83,7 +83,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/image_view_pokemon_evolution_second"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
@@ -96,7 +96,7 @@
             android:contentDescription="TODO"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView31"
+            app:layout_constraintStart_toEndOf="@+id/text_view_evolution_level"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/pngguru" />
 
