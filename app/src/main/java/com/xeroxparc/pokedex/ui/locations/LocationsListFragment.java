@@ -2,7 +2,6 @@ package com.xeroxparc.pokedex.ui.locations;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
@@ -50,10 +48,14 @@ public class LocationsListFragment extends Fragment {
 
 
     public void setImageSlider(String regionName, List<SlideModel> slideModels) {
+
+        // Pass name of drawable image for get and set maps
         int resIdMap1 = getResources().getIdentifier("image_region_" + regionName + "1", "drawable", getContext().getPackageName());
         slideModels.add(new SlideModel(resIdMap1));
 
         if (!regionName.equals("alola") && !regionName.equals("kalos")) {
+
+            // Alola and Kalos Region have only 1 map
             int resIdMap2 = getResources().getIdentifier("image_region_" + regionName + "2", "drawable", getContext().getPackageName());
             slideModels.add(new SlideModel(resIdMap2));
         }
@@ -61,12 +63,12 @@ public class LocationsListFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         final RegionRepository regionRepository = new RegionRepository(getContext());
-        String regionName = "alola";
 
-        TextView textViewRegionName = requireView().findViewById(R.id.TextView_RegionName);
-        ImageSlider imageSlider = view.findViewById(R.id.ImageSlider_Map);
+        TextView textViewRegionName = requireView().findViewById(R.id.text_view_region_name);
+        ImageSlider imageSlider = view.findViewById(R.id.image_slider_map);
         List<SlideModel> slideModels = new ArrayList<>();
 
+        // Get region ID from "Filter by generation" fragment
         int regionId = LocationsListFragmentArgs.fromBundle(requireArguments()).getRegionId();
 
         regionRepository.getRegion(regionId).observe(getViewLifecycleOwner(), region -> {
@@ -75,12 +77,11 @@ public class LocationsListFragment extends Fragment {
                         locationListAdapter.setLocationNamesList(retreivedRegion.getLocationList());
                         String formattedRegionName = String.format("%s %s", "Region of", Character.toUpperCase(retreivedRegion.getName().charAt(0)) + retreivedRegion.getName().substring(1));
                         textViewRegionName.setText(formattedRegionName);
+
                         setImageSlider(retreivedRegion.getName(), slideModels);
                         imageSlider.setImageList(slideModels, true);
-//                        regionName = String.format("%s", retreivedRegion.getName());
                     });
         });
-//        String regionName = getRegionName(regionId);
     }
 
     class Holder {
@@ -90,8 +91,8 @@ public class LocationsListFragment extends Fragment {
 
             locationListAdapter = new LocationListListAdapter(activity, locationsList, getViewLifecycleOwner());
 
-            binding.recycleViewPokemonLocation.setAdapter(locationListAdapter);
-            binding.recycleViewPokemonLocation.setLayoutManager(new LinearLayoutManager(activity));
+            binding.recycleViewLocationsList.setAdapter(locationListAdapter);
+            binding.recycleViewLocationsList.setLayoutManager(new LinearLayoutManager(activity));
 
         }
 
@@ -127,8 +128,8 @@ public class LocationsListFragment extends Fragment {
 
             public ViewHolder(View itemView, LocationListListAdapter adapter) {
                 super(itemView);
-                locationItemView = itemView.findViewById(R.id.TextView_LocationName);
-                itemLayout = itemView.findViewById(R.id.LinearLayout_location);
+                locationItemView = itemView.findViewById(R.id.text_view_location_name);
+                itemLayout = itemView.findViewById(R.id.linear_layout_location);
                 this.mAdapter = adapter;
             }
 
@@ -164,7 +165,10 @@ public class LocationsListFragment extends Fragment {
 
                     locationsRepository.getLocation(locationIDList.get(position)).observe(observationLifeCycle, location -> {
                         location.ifPresent(retrievedLocation -> {
+
                             List<String> idsChain = retrievedLocation.getAreaList().stream().map(locationArea -> String.valueOf(locationArea.getId())).collect(Collectors.toList());
+
+                            // Concatenate ids separated by the character "," into a string
                             if (idsChain.size() > 0) {
                                 String serializedIds = "";
                                 for (int i = 0; i < idsChain.size(); i++) {
@@ -175,16 +179,20 @@ public class LocationsListFragment extends Fragment {
                                 }
 
                                 if(serializedIds.contains(",")){
+                                    // If the "," character is present, multiple location areas are
+                                    // associated to the string, so pass the ids to "Location Area List" fragment
                                     action.setLocationIds(serializedIds);
                                     Navigation.findNavController(requireView()).navigate(action);
                                 }else{
+                                    // There is only one location area so go directly to his area details
                                     action1.setLocationAreaId(Integer.parseInt(serializedIds));
                                     Navigation.findNavController(requireView()).navigate(action1);
                                 }
 
 
                             }else{
-                                Toast.makeText(getContext(),"Not Impplemented",Toast.LENGTH_LONG).show();
+                                // Show toast message when a location that has no other details is clicked
+                                Toast.makeText(getContext(),R.string.locations_not_implemented,Toast.LENGTH_LONG).show();
                             }
 
                         });

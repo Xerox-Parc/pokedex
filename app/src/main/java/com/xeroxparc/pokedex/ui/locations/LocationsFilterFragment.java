@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,26 +36,26 @@ public class LocationsFilterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-
-        RelativeLayout layoutGen1 = view.findViewById(R.id.RelativeLayout_1Gen);
+        // Pass region ID from clickable relative layout
+        RelativeLayout layoutGen1 = view.findViewById(R.id.relative_layout_1gen);
         layoutGen1.setOnClickListener(v -> goToLocationListFragment(1));
 
-        RelativeLayout layoutGen2 = view.findViewById(R.id.RelativeLayout_2Gen);
+        RelativeLayout layoutGen2 = view.findViewById(R.id.relative_layout_2gen);
         layoutGen2.setOnClickListener(v -> goToLocationListFragment(2));
 
-        RelativeLayout layoutGen3 = view.findViewById(R.id.RelativeLayout_3Gen);
+        RelativeLayout layoutGen3 = view.findViewById(R.id.relative_layout_3gen);
         layoutGen3.setOnClickListener(v -> goToLocationListFragment(3));
 
-        RelativeLayout layoutGen4 = view.findViewById(R.id.RelativeLayout_4Gen);
+        RelativeLayout layoutGen4 = view.findViewById(R.id.relative_layout_4gen);
         layoutGen4.setOnClickListener(v -> goToLocationListFragment(4));
 
-        RelativeLayout layoutGen5 = view.findViewById(R.id.RelativeLayout_5Gen);
+        RelativeLayout layoutGen5 = view.findViewById(R.id.relative_layout_5gen);
         layoutGen5.setOnClickListener(v -> goToLocationListFragment(5));
 
-        RelativeLayout layoutGen6 = view.findViewById(R.id.RelativeLayout_6Gen);
+        RelativeLayout layoutGen6 = view.findViewById(R.id.relative_layout_6gen);
         layoutGen6.setOnClickListener(v -> goToLocationListFragment(6));
 
-        RelativeLayout layoutGen7 = view.findViewById(R.id.RelativeLayout_7Gen);
+        RelativeLayout layoutGen7 = view.findViewById(R.id.relative_layout_7gen);
         layoutGen7.setOnClickListener(v -> goToLocationListFragment(7));
 
     }

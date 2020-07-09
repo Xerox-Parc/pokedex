@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,29 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.xeroxparc.pokedex.R;
-import com.xeroxparc.pokedex.data.model.location.Location;
 import com.xeroxparc.pokedex.data.model.location.area.LocationArea;
 import com.xeroxparc.pokedex.data.repository.LocationAreaRepository;
-import com.xeroxparc.pokedex.data.repository.RegionRepository;
-import com.xeroxparc.pokedex.databinding.FragmentLocationsAreaDetailsBinding;
 import com.xeroxparc.pokedex.databinding.FragmentLocationsAreaListBinding;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import pl.droidsonroids.gif.GifImageView;
-
 public class LocationsAreaListFragment extends DialogFragment {
     private FragmentLocationsAreaListBinding binding;
-    final LinkedList<String> locationsAreaList = new LinkedList<>();
     Holder holder;
 
     @Override
@@ -52,36 +42,31 @@ public class LocationsAreaListFragment extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView textViewAreaListName = requireView().findViewById(R.id.TextView_AreaListName);
+        //Get the Location Area ID and string name from "Location List" fragment
+        TextView textViewAreaListName = requireView().findViewById(R.id.text_view_area_list_name);
         String areaListName = LocationsAreaListFragmentArgs.fromBundle(requireArguments()).getLocationIds();
         String areListTitle = LocationsAreaListFragmentArgs.fromBundle(requireArguments()).getLocationIdName();
 
+        //Split ID strings and get single location area ID
         String[] areasIds = areaListName.split(",");
         List<Integer> idsList = new ArrayList<>();
 
-        //Ids.length == 1) {
-        //d = Integer.parseInt(areasIds[0]);
 
-        //ionsAreaListFragmentDirections.ActionNavLocationsAreaListToNavLocationsAreaDetails action = LocationsAreaListFragmentDirections.actionNavLocationsAreaListToNavLocationsAreaDetails();
-        //n.setLocationAreaId(id);
-        //ation.findNavController(requireView()).navigate(action);
+        for (String id : areasIds) {
+            idsList.add(Integer.parseInt(id));
+        }
 
-        //
-            for (String id : areasIds) {
-                idsList.add(Integer.parseInt(id));
-            }
+        LocationAreaRepository locationAreaRepository = new LocationAreaRepository(requireContext());
+        idsList.forEach(id -> {
+            locationAreaRepository.
+                    getLocationArea(id).
+                    observe(getViewLifecycleOwner(),
+                            locationArea -> locationArea.ifPresent(retrievedArea -> {
+                                holder.getListAdapter().addLocationArea(retrievedArea);
+                                binding.listLoadingImg.setVisibility(View.GONE);
+                            }));
+        });
 
-            LocationAreaRepository locationAreaRepository = new LocationAreaRepository(requireContext());
-            idsList.forEach(id -> {
-                locationAreaRepository.
-                        getLocationArea(id).
-                        observe(getViewLifecycleOwner(),
-                                locationArea -> locationArea.ifPresent(retrievedArea -> {
-                                    holder.getListAdapter().addLocationArea(retrievedArea);
-                                    binding.listLoadingImg.setVisibility(View.GONE);
-                                }));
-            });
-       // }
 
         textViewAreaListName.setText(areListTitle);
     }
@@ -93,8 +78,8 @@ public class LocationsAreaListFragment extends DialogFragment {
 
             locationAreaListListAdapter = new LocationsAreaListFragment.LocationAreaListListAdapter(activity);
 
-            binding.recycleViewPokemonList.setAdapter(locationAreaListListAdapter);
-            binding.recycleViewPokemonList.setLayoutManager(new LinearLayoutManager(activity));
+            binding.recycleViewLocationsAreaList.setAdapter(locationAreaListListAdapter);
+            binding.recycleViewLocationsAreaList.setLayoutManager(new LinearLayoutManager(activity));
 
         }
 
@@ -123,8 +108,8 @@ public class LocationsAreaListFragment extends DialogFragment {
 
             public ViewHolder(View itemView, LocationsAreaListFragment.LocationAreaListListAdapter adapter) {
                 super(itemView);
-                locationItemView = itemView.findViewById(R.id.TextView_LocationName);
-                itemLayout = itemView.findViewById(R.id.LinearLayout_location);
+                locationItemView = itemView.findViewById(R.id.text_view_location_name);
+                itemLayout = itemView.findViewById(R.id.linear_layout_location);
 
                 this.mAdapter = adapter;
             }
@@ -141,6 +126,7 @@ public class LocationsAreaListFragment extends DialogFragment {
 
 
         private String capitalize(final String line) {
+            // Capitalize the first character of passed string
             return Character.toUpperCase(line.charAt(0)) + line.substring(1);
         }
 
@@ -150,13 +136,14 @@ public class LocationsAreaListFragment extends DialogFragment {
             LocationsAreaListFragmentDirections.ActionNavLocationsAreaListToNavLocationsAreaDetails action = LocationsAreaListFragmentDirections.actionNavLocationsAreaListToNavLocationsAreaDetails();
 
             LocationArea currentElement = locationAreaList.get(position);
+
+            // Capitalize the first character and remove "-" character from Loacation Area Name
             holder.locationItemView.setText(capitalize(currentElement.getName()).replace("-", " "));
 
             action.setLocationAreaIdTitle(capitalize(currentElement.getName()).replace("-", " "));
             action.setLocationAreaId(currentElement.getId());
 
             holder.itemView.setOnClickListener(item -> {
-               // locationArea
                 Navigation.findNavController(requireView()).navigate(action);
             });
 

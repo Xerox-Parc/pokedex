@@ -8,7 +8,7 @@
     tools:context=".ui.locations.LocationsListFragment">
 
     <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/ImageSlider_Map"
+        android:id="@+id/image_slider_map"
         android:layout_width="match_parent"
         android:layout_height="270dp"
         app:auto_cycle="false"
@@ -36,7 +36,7 @@
 
 
         <TextView
-            android:id="@+id/TextView_RegionName"
+            android:id="@+id/text_view_region_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -48,7 +48,7 @@
             android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view_pokemon_location"
+            android:id="@+id/recycle_view_locations_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"/>

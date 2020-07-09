@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/LinearLayout_LocationAreaPokemon"
+        android:id="@+id/linear_layout_location_area_pokemon"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="@drawable/card_layout"
@@ -21,25 +21,26 @@
 
 
                     <ImageView
-                        android:id="@+id/pokemonImage"
+                        android:id="@+id/image_view_pokemon_sprite"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:orientation="vertical"
                         android:layout_gravity="center_horizontal"
                         android:tint="#f06767"
-                        app:srcCompat="@drawable/ic_pokeball" />
+                        app:srcCompat="@drawable/ic_pokeball"
+                        android:contentDescription="@string/locations_item_area_pokemon_image_sprite" />
 
                     <TextView
-                        android:id="@+id/TextView_PokemonName"
+                        android:id="@+id/text_view_pokemon_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:fontFamily="@font/yantramanav"
                         android:orientation="vertical"
-                        android:text="Pokemon Name"
+                        android:text="@string/locations_item_area_pokemon_name"
                         android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
