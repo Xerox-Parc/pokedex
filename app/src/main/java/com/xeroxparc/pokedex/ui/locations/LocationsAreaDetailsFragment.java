@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -162,9 +163,14 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull LocationsAreaDetailsFragment.LocationAreaDetailsListAdapter.ViewHolder holder, int position) {
+
+            LocationsAreaDetailsFragmentDirections.ActionNavLocationsAreaDetailsToNavPokemonDetail action = LocationsAreaDetailsFragmentDirections.actionNavLocationsAreaDetailsToNavPokemonDetail();
+
             PokemonEncounter encounter = encounterList.get(position);
             //VersionEncounterDetail encounterDetail = encounter.getVersionDetailList().get(0);
             String pokemonName = encounter.getPokemon().getName();
+            action.setPokemonId(encounter.getPokemon().getId());
+
             holder.setName(pokemonName);
             //holder.setGame(encounterDetail.getVersion().getName());
             if(pokemonImages.get(pokemonName) != null){
@@ -180,6 +186,11 @@ public class LocationsAreaDetailsFragment extends Fragment {
             //      Navigation.findNavController(requireView()).navigate(action);
             //});
             binding.listLoadingImg.setVisibility(View.GONE);
+
+            holder.itemView.setOnClickListener(item -> {
+                // Pass Pokemon ID to "Pokemon Details" fragment
+                Navigation.findNavController(requireView()).navigate(action);
+            });
 
         }
 

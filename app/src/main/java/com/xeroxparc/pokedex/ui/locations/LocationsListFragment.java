@@ -153,6 +153,8 @@ public class LocationsListFragment extends Fragment {
             LocationsListFragmentDirections.ActionNavLocationsListToNavLocationsAreaDetails action1 = LocationsListFragmentDirections.actionNavLocationsListToNavLocationsAreaDetails();
 
             String currentElement = locationNamesList.get(position);
+
+            // Capitalize the firs character and remove "-" characters
             currentElement = capitalize(currentElement).replace("-", " ");
 
             action.setLocationIdName(currentElement);

@@ -145,6 +145,13 @@
             android:name="location_area_idTitle"
             app:argType="string"
             android:defaultValue=""/>
+        <action
+            android:id="@+id/action_nav_locations_area_details_to_nav_pokemon_detail"
+            app:destination="@id/nav_pokemon_detail"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
 
     </fragment>
 
