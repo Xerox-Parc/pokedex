@@ -84,8 +84,7 @@ public class MoveFragment extends Fragment {
 
             public ViewHolder(View itemView, MoveListAdapter adapter) {
                 super(itemView);
-
-                textViewName = itemView.findViewById(R.id.text_view_name);
+                textViewName = itemView.findViewById(R.id.text_view_move_list_move_name);
                 textViewType = itemView.findViewById(R.id.text_view_type);
                 textViewDamageClass = itemView.findViewById(R.id.text_view_damage_class);
                 textViewPowerPpAccuracy = itemView.findViewById(R.id.text_view_power_pp_accuracy);
@@ -131,6 +130,7 @@ public class MoveFragment extends Fragment {
                     break;
                 }
             }
+
 
             holder.itemView.setOnClickListener(item -> {
                 Navigation.findNavController(requireView()).navigate(action);
