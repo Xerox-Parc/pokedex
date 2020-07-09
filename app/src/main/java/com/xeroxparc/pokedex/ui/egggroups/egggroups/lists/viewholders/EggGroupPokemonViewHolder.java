@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui.egggroups.lists.viewholders;
+package com.xeroxparc.pokedex.ui.egggroups.egggroups.lists.viewholders;
 
 import android.view.View;
 import android.view.View.OnClickListener;

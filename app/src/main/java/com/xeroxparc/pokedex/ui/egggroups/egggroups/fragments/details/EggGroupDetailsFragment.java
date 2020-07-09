@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui.egggroups.fragments.details;
+package com.xeroxparc.pokedex.ui.egggroups.egggroups.fragments.details;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.ui.MainActivity;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsBinder;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragmentArgs;
 import com.xeroxparc.pokedex.ui.parents.CustomActionBarFragment;
 
 import java.io.Serializable;
@@ -23,7 +25,7 @@ import androidx.navigation.Navigation;
 
 public class EggGroupDetailsFragment extends CustomActionBarFragment {
     public static String KEY_EGG_GROUP = "KeyEggGroup";
-    private EggGroupDetailsBinder binder;
+    private com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsBinder binder;
 
     @Nullable
     @Override

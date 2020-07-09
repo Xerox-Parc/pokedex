@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui.egggroups.fragments.details;
+package com.xeroxparc.pokedex.ui.egggroups.egggroups.fragments.details;
 
 import android.app.Application;
 

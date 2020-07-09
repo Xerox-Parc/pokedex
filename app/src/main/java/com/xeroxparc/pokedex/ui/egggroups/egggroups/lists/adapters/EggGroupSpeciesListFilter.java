@@ -1,9 +1,10 @@
-package com.xeroxparc.pokedex.ui.egggroups.lists.adapters;
+package com.xeroxparc.pokedex.ui.egggroups.egggroups.lists.adapters;
 
 import android.util.Log;
 import android.widget.Filter;
 
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
+import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.PostFilteringCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class EggGroupSpeciesListFilter extends Filter {
     private static final String TAG = "EggGroupSpeciesFilter";
     private List<PokemonSpecies> fullList;
     private FilterMode filterMode;
-    private PostFilteringCallBack<List<PokemonSpecies>> callBack;
+    private com.xeroxparc.pokedex.ui.egggroups.lists.adapters.PostFilteringCallBack<List<PokemonSpecies>> callBack;
     private Map<String, PokemonSpecies> detailedSpeciesMap;
 
     public EggGroupSpeciesListFilter(List<PokemonSpecies> originalList, Map<String, PokemonSpecies> detailedSpeciesMap,

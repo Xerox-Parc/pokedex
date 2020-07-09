@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui.egggroups.fragments.details;
+package com.xeroxparc.pokedex.ui.egggroups.egggroups.fragments.details;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -7,6 +7,11 @@ import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.databinding.FragmentEggGroupDetailsBinding;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragment;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragmentDirections;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsLoader;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsNavigationRequester;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsViewModel;
 import com.xeroxparc.pokedex.ui.egggroups.fragments.menu.EggGroupsMenuFragmentDirections;
 import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupPokemonListAdapter;
 import com.xeroxparc.pokedex.ui.pokedex.detail.PokemonDetailFragmentArgs;

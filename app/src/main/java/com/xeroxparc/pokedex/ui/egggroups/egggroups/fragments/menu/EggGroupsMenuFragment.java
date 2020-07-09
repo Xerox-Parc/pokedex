@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui.egggroups.fragments.menu;
+package com.xeroxparc.pokedex.ui.egggroups.egggroups.fragments.menu;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.xeroxparc.pokedex.databinding.FragmentEggGroupsMenuBinding;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
+import com.xeroxparc.pokedex.ui.egggroups.fragments.menu.EggGroupsMenuFragmentDirections;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

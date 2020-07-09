@@ -1,4 +1,4 @@
-package com.xeroxparc.pokedex.ui.egggroups.lists.adapters;
+package com.xeroxparc.pokedex.ui.egggroups.egggroups.lists.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,7 +15,10 @@ import com.xeroxparc.pokedex.ui.egggroups.components.EggGroupChip;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsLoader;
 import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsNavigationRequester;
+import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupSpeciesListFilter;
 import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupSpeciesListFilter.FilterMode;
+import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.PostFilteringCallBack;
+import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.TypeAndTextFilterable;
 import com.xeroxparc.pokedex.ui.egggroups.lists.viewholders.EggGroupPokemonViewHolder;
 
 import java.util.ArrayList;
