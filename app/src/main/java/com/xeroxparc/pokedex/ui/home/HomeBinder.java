@@ -4,6 +4,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.xeroxparc.pokedex.databinding.FragmentHomeBinding;
 
@@ -30,19 +31,21 @@ public class HomeBinder {
 		return binding.getRoot();
 	}
 
-	void clean() {
+	void clear() {
 		fragment = null;
 		binding = null;
 		viewModel = null;
 	}
 
 	void bind() {
-		viewModel.getLanguage().observe(fragment, language ->
-				binding.textView.setText(language.getName())
-		);
+
+		PokemonAdapter adapter = new PokemonAdapter();
+		binding.recyclerView.setAdapter(adapter);
+		binding.recyclerView.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
+		viewModel.getPokemonList().observe(fragment, adapter::submitList);
 
 		binding.swipeRefresh.setOnRefreshListener(() -> {
-			viewModel.setForceUpdate();
+			viewModel.invalidate();
 			binding.swipeRefresh.setRefreshing(false);
 		});
 	}

@@ -7,24 +7,19 @@ import com.google.gson.GsonBuilder;
 import com.xeroxparc.pokedex.data.remote.call.PokeCallAdapterFactory;
 import com.xeroxparc.pokedex.data.remote.type.PokeTypeAdapterFactory;
 
-import java.io.IOException;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.HttpException;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * @author Fabio Buracchi
  */
-public abstract class PokeApiFactory implements PokeApiService {
+public abstract class PokeApi implements PokeApiService {
 
 	private static PokeApiService service;
 
-	private PokeApiFactory() {}
+	private PokeApi() {}
 
 	public static synchronized PokeApiService getService() {
 		if (service == null) {
@@ -56,15 +51,6 @@ public abstract class PokeApiFactory implements PokeApiService {
 					.create(PokeApiService.class);
 		}
 		return service;
-	}
-
-	public static <T> T result(Call<T> request) throws IOException {
-		Response<T> response = request.execute();
-		if (response.isSuccessful()) {
-			return response.body();
-		} else {
-			throw new HttpException(response);
-		}
 	}
 
 }

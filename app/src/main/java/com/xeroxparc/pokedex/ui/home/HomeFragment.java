@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binder.clean();
+        binder.clear();
         binder = null;
     }
 }

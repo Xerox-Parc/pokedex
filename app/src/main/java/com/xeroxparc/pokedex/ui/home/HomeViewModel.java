@@ -5,11 +5,12 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
+import androidx.paging.PagedList;
 
-import com.xeroxparc.pokedex.data.model.utility.language.Language;
-import com.xeroxparc.pokedex.data.repository.LanguageRepository;
+import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
+import com.xeroxparc.pokedex.data.repository.PokemonRepository;
+
+import java.util.Objects;
 
 /**
  * View model class.
@@ -21,25 +22,23 @@ import com.xeroxparc.pokedex.data.repository.LanguageRepository;
 public class HomeViewModel extends AndroidViewModel {
 
 
-	private final LanguageRepository berryRepository;
-	private final LiveData<Language> language;
-	private final MutableLiveData<Boolean> forceUpdate;
+	private final PokemonRepository pokemonRepository;
+
+	private final LiveData<PagedList<Pokemon>> pokemonList;
 
 	public HomeViewModel(@NonNull Application application) {
 		super(application);
-		berryRepository = new LanguageRepository(application);
-		forceUpdate = new MutableLiveData<>(false);
-		language = Transformations.switchMap(forceUpdate, force ->
-				berryRepository.getLanguage(1, force)
-		);
+		pokemonRepository = new PokemonRepository(application);
+		pokemonList = pokemonRepository.getPokemonList();
 	}
 
-	public LiveData<Language> getLanguage() {
-		return language;
+	public LiveData<PagedList<Pokemon>> getPokemonList() {
+		return pokemonList;
 	}
 
-	void setForceUpdate() {
-		forceUpdate.setValue(true);
+	void invalidate() {
+		Objects.requireNonNull(pokemonList.getValue()).getDataSource().invalidate();
+		pokemonRepository.fetchPokemonList();
 	}
 
 }
