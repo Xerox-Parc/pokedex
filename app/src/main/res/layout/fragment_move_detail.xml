@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bitmap_pokeball_clipped_bg"
+    android:background="@android:color/transparent"
     tools:context=".ui.move.MoveDetailFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -250,7 +250,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_height="@dimen/separator_height"
-                android:background="@android:color/holo_blue_dark"/>
+                android:background="@android:color/darker_gray"/>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -785,6 +785,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="@dimen/margin_large"
                             tools:ignore="HardcodedText" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>

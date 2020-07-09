@@ -19,9 +19,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textview.MaterialTextView;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.move.Move;
-import com.xeroxparc.pokedex.data.model.move.MoveFlavorText;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
-import com.xeroxparc.pokedex.data.model.utility.common.VerboseEffect;
 import com.xeroxparc.pokedex.data.repository.MoveRepository;
 import com.xeroxparc.pokedex.databinding.FragmentMoveBinding;
 import com.xeroxparc.pokedex.utils.Utils;
@@ -118,23 +116,7 @@ public class MoveFragment extends Fragment {
             holder.setBackgroundColor(Utils.eggGroupTypeFromTypeId(currentElement.getType().getId()).getEggGroupColorId());
 
             MoveFragmentDirections.ActionNavMoveToNavMoveDetail action = MoveFragmentDirections.actionNavMoveToNavMoveDetail();
-            action.setMoveType(currentElement.getType().getName());
-            action.setMoveTypeId(currentElement.getType().getId());
-            action.setMoveGeneration(currentElement.getGeneration().getName());
-            action.setMoveDamageClass(currentElement.getDamageClass().getName());
-
-            if(currentElement.getPower() != null){
-                action.setMovePower(currentElement.getPower());
-            }
-            if(currentElement.getAccuracy() != null){
-                action.setMoveAccuracy(currentElement.getAccuracy());
-            }
-            if(currentElement.getPp() != null){
-                action.setMovePp(currentElement.getPp());
-            }
-            if(currentElement.getPriority() != null){
-                action.setMovePriority(currentElement.getPriority());
-            }
+            action.setMoveId(currentElement.getId());
 
             List<Name> nameList = currentElement.getNameList();
 
@@ -142,79 +124,7 @@ public class MoveFragment extends Fragment {
                 String languageName = nameList.get(i).getLanguage().getName();
                 if(languageName != null && languageName.equalsIgnoreCase(getString(R.string.language))){
                     holder.moveItemView.setText(nameList.get(i).getName());
-                    action.setMoveTitle(nameList.get(i).getName());
                     break;
-                }
-            }
-
-            List<VerboseEffect> effectList = currentElement.getEffectEntryList();
-
-            String effectChance = String.valueOf(currentElement.getEffectChance());
-
-            for (int i = 0; i < effectList.size(); i++) {
-                String languageName = effectList.get(i).getLanguage().getName();
-                if(languageName != null && languageName.equalsIgnoreCase(getString(R.string.language))){
-
-                    String effectText = effectList.get(i).getEffect();
-
-                    if(currentElement.getEffectChance() != null) {
-                        effectText = effectText.replace("$effect_chance%", effectChance);
-                    }
-
-                    action.setMoveEffectText( effectText);
-                    break;
-                }
-            }
-
-            List<MoveFlavorText> flavorList = currentElement.getFlavorTextEntryList();
-
-            for (int i = 0; i < flavorList.size(); i++) {
-                String languageName = flavorList.get(i).getLanguage().getName();
-                if(languageName != null && languageName.equalsIgnoreCase(getString(R.string.language))){
-
-                    String flavorText = flavorList.get(i).getFlavorText();
-                    flavorText.replace("\n", "");
-
-                    switch(flavorList.get(i).getVersionGroup().getId()){
-                        case 0:
-
-                            action.setFlavorRedBlue(flavorText);
-                        case 1:
-                            action.setFlavorYellow(flavorText);
-                        case 2:
-                            action.setFlavorGoldSilver(flavorText);
-                        case 3:
-                            action.setFlavorCrystal(flavorText);
-                        case 4:
-                            action.setFlavorRubySapphire(flavorText);
-                        case 5:
-                            action.setFlavorEmerald(flavorText);
-                        case 6:
-                            action.setFlavorFireredLeafgreen(flavorText);
-                        case 7:
-                            action.setFlavorDiamondPearl(flavorText);
-                        case 8:
-                            action.setFlavorPlatinum(flavorText);
-                        case 9:
-                            action.setFlavorHeartgoldSoulsilver(flavorText);
-                        case 10:
-                            action.setFlavorBlackWhite(flavorText);
-                        case 11:
-                            action.setFlavorColosseum(flavorText);
-                        case 12:
-                            action.setFlavorXd(flavorText);
-                        case 13:
-                            action.setFlavorBlack2White2(flavorText);
-                        case 14:
-                            action.setFlavorXY(flavorText);
-                        case 15:
-                            action.setFlavorOmegarubyAlphasapphire(flavorText);
-                        case 16:
-                            action.setFlavorSunMoon(flavorText);
-                        case 17:
-                            action.setFlavorUltrasunUltramoon(flavorText);
-                        default:
-                    }
                 }
             }
 
