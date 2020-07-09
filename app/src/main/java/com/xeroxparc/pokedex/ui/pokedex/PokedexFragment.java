@@ -50,7 +50,6 @@ public class PokedexFragment extends CustomActionBarFragment {
     private FragmentPokedexBinding binding;
     private static PokedexFragment.PokemonListAdapter componentListAdapter;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,7 +57,6 @@ public class PokedexFragment extends CustomActionBarFragment {
         binder.bind();
         return binder.getRoot();
     }
-
 
     @Override
     public void onDestroyView() {
@@ -305,27 +303,26 @@ public class PokedexFragment extends CustomActionBarFragment {
             List<PokemonType> typeList = pokemon.getTypeList();
             binding.textViewPokemonType.setText(typeList.get(0).getType().getName());
             if(typeList.size() > 1){
-                binding.textViewPokemonType1.setText(typeList.get(1).getType().getName());
+                binding.textViewPokemonType2.setText(typeList.get(1).getType().getName());
             }
             EggGroupType eggGroupTypeStyling = Utils.eggGroupTypeFromTypeId(typeList.get(0).getType().getId());
             binding.cardView2.setCardBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
-            if(pokemon.isFavourite()){
-                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
-            }else{
-                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
-            }
+            updateFavoriteView(pokemon);
 
             binding.textViewPokemonName.setText(pokemon.getName());
-            binding.imageViewStar.setOnClickListener((v) -> {
-                Log.d("PREFER", "Pokemon " + (position + 1) + " aggiunto ai preferiti");
+            binding.imageViewStar.setOnClickListener(v -> {
                 pokemon.setFavourite(!pokemon.isFavourite());
-                if(!pokemon.isFavourite()){
-                    binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
-                }else{
-                    binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
-                }
-                updateRequester.requestPokemonUpdate(pokemon,position);
+                updateFavoriteView(pokemon);
+                updateRequester.requestPokemonUpdate(pokemon, position);
             });
+        }
+
+        void updateFavoriteView(@NonNull Pokemon pokemon) {
+            if(!pokemon.isFavourite()) {
+                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
+            } else {
+                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
+            }
         }
     }
 
