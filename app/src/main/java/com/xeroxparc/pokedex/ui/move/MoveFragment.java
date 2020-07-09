@@ -27,7 +27,6 @@ import com.xeroxparc.pokedex.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static androidx.core.content.ContextCompat.getColor;
 
 public class MoveFragment extends Fragment {
 
@@ -45,14 +44,17 @@ public class MoveFragment extends Fragment {
 
     class Holder {
 
+        final int MAX_MOVES_ID = 728;
+
         public Holder(FragmentActivity activity) {
 
             MoveListAdapter moveListAdapter = new MoveListAdapter(activity);
             binding.recyclerView.setAdapter(moveListAdapter);
             binding.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-            final int MAX_MOVES_NUMBER = 728;
+
+            // Request to take Moves from either the database or the web
             final MoveRepository moveRepository = new MoveRepository(activity);
-            for (int i = 1; i < MAX_MOVES_NUMBER + 1; i++) {
+            for (int i = 1; i < MAX_MOVES_ID + 1; i++) {
                 moveRepository.getMove(i).observe(activity, move ->
                         move.ifPresent(moveListAdapter::addMove)
                 );
@@ -73,26 +75,25 @@ public class MoveFragment extends Fragment {
 
         class ViewHolder extends RecyclerView.ViewHolder {
 
-            public final MaterialTextView moveItemView;
-            public final MaterialTextView moveItemType;
-            public final MaterialTextView moveItemViewDamageClass;
-            public final MaterialCardView topHalfCard;
-            public final MaterialTextView moveItemViewPowerPpAccuracy;
+            public final MaterialTextView textViewName;
+            public final MaterialTextView textViewType;
+            public final MaterialTextView textViewDamageClass;
+            public final MaterialCardView cardViewTopHalf;
+            public final MaterialTextView textViewPowerPpAccuracy;
             final MoveListAdapter mAdapter;
 
             public ViewHolder(View itemView, MoveListAdapter adapter) {
                 super(itemView);
-                moveItemView = itemView.findViewById(R.id.text_view_pokemon_name);
-                moveItemType = itemView.findViewById(R.id.text_view_type);
-                moveItemViewDamageClass = itemView.findViewById(R.id.text_view_damage_class);
-                moveItemViewPowerPpAccuracy = itemView.findViewById(R.id.text_view_power_pp_accuracy);
-                topHalfCard = itemView.findViewById(R.id.text_view_card_top_half);
-                topHalfCard.setBackgroundColor(getColor(requireContext(), R.color.Blue));
+                textViewName = itemView.findViewById(R.id.text_view_name);
+                textViewType = itemView.findViewById(R.id.text_view_type);
+                textViewDamageClass = itemView.findViewById(R.id.text_view_damage_class);
+                textViewPowerPpAccuracy = itemView.findViewById(R.id.text_view_power_pp_accuracy);
+                cardViewTopHalf = itemView.findViewById(R.id.text_view_card_top_half);
                 this.mAdapter = adapter;
             }
 
             public void setBackgroundColor(int colorId) {
-                topHalfCard.setBackgroundColor(requireContext().getColor(colorId));
+                cardViewTopHalf.setBackgroundColor(requireContext().getColor(colorId));
             }
 
         }
@@ -109,21 +110,23 @@ public class MoveFragment extends Fragment {
         public void onBindViewHolder(@NonNull MoveListAdapter.ViewHolder holder, int position) {
 
             Move currentElement = moveList.get(position);
-            holder.moveItemType.setText(currentElement.getType().getName());
-            holder.moveItemViewDamageClass.setText(currentElement.getDamageClass().getName());
+            holder.textViewType.setText(currentElement.getType().getName());
+            holder.textViewDamageClass.setText(currentElement.getDamageClass().getName());
             String technical_details = getString(R.string.power_short) + currentElement.getPower() + getString(R.string.pp_short) + currentElement.getPp() + getString(R.string.accuracy_short) + currentElement.getAccuracy();
-            holder.moveItemViewPowerPpAccuracy.setText(technical_details);
+            holder.textViewPowerPpAccuracy.setText(technical_details);
             holder.setBackgroundColor(Utils.eggGroupTypeFromTypeId(currentElement.getType().getId()).getEggGroupColorId());
 
+            // navigation logic to go to the move_detail layout
             MoveFragmentDirections.ActionNavMoveToNavMoveDetail action = MoveFragmentDirections.actionNavMoveToNavMoveDetail();
             action.setMoveId(currentElement.getId());
 
+            // set the name of the move as the one in the preferred language from the getNameList() API
             List<Name> nameList = currentElement.getNameList();
 
             for (int i = 0; i < nameList.size(); i++) {
                 String languageName = nameList.get(i).getLanguage().getName();
                 if(languageName != null && languageName.equalsIgnoreCase(getString(R.string.language))){
-                    holder.moveItemView.setText(nameList.get(i).getName());
+                    holder.textViewName.setText(nameList.get(i).getName());
                     break;
                 }
             }

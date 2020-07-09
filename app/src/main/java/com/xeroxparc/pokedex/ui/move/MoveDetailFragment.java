@@ -47,6 +47,7 @@ public class MoveDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // API request to obtain the current move object
         MoveRepository moveRepository = new MoveRepository(requireContext());
         moveRepository.getMove(MoveDetailFragmentArgs.fromBundle(requireArguments()).getMoveId()).observe(getViewLifecycleOwner(), move -> {
             move.ifPresent(retrievedMove -> {
@@ -129,29 +130,10 @@ public class MoveDetailFragment extends Fragment {
 
             // Retrieval of data necessary to set the flavor text from available Pokemon games
 
-            List<MaterialTextView> tvFlavorList = new ArrayList<>();
-
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_red_blue));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_yellow));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_gold_silver));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_crystal));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_ruby_sapphire));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_emerald));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_firered_leafgreen));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_diamond_pearl));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_platinum));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_heartgold_soulsilver));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_black_white));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_colosseum));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_xd));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_black2_white2));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_x_y));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_omegaruby_alphasapphire));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_sun_moon));
-            tvFlavorList.add(requireView().findViewById(R.id.text_view_flavor_text_ultrasun_ultramoon));
+            List<MaterialTextView> flavorTextList = new ArrayList<>();
+            fillFlavorList(flavorTextList);
 
             List<MoveFlavorText> flavorList = currentMove.getFlavorTextEntryList();
-
 
             int NUMBER_OF_POKEMON_VERSIONS = 18;
             List<String> orderedFlavorList = new ArrayList<String>(NUMBER_OF_POKEMON_VERSIONS);
@@ -208,58 +190,90 @@ public class MoveDetailFragment extends Fragment {
                 }
             }
 
-            List<String> flavorOrigin = new ArrayList<>();
+            List<String> pokemonVersionList = new ArrayList<>();
+            fillPokemonVersionList(pokemonVersionList);
 
-            flavorOrigin.add(getString(R.string.red_and_blue));
-            flavorOrigin.add(getString(R.string.yellow));
-            flavorOrigin.add(getString(R.string.gold_and_silver));
-            flavorOrigin.add(getString(R.string.crystal));
-            flavorOrigin.add(getString(R.string.ruby_and_sapphire));
-            flavorOrigin.add(getString(R.string.emerald));
-            flavorOrigin.add(getString(R.string.firered_and_leafgreen));
-            flavorOrigin.add(getString(R.string.diamond_and_pearl));
-            flavorOrigin.add(getString(R.string.platinum));
-            flavorOrigin.add(getString(R.string.heartgold_and_soulsilver));
-            flavorOrigin.add(getString(R.string.black_and_white));
-            flavorOrigin.add(getString(R.string.colosseum));
-            flavorOrigin.add(getString(R.string.xd));
-            flavorOrigin.add(getString(R.string.black2_and_white2));
-            flavorOrigin.add(getString(R.string.x_and_y));
-            flavorOrigin.add(getString(R.string.omegaruby_and_alphasapphire));
-            flavorOrigin.add(getString(R.string.sun_and_moon));
-            flavorOrigin.add(getString(R.string.ultrasun_and_ultramoon));
+            List<MaterialCardView> cardViewFlavorList = new ArrayList<>();
+            fillCardViewFlavorList(cardViewFlavorList);
 
-            List<MaterialCardView> cardViewFlavorlist = new ArrayList<>();
-
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_2));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_3));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_4));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_5));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_6));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_7));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_8));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_9));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_10));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_11));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_12));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_13));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_14));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_15));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_16));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_17));
-            cardViewFlavorlist.add( requireView().findViewById(R.id.card_view_flavor_text_18));
-
-
-            for(int i = 0; i < tvFlavorList.size(); i++){
+            // set flavor texts from available games into corresponding card views, hide them id there's not available text
+            for(int i = 0; i < flavorTextList.size(); i++){
                 if(!orderedFlavorList.get(i).equals("none")){
-                    tvFlavorList.get(i).setText(flavorOrigin.get(i) +"\n" + orderedFlavorList.get(i));
+                    flavorTextList.get(i).setText(pokemonVersionList.get(i) +"\n" + orderedFlavorList.get(i));
                 } else{
-                    cardViewFlavorlist.get(i).setVisibility(View.GONE);
+                    cardViewFlavorList.get(i).setVisibility(View.GONE);
                 }
             }
         }
+
     }
+
+    private void fillCardViewFlavorList(List<MaterialCardView> cardViewFlavorList) {
+
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_red_blue));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_yellow));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_gold_silver));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_crystal));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_ruby_sapphire));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_emerald));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_firered_leafgreen));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_diamond_pearl));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_platinum));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_heartgold_soulsilver));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_black_white));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_colosseum));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_xd));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_black2_white2));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_x_y));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_omegaruby_alphasapphire));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_sun_moon));
+        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_ultrasun_ultramoon));
+    }
+
+    private void fillPokemonVersionList(List<String> pokemonVersionList) {
+
+        pokemonVersionList.add(getString(R.string.red_and_blue));
+        pokemonVersionList.add(getString(R.string.yellow));
+        pokemonVersionList.add(getString(R.string.gold_and_silver));
+        pokemonVersionList.add(getString(R.string.crystal));
+        pokemonVersionList.add(getString(R.string.ruby_and_sapphire));
+        pokemonVersionList.add(getString(R.string.emerald));
+        pokemonVersionList.add(getString(R.string.firered_and_leafgreen));
+        pokemonVersionList.add(getString(R.string.diamond_and_pearl));
+        pokemonVersionList.add(getString(R.string.platinum));
+        pokemonVersionList.add(getString(R.string.heartgold_and_soulsilver));
+        pokemonVersionList.add(getString(R.string.black_and_white));
+        pokemonVersionList.add(getString(R.string.colosseum));
+        pokemonVersionList.add(getString(R.string.xd));
+        pokemonVersionList.add(getString(R.string.black2_and_white2));
+        pokemonVersionList.add(getString(R.string.x_and_y));
+        pokemonVersionList.add(getString(R.string.omegaruby_and_alphasapphire));
+        pokemonVersionList.add(getString(R.string.sun_and_moon));
+        pokemonVersionList.add(getString(R.string.ultrasun_and_ultramoon));
+    }
+
+    private void fillFlavorList(List<MaterialTextView> flavorTextViewList) {
+
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_red_blue));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_yellow));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_gold_silver));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_crystal));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_ruby_sapphire));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_emerald));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_firered_leafgreen));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_diamond_pearl));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_platinum));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_heartgold_soulsilver));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_black_white));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_colosseum));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_xd));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_black2_white2));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_x_y));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_omegaruby_alphasapphire));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_sun_moon));
+        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_ultrasun_ultramoon));
+    }
+
 
     public String GenerationConverter(String rawGeneration){
         String generation = getString(R.string.generation);

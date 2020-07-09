@@ -265,14 +265,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_small"
                     android:textSize="@dimen/Flavor_title_size"
+                    android:textAlignment="center"
                     android:text="@string/flavor_text"
+                    android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="HardcodedText" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text"
+                    android:id="@+id/card_view_flavor_text_red_blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -301,14 +303,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_2"
+                    android:id="@+id/card_view_flavor_text_yellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_red_blue">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -330,14 +332,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_3"
+                    android:id="@+id/card_view_flavor_text_gold_silver"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_2">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_yellow">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -359,14 +361,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_4"
+                    android:id="@+id/card_view_flavor_text_crystal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_3">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_gold_silver">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -388,14 +390,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_5"
+                    android:id="@+id/card_view_flavor_text_ruby_sapphire"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_4">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_crystal">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -416,14 +418,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_6"
+                    android:id="@+id/card_view_flavor_text_emerald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_5">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_ruby_sapphire">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -445,14 +447,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_7"
+                    android:id="@+id/card_view_flavor_text_firered_leafgreen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_6">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_emerald">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -473,14 +475,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_8"
+                    android:id="@+id/card_view_flavor_text_diamond_pearl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_7">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_firered_leafgreen">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -502,14 +504,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_9"
+                    android:id="@+id/card_view_flavor_text_platinum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_8">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_diamond_pearl">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -531,14 +533,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_10"
+                    android:id="@+id/card_view_flavor_text_heartgold_soulsilver"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_9">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_platinum">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -560,14 +562,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_11"
+                    android:id="@+id/card_view_flavor_text_black_white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_10">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_heartgold_soulsilver">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -589,14 +591,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_12"
+                    android:id="@+id/card_view_flavor_text_colosseum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_11">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_black_white">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -618,14 +620,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_13"
+                    android:id="@+id/card_view_flavor_text_xd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_12">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_colosseum">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -646,14 +648,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_14"
+                    android:id="@+id/card_view_flavor_text_black2_white2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_13">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_xd">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -675,14 +677,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_15"
+                    android:id="@+id/card_view_flavor_text_x_y"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_14">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_black2_white2">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -704,14 +706,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_16"
+                    android:id="@+id/card_view_flavor_text_omegaruby_alphasapphire"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_15">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_x_y">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -733,14 +735,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_17"
+                    android:id="@+id/card_view_flavor_text_sun_moon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_16">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_omegaruby_alphasapphire">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -762,14 +764,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_flavor_text_18"
+                    android:id="@+id/card_view_flavor_text_ultrasun_ultramoon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:cardCornerRadius="@dimen/margin_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_medium"
-                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_17">
+                    app:layout_constraintTop_toBottomOf="@id/card_view_flavor_text_sun_moon">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
