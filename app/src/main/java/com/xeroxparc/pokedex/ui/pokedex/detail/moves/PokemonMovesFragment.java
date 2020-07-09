@@ -20,13 +20,10 @@ public class PokemonMovesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binder = new PokemonMovesBinder(this);
-        binder.bind();
         int pokeId = PokemonMovesFragmentArgs.fromBundle(requireArguments()).getPokemonId();
+        binder = new PokemonMovesBinder(this,pokeId);
+        binder.bind();
         Log.d("Moves InfoPokemon", String.valueOf(pokeId));
-
-
-
         return binder.getRoot();
 
     }

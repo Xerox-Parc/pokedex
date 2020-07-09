@@ -2,7 +2,6 @@ package com.xeroxparc.pokedex.ui.locations;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.xeroxparc.pokedex.R;
-import com.xeroxparc.pokedex.data.Pokemon;
 import com.xeroxparc.pokedex.data.model.location.area.PokemonEncounter;
-import com.xeroxparc.pokedex.data.model.utility.common.Encounter;
-import com.xeroxparc.pokedex.data.model.utility.common.VersionEncounterDetail;
 import com.xeroxparc.pokedex.data.repository.PokemonRepository;
 import com.xeroxparc.pokedex.data.repository.LocationAreaRepository;
 import com.xeroxparc.pokedex.databinding.FragmentLocationsAreaDetailsBinding;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;

@@ -6,11 +6,15 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.xeroxparc.pokedex.data.Pokemon;
+import com.xeroxparc.pokedex.data.model.move.Move;
+import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
+import com.xeroxparc.pokedex.data.model.pokemon.PokemonMove;
 import com.xeroxparc.pokedex.databinding.FragmentPokemonMovesBinding;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
- *
- *
  * @author Palmieri Ivan
  */
 public class PokemonMovesBinder {
@@ -19,27 +23,33 @@ public class PokemonMovesBinder {
 
     private final PokemonMovesFragment fragment;
     private final PokemonMovesViewModel viewModel;
+    private final int pokeId;
 
-    PokemonMovesBinder(@NonNull PokemonMovesFragment fragment) {
+    PokemonMovesBinder(@NonNull PokemonMovesFragment fragment, int pokeId) {
         this.fragment = fragment;
         binding = FragmentPokemonMovesBinding.inflate(fragment.getLayoutInflater());
         viewModel = new ViewModelProvider(fragment).get(PokemonMovesViewModel.class);
+        this.pokeId = pokeId;
     }
 
 
-
     View getRoot() {
-        return binding.getRoot(); }
+        return binding.getRoot();
+    }
 
-    void bind(){
+    void bind() {
         final PokemonMovesListAdapter componentListAdapter = new PokemonMovesListAdapter() {
             @Override
-            void onClickCallback(Pokemon pokemon) {
-                //
+            void onClickCallback(Move move) {
             }
         };
         binding.recycleViewPokemonMoves.setAdapter(componentListAdapter);
         binding.recycleViewPokemonMoves.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
-        viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
+        viewModel.getPokemon(pokeId).observe(fragment.getViewLifecycleOwner(), pokemon -> {
+            pokemon.ifPresent(retrieved -> {
+                List<Move> moves = retrieved.getMoveList().stream().map(PokemonMove::getMove).collect(Collectors.toList());
+                componentListAdapter.setMoves(moves);
+            });
+        });
     }
 }

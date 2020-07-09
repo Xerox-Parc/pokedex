@@ -8,8 +8,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
-import com.xeroxparc.pokedex.data.Pokemon;
-import com.xeroxparc.pokedex.data.PokemonRepository;
+import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
+import com.xeroxparc.pokedex.data.repository.PokemonRepository;
 
 import java.util.List;
 /**
@@ -24,20 +24,20 @@ public class PokemonEvolutionViewModel extends AndroidViewModel {
 
     private final MutableLiveData<String> filterPokemonName;
 
-    private final LiveData<List<Pokemon>> listPokemon;
+//    private final LiveData<List<Pokemon>> listPokemon;
 
     public PokemonEvolutionViewModel(@NonNull Application application) {
         super(application);
         repository = new PokemonRepository(application);
         filterPokemonName = new MutableLiveData<>("");
-        listPokemon = Transformations.switchMap(filterPokemonName, name -> name.isEmpty()?
-                repository.getAllComponentList() :
-                repository.getComponentListByName(name));
+//        listPokemon = Transformations.switchMap(filterPokemonName, name -> name.isEmpty()?
+//                repository.getAllComponentList() :
+//                repository.getComponentListByName(name));
     }
 
 
 
-     public LiveData<List<Pokemon>> getListComponent() { return listPokemon; }
+//     public LiveData<List<Pokemon>> getListComponent() { return listPokemon; }
 
 
 

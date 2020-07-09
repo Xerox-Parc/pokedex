@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.xeroxparc.pokedex.data.Pokemon;
+import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.databinding.FragmentPokemonEvolutionBinding;
 /**
  *
@@ -26,8 +26,6 @@ public class PokemonEvolutionBinder {
         viewModel = new ViewModelProvider(fragment).get(PokemonEvolutionViewModel.class);
     }
 
-
-
     View getRoot() {
         return binding.getRoot(); }
 
@@ -41,7 +39,7 @@ public class PokemonEvolutionBinder {
         };
         binding.recycleViewPokemonEvolution.setAdapter(componentListAdapter);
         binding.recycleViewPokemonEvolution.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
-        viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
+//        viewModel.getListComponent().observe(fragment, componentListAdapter::setComponentList);
     }
 
 

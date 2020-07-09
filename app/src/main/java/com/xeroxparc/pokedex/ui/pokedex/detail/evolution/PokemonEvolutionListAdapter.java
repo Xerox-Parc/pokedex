@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xeroxparc.pokedex.data.Pokemon;
+import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 
 import java.util.List;
 /**

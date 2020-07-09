@@ -54,11 +54,11 @@ public class PokemonRepository extends BaseRepository {
 
 
     @NonNull
-    public LiveData<List<com.xeroxparc.pokedex.data.Pokemon>> getAllComponentList() {
-        List<com.xeroxparc.pokedex.data.Pokemon> listPokemon = new ArrayList<>();
-        com.xeroxparc.pokedex.data.Pokemon pokemon;
+    public LiveData<List<Pokemon>> getAllComponentList() {
+        List<Pokemon> listPokemon = new ArrayList<>();
+        Pokemon pokemon;
         for (String pokemonName : pokemonNameList) {
-            pokemon = new com.xeroxparc.pokedex.data.Pokemon();
+            pokemon = new Pokemon();
             pokemon.setName(pokemonName);
             listPokemon.add(pokemon);
         }
@@ -66,12 +66,12 @@ public class PokemonRepository extends BaseRepository {
     }
 
     @NonNull
-    public LiveData<List<com.xeroxparc.pokedex.data.Pokemon>> getComponentListByName(@NonNull String name) {
-        List<com.xeroxparc.pokedex.data.Pokemon> listPokemon = new ArrayList<>();
-        com.xeroxparc.pokedex.data.Pokemon pokemon;
+    public LiveData<List<Pokemon>> getComponentListByName(@NonNull String name) {
+        List<Pokemon> listPokemon = new ArrayList<>();
+        Pokemon pokemon;
         for (String pokemonName : pokemonNameList) {
             if (pokemonName.toLowerCase().contains(name.toLowerCase())) {
-                pokemon = new com.xeroxparc.pokedex.data.Pokemon();
+                pokemon = new Pokemon();
                 pokemon.setName(pokemonName);
                 listPokemon.add(pokemon);
             }
@@ -80,11 +80,11 @@ public class PokemonRepository extends BaseRepository {
     }
 
     @NonNull
-    public LiveData<List<com.xeroxparc.pokedex.data.Pokemon>> getComponentListByPrefer() {
-        List<com.xeroxparc.pokedex.data.Pokemon> listPokemon = new ArrayList<>();
-        com.xeroxparc.pokedex.data.Pokemon pokemon;
+    public LiveData<List<Pokemon>> getComponentListByPrefer() {
+        List<Pokemon> listPokemon = new ArrayList<>();
+        Pokemon pokemon;
         for (String pokemonName : pokemonNameList) {
-            pokemon = new com.xeroxparc.pokedex.data.Pokemon();
+            pokemon = new Pokemon();
             if (pokemon.getPrefer()) {
                 pokemon.setName(pokemonName);
                 listPokemon.add(pokemon);
