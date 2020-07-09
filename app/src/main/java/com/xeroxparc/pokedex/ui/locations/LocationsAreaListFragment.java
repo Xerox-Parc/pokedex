@@ -54,18 +54,19 @@ public class LocationsAreaListFragment extends DialogFragment {
 
         TextView textViewAreaListName = requireView().findViewById(R.id.TextView_AreaListName);
         String areaListName = LocationsAreaListFragmentArgs.fromBundle(requireArguments()).getLocationIds();
+        String areListTitle = LocationsAreaListFragmentArgs.fromBundle(requireArguments()).getLocationIdName();
 
         String[] areasIds = areaListName.split(",");
         List<Integer> idsList = new ArrayList<>();
 
-        if (areasIds.length == 1) {
-            int id = Integer.parseInt(areasIds[0]);
+        //Ids.length == 1) {
+        //d = Integer.parseInt(areasIds[0]);
 
-            LocationsAreaListFragmentDirections.ActionNavLocationsAreaListToNavLocationsAreaDetails action = LocationsAreaListFragmentDirections.actionNavLocationsAreaListToNavLocationsAreaDetails();
-            action.setLocationAreaId(id);
-            Navigation.findNavController(requireView()).navigate(action);
+        //ionsAreaListFragmentDirections.ActionNavLocationsAreaListToNavLocationsAreaDetails action = LocationsAreaListFragmentDirections.actionNavLocationsAreaListToNavLocationsAreaDetails();
+        //n.setLocationAreaId(id);
+        //ation.findNavController(requireView()).navigate(action);
 
-        } else {
+        //
             for (String id : areasIds) {
                 idsList.add(Integer.parseInt(id));
             }
@@ -80,9 +81,9 @@ public class LocationsAreaListFragment extends DialogFragment {
                                     binding.listLoadingImg.setVisibility(View.GONE);
                                 }));
             });
-        }
+       // }
 
-        textViewAreaListName.setText("Area List:" + areaListName);
+        textViewAreaListName.setText(areListTitle);
     }
 
     class Holder {
@@ -138,11 +139,16 @@ public class LocationsAreaListFragment extends DialogFragment {
             return new LocationsAreaListFragment.LocationAreaListListAdapter.ViewHolder(mItemView, this);
         }
 
+
+        private String capitalize(final String line) {
+            return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+        }
+
         @Override
         public void onBindViewHolder(@NonNull LocationsAreaListFragment.LocationAreaListListAdapter.ViewHolder holder, int position) {
 
             LocationArea currentElement = locationAreaList.get(position);
-            holder.locationItemView.setText(currentElement.getName());
+            holder.locationItemView.setText(capitalize(currentElement.getName()).replace("-", " "));
 
 
 

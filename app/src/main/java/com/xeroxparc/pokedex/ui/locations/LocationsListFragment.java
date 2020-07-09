@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,35 +48,6 @@ public class LocationsListFragment extends Fragment {
         return binding.getRoot();
     }
 
-    public String getRegionName(int regionID) {
-        String regionName = "";
-
-        switch (regionID) {
-            case 1:
-                regionName = "kanto";
-                break;
-            case 2:
-                regionName = "johto";
-                break;
-            case 3:
-                regionName = "hoenn";
-                break;
-            case 4:
-                regionName = "sinnoh";
-                break;
-            case 5:
-                regionName = "unova";
-                break;
-            case 6:
-                regionName = "kalos";
-                break;
-            case 7:
-                regionName = "alola";
-                break;
-        }
-
-        return regionName;
-    }
 
     public void setImageSlider(String regionName, List<SlideModel> slideModels) {
         int resIdMap1 = getResources().getIdentifier("image_region_" + regionName + "1", "drawable", getContext().getPackageName());
@@ -177,12 +149,14 @@ public class LocationsListFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull LocationListListAdapter.ViewHolder holder, int position) {
 
-            String currentElement = locationNamesList.get(position);
-            currentElement = Character.toUpperCase(currentElement.charAt(0)) + currentElement.substring(1).replace("-", " ");
-
-            holder.locationItemView.setText(currentElement);
-
             LocationsListFragmentDirections.ActionNavLocationsListToNavLocationsAreaList action = LocationsListFragmentDirections.actionNavLocationsListToNavLocationsAreaList();
+            LocationsListFragmentDirections.ActionNavLocationsListToNavLocationsAreaDetails action1 = LocationsListFragmentDirections.actionNavLocationsListToNavLocationsAreaDetails();
+
+            String currentElement = locationNamesList.get(position);
+            currentElement = capitalize(currentElement).replace("-", " ");
+
+            action.setLocationIdName(currentElement);
+            holder.locationItemView.setText(currentElement);
 
 
             holder.itemView.setOnClickListener(item -> {
@@ -191,15 +165,27 @@ public class LocationsListFragment extends Fragment {
                     locationsRepository.getLocation(locationIDList.get(position)).observe(observationLifeCycle, location -> {
                         location.ifPresent(retrievedLocation -> {
                             List<String> idsChain = retrievedLocation.getAreaList().stream().map(locationArea -> String.valueOf(locationArea.getId())).collect(Collectors.toList());
-                            String serializedIds = "";
-                            for(int i=0;i<idsChain.size();i++){
-                                serializedIds += idsChain.get(i);
-                                if(i < idsChain.size() -1){
-                                    serializedIds += ",";
+                            if (idsChain.size() > 0) {
+                                String serializedIds = "";
+                                for (int i = 0; i < idsChain.size(); i++) {
+                                    serializedIds += idsChain.get(i);
+                                    if (i < idsChain.size() - 1) {
+                                        serializedIds += ",";
+                                    }
                                 }
+
+                                if(serializedIds.contains(",")){
+                                    action.setLocationIds(serializedIds);
+                                    Navigation.findNavController(requireView()).navigate(action);
+                                }else{
+                                    action1.setLocationAreaId(Integer.parseInt(serializedIds));
+                                    Navigation.findNavController(requireView()).navigate(action1);
+                                }
+
+
+                            }else{
+                                Toast.makeText(getContext(),"Not Impplemented",Toast.LENGTH_LONG).show();
                             }
-                            action.setLocationIds(serializedIds);
-                            Navigation.findNavController(requireView()).navigate(action);
 
                         });
                     });

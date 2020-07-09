@@ -63,19 +63,20 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
         locationAreaRepository.getLocationArea(areaId).observe(getViewLifecycleOwner(), locationArea -> {
             locationArea.ifPresent(area -> {
-                List<PokemonEncounter> encounters = new ArrayList<>();
-                area.getPokemonEncounterList().forEach(pokemonEncounter -> {
-                    List<VersionEncounterDetail> encounterDetails = pokemonEncounter.getVersionDetailList();
-                    for(int i = 0; i<encounterDetails.size();i++){
-                        PokemonEncounter encounter = new PokemonEncounter();
-                        encounter.setPokemon(pokemonEncounter.getPokemon());
-                        List<VersionEncounterDetail> details = new ArrayList<>();
-                        details.add(encounterDetails.get(i));
-                        encounter.setVersionDetailList(details);
-                        encounters.add(encounter);
-                    }
-                });
-                encounterList.addAll(encounters);
+//                List<PokemonEncounter> encounters = new ArrayList<>();
+//                area.getPokemonEncounterList().forEach(pokemonEncounter -> {
+//                    List<VersionEncounterDetail> encounterDetails = pokemonEncounter.getVersionDetailList();
+//                    for(int i = 0; i<encounterDetails.size();i++){
+//                        PokemonEncounter encounter = new PokemonEncounter();
+//                        encounter.setPokemon(pokemonEncounter.getPokemon());
+//                        List<VersionEncounterDetail> details = new ArrayList<>();
+//                        details.add(encounterDetails.get(i));
+//                        encounter.setVersionDetailList(details);
+//                        encounters.add(encounter);
+//                    }
+//                });
+//                encounterList.addAll(encounters);
+                encounterList.addAll(area.getPokemonEncounterList());
                 locationAreaDetailsListAdapter.notifyDataSetChanged();
                 encounterList.forEach(pokemonEncounter -> {
                     pokemonRepository.
@@ -90,7 +91,6 @@ public class LocationsAreaDetailsFragment extends Fragment {
             });
         });
 
-        textViewAreaName.setText(areaId + ": Pokemon Ecounter");
     }
 
     class Holder {
@@ -136,9 +136,10 @@ public class LocationsAreaDetailsFragment extends Fragment {
                 super(itemView);
                 locationItemView = itemView.findViewById(R.id.TextView_LocationName);
                 itemLayout = itemView.findViewById(R.id.LinearLayout_LocationAreaPokemon);
+
                 image = itemView.findViewById(R.id.pokemonImage);
                 pokemonName = itemView.findViewById(R.id.TextView_PokemonName);
-                game = itemView.findViewById(R.id.TextView_Game);
+               // game = itemView.findViewById(R.id.TextView_Game);
                 this.mAdapter = adapter;
             }
 
@@ -150,9 +151,9 @@ public class LocationsAreaDetailsFragment extends Fragment {
                 pokemonName.setText(name);
             }
 
-            public void setGame(String game) {
-                this.game.setText(game);
-            }
+            //public void setGame(String game) {
+//                this.game.setText(game);
+//            }
         }
 
         @NonNull
@@ -166,10 +167,10 @@ public class LocationsAreaDetailsFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull LocationsAreaDetailsFragment.LocationAreaDetailsListAdapter.ViewHolder holder, int position) {
             PokemonEncounter encounter = encounterList.get(position);
-            VersionEncounterDetail encounterDetail = encounter.getVersionDetailList().get(0);
+            //VersionEncounterDetail encounterDetail = encounter.getVersionDetailList().get(0);
             String pokemonName = encounter.getPokemon().getName();
             holder.setName(pokemonName);
-            holder.setGame(encounterDetail.getVersion().getName());
+            //holder.setGame(encounterDetail.getVersion().getName());
             if(pokemonImages.get(pokemonName) != null){
                 Glide.with(getContext()).load(pokemonImages.get(pokemonName)).into(holder.getImage());
             }
