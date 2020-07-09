@@ -25,7 +25,13 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+/*
+ * Renders the egg group data in an asynchronous manner by loading data in patches with the onbind
+ * as the first trigger and the loading goes on as the previously requested data are completely loaded
+ * They are loaded in batches to make sure that RetroFit isn't overwhelmed with in-progress requests
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPokemonViewHolder>
         implements TypeAndTextFilterable, PostFilteringCallBack<List<PokemonSpecies>>, OnClickListener {
     private static final int BIG_BATCH_SIZE = 5;

@@ -13,6 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+/*
+ * Contains a grid of styled buttons representing the egg group data
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 public class EggGroupsMenuFragment extends Fragment {
     private static final String TAG = "EggGroupFragment";
     private FragmentEggGroupsMenuBinding binding;

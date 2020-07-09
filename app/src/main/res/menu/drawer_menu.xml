@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group
-        android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/nav_move"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_move"
-            android:enabled="true"
-            android:title="@string/menu_move" />
-
-        <item
-            android:id="@+id/nav_pokedex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_pokedex"
-            android:enabled="true"
-            android:title="@string/pokedex" />
-
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_locations_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_locations"
             android:enabled="true"
+            android:icon="@drawable/ic_locations"
             android:title="Locations" />
 
         <item
             android:id="@+id/nav_egg_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_egg"
             android:enabled="true"
+            android:icon="@drawable/ic_egg"
             android:title="@string/menu_egg_groups" />
+
+
         <item
             android:id="@+id/nav_ability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_ability"
             android:enabled="true"
+            android:icon="@drawable/ic_ability"
             android:title="Ability" />
+
+        <item
+            android:id="@+id/nav_move"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:icon="@drawable/ic_move"
+            android:title="@string/menu_move" />
+
+        <item
+            android:id="@+id/nav_pokedex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:icon="@drawable/ic_pokedex"
+            android:title="@string/pokedex" />
+
 
     </group>
 

@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+/*
+ *Filters the egg groups by type according to the Filter Mode and By Text if the Filter Mode is null
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 public class EggGroupSpeciesListFilter extends Filter {
     private static final String TAG = "EggGroupSpeciesFilter";
     private List<PokemonSpecies> fullList;

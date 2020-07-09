@@ -20,7 +20,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
-
+/*
+ * Encapsulated the Egg Group Details Data, and provides methods to request data
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 public class EggGroupDetailsViewModel extends AndroidViewModel {
     private static final String TAG = "EggGroupDetailsViewMode";
     private final SpeciesRepository speciesRepository;

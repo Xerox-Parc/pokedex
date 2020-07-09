@@ -7,9 +7,7 @@ import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 import com.xeroxparc.pokedex.databinding.FragmentEggGroupDetailsBinding;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
-import com.xeroxparc.pokedex.ui.egggroups.fragments.menu.EggGroupsMenuFragmentDirections;
 import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupPokemonListAdapter;
-import com.xeroxparc.pokedex.ui.pokedex.detail.PokemonDetailFragmentArgs;
 import com.xeroxparc.pokedex.utils.Utils;
 
 import androidx.appcompat.widget.SearchView.OnQueryTextListener;
@@ -20,6 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import static com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupSpeciesListFilter.FilterMode;
 
+/*
+ * Binds the Fragment with the View-Model, does the filtering data-passing and navigates to the
+ * requested details fragment
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 public class EggGroupDetailsBinder implements OnQueryTextListener,
         EggGroupDetailsLoader, EggGroupDetailsNavigationRequester, OnClickListener {
     private final int eggGroupId;

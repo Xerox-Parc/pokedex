@@ -21,6 +21,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.navigation.Navigation;
 
+/*
+ * This fragment initializes the binder and does the needed visual setup for the Egg Group Details
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 public class EggGroupDetailsFragment extends CustomActionBarFragment {
     public static String KEY_EGG_GROUP = "KeyEggGroup";
     private EggGroupDetailsBinder binder;

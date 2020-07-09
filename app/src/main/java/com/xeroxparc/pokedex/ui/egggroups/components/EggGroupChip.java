@@ -7,6 +7,12 @@ import com.google.android.material.chip.Chip;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 
+/*
+ * A material design Chip component extension that allows it to be colored according to the provided
+ * egg group type
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 public class EggGroupChip extends Chip {
     private EggGroupType eggGroupType;
     public static final String TAG = "EGG_GROUP_CHIP_TAG";

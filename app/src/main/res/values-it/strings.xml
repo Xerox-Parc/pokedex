@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pokédex</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_egg_groups">Gruppi di uova</string>
+    <string name="menu_item_search">Ricerca</string>
+
+    <string name="message_no_internet_connection">Controlla la tua connessione Internet, come non sono stati trovati corrispondenti dati locali!</string>
+
+    <!-- Move strings -->
+    <string name="menu_move">Move</string>
+    <string name="menu_move_detail">Move Detail</string>
+    <string name="move_power">Power: &#160;</string>
+    <string name="move_accuracy">Accuracy: &#160;</string>
+    <string name="move_pp">PP: &#160;</string>
+    <string name="move_priority">Priority: &#160;</string>
+    <string name="generation">Generation</string>
+    <string name="flavor_text">Flavor Text</string>
+    <string name="language">en</string>
+    <string name="power_short">\"Att: \"</string>
+    <string name="pp_short">\" PP: \"</string>
+    <string name="accuracy_short">\" Acc: \"</string>
+
+
+    <!-- Game Versions (Move Flavor Text) -->
+    <string name="red_and_blue">Red and Blue:\n</string>
+    <string name="yellow">Yellow:\n</string>
+    <string name="gold_and_silver">Gold and Silver:\n</string>
+    <string name="crystal">Crystal:\n</string>
+    <string name="ruby_and_sapphire">Ruby and Sapphire:\n</string>
+    <string name="emerald">Emerald:\n</string>
+    <string name="firered_and_leafgreen">Fire Red and Leaf Green:\n</string>
+    <string name="diamond_and_pearl">Diamond and Pearl:\n</string>
+    <string name="platinum">Platinum:\n</string>
+    <string name="heartgold_and_soulsilver">Heart Gold and Soul Silver:\n</string>
+    <string name="black_and_white">Black and White:\n</string>
+    <string name="colosseum">Colosseum:\n</string>
+    <string name="xd">Xd:\n</string>
+    <string name="black2_and_white2">Black 2 and White 2:\n</string>
+    <string name="x_and_y">X and Y:\n</string>
+    <string name="omegaruby_and_alphasapphire">Omega Ruby and Alpha Sapphire:\n</string>
+    <string name="sun_and_moon">Sun and Moon:\n</string>
+    <string name="ultrasun_and_ultramoon">Ultra Sun and Ultra Moon:\n</string>
+
+    <!-- search strings -->
+    <string name="search">Ricerca</string>
+    <string name="search_hint">ricerca</string>
+    <string name="pokedex">Pokedex</string>
+
+    <!--                  Egg Groups (General)                  -->
+    <string name="header_egg_groups">Gruppi di uova</string>
+    <string name="egg_group_monster">Mostro</string>
+    <string name="egg_group_humanlike">Forma-Umana</string>
+    <string name="egg_group_bug">Insetto</string>
+    <string name="egg_group_mineral">Minerale</string>
+    <string name="egg_group_flying">Volante</string>
+    <string name="egg_group_amorphous">Amorfo</string>
+    <string name="egg_group_field">Campo</string>
+    <string name="egg_group_fairy">Fata</string>
+    <string name="egg_group_ditto">Ditto</string>
+    <string name="egg_group_grass">Erba</string>
+    <string name="egg_group_dragon">Drago</string>
+    <string name="egg_group_water1">Acqua 1</string>
+    <string name="egg_group_water2">Acqua 2</string>
+    <string name="egg_group_water3">Acqua 3</string>
+    <string name="egg_group_no_eggs">Senza Uova</string>
+
+    <!--                  Egg Groups (Fragment)                 -->
+    <string name="activity_egg_group_pokemon_list_header">Pokemon</string>
+    <string name="activity_egg_group_filter_show_all">Mostra tutti</string>
+    <string name="activity_egg_group_filter_only_in_this_group">Unico Gruppo</string>
+    <string name="activity_egg_group_filter_not_only_in_this_group">Due Gruppi</string>
+    <string name="splash_screen_picture">Splash Screen</string>
+</resources>

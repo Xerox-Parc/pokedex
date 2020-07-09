@@ -11,6 +11,11 @@ import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsNavig
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import pl.droidsonroids.gif.GifImageView;
+/*
+ *  Contains the Egg Group Details, and requests the navigation to the pokemon detail once clicked
+ *
+ * @author Abdelrahman Abdelrahman (CptPackage)
+ * */
 
 public class EggGroupPokemonViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
     private static final String TAG = "EggGroupPokemonViewHold";

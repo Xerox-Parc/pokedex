@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@+id/nav_pokedex">
+    app:startDestination="@+id/nav_locations_filter">
 
     <fragment
         android:id="@+id/nav_move"
@@ -155,7 +155,6 @@
 
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_egg_group"
         android:name="com.xeroxparc.pokedex.ui.egggroups.fragments.menu.EggGroupsMenuFragment"
@@ -163,18 +162,32 @@
         tools:layout="@layout/fragment_egg_groups_menu">
         <action
             android:id="@+id/action_nav_egg_to_nav_egg_group_details"
-            app:destination="@id/nav_egg_group_details"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:destination="@id/nav_egg_group_details" />
     </fragment>
 
 
     <fragment
         android:id="@+id/nav_egg_group_details"
         android:name="com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragment"
-        tools:layout="@layout/fragment_egg_group_details"/>
+
+        tools:layout="@layout/fragment_egg_group_details">
+        <action
+            android:id="@+id/action_nav_egg_details_to_nav_pokemon_detail"
+            app:destination="@id/nav_pokemon_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_egg_detail_to_diff_nav_egg_detail"
+            app:destination="@id/nav_egg_group_details" />
+
+        <argument
+            android:name="egg_group_type_id"
+            android:defaultValue="1"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_base_state_fragment"
