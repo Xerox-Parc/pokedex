@@ -33,8 +33,12 @@ public class AbilityDetailedFragment extends Fragment {
             ability.ifPresent(detailedAbility -> {
                 abilityName.setText(detailedAbility.getName());
                 generation.setText(detailedAbility.getGeneration().getName());
-                flavour.setText(detailedAbility.getFlavorTextEntryList().get(1).getFlavorText());
-                effect.setText(detailedAbility.getEffectEntryList().get(1).getEffect());
+                flavour.setText(detailedAbility.getFlavorTextEntryList().get(
+                        (detailedAbility.getFlavorTextEntryList().size() > 1) ? 1 : 0
+                ).getFlavorText());
+                effect.setText(detailedAbility.getEffectEntryList().get(
+                        (detailedAbility.getEffectEntryList().size() > 1) ? 1 : 0
+                ).getEffect());
                 abilityName.setText(String.format("%s%s", Character.toUpperCase(detailedAbility.getName().charAt(0)), detailedAbility.getName().substring(1)));
 
             })
