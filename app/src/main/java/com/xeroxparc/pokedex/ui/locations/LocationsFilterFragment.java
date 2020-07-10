@@ -2,6 +2,8 @@ package com.xeroxparc.pokedex.ui.locations;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -13,8 +15,9 @@ import androidx.navigation.Navigation;
 
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.databinding.FragmentLocationsFilterBinding;
+import com.xeroxparc.pokedex.ui.parents.CustomActionBarFragment;
 
-public class LocationsFilterFragment extends Fragment {
+public class LocationsFilterFragment extends CustomActionBarFragment {
 
     private FragmentLocationsFilterBinding binding;
 
@@ -24,6 +27,11 @@ public class LocationsFilterFragment extends Fragment {
 
         binding = FragmentLocationsFilterBinding.inflate(inflater, container, false);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_egg_group_details, menu);
     }
 
     public void goToLocationListFragment(int region){

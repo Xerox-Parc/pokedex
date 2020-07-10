@@ -4,6 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_pokedex"
             android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:enabled="true"
             android:icon="@drawable/ic_locations"
-            android:title="Locations" />
+            android:title="@string/locations_menu_title" />
 
         <item
             android:id="@+id/nav_egg_group"

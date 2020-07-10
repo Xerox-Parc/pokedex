@@ -86,4 +86,30 @@
     <string name="ability_pokemon_filter">Ability Pokemon</string>
 
 
+    <!-- Locations string -->
+    <string name="locations_item_area_pokemon_name">Pokemon Name</string>
+    <string name="locations_item_area_pokemon_image_sprite">Pokemon Image Sprite</string>
+    <string name="locations_item_poke_city">Poke City</string>
+    <string name="locations_pokemon_encounter">Pokemon Encounter</string>
+    <string name="location_generation_i">Generation I</string>
+    <string name="locations_image_starter">Image Starter</string>
+    <string name="locations_icon_pokeball">Icon Pokeball</string>
+    <string name="locations_generation_ii">Generation II</string>
+    <string name="locations_generation_iii">Generation III</string>
+    <string name="locations_generation_iv">Generation IV</string>
+    <string name="locations_generation_v">Generation V</string>
+    <string name="locations_generation_vi">Generation VI</string>
+    <string name="locations_generation_vii">Generation VII</string>
+
+    <string name="locations_not_implemented">The following location has no other info in the pokèAPI !!</string>
+
+    <string name="locations_menu_title">Locations</string>
+
+    <string name="locations_filter_generation_title">Filter by Generation</string>
+    <string name="locations_list_title">Locations List</string>
+    <string name="locations_area_list_title">Location Area List</string>
+    <string name="locations_area_details_title">Loacations Area Details</string>
+
+
+
 </resources>
