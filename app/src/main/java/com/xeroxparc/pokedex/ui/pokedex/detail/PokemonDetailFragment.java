@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,18 +47,13 @@ public class PokemonDetailFragment extends Fragment {
         MaterialTextView textViewName = view.findViewById(R.id.text_view_pokemon_name_value);//Nome
         MaterialTextView textViewIdPokemon = view.findViewById(R.id.text_view_pokemon_id_value);//Id
         ImageView pokemonImage = view.findViewById(R.id.image_view_pokemon_loading);//Immagine
-
+        TextView pokemonHeight = getView().findViewById(R.id.text_view_pokemon_height_value);//Height
+        TextView pokemonWeight = getView().findViewById(R.id.text_view_pokemon_weight_value);//Weight
         ConstraintLayout constraintLayout = view.findViewById(R.id.ConstraintLayout1);//Sfondo
 
-        /*Qui inizia l'assegnazione dei dati */
+
         Integer pokId = PokemonDetailFragmentArgs.fromBundle(requireArguments()).getPokemonId();//Id
 
-        cardView.setOnClickListener(item->{
-            PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavAboutFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavAboutFragment();
-            action.setPokemonId(pokId);
-            Navigation.findNavController(requireView()).navigate(action);
-            //Apro fragment Pokemon About
-        });
         cardView1.setOnClickListener(item->{
             PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavBaseStateFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavBaseStateFragment();
             action.setPokemonId(pokId);
@@ -84,6 +80,9 @@ public class PokemonDetailFragment extends Fragment {
                 Glide.with(requireContext()).load(retrievedPokemon.getSprite().getFrontDefault()).into(pokemonImage);
                 /*Imposto id*/
                 textViewIdPokemon.setText(pokId.toString());
+                /*Imposto Weight e Height*/
+                pokemonHeight.setText(String.valueOf(currentPokemon.getHeight()));/*Funziona*/
+                pokemonWeight.setText(String.valueOf(currentPokemon.getWeight()));/*Non funziona*/
             });
         });
     }
