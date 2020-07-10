@@ -162,6 +162,7 @@ public class LocationsListFragment extends SearchableFragment {
                     action.setLocationIdName(locationName);
 
                     locationsRepository.getLocation(filteredLocationsList.get(position).getId()).observe(observationLifeCycle, location -> {
+
                         location.ifPresent(retrievedLocation -> {
                             //Retrieval of Location ID to make IDs string
                             List<String> idsChain = retrievedLocation.getAreaList().stream().map(locationArea -> String.valueOf(locationArea.getId())).collect(Collectors.toList());
