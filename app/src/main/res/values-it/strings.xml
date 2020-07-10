@@ -77,6 +77,15 @@
     <string name="activity_egg_group_filter_not_only_in_this_group">Due Gruppi</string>
     <string name="splash_screen_picture">Splash Screen</string>
 
+    <!-- Ability string -->
+    <string name="ability_effect">Effetto</string>
+    <string name="ability_flavor_text">Flavor Text</string>
+    <string name="ability_generation">Generazione</string>
+    <string name="ability_pokeball_background_description">Sfondo Pokeball </string>
+    <string name="ability_tab_ability">Abilità</string>
+    <string name="ability_tab_pokemon">Pokemon Con Questa Abilità</string>
+    <string name="ability_pokemon_filter">Abilità del Pokemon</string>
+    <string name="ability_detail_app_bar_name">Dettaglio Abilità</string>
 
     <!-- Pokemon strings -->
     <string name="imageviewbackground">immagineDiSfondo</string>
