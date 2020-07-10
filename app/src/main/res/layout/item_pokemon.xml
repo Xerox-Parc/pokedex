@@ -7,10 +7,9 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp">
 
-    <!--    app:cardBackgroundColor=""-->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="12dp"
@@ -27,13 +26,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/image_view_star"
-                android:layout_width="32dp"
-                android:layout_height="29dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
@@ -46,19 +45,9 @@
                 app:srcCompat="@drawable/ic_baseline_star_border_24" />
 
             <ImageView
-                android:id="@+id/image_view_item_pokemon_pokeball"
-                android:layout_width="94dp"
-                android:layout_height="95dp"
-                android:tint="#C61C1616"
-                android:alpha=".10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/img_pokeball_clipped" />
-
-            <ImageView
                 android:id="@+id/image_view_pokemon"
-                android:layout_width="340dp"
-                android:layout_height="0dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
@@ -66,8 +55,18 @@
                 app:layout_constraintBottom_toTopOf="@+id/text_view_pokemon_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_star"
                 app:srcCompat="@drawable/pokemondefault" />
+
+            <ImageView
+                android:id="@+id/image_view_item_pokemon_pokeball"
+                android:layout_width="@dimen/button_egg_group_width"
+                android:layout_height="@dimen/button_egg_group_width"
+                android:tint="#C61C1616"
+                android:alpha=".10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/img_pokeball_clipped" />
 
             <TextView
                 android:id="@+id/text_view_pokemon_name"
