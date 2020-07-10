@@ -43,9 +43,9 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/yantramanav_medium"
-            android:text="Kanto Region"
+            android:text="@string/locations_region_loading"
             android:textColor="#000"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_view_pokemon_location"
