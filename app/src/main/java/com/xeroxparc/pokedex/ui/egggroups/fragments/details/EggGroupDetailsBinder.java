@@ -25,6 +25,7 @@ import static com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupSpeciesL
  * */
 public class EggGroupDetailsBinder implements
         EggGroupDetailsLoader, EggGroupDetailsNavigationRequester, OnClickListener {
+    private static final String TAG = "EggGroupDetailsBinder";
     private final int eggGroupId;
     private EggGroupDetailsFragment fragment;
     private FragmentEggGroupDetailsBinding binding;
@@ -35,7 +36,6 @@ public class EggGroupDetailsBinder implements
         fragment = detailsFragment;
         binding = FragmentEggGroupDetailsBinding.inflate(detailsFragment.getLayoutInflater());
         viewModel = new ViewModelProvider(fragment).get(EggGroupDetailsViewModel.class);
-        viewModel.setEggGroupId(eggGroupType.getEggGroupApiId());
         eggGroupId = eggGroupType.getEggGroupApiId();
         binding.showAllPokemon.setOnClickListener(this);
         binding.showPokemonOnlyInThisGroup.setOnClickListener(this);
@@ -61,12 +61,14 @@ public class EggGroupDetailsBinder implements
     }
 
     public void bind() {
+        viewModel.setEggGroupId(eggGroupId);
         viewModel.getEggGroup().observe(fragment, eggGroup -> {
             binding.listLoadingImg.setVisibility(View.GONE);
             if (!eggGroup.isPresent()) {
                 Utils.noInternetConnectionWarning(fragment.getContext());
             }
             eggGroup.ifPresent(group -> {
+                viewModel.getRawSpeciesList().clear();
                 viewModel.getRawSpeciesList().addAll(group.getPokemonSpeciesList());
                 speciesListAdapter.setSimpleSpeciesList(viewModel.getRawSpeciesList());
             });

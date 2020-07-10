@@ -197,7 +197,6 @@ public class PokedexFragment extends SearchableFragment {
         void setFavouriteredFiltering(boolean filtering) {
             filteredList.clear();
             preferredList.clear();
-            Log.e(TAG, "setFavouriteredFiltering: NEW FILTERING MODE::" + filtering);
             if (!filtering) {
                 preferredList.addAll(pokemonList);
             } else {

@@ -1,6 +1,7 @@
 package com.xeroxparc.pokedex.ui.egggroups.fragments.details;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.data.model.pokemon.egggroup.EggGroup;

@@ -1,6 +1,7 @@
 package com.xeroxparc.pokedex.ui.egggroups.lists.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * */
 public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPokemonViewHolder>
         implements TypeAndTextFilterable, PostFilteringCallBack<List<PokemonSpecies>>, OnClickListener {
+    private static final String TAG = "EggGroupPokemonListAdap";
     private static final int BIG_BATCH_SIZE = 5;
     private static final int SMALL_BATCH_SIZE = 2;
     private Context ctx;
