@@ -17,7 +17,7 @@ import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.databinding.FragmentLocationsFilterBinding;
 import com.xeroxparc.pokedex.ui.parents.CustomActionBarFragment;
 
-public class LocationsFilterFragment extends CustomActionBarFragment {
+public class LocationsFilterFragment extends Fragment {
 
     private FragmentLocationsFilterBinding binding;
 
@@ -29,10 +29,6 @@ public class LocationsFilterFragment extends CustomActionBarFragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_egg_group_details, menu);
-    }
 
     public void goToLocationListFragment(int region){
         LocationsFilterFragmentDirections.ActionNavLocationsFilterToNavLocationsList action = LocationsFilterFragmentDirections.actionNavLocationsFilterToNavLocationsList();

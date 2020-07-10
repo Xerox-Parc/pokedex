@@ -76,7 +76,7 @@ public class LocationsAreaDetailsFragment extends Fragment {
             });
         });
 
-        textViewAreaName.setText(areaIdTitle + " Pokemon Ecounter");
+        textViewAreaName.setText(areaIdTitle + " " + getString(R.string.locations_pokemon_encounter));
     }
 
     class Holder {

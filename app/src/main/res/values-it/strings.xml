@@ -122,6 +122,7 @@
     <string name="locations_not_implemented">La seguente location non possiede altre info. nelle pokèAPI !!</string>
 
     <string name="locations_menu_title">Locations</string>
+    <string name="locations_list_region_title">Regione di</string>
 
     <string name="locations_filter_generation_title">Filtra per Generazione</string>
     <string name="locations_list_title">Lista Locations</string>

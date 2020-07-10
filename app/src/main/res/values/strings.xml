@@ -106,6 +106,7 @@
     <string name="locations_not_implemented">The following location has no other info in the pokèAPI !!</string>
 
     <string name="locations_menu_title">Locations</string>
+    <string name="locations_list_region_title">Region of</string>
 
     <string name="locations_filter_generation_title">Filter by Generation</string>
     <string name="locations_list_title">Locations List</string>
