@@ -103,4 +103,28 @@
     <string name="text_view_pokemon_sp_def">Sp. Dif</string>
     <string name="text_view_pokemon_speed">Velocità</string>
 
+    <!-- Locations string -->
+    <string name="locations_item_area_pokemon_name">Nome Pokemon</string>
+    <string name="locations_item_area_pokemon_image_sprite">Immagine Pokemon</string>
+    <string name="locations_item_poke_city">Città Pokemon</string>
+    <string name="locations_pokemon_encounter">Incontri Pokemon</string>
+    <string name="location_generation_i">Generazione I</string>
+    <string name="locations_image_starter">Immagine Starter</string>
+    <string name="locations_icon_pokeball">Icona Pokeball</string>
+    <string name="locations_generation_ii">Generazione II</string>
+    <string name="locations_generation_iii">Generazione III</string>
+    <string name="locations_generation_iv">Generazione IV</string>
+    <string name="locations_generation_v">Generazione V</string>
+    <string name="locations_generation_vi">Generazione VI</string>
+    <string name="locations_generation_vii">Generazione VII</string>
+    <string name="locations_region_loading">Caricamento Regione…</string>
+
+    <string name="locations_not_implemented">La seguente location non possiede altre info. nelle pokèAPI !!</string>
+
+    <string name="locations_menu_title">Locations</string>
+
+    <string name="locations_filter_generation_title">Filtra per Generazione</string>
+    <string name="locations_list_title">Lista Locations</string>
+    <string name="locations_area_list_title">Lista Location Area</string>
+    <string name="locations_area_details_title">Dettagli Loacation Area</string>
 </resources>
