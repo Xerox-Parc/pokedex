@@ -5,6 +5,14 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_pokedex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:icon="@drawable/ic_pokedex"
+            android:title="@string/pokedex" />
+
+        <item
             android:id="@+id/nav_locations_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,15 +44,6 @@
             android:enabled="true"
             android:icon="@drawable/ic_move"
             android:title="@string/menu_move" />
-
-        <item
-            android:id="@+id/nav_pokedex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="true"
-            android:icon="@drawable/ic_pokedex"
-            android:title="@string/pokedex" />
-
 
     </group>
 

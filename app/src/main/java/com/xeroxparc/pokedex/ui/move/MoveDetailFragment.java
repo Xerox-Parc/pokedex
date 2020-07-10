@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textview.MaterialTextView;
 import com.xeroxparc.pokedex.R;
+import com.xeroxparc.pokedex.data.model.game.generation.Generation;
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.move.MoveFlavorText;
 import com.xeroxparc.pokedex.data.model.utility.common.Name;
@@ -30,6 +31,7 @@ public class MoveDetailFragment extends Fragment {
 
     private FragmentMoveDetailBinding binding;
     private Move currentMove;
+    int NUMBER_OF_POKEMON_VERSIONS = 18;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -38,9 +40,6 @@ public class MoveDetailFragment extends Fragment {
         binding = FragmentMoveDetailBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-
-
-
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -61,31 +60,19 @@ public class MoveDetailFragment extends Fragment {
     void loadData(){
         if(currentMove != null){
 
-            MaterialTextView textViewMoveName = requireView().findViewById(R.id.text_view_move_name); //name
-            MaterialTextView textViewMoveType = requireView().findViewById(R.id.text_view_move_type);
-            MaterialTextView textViewMoveGeneration = requireView().findViewById(R.id.text_view_generation);
-            CardView cardViewMoveType = requireView().findViewById(R.id.card_view_move_type);
-            MaterialTextView textViewPp = requireView().findViewById(R.id.text_view_pp_value);
-            MaterialTextView textViewPower = requireView().findViewById(R.id.text_view_power_value);
-            MaterialTextView textViewPriority = requireView().findViewById(R.id.text_view_priority_value);
-            MaterialTextView textViewAccuracy = requireView().findViewById(R.id.text_view_accuracy_value);
-            MaterialTextView textViewDamageClass = requireView().findViewById(R.id.text_view_damage_class);
-            View separator = requireView().findViewById(R.id.view_separator);
-            MaterialTextView textViewEffectText = requireView().findViewById(R.id.text_view_effect);
-
             // Move Name in the selected language
             List<Name> nameList = currentMove.getNameList();
 
             for (int i = 0; i < nameList.size(); i++) {
                 String languageName = nameList.get(i).getLanguage().getName();
                 if(languageName != null && languageName.equalsIgnoreCase(getString(R.string.language))){
-                    textViewMoveName.setText(nameList.get(i).getText());
+                    binding.textViewMoveDetailName.setText(nameList.get(i).getText());
                     break;
                 }
             }
 
             // Move Type
-            textViewMoveType.setText(currentMove.getType().getName());
+            binding.textViewMoveType.setText(currentMove.getType().getName());
 
             // Move Effect Text
             List<VerboseEffect> effectList = currentMove.getEffectEntryList();
@@ -100,33 +87,33 @@ public class MoveDetailFragment extends Fragment {
                     if(currentMove.getEffectChance() != null) {
                         effectText = effectText.replace("$effect_chance%", effectChance);
                     }
-                    textViewEffectText.setText(effectText);
+                    binding.textViewEffect.setText(effectText);
                     break;
                 }
             }
 
             // Move Generation
-            String moveGeneration = generationConverter(currentMove.getGeneration().getName());
-            textViewMoveGeneration.setText(moveGeneration);
+            String moveGeneration = GenerationConverter(currentMove.getGeneration().getName());
+            binding.textViewGeneration.setText(moveGeneration);
 
             // PP
-            textViewPp.setText(String.valueOf(currentMove.getPp()));
+            binding.textViewPpValue.setText(String.valueOf(currentMove.getPp()));
 
             // Power
-            textViewPower.setText(String.valueOf(currentMove.getPower()));
+            binding.textViewPowerValue.setText(String.valueOf(currentMove.getPower()));
 
             //Priority
-            textViewPriority.setText(String.valueOf(currentMove.getPriority()));
+            binding.textViewPriorityValue.setText(String.valueOf(currentMove.getPriority()));
 
             //Accuracy
-            textViewAccuracy.setText(String.valueOf(currentMove.getAccuracy()));
+            binding.textViewAccuracyValue.setText(String.valueOf(currentMove.getAccuracy()));
 
             //Damage Class
-            textViewDamageClass.setText(String.valueOf(currentMove.getDamageClass().getName()));
+            binding.textViewDamageClass.setText(String.valueOf(currentMove.getDamageClass().getName()));
 
             // elements of the ui colored depending on the move type
-            cardViewMoveType.setBackgroundResource(Utils.eggGroupTypeFromTypeId(currentMove.getType().getId()).getEggGroupColorId());
-            separator.setBackgroundResource(Utils.eggGroupTypeFromTypeId(currentMove.getType().getId()).getEggGroupColorId());
+            binding.cardViewMoveType.setBackgroundResource(Utils.eggGroupTypeFromTypeId(currentMove.getType().getId()).getEggGroupColorId());
+            binding.viewSeparator.setBackgroundResource(Utils.eggGroupTypeFromTypeId(currentMove.getType().getId()).getEggGroupColorId());
 
             // Retrieval of data necessary to set the flavor text from available Pokemon games
 
@@ -135,7 +122,6 @@ public class MoveDetailFragment extends Fragment {
 
             List<MoveFlavorText> flavorList = currentMove.getFlavorTextEntryList();
 
-            int NUMBER_OF_POKEMON_VERSIONS = 18;
             List<String> orderedFlavorList = new ArrayList<String>(NUMBER_OF_POKEMON_VERSIONS);
             for (int i = 0; i < NUMBER_OF_POKEMON_VERSIONS; i++) {
                 orderedFlavorList.add("none");
@@ -151,60 +137,41 @@ public class MoveDetailFragment extends Fragment {
                     switch(flavorList.get(i).getVersionGroup().getId()){
                         case 0:
                             orderedFlavorList.set(0, flavorText);
-                            break;
                         case 1:
                             orderedFlavorList.set(1, flavorText);
-                            break;
                         case 2:
                             orderedFlavorList.set(2, flavorText);
-                            break;
                         case 3:
                             orderedFlavorList.set(3, flavorText);
-                            break;
                         case 4:
                             orderedFlavorList.set(4, flavorText);
-                            break;
                         case 5:
                             orderedFlavorList.set(5, flavorText);
-                            break;
                         case 6:
                             orderedFlavorList.set(6, flavorText);
-                            break;
                         case 7:
                             orderedFlavorList.set(7, flavorText);
-                            break;
                         case 8:
                             orderedFlavorList.set(8, flavorText);
-                            break;
                         case 9:
                             orderedFlavorList.set(9, flavorText);
-                            break;
                         case 10:
                             orderedFlavorList.set(10, flavorText);
-                            break;
                         case 11:
                             orderedFlavorList.set(11, flavorText);
-                            break;
                         case 12:
                             orderedFlavorList.set(12, flavorText);
-                            break;
                         case 13:
                             orderedFlavorList.set(13, flavorText);
-                            break;
                         case 14:
                             orderedFlavorList.set(14, flavorText);
-                            break;
                         case 15:
                             orderedFlavorList.set(15, flavorText);
-                            break;
                         case 16:
                             orderedFlavorList.set(16, flavorText);
-                            break;
                         case 17:
                             orderedFlavorList.set(17, flavorText);
-                            break;
                         default:
-                            break;
                     }
                 }
             }
@@ -229,24 +196,24 @@ public class MoveDetailFragment extends Fragment {
 
     private void fillCardViewFlavorList(List<MaterialCardView> cardViewFlavorList) {
 
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_red_blue));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_yellow));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_gold_silver));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_crystal));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_ruby_sapphire));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_emerald));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_firered_leafgreen));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_diamond_pearl));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_platinum));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_heartgold_soulsilver));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_black_white));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_colosseum));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_xd));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_black2_white2));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_x_y));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_omegaruby_alphasapphire));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_sun_moon));
-        cardViewFlavorList.add( requireView().findViewById(R.id.card_view_flavor_text_ultrasun_ultramoon));
+        cardViewFlavorList.add(binding.cardViewFlavorTextRedBlue);
+        cardViewFlavorList.add( binding.cardViewFlavorTextYellow);
+        cardViewFlavorList.add( binding.cardViewFlavorTextGoldSilver);
+        cardViewFlavorList.add( binding.cardViewFlavorTextCrystal);
+        cardViewFlavorList.add( binding.cardViewFlavorTextRubySapphire);
+        cardViewFlavorList.add( binding.cardViewFlavorTextEmerald);
+        cardViewFlavorList.add( binding.cardViewFlavorTextFireredLeafgreen);
+        cardViewFlavorList.add( binding.cardViewFlavorTextDiamondPearl);
+        cardViewFlavorList.add( binding.cardViewFlavorTextPlatinum);
+        cardViewFlavorList.add( binding.cardViewFlavorTextHeartgoldSoulsilver);
+        cardViewFlavorList.add( binding.cardViewFlavorTextBlackWhite);
+        cardViewFlavorList.add( binding.cardViewFlavorTextColosseum);
+        cardViewFlavorList.add( binding.cardViewFlavorTextXd);
+        cardViewFlavorList.add( binding.cardViewFlavorTextBlack2White2);
+        cardViewFlavorList.add( binding.cardViewFlavorTextXY);
+        cardViewFlavorList.add( binding.cardViewFlavorTextOmegarubyAlphasapphire);
+        cardViewFlavorList.add( binding.cardViewFlavorTextSunMoon);
+        cardViewFlavorList.add( binding.cardViewFlavorTextUltrasunUltramoon);
     }
 
     private void fillPokemonVersionList(List<String> pokemonVersionList) {
@@ -272,29 +239,28 @@ public class MoveDetailFragment extends Fragment {
     }
 
     private void fillFlavorList(List<MaterialTextView> flavorTextViewList) {
-
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_red_blue));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_yellow));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_gold_silver));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_crystal));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_ruby_sapphire));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_emerald));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_firered_leafgreen));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_diamond_pearl));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_platinum));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_heartgold_soulsilver));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_black_white));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_colosseum));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_xd));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_black2_white2));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_x_y));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_omegaruby_alphasapphire));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_sun_moon));
-        flavorTextViewList.add(requireView().findViewById(R.id.text_view_flavor_text_ultrasun_ultramoon));
+        flavorTextViewList.add(binding.textViewFlavorTextRedBlue);
+        flavorTextViewList.add(binding.textViewFlavorTextYellow);
+        flavorTextViewList.add(binding.textViewFlavorTextGoldSilver);
+        flavorTextViewList.add(binding.textViewFlavorTextCrystal);
+        flavorTextViewList.add(binding.textViewFlavorTextRubySapphire);
+        flavorTextViewList.add(binding.textViewFlavorTextEmerald);
+        flavorTextViewList.add(binding.textViewFlavorTextFireredLeafgreen);
+        flavorTextViewList.add(binding.textViewFlavorTextDiamondPearl);
+        flavorTextViewList.add(binding.textViewFlavorTextPlatinum);
+        flavorTextViewList.add(binding.textViewFlavorTextHeartgoldSoulsilver);
+        flavorTextViewList.add(binding.textViewFlavorTextBlackWhite);
+        flavorTextViewList.add(binding.textViewFlavorTextColosseum);
+        flavorTextViewList.add(binding.textViewFlavorTextXd);
+        flavorTextViewList.add(binding.textViewFlavorTextBlack2White2);
+        flavorTextViewList.add(binding.textViewFlavorTextXY);
+        flavorTextViewList.add(binding.textViewFlavorTextOmegarubyAlphasapphire);
+        flavorTextViewList.add(binding.textViewFlavorTextSunMoon);
+        flavorTextViewList.add(binding.textViewFlavorTextUltrasunUltramoon);
     }
 
 
-    public String generationConverter(String rawGeneration){
+    public String GenerationConverter(String rawGeneration){
         String generation = getString(R.string.generation);
         switch(rawGeneration){
             case "generation-i":
