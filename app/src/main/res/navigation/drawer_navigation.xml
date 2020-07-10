@@ -237,7 +237,7 @@
     <fragment
         android:id="@+id/nav_ability"
         android:name="com.xeroxparc.pokedex.ui.ability.AbilityFragment"
-        android:label="Abilities"
+        android:label="@string/ability_tab_ability"
         tools:layout="@layout/fragment_ability">
         <action
             android:id="@+id/action_nav_abilities_to_nav_abilities_detail"
@@ -246,7 +246,7 @@
     <fragment
         android:id="@+id/nav_ability_detail"
         android:name="com.xeroxparc.pokedex.ui.ability.detail.AbilityDetailFragment"
-        android:label="Abilities Detail"
+        android:label="@string/ability_detail_app_bar_name"
         tools:layout="@layout/fragment_ability_detail">
         <action
             android:id="@+id/action_nav_ability_detail_to_nav_pokemon_detail"

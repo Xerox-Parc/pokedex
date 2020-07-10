@@ -84,6 +84,7 @@
     <string name="ability_tab_ability">Ability</string>
     <string name="ability_tab_pokemon">Pokemon With This Ability</string>
     <string name="ability_pokemon_filter">Ability Pokemon</string>
+    <string name="ability_detail_app_bar_name">Ability Details</string>
 
 
     <!-- Locations string -->

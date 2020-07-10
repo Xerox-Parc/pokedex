@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:enabled="true"
             android:icon="@drawable/ic_ability"
-            android:title="Ability" />
+            android:title="@string/ability_tab_ability" />
 
         <item
             android:id="@+id/nav_move"

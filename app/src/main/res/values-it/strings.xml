@@ -13,39 +13,39 @@
     <string name="message_no_internet_connection">Controlla la tua connessione Internet, come non sono stati trovati corrispondenti dati locali!</string>
 
     <!-- Move strings -->
-    <string name="menu_move">Mosse</string>
-    <string name="menu_move_detail">Dettaglio della Mossa</string>
-    <string name="move_power">Attacco: &#160;</string>
-    <string name="move_accuracy">Precisione: &#160;</string>
+    <string name="menu_move">Move</string>
+    <string name="menu_move_detail">Move Detail</string>
+    <string name="move_power">Power: &#160;</string>
+    <string name="move_accuracy">Accuracy: &#160;</string>
     <string name="move_pp">PP: &#160;</string>
-    <string name="move_priority">Priorità: &#160;</string>
-    <string name="generation">Generatione</string>
-    <string name="flavor_text">Descrizione</string>
-    <string name="language">it</string>
-    <string name="power_short">&#160; Att: &#160;</string>
-    <string name="pp_short">&#160; PP: &#160;</string>
-    <string name="accuracy_short">&#160; Acc: &#160;</string>
+    <string name="move_priority">Priority: &#160;</string>
+    <string name="generation">Generation</string>
+    <string name="flavor_text">Flavor Text</string>
+    <string name="language">en</string>
+    <string name="power_short">\"Att: \"</string>
+    <string name="pp_short">\" PP: \"</string>
+    <string name="accuracy_short">\" Acc: \"</string>
 
 
     <!-- Game Versions (Move Flavor Text) -->
-    <string name="red_and_blue">Rosso e Blu:\n</string>
-    <string name="yellow">Giallo:\n</string>
-    <string name="gold_and_silver">Oro e Argento:\n</string>
-    <string name="crystal">Cristallo:\n</string>
-    <string name="ruby_and_sapphire">Rubino e Zaffiro:\n</string>
-    <string name="emerald">Smeraldo:\n</string>
-    <string name="firered_and_leafgreen">Rosso Fuoco e Verde Foglia:\n</string>
-    <string name="diamond_and_pearl">Diamante e Perla:\n</string>
-    <string name="platinum">Platino:\n</string>
-    <string name="heartgold_and_soulsilver"> Oro HeartGold e Argento SoulSilver:\n</string>
-    <string name="black_and_white">Nero e Bianco:\n</string>
+    <string name="red_and_blue">Red and Blue:\n</string>
+    <string name="yellow">Yellow:\n</string>
+    <string name="gold_and_silver">Gold and Silver:\n</string>
+    <string name="crystal">Crystal:\n</string>
+    <string name="ruby_and_sapphire">Ruby and Sapphire:\n</string>
+    <string name="emerald">Emerald:\n</string>
+    <string name="firered_and_leafgreen">Fire Red and Leaf Green:\n</string>
+    <string name="diamond_and_pearl">Diamond and Pearl:\n</string>
+    <string name="platinum">Platinum:\n</string>
+    <string name="heartgold_and_soulsilver">Heart Gold and Soul Silver:\n</string>
+    <string name="black_and_white">Black and White:\n</string>
     <string name="colosseum">Colosseum:\n</string>
     <string name="xd">Xd:\n</string>
-    <string name="black2_and_white2">Nero 2 e Bianco 2:\n</string>
-    <string name="x_and_y">X e Y:\n</string>
-    <string name="omegaruby_and_alphasapphire">Rubino Omega e Zaffiro Alpha:\n</string>
-    <string name="sun_and_moon">Sole e Luna:\n</string>
-    <string name="ultrasun_and_ultramoon">"Ultra Sole e Ultra Luna: "</string>
+    <string name="black2_and_white2">Black 2 and White 2:\n</string>
+    <string name="x_and_y">X and Y:\n</string>
+    <string name="omegaruby_and_alphasapphire">Omega Ruby and Alpha Sapphire:\n</string>
+    <string name="sun_and_moon">Sun and Moon:\n</string>
+    <string name="ultrasun_and_ultramoon">Ultra Sun and Ultra Moon:\n</string>
 
     <!-- search strings -->
     <string name="search">Ricerca</string>
@@ -77,21 +77,13 @@
     <string name="activity_egg_group_filter_not_only_in_this_group">Due Gruppi</string>
     <string name="splash_screen_picture">Splash Screen</string>
 
-
-    <!-- Pokemon strings -->
-    <string name="imageviewbackground">immagineDiSfondo</string>
-    <string name="text_view_pokemon_name_value">Nome</string>
-    <string name="text_view_pokemon_id_value">Numero</string>
-    <string name="text_view_pokemon_weight">Peso</string>
-    <string name="text_view_pokemon_height">Altezza</string>
-    <string name="text_view_details_menu">Dettagli</string>
-    <string name="text_view_moves_menu">Mosse</string>
-    <string name="text_view_pokemon_name">Nome pokemon</string>
-    <string name="switch_prefer">Favoriti</string>
-    <string name="text_view_pokemon_attack">Attacco</string>
-    <string name="text_view_pokemon_defense">Difesa</string>
-    <string name="text_view_pokemon_sp_atk">Sp. Att</string>
-    <string name="text_view_pokemon_sp_def">Sp. Dif</string>
-    <string name="text_view_pokemon_speed">Velocità</string>
-
+    <!-- Ability string -->
+    <string name="ability_effect">Effetto</string>
+    <string name="ability_flavor_text">Flavor Text</string>
+    <string name="ability_generation">Generazione</string>
+    <string name="ability_pokeball_background_description">Sfondo Pokeball </string>
+    <string name="ability_tab_ability">Abilità</string>
+    <string name="ability_tab_pokemon">Pokemon Con Questa Abilità</string>
+    <string name="ability_pokemon_filter">Abilità del Pokemon</string>
+    <string name="ability_detail_app_bar_name">Dettaglio Abilità</string>
 </resources>
