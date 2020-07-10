@@ -9,15 +9,22 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.xeroxparc.pokedex.ui.ability.detail.AbilityDetailedFragment;
+import com.xeroxparc.pokedex.ui.ability.detail.PokemonDetailsNavigationRequester;
 
 
 public class AbilityFilterFragment extends Fragment {
     private AbilityFilterBinder binder;
+    private final PokemonDetailsNavigationRequester detailsNavigationRequester;
+
+    public AbilityFilterFragment(PokemonDetailsNavigationRequester detailsNavigationRequester) {
+        this.detailsNavigationRequester = detailsNavigationRequester;
+    }
+
     @Nullable
     @Override
     public View onCreateView( LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
         int abilityId = getArguments().getInt(AbilityDetailedFragment.ARG_OBJECT);
-        binder = new AbilityFilterBinder(this,abilityId);
+        binder = new AbilityFilterBinder(this,abilityId,detailsNavigationRequester);
         binder.bind();
         return binder.getRoot();
 
@@ -26,7 +33,9 @@ public class AbilityFilterFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binder = null;
+        if(isRemoving()){
+            binder = null;
+        }
     }
 
 

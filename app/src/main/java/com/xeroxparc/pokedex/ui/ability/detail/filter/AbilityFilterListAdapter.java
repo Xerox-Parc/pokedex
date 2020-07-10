@@ -34,7 +34,7 @@ public abstract class AbilityFilterListAdapter  extends RecyclerView.Adapter<Abi
     }
 
 
-    @Override
+    @Override  //request to pokemon image and name from either the database or the web
     public void onBindViewHolder(@NonNull AbilityFilterViewHolder holder, int position) {
         if (pokemonList != null) {
             Pokemon pokemon = pokemonList.get(position);
@@ -44,7 +44,7 @@ public abstract class AbilityFilterListAdapter  extends RecyclerView.Adapter<Abi
             holder.binder.getRoot().setOnClickListener(c -> onClickCallback(pokemon));
         }
     }
-
+    //add pokemon to "pokemon with this ability"
     void addPokemon(Pokemon pokemon) {
         pokemonList.add(pokemon);
         notifyItemInserted(pokemonList.size());

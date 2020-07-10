@@ -8,17 +8,21 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.xeroxparc.pokedex.ui.ability.detail.filter.AbilityFilterFragment;
 
-public class AbilityPagerAdapter extends FragmentStateAdapter {
+public class AbilityPagerAdapter extends FragmentStateAdapter implements PokemonDetailsNavigationRequester {
 
     private int abilityId = 0;
 
-    public AbilityPagerAdapter(Fragment fragment, int abilityId) {
+    private final PokemonDetailsNavigator pokemonDetailsNavigator;
+
+    public AbilityPagerAdapter(Fragment fragment, int abilityId, PokemonDetailsNavigator detailsNavigator) {
         super(fragment);
         this.abilityId = abilityId;
+        this.pokemonDetailsNavigator = detailsNavigator;
     }
 
-    public AbilityPagerAdapter(Fragment fragment) {
+    public AbilityPagerAdapter(Fragment fragment, PokemonDetailsNavigator pokemonDetailsNavigator) {
         super(fragment);
+        this.pokemonDetailsNavigator = pokemonDetailsNavigator;
     }
 
     @NonNull
@@ -28,7 +32,7 @@ public class AbilityPagerAdapter extends FragmentStateAdapter {
         Fragment fragment;
         Bundle args = new Bundle();
         if (position == 1) {
-            fragment = new AbilityFilterFragment();
+            fragment = new AbilityFilterFragment(this);
         } else {
             fragment = new AbilityDetailedFragment();
         }
@@ -42,5 +46,10 @@ public class AbilityPagerAdapter extends FragmentStateAdapter {
     @Override
     public int getItemCount() {
         return 2;
+    }
+
+    @Override
+    public void requestNavigationToPokemonDetails(int pokemonId) {
+        pokemonDetailsNavigator.navigateToPokemonDetails(pokemonId);
     }
 }

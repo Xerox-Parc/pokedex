@@ -9,16 +9,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.databinding.FragmentAbilityFilterBinding;
+import com.xeroxparc.pokedex.ui.ability.detail.PokemonDetailsNavigationRequester;
 
 public class AbilityFilterBinder {
     private final FragmentAbilityFilterBinding binding;
     private final AbilityFilterFragment fragment;
     private final AbilityFilterViewModel viewModel;
     private int abilityId;
+    private PokemonDetailsNavigationRequester detailsNavigationRequester;
 
-    AbilityFilterBinder(@NonNull AbilityFilterFragment fragment, int abilityId) {
+
+    AbilityFilterBinder(@NonNull AbilityFilterFragment fragment, int abilityId, PokemonDetailsNavigationRequester detailsNavigationRequester) {
         this(fragment);
         this.abilityId = abilityId;
+        this.detailsNavigationRequester = detailsNavigationRequester;
     }
 
     AbilityFilterBinder(@NonNull AbilityFilterFragment fragment) {
@@ -41,20 +45,20 @@ public class AbilityFilterBinder {
         };
         binding.recyclerViewFilter.setAdapter(componentListAdapter);
         binding.recyclerViewFilter.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
-        binding.recyclerViewFilter.setLayoutManager(new GridLayoutManager(fragment.getContext(), 2));
-        viewModel.getAbility(abilityId).observe(fragment.getViewLifecycleOwner(), ability ->
-                ability.ifPresent(retrievedAbility ->
-                        retrievedAbility.getPokemonList().forEach(rawPokemon ->
-                                viewModel.getPokemon(rawPokemon.getPokemon().getId()).observe(fragment.getViewLifecycleOwner(), detailedPokemon ->
-                                        detailedPokemon.ifPresent(componentListAdapter::addPokemon)
-                                )
-                        )
-                )
-        );
+        viewModel.getAbility(abilityId).observe(fragment.getViewLifecycleOwner(), ability -> {
+            ability.ifPresent(retrievedAbility -> {
+                retrievedAbility.getPokemonList().forEach(rawPokemon -> {
+                    viewModel.getPokemon(rawPokemon.getPokemon().getId()).observe(fragment.getViewLifecycleOwner(), detailedPokemon -> {
+                                detailedPokemon.ifPresent(componentListAdapter::addPokemon);
+                            });
+                });
+            });
+        });
     }
 
     private void showDetail(@NonNull Pokemon pokemon) {
-
+        detailsNavigationRequester.requestNavigationToPokemonDetails(pokemon.getId());
     }
+
 
 }

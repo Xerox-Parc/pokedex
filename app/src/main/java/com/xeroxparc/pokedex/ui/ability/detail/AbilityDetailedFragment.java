@@ -19,7 +19,7 @@ public class AbilityDetailedFragment extends Fragment {
     private FragmentAbilityDetailedBinding binding;
 
     @Nullable
-    @Override
+    @Override // request to ability detailed elements from either the database or the web
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentAbilityDetailedBinding.inflate(getLayoutInflater(), container, false);
