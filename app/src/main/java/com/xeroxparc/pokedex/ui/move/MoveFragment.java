@@ -39,7 +39,7 @@ public class MoveFragment extends CustomActionBarFragment {
 
     class Holder {
 
-        final int MAX_MOVES_ID = 728;
+        static final int MAX_MOVES_ID = 728;
 
         public Holder(FragmentActivity activity, MoveFragment moveFragment) {
 
