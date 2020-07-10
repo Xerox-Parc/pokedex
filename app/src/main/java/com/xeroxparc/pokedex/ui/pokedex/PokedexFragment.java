@@ -47,6 +47,7 @@ import java.util.stream.Collectors;
 public class PokedexFragment extends CustomActionBarFragment {
 
     private PokedexBinder binder;
+    private FragmentPokedexBinding binding;
     private static PokedexFragment.PokemonListAdapter componentListAdapter;
 
     @Nullable
@@ -81,14 +82,18 @@ public class PokedexFragment extends CustomActionBarFragment {
 
         private List<Pokemon> pokemonList = new ArrayList<>();
         private List<Pokemon> filteredList = new ArrayList<>();
+        private Context ctx;
         private boolean preferredFiltering = false;
+        public PokemonListAdapter(Context context) {
+            ctx = context;
+        }
 
         abstract void onClickCallback(Pokemon pokemon);
 
         @NonNull
         @Override
-        public PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new PokemonViewHolder(new PokemonListItemBinder(parent.getContext(), parent, false,this));
+        public com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder(new PokemonListItemBinder(parent.getContext(), parent, false,this));
         }
 
         @Override
@@ -110,22 +115,29 @@ public class PokedexFragment extends CustomActionBarFragment {
                 PokedexFragmentDirections.ActionNavPokedexToNavPokemonDetail action = PokedexFragmentDirections.actionNavPokedexToNavPokemonDetail();
                 action.setDetailsPokemon(currentElement);
                 action.setPokemonId(pokemonID);
-                holder.cardView.setOnClickListener(v ->
-                        Navigation.findNavController(requireView()).navigate(action)
-                );
+                holder.cardView.setOnClickListener(v -> {
+                    //Bundle pokemonDetails = new Bundle();
+                    //pokemonDetails.putInt(PokemonDetailFragment.KEY_POKEMON_ID, pokemon.getId());
+                    Navigation.findNavController(requireView()).navigate(action);
+                });
 
 
                 holder.binder.bind(pokemon, position);
                 holder.binder.getRoot().setOnClickListener(c -> onClickCallback(pokemon));
-                Glide.with(requireContext()).load(pokemon.getSprite().getFrontDefault()).into(holder.getImageView());
+                Glide.with(ctx).load(pokemon.getSprite().getFrontDefault()).into(holder.getImageView());
             }
         }
 
 
         void addPokemon(Pokemon pokemon) {
             pokemonList.add(pokemon);
-            filteredList.add(pokemon);
+            if(preferredFiltering&&pokemon.isFavourite()){
+                filteredList.add(pokemon);
+            }else{
+                filteredList.add(pokemon);
+            }
             notifyItemInserted(filteredList.size());
+            //notifyDataSetChanged();
         }
 
         void setFavouriteredFiltering(boolean filtering){
@@ -143,9 +155,16 @@ public class PokedexFragment extends CustomActionBarFragment {
             return preferredFiltering;
         }
 
-        public List<Pokemon> getFilteredPokemonList(){
+        public List<Pokemon> getPokemonList(){
             return filteredList;
         }
+
+        void setComponentList(List<Pokemon> componentList) {
+            this.pokemonList = componentList;
+            filteredList.addAll(pokemonList);
+            notifyDataSetChanged();
+        }
+
 
         public class PokemonViewHolder extends RecyclerView.ViewHolder {
 
@@ -157,7 +176,7 @@ public class PokedexFragment extends CustomActionBarFragment {
             PokemonViewHolder(@NonNull PokemonListItemBinder binder) {
                 super(binder.getRoot());
                 this.binder = binder;
-       ;
+                ;
                 cardView = itemView.findViewById(R.id.cardView2);
                 pokemonImage = itemView.findViewById(R.id.image_view_pokemon);
             }
@@ -178,15 +197,15 @@ public class PokedexFragment extends CustomActionBarFragment {
             binding = FragmentPokedexBinding.inflate(fragment.getLayoutInflater());
             viewModel = new ViewModelProvider(fragment).get(PokedexViewModel.class);
 
-            binding.switch1.setOnClickListener((v) -> {
-                if (binding.switch1.isChecked()) {
+            binding.switchPrefer.setOnClickListener((v) -> {
+                if (binding.switchPrefer.isChecked()) {
                     Log.d("Veridica", "Riuscita");
                     this.viewModel.setFavouriteMode(1);
-                    binding.switch1.setChecked(true);
+                    binding.switchPrefer.setChecked(true);
                 } else {
                     Log.d("Veridica", "Riuscita");
                     this.viewModel.setFavouriteMode(0);
-                    binding.switch1.setChecked(false);
+                    binding.switchPrefer.setChecked(false);
                 }
 
             });
@@ -199,12 +218,13 @@ public class PokedexFragment extends CustomActionBarFragment {
         }
 
         void bind() {
-            componentListAdapter = new PokedexFragment.PokemonListAdapter() {
+//            PokedexFragment.PokemonListAdapter componentListAdapter = new PokedexFragment.PokemonListAdapter(fragment.getContext()) {
+            componentListAdapter = new PokedexFragment.PokemonListAdapter(fragment.getContext()) {
                 @Override
                 public void requestPokemonUpdate(Pokemon updated,int position) {
                     if(isPreferredFiltering()){
                         if(!updated.isFavourite()){
-                        getFilteredPokemonList().remove(position);
+                            getPokemonList().remove(position);
                         }
                     }
                     viewModel.updatePokemon(updated);
@@ -233,11 +253,13 @@ public class PokedexFragment extends CustomActionBarFragment {
     public static class PokedexViewModel extends AndroidViewModel {
 
         static int preferMode;
+        private PokedexFragment fragment;
         private PokemonRepository repository;
         private MutableLiveData<String> filterPokemonName;
+        private LiveData<List<Pokemon>> listPokemon;
 
         public void setFavouriteMode(int preferMode) {
-            PokedexViewModel.preferMode = preferMode;
+            this.preferMode = preferMode;
             componentListAdapter.setFavouriteredFiltering(preferMode == 1 );
             Log.d("Valore di prefer", String.valueOf(preferMode));
         }
@@ -246,6 +268,13 @@ public class PokedexFragment extends CustomActionBarFragment {
             super(application);
             repository = new PokemonRepository(application);
             filterPokemonName = new MutableLiveData<>("");
+        }
+
+        LiveData<List<Pokemon>> getListComponent() {
+            return listPokemon;
+        }
+        void searchPokemon(String name) {
+            filterPokemonName.setValue(name);
         }
         LiveData<Optional<Pokemon>> getPokemonLiveData(int id) {
             return repository.getPokemon(id);
@@ -261,7 +290,7 @@ public class PokedexFragment extends CustomActionBarFragment {
         private final ItemPokemonBinding binding;
         private PokemonUpdateRequester updateRequester;
 
-        PokemonListItemBinder(Context context, ViewGroup root, Boolean attachToRoot, PokemonUpdateRequester updateRequester) {
+        PokemonListItemBinder(Context context, ViewGroup root, Boolean attachToRoot, PokemonUpdateRequester updateRequester ) {
             binding = ItemPokemonBinding.inflate(LayoutInflater.from(context), root, attachToRoot);
             this.updateRequester = updateRequester;
         }
@@ -273,11 +302,11 @@ public class PokedexFragment extends CustomActionBarFragment {
         void bind(@NonNull Pokemon pokemon, int position) {
             List<PokemonType> typeList = pokemon.getTypeList();
             binding.textViewPokemonType.setText(typeList.get(0).getType().getName());
-            if (typeList.size() > 1) {
+            if(typeList.size() > 1){
                 binding.textViewPokemonType2.setText(typeList.get(1).getType().getName());
             }
             EggGroupType eggGroupTypeStyling = Utils.eggGroupTypeFromTypeId(typeList.get(0).getType().getId());
-            binding.cardView2.setCardBackgroundColor(requireContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
+            binding.cardView2.setCardBackgroundColor(getContext().getColor(eggGroupTypeStyling.getEggGroupColorId()));
             updateFavoriteView(pokemon);
 
             binding.textViewPokemonName.setText(pokemon.getName());
@@ -289,13 +318,12 @@ public class PokedexFragment extends CustomActionBarFragment {
         }
 
         void updateFavoriteView(@NonNull Pokemon pokemon) {
-            binding.imageViewStar.setImageResource(
-                    pokemon.isFavourite() ?
-                            R.drawable.ic_baseline_star_border_24 :
-                            R.drawable.ic_baseline_star_24
-            );
+            if(!pokemon.isFavourite()) {
+                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
+            } else {
+                binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
+            }
         }
-
     }
 
     interface PokemonUpdateRequester{

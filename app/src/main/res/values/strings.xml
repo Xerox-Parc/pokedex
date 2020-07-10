@@ -100,7 +100,6 @@
     <string name="locations_generation_v">Generation V</string>
     <string name="locations_generation_vi">Generation VI</string>
     <string name="locations_generation_vii">Generation VII</string>
-    <string name="locations_region_loading">Region Loading…</string>
 
     <string name="locations_not_implemented">The following location has no other info in the pokèAPI !!</string>
 
@@ -112,5 +111,31 @@
     <string name="locations_area_details_title">Loacations Area Details</string>
 
 
+    <!-- Pokemon string -->
+    <string name="imageviewbackground">imageViewBackground</string>
+    <string name="text_view_pokemon_name_value">Name</string>
+    <string name="text_view_pokemon_id_value">Number</string>
+    <string name="text_view_pokemon_weight">WEIGHT:</string>
+    <string name="text_view_pokemon_height">HEIGHT:</string>
+    <string name="text_view_details_menu">Details</string>
+    <string name="text_view_moves_menu">Moves</string>
+    <string name="text_view_pokemon_name">Name pokemon:</string>
+    <string name="text_view_pokemon_id" translatable="false">PokeId:</string>
+    <string name="image_view_pokeid" translatable="false">imageViewPokeId</string>
+    <string name="image_view_pokeball_dx" translatable="false">imageViewPokeballDx</string>
+    <string name="image_view_pokeball1" translatable="false">imageViewPokeball1</string>
+    <string name="switch_prefer">Favorite</string>
+    <string name="text_view_pokemon_hp" translatable="false">HP</string>
+    <string name="text_view_pokemon_attack">Attack</string>
+    <string name="text_view_pokemon_defense">Defense</string>
+    <string name="text_view_pokemon_sp_atk">Sp. Atk</string>
+    <string name="text_view_pokemon_sp_def">Sp. Def</string>
+    <string name="text_view_pokemon_speed">Speed</string>
+    <string name="text_view_pokemon_hp_int" translatable="false">NN</string>
+    <string name="text_view_pokemon_attack_int" translatable="false">NN</string>
+    <string name="text_view_pokemon_defense_int" translatable="false">NN</string>
+    <string name="text_view_pokemon_sp_atk_int" translatable="false">NN</string>
+    <string name="text_view_pokemon_sp_def_int" translatable="false">NN</string>
+    <string name="text_view_pokemon_speed_int" translatable="false">NN</string>
 
 </resources>

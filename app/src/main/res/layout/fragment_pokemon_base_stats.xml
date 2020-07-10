@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,7 +11,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,12 +27,13 @@
                 android:layout_height="372dp">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/image_view_background"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:alpha=".10"
+                    android:contentDescription="@string/imageviewbackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:alpha=".10"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/img_pokeball_full" />
@@ -41,7 +46,7 @@
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="HP"
+                    android:text="@string/text_view_pokemon_hp"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +59,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="Attack"
+                    android:text="@string/text_view_pokemon_attack"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_pokemon_hp" />
@@ -67,7 +72,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="Defense"
+                    android:text="@string/text_view_pokemon_defense"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_pokemon_attack" />
@@ -80,7 +85,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="Sp. Atk"
+                    android:text="@string/text_view_pokemon_sp_atk"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_pokemon_defense" />
@@ -93,7 +98,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="Sp. Def"
+                    android:text="@string/text_view_pokemon_sp_def"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_pokemon_sp_atk_int" />
@@ -106,7 +111,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="Speed"
+                    android:text="@string/text_view_pokemon_speed"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_view_pokemon_sp_def_int" />
@@ -119,7 +124,7 @@
                     android:layout_marginTop="32dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="NN"
+                    android:text="@string/text_view_pokemon_hp_int"
                     android:textColor="#000000"
                     app:layout_constraintStart_toEndOf="@+id/text_view_pokemon_hp"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -131,7 +136,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="NN"
+                    android:text="@string/text_view_pokemon_attack_int"
                     android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/text_view_pokemon_hp_int"
                     app:layout_constraintStart_toStartOf="@+id/text_view_pokemon_hp_int"
@@ -144,7 +149,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="NN"
+                    android:text="@string/text_view_pokemon_defense_int"
                     android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/text_view_pokemon_attack_int"
                     app:layout_constraintStart_toStartOf="@+id/text_view_pokemon_attack_int"
@@ -157,7 +162,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="NN"
+                    android:text="@string/text_view_pokemon_sp_atk_int"
                     android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/text_view_pokemon_defense_int"
                     app:layout_constraintStart_toStartOf="@+id/text_view_pokemon_defense_int"
@@ -170,7 +175,7 @@
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="NN"
+                    android:text="@string/text_view_pokemon_sp_def_int"
                     android:textColor="#000000"
                     app:layout_constraintEnd_toEndOf="@+id/text_view_pokemon_sp_atk_int"
                     app:layout_constraintStart_toStartOf="@+id/text_view_pokemon_sp_atk_int"
@@ -182,7 +187,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:foregroundTint="#FFFFFF"
-                    android:text="NN"
+                    android:text="@string/text_view_pokemon_speed_int"
                     android:textColor="#000000"
                     app:layout_constraintBottom_toBottomOf="@+id/progress_bar_pokemon_speed"
                     app:layout_constraintEnd_toEndOf="@+id/text_view_pokemon_sp_def_int"
@@ -260,4 +265,4 @@
 
     </ScrollView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

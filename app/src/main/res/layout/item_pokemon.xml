@@ -46,7 +46,7 @@
                 app:srcCompat="@drawable/ic_baseline_star_border_24" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/image_view_item_pokemon_pokeball"
                 android:layout_width="94dp"
                 android:layout_height="95dp"
                 android:tint="#C61C1616"
