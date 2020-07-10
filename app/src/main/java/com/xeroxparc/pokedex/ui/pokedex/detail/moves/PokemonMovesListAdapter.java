@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.move.Move;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
+import com.xeroxparc.pokedex.databinding.FragmentPokemonMovesBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,12 +55,12 @@ public abstract class PokemonMovesListAdapter extends RecyclerView.Adapter<Pokem
     }
 
     static class PokemonMovesViewHolder extends RecyclerView.ViewHolder {
-
         final PokemonMovesListItemBinder binder;
         private TextView moveName;
         PokemonMovesViewHolder(@NonNull PokemonMovesListItemBinder binder) {
             super(binder.getRoot());
             this.binder = binder;
+           // moveName = binde
             moveName = binder.getRoot().findViewById(R.id.text_view_pokemon_move_name);
         }
 

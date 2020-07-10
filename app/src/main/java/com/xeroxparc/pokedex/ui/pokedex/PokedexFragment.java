@@ -148,7 +148,7 @@ public class PokedexFragment extends CustomActionBarFragment {
         }
 
         public class PokemonViewHolder extends RecyclerView.ViewHolder {
-            public ImageView imageView9;
+
             final PokemonListItemBinder binder;
             public FragmentPokedexBinding binding;
             public CardView cardView;
@@ -157,7 +157,7 @@ public class PokedexFragment extends CustomActionBarFragment {
             PokemonViewHolder(@NonNull PokemonListItemBinder binder) {
                 super(binder.getRoot());
                 this.binder = binder;
-                imageView9 = itemView.findViewById(R.id.image_view_star);
+       ;
                 cardView = itemView.findViewById(R.id.cardView2);
                 pokemonImage = itemView.findViewById(R.id.image_view_pokemon);
             }

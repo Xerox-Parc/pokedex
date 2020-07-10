@@ -18,12 +18,14 @@ import com.google.android.material.textview.MaterialTextView;
 import com.xeroxparc.pokedex.R;
 import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.data.repository.PokemonRepository;
+import com.xeroxparc.pokedex.databinding.FragmentPokemonDetailsBinding;
 
 /**
  * @author Palmieri Ivan
  */
 public class PokemonDetailFragment extends Fragment {
     Pokemon currentPokemon;
+     FragmentPokemonDetailsBinding binding;
 
 
     @Nullable
@@ -37,12 +39,11 @@ public class PokemonDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         CardView cardView = view.findViewById(R.id.card_view_pokemon_base_state);
         CardView cardView1 = view.findViewById(R.id.card_view_pokemon_details);
-        CardView cardView2 = view.findViewById(R.id.card_view_pokemon_evolution);
         CardView cardView3 = view.findViewById(R.id.card_view_pokemon_moves);
 
 
         /*Qui reperisco i dati dal fragment sorgente*/
-        MaterialTextView textViewName = view.findViewById(R.id.text_view_pokemon_name);//Nome
+        MaterialTextView textViewName = view.findViewById(R.id.text_view_pokemon_name_value);//Nome
         MaterialTextView textViewIdPokemon = view.findViewById(R.id.text_view_pokemon_id_value);//Id
         ImageView pokemonImage = view.findViewById(R.id.image_view_pokemon_loading);//Immagine
 
@@ -62,12 +63,6 @@ public class PokemonDetailFragment extends Fragment {
             action.setPokemonId(pokId);
             Navigation.findNavController(requireView()).navigate(action);
             //Apro fragment Pokemon Base state
-        });
-        cardView2.setOnClickListener(item->{
-            PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavEvolutionFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavEvolutionFragment();
-            action.setPokemonId(pokId);
-            Navigation.findNavController(requireView()).navigate(action);
-            //Apro fragment Pokemon Evolution
         });
         cardView3.setOnClickListener(item->{
             PokemonDetailFragmentDirections.ActionNavPokemonDetailToNavPokemonMovesFragment action =  PokemonDetailFragmentDirections.actionNavPokemonDetailToNavPokemonMovesFragment();
