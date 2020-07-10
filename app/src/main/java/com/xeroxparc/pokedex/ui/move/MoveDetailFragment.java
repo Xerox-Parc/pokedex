@@ -106,7 +106,7 @@ public class MoveDetailFragment extends Fragment {
             }
 
             // Move Generation
-            String moveGeneration = GenerationConverter(currentMove.getGeneration().getName());
+            String moveGeneration = generationConverter(currentMove.getGeneration().getName());
             textViewMoveGeneration.setText(moveGeneration);
 
             // PP
@@ -151,41 +151,60 @@ public class MoveDetailFragment extends Fragment {
                     switch(flavorList.get(i).getVersionGroup().getId()){
                         case 0:
                             orderedFlavorList.set(0, flavorText);
+                            break;
                         case 1:
                             orderedFlavorList.set(1, flavorText);
+                            break;
                         case 2:
                             orderedFlavorList.set(2, flavorText);
+                            break;
                         case 3:
                             orderedFlavorList.set(3, flavorText);
+                            break;
                         case 4:
                             orderedFlavorList.set(4, flavorText);
+                            break;
                         case 5:
                             orderedFlavorList.set(5, flavorText);
+                            break;
                         case 6:
                             orderedFlavorList.set(6, flavorText);
+                            break;
                         case 7:
                             orderedFlavorList.set(7, flavorText);
+                            break;
                         case 8:
                             orderedFlavorList.set(8, flavorText);
+                            break;
                         case 9:
                             orderedFlavorList.set(9, flavorText);
+                            break;
                         case 10:
                             orderedFlavorList.set(10, flavorText);
+                            break;
                         case 11:
                             orderedFlavorList.set(11, flavorText);
+                            break;
                         case 12:
                             orderedFlavorList.set(12, flavorText);
+                            break;
                         case 13:
                             orderedFlavorList.set(13, flavorText);
+                            break;
                         case 14:
                             orderedFlavorList.set(14, flavorText);
+                            break;
                         case 15:
                             orderedFlavorList.set(15, flavorText);
+                            break;
                         case 16:
                             orderedFlavorList.set(16, flavorText);
+                            break;
                         case 17:
                             orderedFlavorList.set(17, flavorText);
+                            break;
                         default:
+                            break;
                     }
                 }
             }
@@ -275,7 +294,7 @@ public class MoveDetailFragment extends Fragment {
     }
 
 
-    public String GenerationConverter(String rawGeneration){
+    public String generationConverter(String rawGeneration){
         String generation = getString(R.string.generation);
         switch(rawGeneration){
             case "generation-i":

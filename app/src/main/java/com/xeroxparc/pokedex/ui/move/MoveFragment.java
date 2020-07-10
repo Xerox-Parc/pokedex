@@ -44,7 +44,7 @@ public class MoveFragment extends Fragment {
 
     class Holder {
 
-        final int MAX_MOVES_ID = 728;
+        static final int MAX_MOVES_ID = 728;
 
         public Holder(FragmentActivity activity) {
 

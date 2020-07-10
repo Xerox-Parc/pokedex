@@ -18,7 +18,6 @@ public class AbilityDetailFragment extends Fragment {
     AbilityPagerAdapter viewPagerAdapter;
     ViewPager2 viewPager;
     String[] string = {"Ability","Pokemon With This Ability"};
-    //public static final String ARG_OBJECT = "object";
 
     @Nullable
     @Override

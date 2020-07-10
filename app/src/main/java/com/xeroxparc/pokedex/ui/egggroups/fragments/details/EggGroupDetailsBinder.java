@@ -120,9 +120,8 @@ public class EggGroupDetailsBinder implements OnQueryTextListener,
     @Override
     public void navigateToEggGroup(EggGroupType type) {
         if (eggGroupId != type.getEggGroupApiId()) {
-            int eggGroupId = type.getEggGroupApiId();
             EggGroupDetailsFragmentDirections.ActionNavEggDetailToDiffNavEggDetail action = EggGroupDetailsFragmentDirections.actionNavEggDetailToDiffNavEggDetail();
-            action.setEggGroupTypeId(eggGroupId);
+            action.setEggGroupTypeId(type.getEggGroupApiId());
             Navigation.findNavController(fragment.requireView()).
                     navigate(action);
         }
@@ -148,6 +147,8 @@ public class EggGroupDetailsBinder implements OnQueryTextListener,
             case R.id.show_pokemon_in_this_group_and_others:
                 speciesListAdapter.getFilter(FilterMode.MODE_UNIQUE_AND_OTHER_EGG_GROUPS).filter("");
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + view.getId());
         }
     }
 }

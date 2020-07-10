@@ -16,7 +16,7 @@ public class AbilityFilterBinder {
     private final AbilityFilterViewModel viewModel;
     private int abilityId;
 
-    AbilityFilterBinder(@NonNull AbilityFilterFragment fragment,int abilityId) {
+    AbilityFilterBinder(@NonNull AbilityFilterFragment fragment, int abilityId) {
         this(fragment);
         this.abilityId = abilityId;
     }
@@ -41,21 +41,20 @@ public class AbilityFilterBinder {
         };
         binding.recyclerViewFilter.setAdapter(componentListAdapter);
         binding.recyclerViewFilter.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
-        binding.recyclerViewFilter.setLayoutManager(new GridLayoutManager(fragment.getContext(),2));
-        viewModel.getAbility(abilityId).observe(fragment.getViewLifecycleOwner(), ability -> {
-            ability.ifPresent(retrievedAbility -> {
-                retrievedAbility.getPokemonList().forEach(rawPokemon -> {
-                    viewModel.getPokemon(rawPokemon.getPokemon().getId()).observe(fragment.getViewLifecycleOwner(), detailedPokemon -> {
-                                detailedPokemon.ifPresent(componentListAdapter::addPokemon);
-                            });
-                });
-            });
-        });
+        binding.recyclerViewFilter.setLayoutManager(new GridLayoutManager(fragment.getContext(), 2));
+        viewModel.getAbility(abilityId).observe(fragment.getViewLifecycleOwner(), ability ->
+                ability.ifPresent(retrievedAbility ->
+                        retrievedAbility.getPokemonList().forEach(rawPokemon ->
+                                viewModel.getPokemon(rawPokemon.getPokemon().getId()).observe(fragment.getViewLifecycleOwner(), detailedPokemon ->
+                                        detailedPokemon.ifPresent(componentListAdapter::addPokemon)
+                                )
+                        )
+                )
+        );
     }
 
     private void showDetail(@NonNull Pokemon pokemon) {
 
     }
-
 
 }

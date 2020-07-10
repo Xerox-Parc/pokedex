@@ -13,7 +13,6 @@ import com.xeroxparc.pokedex.ui.MainActivity;
 import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 import com.xeroxparc.pokedex.ui.parents.CustomActionBarFragment;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -27,7 +26,7 @@ import androidx.navigation.Navigation;
  * @author Abdelrahman Abdelrahman (CptPackage)
  * */
 public class EggGroupDetailsFragment extends CustomActionBarFragment {
-    public static String KEY_EGG_GROUP = "KeyEggGroup";
+    public static final String KEY_EGG_GROUP = "KeyEggGroup";
     private EggGroupDetailsBinder binder;
 
     @Nullable

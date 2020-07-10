@@ -62,10 +62,8 @@ public class EggGroupPokemonViewHolder extends RecyclerView.ViewHolder implement
 
     @Override
     public void onClick(View view) {
-        if (view.getTag() != EggGroupChip.TAG) {
-            if (pokemonId != -1) {
-                navigationRequester.navigateToPokemon(pokemonId);
-            }
+        if (view.getTag() != EggGroupChip.TAG && pokemonId != -1) {
+            navigationRequester.navigateToPokemon(pokemonId);
         }
     }
 }

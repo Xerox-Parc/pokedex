@@ -95,13 +95,10 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
     private class LocationAreaDetailsListAdapter extends RecyclerView.Adapter<LocationAreaDetailsListAdapter.ViewHolder> {
 
-        private final LinkedList<String> locationAreaList;
         private LayoutInflater mInflater;
 
         public LocationAreaDetailsListAdapter(Context context, LinkedList<String> moveListDataset) {
             mInflater = LayoutInflater.from(context);
-            this.locationAreaList = moveListDataset;
-
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {

@@ -29,16 +29,16 @@ public class AbilityDetailedFragment extends Fragment {
         TextView effect = binding.textViewEffectAbility;
         AbilityRepository abilityRepository = new AbilityRepository(requireContext());
         int abilityId = getArguments().getInt(AbilityDetailedFragment.ARG_OBJECT);
-        abilityRepository.getAbility(abilityId).observe(getViewLifecycleOwner(), ability -> {
+        abilityRepository.getAbility(abilityId).observe(getViewLifecycleOwner(), ability ->
             ability.ifPresent(detailedAbility -> {
                 abilityName.setText(detailedAbility.getName());
                 generation.setText(detailedAbility.getGeneration().getName());
                 flavour.setText(detailedAbility.getFlavorTextEntryList().get(1).getFlavorText());
                 effect.setText(detailedAbility.getEffectEntryList().get(1).getEffect());
-                abilityName.setText(String.format(Character.toUpperCase(detailedAbility.getName().charAt(0))+detailedAbility.getName().substring(1)));
+                abilityName.setText(String.format("%s%s", Character.toUpperCase(detailedAbility.getName().charAt(0)), detailedAbility.getName().substring(1)));
 
-            });
-        });
+            })
+        );
         return binding.getRoot();
     }
 

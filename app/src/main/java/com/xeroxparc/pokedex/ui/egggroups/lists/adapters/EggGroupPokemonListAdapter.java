@@ -159,11 +159,9 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
 
     @Override
     public void onClick(View view) {
-        if (view.getTag() == EggGroupChip.TAG) {
-            if (view instanceof EggGroupChip) {
-                EggGroupChip eggGroupChip = (EggGroupChip) view;
-                navigationRequester.navigateToEggGroup(eggGroupChip.getEggGroupType());
-            }
+        if (view.getTag() == EggGroupChip.TAG && view instanceof EggGroupChip) {
+            EggGroupChip eggGroupChip = (EggGroupChip) view;
+            navigationRequester.navigateToEggGroup(eggGroupChip.getEggGroupType());
         }
     }
 

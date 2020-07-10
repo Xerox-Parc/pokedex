@@ -34,7 +34,6 @@ public class AbilityPagerAdapter extends FragmentStateAdapter {
         }
 
         // Our object is just an integer :-P
-//        args.putInt(AbilityDetailedFragment.ARG_OBJECT, position + 1);
         args.putInt(AbilityDetailedFragment.ARG_OBJECT, abilityId);
         fragment.setArguments(args);
         return fragment;

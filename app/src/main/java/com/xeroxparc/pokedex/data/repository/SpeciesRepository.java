@@ -4,14 +4,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.xeroxparc.pokedex.data.database.dao.pokemon.PokemonSpeciesDao;
-import com.xeroxparc.pokedex.data.model.pokemon.egggroup.EggGroup;
 import com.xeroxparc.pokedex.data.model.pokemon.species.PokemonSpecies;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

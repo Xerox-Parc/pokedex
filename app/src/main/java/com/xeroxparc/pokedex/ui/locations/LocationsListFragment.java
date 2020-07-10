@@ -61,6 +61,7 @@ public class LocationsListFragment extends Fragment {
         }
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         final RegionRepository regionRepository = new RegionRepository(getContext());
 
@@ -173,7 +174,7 @@ public class LocationsListFragment extends Fragment {
                             List<String> idsChain = retrievedLocation.getAreaList().stream().map(locationArea -> String.valueOf(locationArea.getId())).collect(Collectors.toList());
 
                             // Concatenate ids separated by the character "," into a string
-                            if (idsChain.size() > 0) {
+                            if (idsChain.isEmpty()) {
                                 String serializedIds = "";
                                 for (int i = 0; i < idsChain.size(); i++) {
                                     serializedIds += idsChain.get(i);

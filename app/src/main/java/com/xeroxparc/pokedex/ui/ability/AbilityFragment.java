@@ -143,7 +143,7 @@ public class AbilityFragment extends Fragment {
             };
             binding.recyclerViewAbility.setAdapter(componentListAdapter);
             binding.recyclerViewAbility.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
-            int MAX_ABILITY_ID = 233;
+            final int MAX_ABILITY_ID = 233;
             for (int i = 1; i < MAX_ABILITY_ID + 1; i++) {
                 viewModel.getAbility(i).observe(fragment, ability -> ability.ifPresent(componentListAdapter::addAbility));
 
