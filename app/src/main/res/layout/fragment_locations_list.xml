@@ -7,53 +7,58 @@
     android:background="#1297b1"
     tools:context=".ui.locations.LocationsListFragment">
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/ImageSlider_Map"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="270dp"
-        app:auto_cycle="false"
-        app:delay="0"
-        app:error_image="@drawable/image_sliderbg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.174"
-        app:period="1000"
-        app:placeholder="@drawable/image_sliderbg" />
+        android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="3dp"
-        android:paddingHorizontal="15dp"
-        android:paddingBottom="15dp"
-        android:layout_marginTop="280dp"
-        android:background="@drawable/location_layout"
-        android:orientation="vertical">
-
-
-        <TextView
-            android:id="@+id/TextView_RegionName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/yantramanav_medium"
-            android:text="@string/locations_region_loading"
-            android:textColor="#000"
-            android:textSize="20sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view_pokemon_location"
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider_map"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_height="0dp"
+            app:auto_cycle="false"
+            app:delay="0"
+            app:error_image="@drawable/image_sliderbg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:period="1000"
+            app:placeholder="@drawable/image_sliderbg" />
 
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/location_layout"
+            android:elevation="3dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.6">
 
+
+            <TextView
+                android:id="@+id/text_view_region_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/yantramanav_medium"
+                android:text="@string/locations_region_loading"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view_locations_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" />
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
