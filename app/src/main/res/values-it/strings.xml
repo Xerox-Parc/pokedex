@@ -22,9 +22,9 @@
     <string name="generation">Generatione</string>
     <string name="flavor_text">Descrizione</string>
     <string name="language">it</string>
-    <string name="power_short">\" Att: \"</string>
-    <string name="pp_short">\" PP: \"</string>
-    <string name="accuracy_short">\" Acc: \"</string>
+    <string name="power_short">&#160; Att: &#160;</string>
+    <string name="pp_short">&#160; PP: &#160;</string>
+    <string name="accuracy_short">&#160; Acc: &#160;</string>
 
 
     <!-- Game Versions (Move Flavor Text) -->
