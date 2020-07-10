@@ -93,7 +93,7 @@ public class MoveDetailFragment extends Fragment {
             }
 
             // Move Generation
-            String moveGeneration = GenerationConverter(currentMove.getGeneration().getName());
+            String moveGeneration = generationConverter(currentMove.getGeneration().getName());
             binding.textViewGeneration.setText(moveGeneration);
 
             // PP
