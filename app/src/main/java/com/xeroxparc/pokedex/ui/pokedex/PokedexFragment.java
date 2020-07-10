@@ -123,20 +123,15 @@ public class PokedexFragment extends SearchableFragment {
         private List<Pokemon> pokemonList = new ArrayList<>();
         private List<Pokemon> preferredList = new ArrayList<>();
         private List<Pokemon> filteredList = new ArrayList<>();
-        private Context ctx;
         private boolean preferredFiltering = false;
         private TextFilter<Pokemon> currentFilter;
-
-        public PokemonListAdapter(Context context) {
-            ctx = context;
-        }
 
         abstract void onClickCallback(Pokemon pokemon);
 
         @NonNull
         @Override
-        public com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder(new PokemonListItemBinder(parent.getContext(), parent, false, this));
+        public PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new PokemonViewHolder(new PokemonListItemBinder(parent.getContext(), parent, false, this));
         }
 
         @Override
@@ -145,7 +140,7 @@ public class PokedexFragment extends SearchableFragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull PokemonListAdapter.PokemonViewHolder holder, int position) {
             if (filteredList != null) {
                 Pokemon pokemon = filteredList.get(position);
                 String currentElement = pokemon.getName();/*non prende il pokemon corrente*/
@@ -165,7 +160,7 @@ public class PokedexFragment extends SearchableFragment {
 
                 holder.binder.bind(pokemon, position);
                 holder.binder.getRoot().setOnClickListener(c -> onClickCallback(pokemon));
-                Glide.with(ctx).load(pokemon.getSprite().getFrontDefault()).into(holder.getImageView());
+                Glide.with(requireContext()).load(pokemon.getSprite().getFrontDefault()).into(holder.getImageView());
             }
         }
 
@@ -278,8 +273,7 @@ public class PokedexFragment extends SearchableFragment {
         }
 
         void bind() {
-//            PokedexFragment.PokemonListAdapter componentListAdapter = new PokedexFragment.PokemonListAdapter(fragment.getContext()) {
-            componentListAdapter = new PokedexFragment.PokemonListAdapter(fragment.getContext()) {
+            componentListAdapter = new PokedexFragment.PokemonListAdapter() {
                 @Override
                 public String getFilterableResource(Pokemon source) {
                     return source.getName();
