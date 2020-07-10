@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -19,7 +20,7 @@ import com.xeroxparc.pokedex.databinding.FragmentMoveBinding;
 import com.xeroxparc.pokedex.ui.parents.CustomActionBarFragment;
 
 
-public class MoveFragment extends CustomActionBarFragment {
+public class MoveFragment extends Fragment {
 
     private FragmentMoveBinding binding;
 
@@ -30,11 +31,6 @@ public class MoveFragment extends CustomActionBarFragment {
         binding = FragmentMoveBinding.inflate(inflater, container, false);
         new Holder(getActivity(), this);
         return binding.getRoot();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_egg_group_details, menu);
     }
 
     class Holder {
