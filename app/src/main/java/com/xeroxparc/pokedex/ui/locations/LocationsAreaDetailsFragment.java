@@ -60,7 +60,7 @@ public class LocationsAreaDetailsFragment extends Fragment {
 
         locationAreaRepository.getLocationArea(areaId).observe(getViewLifecycleOwner(), locationArea -> {
             locationArea.ifPresent(area -> {
-
+                encounterList.clear();
                 encounterList.addAll(area.getPokemonEncounterList());
                 locationAreaDetailsListAdapter.notifyDataSetChanged();
                 encounterList.forEach(pokemonEncounter -> {
