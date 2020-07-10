@@ -22,12 +22,14 @@ import com.xeroxparc.pokedex.data.model.location.Location;
 import com.xeroxparc.pokedex.data.repository.LocationsRepository;
 import com.xeroxparc.pokedex.data.repository.RegionRepository;
 import com.xeroxparc.pokedex.databinding.FragmentLocationsListBinding;
+import com.xeroxparc.pokedex.ui.parents.SearchableFragment;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LocationsListFragment extends Fragment {
+public class LocationsListFragment extends SearchableFragment {
     private static final String TAG = "LocationsListFragment";
     private FragmentLocationsListBinding binding;
     final LinkedList<String> locationsList = new LinkedList<>();
@@ -69,6 +71,17 @@ public class LocationsListFragment extends Fragment {
                     });
         });
     }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
+
     class Holder {
 
         public Holder(FragmentActivity activity) {
@@ -77,7 +90,9 @@ public class LocationsListFragment extends Fragment {
             binding.recycleViewLocationsList.setLayoutManager(new LinearLayoutManager(activity));
         }
     }
-    private class LocationListListAdapter extends RecyclerView.Adapter<LocationListListAdapter.ViewHolder> {
+    private class LocationListListAdapter extends RecyclerView.Adapter<LocationListListAdapter.ViewHolder>
+        
+    {
         private final List<String> locationNamesList;
         private final List<Integer> locationIDList;
         private LayoutInflater mInflater;

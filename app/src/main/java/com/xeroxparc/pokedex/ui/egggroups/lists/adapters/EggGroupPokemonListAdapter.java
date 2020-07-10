@@ -21,10 +21,10 @@ import com.xeroxparc.pokedex.ui.egggroups.lists.viewholders.EggGroupPokemonViewH
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 /*
  * Renders the egg group data in an asynchronous manner by loading data in patches with the onbind
  * as the first trigger and the loading goes on as the previously requested data are completely loaded
@@ -80,17 +80,15 @@ public class EggGroupPokemonListAdapter extends RecyclerView.Adapter<EggGroupPok
         PokemonSpecies specie = filteredList.get(position);
         String specieName = specie.getName();
         holder.setPokemonName(specieName);
-        if (pokemonMap.get(specieName) != null) {
+        if (pokemonMap.get(specieName) != null && detailedSpecies.get(specieName) != null) {
             holder.setPokemonId(pokemonMap.get(specieName).getId());
-            String imageUrl = Objects.
-                    requireNonNull(pokemonMap.get(specieName)).
+            String imageUrl = pokemonMap.get(specieName).
                     getSprite().getFrontDefault();
             Glide.with(ctx).
                     load(imageUrl).
                     into(holder.getImage());
 
-            Objects.
-                    requireNonNull(detailedSpecies.get(specieName)).
+            detailedSpecies.get(specieName).
                     getEggGroupsList().forEach(eggGroup -> {
                 EggGroupType type = EggGroupType.getEggGroupTypeById(eggGroup.getId());
                 holder.addEggGroupChip(new EggGroupChip(ctx, type, this));
