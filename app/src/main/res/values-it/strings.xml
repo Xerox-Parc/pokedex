@@ -22,9 +22,9 @@
     <string name="generation">Generatione</string>
     <string name="flavor_text">Descrizione</string>
     <string name="language">it</string>
-    <string name="power_short">\" Att: \"</string>
-    <string name="pp_short">\" PP: \"</string>
-    <string name="accuracy_short">\" Acc: \"</string>
+    <string name="power_short">&#160; Att: &#160;</string>
+    <string name="pp_short">&#160; PP: &#160;</string>
+    <string name="accuracy_short">&#160; Acc: &#160;</string>
 
 
     <!-- Game Versions (Move Flavor Text) -->
@@ -77,5 +77,30 @@
     <string name="activity_egg_group_filter_not_only_in_this_group">Due Gruppi</string>
     <string name="splash_screen_picture">Splash Screen</string>
 
+    <!-- Ability string -->
+    <string name="ability_effect">Effetto</string>
+    <string name="ability_flavor_text">Flavor Text</string>
+    <string name="ability_generation">Generazione</string>
+    <string name="ability_pokeball_background_description">Sfondo Pokeball </string>
+    <string name="ability_tab_ability">Abilità</string>
+    <string name="ability_tab_pokemon">Pokemon Con Questa Abilità</string>
+    <string name="ability_pokemon_filter">Abilità del Pokemon</string>
+    <string name="ability_detail_app_bar_name">Dettaglio Abilità</string>
+
+    <!-- Pokemon strings -->
+    <string name="imageviewbackground">immagineDiSfondo</string>
+    <string name="text_view_pokemon_name_value">Nome</string>
+    <string name="text_view_pokemon_id_value">Numero</string>
+    <string name="text_view_pokemon_weight">Peso</string>
+    <string name="text_view_pokemon_height">Altezza</string>
+    <string name="text_view_details_menu">Dettagli</string>
+    <string name="text_view_moves_menu">Mosse</string>
+    <string name="text_view_pokemon_name">Nome pokemon</string>
+    <string name="switch_prefer">Favoriti</string>
+    <string name="text_view_pokemon_attack">Attacco</string>
+    <string name="text_view_pokemon_defense">Difesa</string>
+    <string name="text_view_pokemon_sp_atk">Sp. Att</string>
+    <string name="text_view_pokemon_sp_def">Sp. Dif</string>
+    <string name="text_view_pokemon_speed">Velocità</string>
 
 </resources>

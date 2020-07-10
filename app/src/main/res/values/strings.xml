@@ -101,6 +101,7 @@
     <string name="locations_generation_v">Generation V</string>
     <string name="locations_generation_vi">Generation VI</string>
     <string name="locations_generation_vii">Generation VII</string>
+    <string name="locations_region_loading">Region Loading…</string>
 
     <string name="locations_not_implemented">The following location has no other info in the pokèAPI !!</string>
 
