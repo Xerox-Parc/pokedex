@@ -218,7 +218,9 @@ public class AbilityFragment extends SearchableFragment {
         // request ability name and description from either the database or the web
         void bind(@NonNull Ability ability) {
             binding.textViewNameAbility.setText(ability.getName());
-            binding.abilityDescription.setText(ability.getEffectEntryList().get(1).getShortEffect());
+            binding.abilityDescription.setText(ability.getEffectEntryList().get(
+                    (ability.getEffectEntryList().size() > 1) ? 1 : 0
+            ).getShortEffect());
             binding.textViewNameAbility.setText(String.format(
                     "%s%s",
                     Character.toUpperCase(
