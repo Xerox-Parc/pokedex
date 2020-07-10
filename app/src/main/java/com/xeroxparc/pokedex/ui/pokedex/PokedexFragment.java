@@ -87,7 +87,6 @@ public class PokedexFragment extends SearchableFragment {
         private PokedexFragment fragment;
         private PokemonRepository repository;
         private MutableLiveData<String> filterPokemonName;
-        private LiveData<List<Pokemon>> listPokemon;
 
         public PokedexViewModel(@NonNull Application application) {
             super(application);
@@ -99,14 +98,6 @@ public class PokedexFragment extends SearchableFragment {
             this.preferMode = preferMode;
             componentListAdapter.setFavouriteredFiltering(preferMode == 1);
             Log.d("Valore di prefer", String.valueOf(preferMode));
-        }
-
-        LiveData<List<Pokemon>> getListComponent() {
-            return listPokemon;
-        }
-
-        void searchPokemon(String name) {
-            filterPokemonName.setValue(name);
         }
 
         LiveData<Optional<Pokemon>> getPokemonLiveData(int id) {
@@ -151,11 +142,9 @@ public class PokedexFragment extends SearchableFragment {
                 PokedexFragmentDirections.ActionNavPokedexToNavPokemonDetail action = PokedexFragmentDirections.actionNavPokedexToNavPokemonDetail();
                 action.setDetailsPokemon(currentElement);
                 action.setPokemonId(pokemonID);
-                holder.cardView.setOnClickListener(v -> {
-                    //Bundle pokemonDetails = new Bundle();
-                    //pokemonDetails.putInt(PokemonDetailFragment.KEY_POKEMON_ID, pokemon.getId());
-                    Navigation.findNavController(requireView()).navigate(action);
-                });
+                holder.cardView.setOnClickListener(v ->
+                    Navigation.findNavController(requireView()).navigate(action)
+                );
 
 
                 holder.binder.bind(pokemon, position);
@@ -312,8 +301,8 @@ public class PokedexFragment extends SearchableFragment {
             binding.recyclerView.setAdapter(componentListAdapter);
             binding.recyclerView.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
             binding.recyclerView.setLayoutManager(new GridLayoutManager(fragment.getContext(), 2));
-            final int POKEMON_ID_MAX = 807;
-            for (int i = 0; i < POKEMON_ID_MAX; i++) {
+            final int POKEMON_ID_MAX = 151;
+            for (int i = 0; i <= POKEMON_ID_MAX; i++) {
                 viewModel.getPokemonLiveData(i).observe(fragment, pokemon -> {
                     pokemon.ifPresent(componentListAdapter::addPokemon);
 
