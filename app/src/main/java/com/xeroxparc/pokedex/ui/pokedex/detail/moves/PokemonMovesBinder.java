@@ -8,12 +8,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.xeroxparc.pokedex.data.model.move.Move;
-import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 import com.xeroxparc.pokedex.data.model.pokemon.PokemonMove;
 import com.xeroxparc.pokedex.databinding.FragmentPokemonMovesBinding;
-import com.xeroxparc.pokedex.ui.egggroups.fragments.details.EggGroupDetailsFragmentDirections;
 import com.xeroxparc.pokedex.ui.move.MoveFragmentDirections;
-import com.xeroxparc.pokedex.ui.pokedex.detail.PokemonDetailFragmentDirections;
 
 import java.util.List;
 import java.util.stream.Collectors;

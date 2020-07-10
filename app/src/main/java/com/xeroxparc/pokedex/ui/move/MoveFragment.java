@@ -112,8 +112,8 @@ public class MoveFragment extends Fragment {
             Move currentElement = moveList.get(position);
             holder.textViewType.setText(currentElement.getType().getName());
             holder.textViewDamageClass.setText(currentElement.getDamageClass().getName());
-            String technical_details = getString(R.string.power_short) + currentElement.getPower() + getString(R.string.pp_short) + currentElement.getPp() + getString(R.string.accuracy_short) + currentElement.getAccuracy();
-            holder.textViewPowerPpAccuracy.setText(technical_details);
+            String technicalDetails = getString(R.string.power_short) + currentElement.getPower() + getString(R.string.pp_short) + currentElement.getPp() + getString(R.string.accuracy_short) + currentElement.getAccuracy();
+            holder.textViewPowerPpAccuracy.setText(technicalDetails);
             holder.setBackgroundColor(Utils.eggGroupTypeFromTypeId(currentElement.getType().getId()).getEggGroupColorId());
 
             // navigation logic to go to the move_detail layout
@@ -132,9 +132,9 @@ public class MoveFragment extends Fragment {
             }
 
 
-            holder.itemView.setOnClickListener(item -> {
-                Navigation.findNavController(requireView()).navigate(action);
-            });
+            holder.itemView.setOnClickListener(item ->
+                Navigation.findNavController(requireView()).navigate(action)
+            );
         }
 
         public void addMove(Move move) {

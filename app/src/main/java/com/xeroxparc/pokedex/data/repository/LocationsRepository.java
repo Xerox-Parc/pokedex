@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 
 import com.xeroxparc.pokedex.data.database.dao.location.LocationDao;
 import com.xeroxparc.pokedex.data.model.location.Location;
-import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
 
 import java.io.IOException;
 import java.util.Optional;

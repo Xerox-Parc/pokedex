@@ -32,13 +32,13 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class AbilityFragment extends Fragment  {
+public class AbilityFragment extends Fragment {
     private AbilityBinder binder;
     private FragmentAbilityBinding binding;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         new CustomActionBarFragment();
         binder = new AbilityBinder(this);
         binder.bind();
@@ -70,6 +70,7 @@ public class AbilityFragment extends Fragment  {
         private List<Ability> abilityList = new ArrayList<>();
 
         abstract void onClickCallback(Ability ability);
+
         @NonNull
         @Override
         public AbilityFragment.AbilityListAdapter.AbilityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -78,21 +79,21 @@ public class AbilityFragment extends Fragment  {
 
         @Override
         public int getItemCount() {
-            return (abilityList != null) ? abilityList.size(): 0;
+            return (abilityList != null) ? abilityList.size() : 0;
         }
 
         @Override
         public void onBindViewHolder(@NonNull AbilityFragment.AbilityListAdapter.AbilityViewHolder holder, int position) {
-            if (abilityList != null){
+            if (abilityList != null) {
                 Ability ability = abilityList.get(position);
                 /*Funzione di trasferimento*/
                 AbilityFragmentDirections.ActionNavAbilitiesToNavAbilitiesDetail action = AbilityFragmentDirections.actionNavAbilitiesToNavAbilitiesDetail();
                 holder.cardView.setOnClickListener(v -> {
-                    Log.d("Myapp","You clicked ability: "+(position+1));
+                    Log.d("Myapp", "You clicked ability: " + (position + 1));
                     action.setAbilityId(ability.getId());
                     Navigation.findNavController(requireView()).navigate(action);
                 });
-                holder.binder.bind(ability,position);
+                holder.binder.bind(ability);
                 holder.binder.getRoot().setOnClickListener(c -> onClickCallback(ability));
             }
         }
@@ -111,11 +112,12 @@ public class AbilityFragment extends Fragment  {
             AbilityViewHolder(@NonNull AbilityListItemBinder binder) {
                 super(binder.getRoot());
                 this.binder = binder;
-                cardView=itemView.findViewById(R.id.card_view_ability);
+                cardView = itemView.findViewById(R.id.card_view_ability);
             }
         }
     }
-    public class AbilityBinder  {
+
+    public class AbilityBinder {
         private final FragmentAbilityBinding binding;
         private final AbilityFragment fragment;
         private AbilityViewModel viewModel;
@@ -128,9 +130,11 @@ public class AbilityFragment extends Fragment  {
 
         }
 
-        View getRoot() { return binding.getRoot(); }
+        View getRoot() {
+            return binding.getRoot();
+        }
 
-        void bind(){
+        void bind() {
             AbilityFragment.AbilityListAdapter componentListAdapter = new AbilityFragment.AbilityListAdapter() {
                 @Override
                 void onClickCallback(Ability ability) {
@@ -140,7 +144,7 @@ public class AbilityFragment extends Fragment  {
             binding.recyclerViewAbility.setAdapter(componentListAdapter);
             binding.recyclerViewAbility.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
             int MAX_ABILITY_ID = 233;
-            for(int i=1;i<MAX_ABILITY_ID+1; i++){
+            for (int i = 1; i < MAX_ABILITY_ID + 1; i++) {
                 viewModel.getAbility(i).observe(fragment, ability -> ability.ifPresent(componentListAdapter::addAbility));
 
             }
@@ -153,29 +157,40 @@ public class AbilityFragment extends Fragment  {
     }
 
     public static class AbilityViewModel extends AndroidViewModel {
-            private AbilityFragment fragment;
-            private final AbilityRepository repository;
-            public AbilityViewModel(@NonNull Application application) {
-                super(application);
-                repository = new AbilityRepository(application);
-            }
-            public LiveData<Optional<Ability>> getAbility(int id){
-                return repository.getAbility(id);
-            }
+        private AbilityFragment fragment;
+        private final AbilityRepository repository;
+
+        public AbilityViewModel(@NonNull Application application) {
+            super(application);
+            repository = new AbilityRepository(application);
+        }
+
+        public LiveData<Optional<Ability>> getAbility(int id) {
+            return repository.getAbility(id);
+        }
     }
 
-    class AbilityListItemBinder {
+    static class AbilityListItemBinder {
         private final ItemAbilityBinding binding;
-        AbilityListItemBinder(Context context, ViewGroup root, Boolean attachToRoot){
+
+        AbilityListItemBinder(Context context, ViewGroup root, Boolean attachToRoot) {
             binding = ItemAbilityBinding.inflate(LayoutInflater.from(context), root, attachToRoot);
         }
-        View getRoot(){
+
+        View getRoot() {
             return binding.getRoot();
         }
-        void bind(@NonNull Ability ability, int position) {
-           binding.textViewNameAbility.setText(ability.getName());
-           binding.abilityDescription.setText(ability.getEffectEntryList().get(1).getShortEffect());
-           binding.textViewNameAbility.setText(String.format(Character.toUpperCase(ability.getName().charAt(0))+ability.getName().substring(1)));
+
+        void bind(@NonNull Ability ability) {
+            binding.textViewNameAbility.setText(ability.getName());
+            binding.abilityDescription.setText(ability.getEffectEntryList().get(1).getShortEffect());
+            binding.textViewNameAbility.setText(String.format(
+                    "%s%s",
+                    Character.toUpperCase(
+                            ability.getName().charAt(0)),
+                            ability.getName().substring(1)
+                    )
+            );
 
         }
     }

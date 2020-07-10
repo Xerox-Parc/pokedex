@@ -23,7 +23,6 @@ import com.xeroxparc.pokedex.data.repository.PokemonRepository;
  * @author Palmieri Ivan
  */
 public class PokemonDetailFragment extends Fragment {
-    private static final String TAG = "PokemonDetailFragment";
     Pokemon currentPokemon;
 
 
