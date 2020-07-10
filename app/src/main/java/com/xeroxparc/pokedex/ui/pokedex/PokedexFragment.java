@@ -5,14 +5,31 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.xeroxparc.pokedex.R;
+import com.xeroxparc.pokedex.data.filtering.FilterableResourceProvider;
+import com.xeroxparc.pokedex.data.filtering.TextFilter;
+import com.xeroxparc.pokedex.data.filtering.TextFilterable;
+import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
+import com.xeroxparc.pokedex.data.model.pokemon.PokemonType;
+import com.xeroxparc.pokedex.data.repository.PokemonRepository;
+import com.xeroxparc.pokedex.databinding.FragmentPokedexBinding;
+import com.xeroxparc.pokedex.databinding.ItemPokemonBinding;
+import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
+import com.xeroxparc.pokedex.ui.parents.SearchableFragment;
+import com.xeroxparc.pokedex.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -23,32 +40,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.xeroxparc.pokedex.R;
-import com.xeroxparc.pokedex.data.model.pokemon.Pokemon;
-import com.xeroxparc.pokedex.data.model.pokemon.PokemonType;
-import com.xeroxparc.pokedex.data.repository.PokemonRepository;
-import com.xeroxparc.pokedex.databinding.FragmentPokedexBinding;
-import com.xeroxparc.pokedex.databinding.ItemPokemonBinding;
-import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
-import com.xeroxparc.pokedex.ui.parents.CustomActionBarFragment;
-import com.xeroxparc.pokedex.utils.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 /**
- *
- *
  * @author Palmieri Ivan
  */
-public class PokedexFragment extends CustomActionBarFragment {
-
+public class PokedexFragment extends SearchableFragment {
+    private static final String TAG = "PokedexFragment";
+    private static PokedexFragment.PokemonListAdapter componentListAdapter;
     private PokedexBinder binder;
     private FragmentPokedexBinding binding;
-    private static PokedexFragment.PokemonListAdapter componentListAdapter;
 
     @Nullable
     @Override
@@ -64,26 +63,69 @@ public class PokedexFragment extends CustomActionBarFragment {
         binder = null;
     }
 
-    public class CustomActionBarFragment extends AppCompatActivity {
-        @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setHasOptionsMenu(true);
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return onQueryTextChange(query);
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (binder != null && componentListAdapter != null) {
+            componentListAdapter.getFilter().filter(newText);
+        }
+        return true;
+    }
+
+    interface PokemonUpdateRequester {
+        void requestPokemonUpdate(Pokemon updated, int position);
+    }
+
+    public static class PokedexViewModel extends AndroidViewModel {
+
+        static int preferMode;
+        private PokedexFragment fragment;
+        private PokemonRepository repository;
+        private MutableLiveData<String> filterPokemonName;
+        private LiveData<List<Pokemon>> listPokemon;
+
+        public PokedexViewModel(@NonNull Application application) {
+            super(application);
+            repository = new PokemonRepository(application);
+            filterPokemonName = new MutableLiveData<>("");
         }
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.pokedex_menu, menu);
-            return true;
+        public void setFavouriteMode(int preferMode) {
+            this.preferMode = preferMode;
+            componentListAdapter.setFavouriteredFiltering(preferMode == 1);
+            Log.d("Valore di prefer", String.valueOf(preferMode));
+        }
+
+        LiveData<List<Pokemon>> getListComponent() {
+            return listPokemon;
+        }
+
+        void searchPokemon(String name) {
+            filterPokemonName.setValue(name);
+        }
+
+        LiveData<Optional<Pokemon>> getPokemonLiveData(int id) {
+            return repository.getPokemon(id);
+        }
+
+        public void updatePokemon(Pokemon updated) {
+            repository.updatePokemon(updated);
         }
     }
 
-    public abstract class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder> implements PokemonUpdateRequester {
-
+    public abstract class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>
+            implements PokemonUpdateRequester, TextFilterable<Pokemon>, FilterableResourceProvider<Pokemon> {
         private List<Pokemon> pokemonList = new ArrayList<>();
+        private List<Pokemon> preferredList = new ArrayList<>();
         private List<Pokemon> filteredList = new ArrayList<>();
         private Context ctx;
         private boolean preferredFiltering = false;
+        private TextFilter<Pokemon> currentFilter;
+
         public PokemonListAdapter(Context context) {
             ctx = context;
         }
@@ -93,7 +135,7 @@ public class PokedexFragment extends CustomActionBarFragment {
         @NonNull
         @Override
         public com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder(new PokemonListItemBinder(parent.getContext(), parent, false,this));
+            return new com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder(new PokemonListItemBinder(parent.getContext(), parent, false, this));
         }
 
         @Override
@@ -104,8 +146,6 @@ public class PokedexFragment extends CustomActionBarFragment {
         @Override
         public void onBindViewHolder(@NonNull com.xeroxparc.pokedex.ui.pokedex.PokedexFragment.PokemonListAdapter.PokemonViewHolder holder, int position) {
             if (filteredList != null) {
-
-
                 Pokemon pokemon = filteredList.get(position);
                 String currentElement = pokemon.getName();/*non prende il pokemon corrente*/
                 Integer pokemonID = pokemon.getId();
@@ -128,47 +168,65 @@ public class PokedexFragment extends CustomActionBarFragment {
             }
         }
 
-
-        void addPokemon(Pokemon pokemon) {
-            pokemonList.add(pokemon);
-            if(preferredFiltering&&pokemon.isFavourite()){
-                filteredList.add(pokemon);
-            }else{
-                filteredList.add(pokemon);
-            }
-            notifyItemInserted(filteredList.size());
-            //notifyDataSetChanged();
+        public List<Pokemon> getPreferredList() {
+            return preferredList;
         }
 
-        void setFavouriteredFiltering(boolean filtering){
-            if(!filtering && preferredFiltering){
-                filteredList.clear();
-                filteredList.addAll(pokemonList);
-            }else if(filtering && !preferredFiltering){
-                filteredList = pokemonList.stream().filter(Pokemon::isFavourite).collect(Collectors.toList());
+        public List<Pokemon> getFilteredList() {
+            return filteredList;
+        }
+
+        void addPokemon(Pokemon pokemon) {
+            if (preferredFiltering) {
+                if (pokemon.isFavourite()) {
+                    preferredList.add(pokemon);
+                    checkFilteringAndPerform(pokemon);
+                }
+            } else {
+                preferredList.add(pokemon);
+                checkFilteringAndPerform(pokemon);
             }
+            pokemonList.add(pokemon);
             notifyDataSetChanged();
+        }
+
+        void checkFilteringAndPerform(Pokemon pokemon) {
+            if (currentFilter == null || currentFilter.getFilteringKeyword().isEmpty()) {
+                filteredList.add(pokemon);
+            } else {
+                currentFilter.filterByLastKeyword();
+            }
+        }
+
+        void setFavouriteredFiltering(boolean filtering) {
+            filteredList.clear();
+            preferredList.clear();
+            Log.e(TAG, "setFavouriteredFiltering: NEW FILTERING MODE::" + filtering);
+            if (!filtering) {
+                preferredList.addAll(pokemonList);
+            } else {
+                preferredList.addAll(pokemonList.stream().filter(Pokemon::isFavourite).collect(Collectors.toList()));
+            }
+            preferredList.forEach(this::checkFilteringAndPerform);
             preferredFiltering = filtering;
+            notifyDataSetChanged();
         }
 
         public boolean isPreferredFiltering() {
             return preferredFiltering;
         }
 
-        public List<Pokemon> getPokemonList(){
-            return filteredList;
+        public List<Pokemon> getPokemonList() {
+            return preferredList;
         }
 
-        void setComponentList(List<Pokemon> componentList) {
-            this.pokemonList = componentList;
-            filteredList.addAll(pokemonList);
-            notifyDataSetChanged();
+        public void setCurrentFilter(TextFilter<Pokemon> currentFilter) {
+            this.currentFilter = currentFilter;
         }
-
 
         public class PokemonViewHolder extends RecyclerView.ViewHolder {
-
             final PokemonListItemBinder binder;
+            public ImageView imageView9;
             public FragmentPokedexBinding binding;
             public CardView cardView;
             private ImageView pokemonImage;
@@ -181,7 +239,7 @@ public class PokedexFragment extends CustomActionBarFragment {
                 pokemonImage = itemView.findViewById(R.id.image_view_pokemon);
             }
 
-            ImageView getImageView(){
+            ImageView getImageView() {
                 return pokemonImage;
             }
         }
@@ -191,6 +249,7 @@ public class PokedexFragment extends CustomActionBarFragment {
         private final FragmentPokedexBinding binding;
         private final PokedexFragment fragment;
         private PokedexViewModel viewModel;
+
 
         PokedexBinder(@NonNull PokedexFragment fragment) {
             this.fragment = fragment;
@@ -221,9 +280,28 @@ public class PokedexFragment extends CustomActionBarFragment {
 //            PokedexFragment.PokemonListAdapter componentListAdapter = new PokedexFragment.PokemonListAdapter(fragment.getContext()) {
             componentListAdapter = new PokedexFragment.PokemonListAdapter(fragment.getContext()) {
                 @Override
-                public void requestPokemonUpdate(Pokemon updated,int position) {
-                    if(isPreferredFiltering()){
-                        if(!updated.isFavourite()){
+                public String getFilterableResource(Pokemon source) {
+                    return source.getName();
+                }
+
+                @Override
+                public void postFiltering(List<Pokemon> filteredData) {
+                    getFilteredList().clear();
+                    getFilteredList().addAll(filteredData);
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public TextFilter<Pokemon> getFilter() {
+                    TextFilter<Pokemon> filter = new TextFilter<>(getPreferredList(), this, this);
+                    setCurrentFilter(filter);
+                    return filter;
+                }
+
+                @Override
+                public void requestPokemonUpdate(Pokemon updated, int position) {
+                    if (isPreferredFiltering()) {
+                        if (!updated.isFavourite()) {
                             getPokemonList().remove(position);
                         }
                     }
@@ -241,7 +319,7 @@ public class PokedexFragment extends CustomActionBarFragment {
             binding.recyclerView.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
             binding.recyclerView.setLayoutManager(new GridLayoutManager(fragment.getContext(), 2));
             final int POKEMON_ID_MAX = 807;
-            for(int i=0; i<POKEMON_ID_MAX; i++) {
+            for (int i = 0; i < POKEMON_ID_MAX; i++) {
                 viewModel.getPokemonLiveData(i).observe(fragment, pokemon -> {
                     pokemon.ifPresent(componentListAdapter::addPokemon);
 
@@ -250,47 +328,12 @@ public class PokedexFragment extends CustomActionBarFragment {
         }
     }
 
-    public static class PokedexViewModel extends AndroidViewModel {
-
-        static int preferMode;
-        private PokedexFragment fragment;
-        private PokemonRepository repository;
-        private MutableLiveData<String> filterPokemonName;
-        private LiveData<List<Pokemon>> listPokemon;
-
-        public void setFavouriteMode(int preferMode) {
-            this.preferMode = preferMode;
-            componentListAdapter.setFavouriteredFiltering(preferMode == 1 );
-            Log.d("Valore di prefer", String.valueOf(preferMode));
-        }
-
-        public PokedexViewModel(@NonNull Application application) {
-            super(application);
-            repository = new PokemonRepository(application);
-            filterPokemonName = new MutableLiveData<>("");
-        }
-
-        LiveData<List<Pokemon>> getListComponent() {
-            return listPokemon;
-        }
-        void searchPokemon(String name) {
-            filterPokemonName.setValue(name);
-        }
-        LiveData<Optional<Pokemon>> getPokemonLiveData(int id) {
-            return repository.getPokemon(id);
-        }
-
-        public void updatePokemon(Pokemon updated) {
-            repository.updatePokemon(updated);
-        }
-    }
-
     class PokemonListItemBinder {
 
         private final ItemPokemonBinding binding;
         private PokemonUpdateRequester updateRequester;
 
-        PokemonListItemBinder(Context context, ViewGroup root, Boolean attachToRoot, PokemonUpdateRequester updateRequester ) {
+        PokemonListItemBinder(Context context, ViewGroup root, Boolean attachToRoot, PokemonUpdateRequester updateRequester) {
             binding = ItemPokemonBinding.inflate(LayoutInflater.from(context), root, attachToRoot);
             this.updateRequester = updateRequester;
         }
@@ -302,7 +345,7 @@ public class PokedexFragment extends CustomActionBarFragment {
         void bind(@NonNull Pokemon pokemon, int position) {
             List<PokemonType> typeList = pokemon.getTypeList();
             binding.textViewPokemonType.setText(typeList.get(0).getType().getName());
-            if(typeList.size() > 1){
+            if (typeList.size() > 1) {
                 binding.textViewPokemonType2.setText(typeList.get(1).getType().getName());
             }
             EggGroupType eggGroupTypeStyling = Utils.eggGroupTypeFromTypeId(typeList.get(0).getType().getId());
@@ -318,16 +361,12 @@ public class PokedexFragment extends CustomActionBarFragment {
         }
 
         void updateFavoriteView(@NonNull Pokemon pokemon) {
-            if(!pokemon.isFavourite()) {
+            if (!pokemon.isFavourite()) {
                 binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_border_24);
             } else {
                 binding.imageViewStar.setImageResource(R.drawable.ic_baseline_star_24);
             }
         }
-    }
-
-    interface PokemonUpdateRequester{
-        void requestPokemonUpdate(Pokemon updated, int position);
     }
 
 }

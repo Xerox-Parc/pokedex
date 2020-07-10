@@ -5,17 +5,26 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.xeroxparc.pokedex.R;
+import com.xeroxparc.pokedex.data.filtering.FilterableResourceProvider;
+import com.xeroxparc.pokedex.data.filtering.TextFilter;
+import com.xeroxparc.pokedex.data.filtering.TextFilterable;
+import com.xeroxparc.pokedex.data.model.pokemon.ability.Ability;
+import com.xeroxparc.pokedex.data.repository.AbilityRepository;
+import com.xeroxparc.pokedex.databinding.FragmentAbilityBinding;
+import com.xeroxparc.pokedex.databinding.ItemAbilityBinding;
+import com.xeroxparc.pokedex.ui.parents.SearchableFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -23,26 +32,13 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xeroxparc.pokedex.R;
-import com.xeroxparc.pokedex.data.model.pokemon.ability.Ability;
-import com.xeroxparc.pokedex.data.repository.AbilityRepository;
-import com.xeroxparc.pokedex.databinding.FragmentAbilityBinding;
-import com.xeroxparc.pokedex.databinding.ItemAbilityBinding;
-import com.xeroxparc.pokedex.ui.MainActivity;
-import com.xeroxparc.pokedex.ui.parents.CustomActionBarFragment;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-
-public class AbilityFragment extends CustomActionBarFragment {
+public class AbilityFragment extends SearchableFragment {
     private AbilityBinder binder;
     private FragmentAbilityBinding binding;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binder = new AbilityBinder(this);
         binder.bind();
         return binder.getRoot();
@@ -55,21 +51,40 @@ public class AbilityFragment extends CustomActionBarFragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu,@NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_egg_group_details, menu);
-
+    public boolean onQueryTextSubmit(String query) {
+        return onQueryTextChange(query);
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binder = null;
+    public boolean onQueryTextChange(String newText) {
+        if (binder != null) {
+            binder.getComponentListAdapter().getFilter().filter(newText);
+        }
+        return true;
     }
 
-    public abstract class AbilityListAdapter extends RecyclerView.Adapter<AbilityListAdapter.AbilityViewHolder> {
+    public static class AbilityViewModel extends AndroidViewModel {
+        private final AbilityRepository repository;
+        private AbilityFragment fragment;
+
+        public AbilityViewModel(@NonNull Application application) {
+            super(application);
+            repository = new AbilityRepository(application);
+        }
+
+        public LiveData<Optional<Ability>> getAbility(int id) {
+            return repository.getAbility(id);
+        }
+    }
+
+
+    public abstract class AbilityListAdapter extends RecyclerView.Adapter<AbilityListAdapter.AbilityViewHolder>
+            implements TextFilterable<Ability>, FilterableResourceProvider<Ability> {
         private List<Ability> abilityList = new ArrayList<>();
+        private List<Ability> filteredList = new ArrayList<>();
 
         abstract void onClickCallback(Ability ability);
+
         @NonNull
         @Override
         public AbilityFragment.AbilityListAdapter.AbilityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -78,30 +93,42 @@ public class AbilityFragment extends CustomActionBarFragment {
 
         @Override
         public int getItemCount() {
-            return (abilityList != null) ? abilityList.size(): 0;
+            return filteredList.size();
         }
 
         @Override
         public void onBindViewHolder(@NonNull AbilityFragment.AbilityListAdapter.AbilityViewHolder holder, int position) {
-            if (abilityList != null){
-                Ability ability = abilityList.get(position);
-                /*Funzione di trasferimento*/
-                AbilityFragmentDirections.ActionNavAbilitiesToNavAbilitiesDetail action = AbilityFragmentDirections.actionNavAbilitiesToNavAbilitiesDetail();
-                holder.cardView.setOnClickListener(v -> {
-                    Log.d("Myapp","You clicked ability: "+(position+1));
-                    action.setAbilityId(ability.getId());
-                    Navigation.findNavController(requireView()).navigate(action);
-                });
-                holder.binder.bind(ability);
-                holder.binder.getRoot().setOnClickListener(c -> onClickCallback(ability));
+            if (abilityList != null) {
+                if (filteredList.size() > position) {
+                    Ability ability = filteredList.get(position);
+                    /*Funzione di trasferimento*/
+                    AbilityFragmentDirections.ActionNavAbilitiesToNavAbilitiesDetail action = AbilityFragmentDirections.actionNavAbilitiesToNavAbilitiesDetail();
+                    holder.cardView.setOnClickListener(v -> {
+                        Log.d("Myapp", "You clicked ability: " + (position + 1));
+                        action.setAbilityId(ability.getId());
+                        Navigation.findNavController(requireView()).navigate(action);
+                    });
+                    holder.binder.bind(ability);
+                    holder.binder.getRoot().setOnClickListener(c -> onClickCallback(ability));
+                }
             }
         }
 
         void addAbility(Ability ability) {
+            if (filteredList.size() == abilityList.size()) {
+                filteredList.add(ability);
+            }
             abilityList.add(ability);
-            notifyItemInserted(abilityList.size());
+            notifyDataSetChanged();
         }
 
+        protected List<Ability> getAbilityList() {
+            return abilityList;
+        }
+
+        protected List<Ability> getFilteredList() {
+            return filteredList;
+        }
 
         public class AbilityViewHolder extends RecyclerView.ViewHolder {
             final AbilityListItemBinder binder;
@@ -111,14 +138,16 @@ public class AbilityFragment extends CustomActionBarFragment {
             AbilityViewHolder(@NonNull AbilityListItemBinder binder) {
                 super(binder.getRoot());
                 this.binder = binder;
-                cardView=itemView.findViewById(R.id.card_view_ability);
+                cardView = itemView.findViewById(R.id.card_view_ability);
             }
         }
     }
-    public class AbilityBinder  {
+
+    public class AbilityBinder {
         private final FragmentAbilityBinding binding;
         private final AbilityFragment fragment;
         private AbilityViewModel viewModel;
+        private AbilityFragment.AbilityListAdapter componentListAdapter;
 
 
         AbilityBinder(@NonNull AbilityFragment fragment) {
@@ -128,10 +157,29 @@ public class AbilityFragment extends CustomActionBarFragment {
 
         }
 
-        View getRoot() { return binding.getRoot(); }
+        View getRoot() {
+            return binding.getRoot();
+        }
 
-        void bind(){
-            AbilityFragment.AbilityListAdapter componentListAdapter = new AbilityFragment.AbilityListAdapter() {
+        void bind() {
+            componentListAdapter = new AbilityFragment.AbilityListAdapter() {
+                @Override
+                public String getFilterableResource(Ability source) {
+                    return source.getName();
+                }
+
+                @Override
+                public void postFiltering(List<Ability> filteredData) {
+                    getFilteredList().clear();
+                    getFilteredList().addAll(filteredData);
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public TextFilter<Ability> getFilter() {
+                    return new TextFilter<>(getAbilityList(), this, this);
+                }
+
                 @Override
                 void onClickCallback(Ability ability) {
                     showDetail(ability);
@@ -139,46 +187,38 @@ public class AbilityFragment extends CustomActionBarFragment {
             };
             binding.recyclerViewAbility.setAdapter(componentListAdapter);
             binding.recyclerViewAbility.setLayoutManager(new LinearLayoutManager(fragment.getContext()));
-            final int MAX_ABILITY_ID = 233;
-            for(int i=1;i<MAX_ABILITY_ID+1; i++){
+
+            int MAX_ABILITY_ID = 233;
+            for (int i = 1; i < MAX_ABILITY_ID + 1; i++) {
                 viewModel.getAbility(i).observe(fragment, ability -> ability.ifPresent(componentListAdapter::addAbility));
 
             }
         }
 
         private void showDetail(@NonNull Ability ability) {
-
         }
 
-    }
-
-    public static class AbilityViewModel extends AndroidViewModel {
-            private AbilityFragment fragment;
-            private final AbilityRepository repository;
-
-            public AbilityViewModel(@NonNull Application application) {
-                super(application);
-                repository = new AbilityRepository(application);
-            }
-
-            public LiveData<Optional<Ability>> getAbility(int id){
-                return repository.getAbility(id);
-            }
+        public AbilityListAdapter getComponentListAdapter() {
+            return componentListAdapter;
+        }
     }
 
     class AbilityListItemBinder {
         private final ItemAbilityBinding binding;
 
-        AbilityListItemBinder(Context context, ViewGroup root, Boolean attachToRoot){
+        AbilityListItemBinder(Context context, ViewGroup root, Boolean attachToRoot) {
             binding = ItemAbilityBinding.inflate(LayoutInflater.from(context), root, attachToRoot);
         }
-        View getRoot(){
+
+        View getRoot() {
             return binding.getRoot();
         }
+
+
         // request ability name and description from either the database or the web
         void bind(@NonNull Ability ability) {
-           binding.textViewNameAbility.setText(ability.getName());
-           binding.abilityDescription.setText(ability.getEffectEntryList().get(1).getShortEffect());
+            binding.textViewNameAbility.setText(ability.getName());
+            binding.abilityDescription.setText(ability.getEffectEntryList().get(1).getShortEffect());
             binding.textViewNameAbility.setText(String.format(
                     "%s%s",
                     Character.toUpperCase(
