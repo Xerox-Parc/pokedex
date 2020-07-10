@@ -10,7 +10,6 @@ import com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType;
 import com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupPokemonListAdapter;
 import com.xeroxparc.pokedex.utils.Utils;
 
-import androidx.appcompat.widget.SearchView.OnQueryTextListener;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +23,7 @@ import static com.xeroxparc.pokedex.ui.egggroups.lists.adapters.EggGroupSpeciesL
  *
  * @author Abdelrahman Abdelrahman (CptPackage)
  * */
-public class EggGroupDetailsBinder implements OnQueryTextListener,
+public class EggGroupDetailsBinder implements
         EggGroupDetailsLoader, EggGroupDetailsNavigationRequester, OnClickListener {
     private final int eggGroupId;
     private EggGroupDetailsFragment fragment;
@@ -106,15 +105,9 @@ public class EggGroupDetailsBinder implements OnQueryTextListener,
         });
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
 
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        speciesListAdapter.getFilter(null).filter(newText);
-        return true;
+    public EggGroupPokemonListAdapter getSpeciesListAdapter() {
+        return speciesListAdapter;
     }
 
     @Override
