@@ -85,7 +85,7 @@ public class LocationsAreaListFragment extends SearchableFragment {
         if (holder != null && holder.locationAreaListListAdapter != null) {
             holder.locationAreaListListAdapter.getFilter().filter(newText);
         }
-        return true;
+        return false;
     }
 
     @Override

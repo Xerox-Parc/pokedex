@@ -39,13 +39,14 @@ public class EggGroupDetailsFragment extends SearchableFragment {
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        return onQueryTextChange(query);
+        onQueryTextChange(query);
+        return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
         binder.getSpeciesListAdapter().getFilter(null).filter(newText);
-        return true;
+        return false;
     }
 
     @Override

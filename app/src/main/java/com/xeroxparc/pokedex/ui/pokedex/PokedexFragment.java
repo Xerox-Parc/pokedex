@@ -65,7 +65,8 @@ public class PokedexFragment extends SearchableFragment {
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        return onQueryTextChange(query);
+        onQueryTextChange(query);
+        return false;
     }
 
     @Override
@@ -73,7 +74,7 @@ public class PokedexFragment extends SearchableFragment {
         if (binder != null && componentListAdapter != null) {
             componentListAdapter.getFilter().filter(newText);
         }
-        return true;
+        return false;
     }
 
     interface PokemonUpdateRequester {

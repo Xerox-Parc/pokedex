@@ -52,7 +52,8 @@ public class AbilityFragment extends SearchableFragment {
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        return onQueryTextChange(query);
+        onQueryTextChange(query);
+        return false;
     }
 
     @Override
@@ -60,7 +61,7 @@ public class AbilityFragment extends SearchableFragment {
         if (binder != null) {
             binder.getComponentListAdapter().getFilter().filter(newText);
         }
-        return true;
+        return false;
     }
 
     public static class AbilityViewModel extends AndroidViewModel {
