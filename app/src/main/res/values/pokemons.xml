@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pokemon">
+    <item>pokemon 1</item>
+    <item>pokemon 2</item>
+    <item>pokemon 3</item>
+    <item>pokemon 4</item>
+    <item>pokemon 5</item>
+    <item>pokemon 6</item>
+    <item>pokemon 7</item>
+    <item>pokemon 8</item>
+    <item>pokemon 9</item>
+    <item>pokemon 10</item>
+    <item>pokemon 11</item>
+    <item>pokemon 12</item>
+    </string-array>
+</resources>

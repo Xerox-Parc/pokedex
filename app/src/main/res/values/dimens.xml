@@ -6,4 +6,23 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Move measures-->
+    <dimen name="move_card_height">64dp</dimen>
+    <dimen name="move_card_top_half">32dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="Move_name_size">24sp</dimen>
+    <dimen name="move_card_corner_radius">16dp</dimen>
+    <dimen name="separator_height">3dp</dimen>
+    <dimen name="Flavor_title_size">16sp</dimen>
+
+
+    <!--                        Egg Group Dimensions                        -->
+    <dimen name="layout_egg_group_button_container_external_horizontal_margin">20dp</dimen>
+    <dimen name="layout_egg_group_button_container_vertical_spacing">20dp</dimen>
+    <dimen name="layout_egg_group_button_container_horizontal_spacing">10dp</dimen>
+    <dimen name="button_egg_group_height">60dp</dimen>
+    <dimen name="button_egg_group_width">160dp</dimen>
 </resources>

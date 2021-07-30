@@ -98,6 +98,10 @@ public class Pokemon extends NamedApiResource {
 	@SerializedName("types")
 	private List<PokemonType> typeList;
 
+	//A flag to show if the pokemon is in the favourite list
+	@ColumnInfo(name = "favourite")
+	public Boolean favourite = false;
+
 	public Integer getBaseExperience() {
 		return baseExperience;
 	}
@@ -216,6 +220,14 @@ public class Pokemon extends NamedApiResource {
 
 	public void setTypeList(List<PokemonType> typeList) {
 		this.typeList = typeList;
+	}
+
+	public Boolean isFavourite() {
+		return favourite;
+	}
+
+	public void setFavourite(Boolean favourite) {
+		this.favourite = favourite;
 	}
 
 }

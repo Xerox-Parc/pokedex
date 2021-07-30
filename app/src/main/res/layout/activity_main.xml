@@ -12,6 +12,7 @@ tools:openDrawer="start">
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bitmap_pokeball_clipped_bg"
         android:fitsSystemWindows="true">
 
         <LinearLayout

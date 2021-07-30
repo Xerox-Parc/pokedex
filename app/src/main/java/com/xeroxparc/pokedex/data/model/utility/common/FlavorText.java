@@ -21,4 +21,16 @@ public class FlavorText {
 	@SerializedName("version")
 	private Version version;
 
+	public String getText() {
+		return text;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public Version getVersion() {
+		return version;
+	}
+
 }

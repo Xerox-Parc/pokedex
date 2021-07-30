@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_egg_group_button_container_external_horizontal_margin">10dp</dimen>
+    <dimen name="layout_egg_group_button_container_vertical_spacing">10dp</dimen>
+    <dimen name="layout_egg_group_button_container_horizontal_spacing">0dp</dimen>
+</resources>

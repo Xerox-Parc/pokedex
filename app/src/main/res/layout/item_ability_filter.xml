@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp"
+    android:columnCount="1"
+    android:padding="8dp"
+    android:paddingStart="8dp"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingRight="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="12dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+
+        <ImageView
+            android:id="@+id/image_view_ability_pokeball"
+            android:layout_width="162dp"
+            android:layout_height="match_parent"
+            android:alpha=".70"
+            android:contentDescription="@string/ability_pokeball_background_description"
+            app:srcCompat="@drawable/pokeball_opening_2" />
+
+        <ImageView
+            android:id="@+id/image_view_ability_pokemon"
+            android:layout_width="158dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="-1dp"
+            android:contentDescription="@string/ability_pokemon_filter"
+            app:srcCompat="@drawable/pikachu" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="110dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="-30dp"
+            android:layout_marginBottom="-30dp"
+            android:alpha=".20"
+            android:contentDescription="@string/ability_pokeball_background_description"
+            app:srcCompat="@drawable/ic_pokeball" />
+
+        <TextView
+            android:id="@+id/text_view_name"
+            android:layout_width="188dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="21dp"
+            android:gravity="center"
+            android:text="Name"
+            android:textColor="#000000"
+            android:textSize="27sp"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+

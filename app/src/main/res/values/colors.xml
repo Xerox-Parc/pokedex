@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#c62828</color>
+    <color name="colorPrimaryDark">#8e0000</color>
+    <color name="colorAccent">#ff5f52</color>
+
+    <color name="Blue">#ff3367d6</color>
+
+    <!--                Egg Group Colors                -->
+    <color name="eggGroupButtonTextColor">#EEFFFFFF</color>
+    <color name="monsterEggGroupColor">#D25064</color>
+    <color name="monsterEggGroupColorVariant">#DF8492</color>
+
+    <color name="humanLikeEggGroupColor">#D29682</color>
+    <color name="humanLikeEggGroupColorVariant">#93695B</color>
+
+    <color name="bugEggGroupColor">#AAC22A</color>
+    <color name="bugEggGroupColorVariant">#77881D</color>
+
+    <color name="mineralEggGroupColor">#7A6252</color>
+    <color name="mineralEggGroupColorVariant">#554439</color>
+
+    <color name="flyingEggGroupColor">#B29AFA</color>
+    <color name="flyingEggGroupColorVariant">#7C6CAF</color>
+
+    <color name="amorphousEggGroupColor">#8A8A8A</color>
+    <color name="amorphousEggGroupColorVariant">#606060</color>
+
+    <color name="fieldEggGroupColor">#E0C068</color>
+    <color name="fieldEggGroupColorVariant">#9D8649</color>
+
+    <color name="fairyEggGroupColor">#FFC8F0</color>
+    <color name="fairyEggGroupColorVariant">#B38CA8</color>
+
+    <color name="dittoEggGroupColor">#A664BF</color>
+    <color name="dittoEggGroupColorVariant">#744686</color>
+
+    <color name="grassEggGroupColor">#82D25A</color>
+    <color name="grassEggGroupColorVariant">#5B933F</color>
+
+    <color name="dragonEggGroupColor">#7A42FF</color>
+    <color name="dragonEggGroupColorVariant">#552EB3</color>
+
+    <color name="water1EggGroupColor">#97B5FD</color>
+    <color name="water1EggGroupColorVariant">#697FB1</color>
+
+    <color name="water2EggGroupColor">#729AFA</color>
+    <color name="water2EggGroupColorVariant">#506CAF</color>
+
+    <color name="water3EggGroupColor">#5876BE</color>
+    <color name="water3EggGroupColorVariant">#3D5285</color>
+
+    <color name="noEggsEggGroupColor">#333333</color>
+    <color name="noEggsEggGroupColorVariant">#232323</color>
+
 </resources>

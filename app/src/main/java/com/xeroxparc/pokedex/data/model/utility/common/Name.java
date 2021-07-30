@@ -16,4 +16,12 @@ public class Name {
 	@SerializedName("language")
 	private Language language;
 
+	public String getText() {
+		return text;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
 }

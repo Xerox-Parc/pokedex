@@ -17,4 +17,12 @@ public class MachineVersionDetail {
 	@SerializedName("version_group")
 	private VersionGroup versionGroup;
 
+	public Machine getMachine() {
+		return machine;
+	}
+
+	public VersionGroup getVersionGroup() {
+		return versionGroup;
+	}
+
 }

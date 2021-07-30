@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:columnCount="@integer/grid_columns_count"
+            android:paddingTop="@dimen/layout_egg_group_button_container_vertical_spacing"
+            android:useDefaultMargins="@bool/useDefaultSpacing"
+            tools:context=".ui.egggroups.fragments.menu.EggGroupsMenuFragment">
+
+            <FrameLayout
+                android:id="@+id/monster_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick='@{() -> fragment.onEggGroupSelected(Type.MONSTER)}'>
+
+                <ImageButton
+                    android:id="@+id/monster_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/monsterEggGroupColor"
+                    android:contentDescription="@string/egg_group_monster"
+                    android:tint="@color/monsterEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/egg_group_monster" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/humanalike_group"
+                style="@style/EggGroupButtonContainerSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.HUMAN_LIKE)}">
+
+                <ImageButton
+                    android:id="@+id/humanalike_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/humanLikeEggGroupColor"
+                    android:contentDescription="@string/egg_group_humanlike"
+                    android:tint="@color/humanLikeEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_humanlike"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/bug_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.BUG)}">
+
+                <ImageButton
+                    android:id="@+id/bug_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/bugEggGroupColor"
+                    android:contentDescription="@string/egg_group_bug"
+                    android:tint="@color/bugEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_bug"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/mineral_group"
+                style="@style/EggGroupButtonContainerSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.MINERAL)}">
+
+                <ImageButton
+                    android:id="@+id/mineral_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/mineralEggGroupColor"
+                    android:contentDescription="@string/egg_group_mineral"
+                    android:tint="@color/mineralEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_mineral"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/flying_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.FLYING)}">
+
+                <ImageButton
+                    android:id="@+id/flying_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/flyingEggGroupColor"
+                    android:contentDescription="@string/egg_group_flying"
+                    android:tint="@color/flyingEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_flying"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/amorphous_group"
+                style="@style/EggGroupButtonContainerSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.AMORPHOUS)}">
+
+                <ImageButton
+                    android:id="@+id/amorphous_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/amorphousEggGroupColor"
+                    android:contentDescription="@string/egg_group_amorphous"
+                    android:tint="@color/amorphousEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_amorphous"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/field_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.FIELD)}">
+
+                <ImageButton
+                    android:id="@+id/field_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/fieldEggGroupColor"
+                    android:contentDescription="@string/egg_group_field"
+                    android:tint="@color/fieldEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_field"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fairy_group"
+                style="@style/EggGroupButtonContainerSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.FAIRY)}">
+
+                <ImageButton
+                    android:id="@+id/fairy_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/fairyEggGroupColor"
+                    android:contentDescription="@string/egg_group_fairy"
+                    android:tint="@color/fairyEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_fairy"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/ditto_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.DITTO)}">
+
+                <ImageButton
+                    android:id="@+id/ditto_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/dittoEggGroupColor"
+                    android:contentDescription="@string/egg_group_ditto"
+                    android:tint="@color/dittoEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_ditto"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/grass_group"
+                style="@style/EggGroupButtonContainerSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.GRASS)}">
+
+                <ImageButton
+                    android:id="@+id/grass_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/grassEggGroupColor"
+                    android:contentDescription="@string/egg_group_grass"
+                    android:tint="@color/grassEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_grass"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/dragon_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.DRAGON)}">
+
+                <ImageButton
+                    android:id="@+id/dragon_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/dragonEggGroupColor"
+                    android:contentDescription="@string/egg_group_dragon"
+                    android:tint="@color/dragonEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_dragon"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/water1_group"
+                style="@style/EggGroupButtonContainerSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.WATER1)}">
+
+                <ImageButton
+                    android:id="@+id/water1_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/water1EggGroupColor"
+                    android:contentDescription="@string/egg_group_water1"
+                    android:tint="@color/water1EggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_water1"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/water2_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.WATER2)}">
+
+                <ImageButton
+                    android:id="@+id/water2_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/water2EggGroupColor"
+                    android:contentDescription="@string/egg_group_water2"
+                    android:tint="@color/water2EggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_water2"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/water3_group"
+                style="@style/EggGroupButtonContainerSpaced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.WATER3)}">
+
+                <ImageButton
+                    android:id="@+id/water3_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="@dimen/button_egg_group_width"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/water3EggGroupColor"
+                    android:contentDescription="@string/egg_group_water3"
+                    android:tint="@color/water3EggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_water3"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/no_eggs_group"
+                style="@style/EggGroupButtonContainerUnSpaced"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal"
+                android:onClick="@{() -> fragment.onEggGroupSelected(Type.NO_EGGS)}">
+
+                <ImageButton
+                    android:id="@+id/no_eggs_egg_group"
+                    style="@style/EggGroupImageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_egg_group_height"
+                    android:background="@color/noEggsEggGroupColor"
+                    android:contentDescription="@string/egg_group_no_eggs"
+                    android:tint="@color/noEggsEggGroupColorVariant" />
+
+                <TextView
+                    style="@style/EggGroupButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="@string/egg_group_no_eggs"
+                    android:textAlignment="center" />
+            </FrameLayout>
+
+
+        </GridLayout>
+    </ScrollView>
+
+
+    <data>
+
+        <import
+            alias="Type"
+            type="com.xeroxparc.pokedex.ui.egggroups.constants.EggGroupType" />
+
+        <variable
+            name="fragment"
+            type="com.xeroxparc.pokedex.ui.egggroups.fragments.menu.EggGroupsMenuFragment" />
+    </data>
+</layout>

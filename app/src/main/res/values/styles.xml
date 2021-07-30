@@ -1,8 +1,12 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#c62828</item>
+        <item name="colorPrimaryDark">#8e0000</item>
+        <item name="colorAccent">#424242</item>
+        <item name="ToolBarStyle">@style/TransparentToolBar</item>
+        <item name="ToolBarContainerStyle">@style/TransparentToolBarLayout
+        </item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -10,4 +14,89 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.TransparentToolbar" parent="AppTheme">
+        <item name="ToolBarStyle">@style/TransparentToolBar</item>
+        <item name="ToolBarContainerStyle">@style/TransparentToolBarLayout</item>
+    </style>
+
+    <style name="TransparentToolBar" parent="Widget.AppCompat.Toolbar">
+        <item name="colorControlNormal">?attr/colorPrimary</item>
+        <item name="android:textColorPrimary">?attr/colorPrimaryDark</item>
+        <item name="android:textColor">?attr/colorPrimaryDark</item>
+        <item name="android:background">@null</item>
+        <item name="searchViewStyle">@style/TransparentToolbar.SearchView</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TransparentToolBarLayout" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="colorControlNormal">?attr/colorPrimary</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="searchViewStyle">@style/TransparentToolbar.SearchView</item>
+        <item name="titleEnabled">false</item>
+        <item name="windowActionBarOverlay">false</item>
+    </style>
+
+    <style name="TransparentToolbar.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
+        <item name="background">@null</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="HeaderTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/noEggsEggGroupColor</item>
+    </style>
+
+    <style name="SubHeaderTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/noEggsEggGroupColor</item>
+    </style>
+
+    <style name="SectionHeaderTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/noEggsEggGroupColorVariant</item>
+    </style>
+
+    <style name="EggGroupButtonContainerUnSpaced">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">
+            @dimen/layout_egg_group_button_container_vertical_spacing
+        </item>
+    </style>
+
+
+    <style name="EggGroupButtonContainerSpaced" parent="EggGroupButtonContainerUnSpaced">
+        <item name="android:layout_marginStart">
+            @dimen/layout_egg_group_button_container_horizontal_spacing
+        </item>
+    </style>
+
+    <style name="EggGroupImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:src">@drawable/bitmap_pokeball_full_bg</item>
+        <item name="android:minHeight">60dp</item>
+        <item name="android:contentDescription">Pokemon Egg Group</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="EggGroupButtonText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/eggGroupButtonTextColor</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>
